@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison Dorée — Boulangerie Pâtisserie artisanale</title>
+  <meta name="description" content="Maison Dorée, boulangerie pâtisserie artisanale : pains au levain, viennoiseries pur beurre et pâtisseries maison. Ouvert 7j/7.">
+  <meta property="og:title" content="Maison Dorée — Boulangerie Pâtisserie artisanale">
+  <meta property="og:description" content="Pains au levain, viennoiseries pur beurre et pâtisseries maison, préparés chaque matin.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=70">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23b8742a'/><text x='50' y='66' font-size='46' text-anchor='middle' fill='white' font-family='Georgia'>M</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Bandeau de démonstration : à supprimer pour un vrai client -->
+  <div class="demo-banner" id="demoBanner">
+    <p><strong>Site de démonstration.</strong> Vous aimeriez un site comme celui-ci pour votre commerce ?
+      <a href="mailto:VOTRE-EMAIL@exemple.fr?subject=Je%20veux%20un%20site%20pour%20mon%20commerce">Contactez-moi</a></p>
+    <button type="button" aria-label="Fermer le bandeau" id="demoClose">&times;</button>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#accueil" class="logo">
+        <span class="logo__mark">M</span>
+        <span class="logo__text">Maison Dorée<small>Boulangerie · Pâtisserie</small></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a href="#apropos">La maison</a>
+        <a href="#produits">Nos produits</a>
+        <a href="#avis">Avis</a>
+        <a href="#infos">Horaires &amp; accès</a>
+        <a href="#contact" class="btn btn--small">Commander</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1800&q=70" alt="" onerror="this.remove()">
+      </div>
+      <div class="container hero__content">
+        <p class="eyebrow">Artisans boulangers depuis 1998</p>
+        <h1>Le goût du vrai pain,<br>chaque matin.</h1>
+        <p class="hero__lead">Pains au levain naturel, viennoiseries pur beurre et pâtisseries maison, préparés sur place avec des farines locales.</p>
+        <div class="hero__actions">
+          <a href="tel:+33400000000" class="btn">📞 Appeler la boutique</a>
+          <a href="#infos" class="btn btn--ghost">Voir les horaires</a>
+        </div>
+        <p class="status" id="openStatus" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ATOUTS -->
+    <section class="features">
+      <div class="container features__grid">
+        <div class="feature">
+          <span class="feature__icon">🌾</span>
+          <h3>Farines locales</h3>
+          <p>Issues d'un moulin à moins de 50 km de la boutique.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon">🔥</span>
+          <h3>Cuit sur place</h3>
+          <p>Fournées tout au long de la journée, jusqu'à 18h.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon">🎂</span>
+          <h3>Sur commande</h3>
+          <p>Gâteaux d'anniversaire, pièces montées et buffets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section class="section about" id="apropos">
+      <div class="container about__grid">
+        <div class="about__media">
+          <div class="img-frame">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=900&q=70" alt="Croissants dorés sortant du four" loading="lazy" onerror="this.remove()">
+          </div>
+          <div class="about__badge"><strong>25</strong><span>ans de<br>savoir-faire</span></div>
+        </div>
+        <div class="about__text">
+          <p class="eyebrow">Notre histoire</p>
+          <h2>Une boulangerie de quartier, tout simplement.</h2>
+          <p>Depuis plus de vingt-cinq ans, Maison Dorée perpétue la tradition du pain bien fait. Chaque nuit, notre équipe pétrit, façonne et enfourne pour vous proposer des produits frais dès l'ouverture.</p>
+          <p>Nous travaillons le levain naturel, laissons le temps à la pâte de fermenter et privilégions les producteurs de la région. Le résultat : un pain qui a du goût et qui se garde.</p>
+          <ul class="checklist">
+            <li>Label « Boulanger de France »</li>
+            <li>Produits bio et sans additifs</li>
+            <li>Paiement carte, sans contact et tickets-restaurant</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUITS -->
+    <section class="section section--alt" id="produits">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Nos produits</p>
+          <h2>Faits maison, du matin au soir</h2>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Catégories de produits">
+          <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">Tout</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="pains">Pains</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="viennoiseries">Viennoiseries</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="patisseries">Pâtisseries</button>
+        </div>
+
+        <div class="products" id="products">
+          <article class="product" data-cat="pains">
+            <div class="product__img"><img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=700&q=70" alt="Pain de campagne au levain" loading="lazy" onerror="this.remove()"></div>
+            <div class="product__body">
+              <h3>Pain de campagne au levain</h3>
+              <p>Croûte épaisse, mie alvéolée, se garde 4 jours.</p>
+              <span class="price">4,20 €</span>
+            </div>
+          </article>
+          <article class="product" data-cat="pains">
+            <div class="product__img"><img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=700&q=70" alt="Baguettes tradition" loading="lazy" onerror="this.remove()"></div>
+            <div class="product__body">
+              <h3>Baguette tradition</h3>
+              <p>Farine Label Rouge, fermentation lente de 24 h.</p>
+              <span class="price">1,30 €</span>
+            </div>
+          </article>
+          <article class="product" data-cat="viennoiseries">
+            <div class="product__img"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&q=70" alt="Croissants pur beurre" loading="lazy" onerror="this.remove()"></div>
+            <div class="product__body">
+              <h3>Croissant pur beurre</h3>
+              <p>Beurre AOP Charentes-Poitou, feuilletage maison.</p>
+              <span class="price">1,20 €</span>
+            </div>
+          </article>
+          <article class="product" data-cat="viennoiseries">
+            <div class="product__img"><img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=700&q=70" alt="Pain au chocolat" loading="lazy" onerror="this.remove()"></div>
+            <div class="product__body">
+              <h3>Pain au chocolat</h3>
+              <p>Deux barres de chocolat noir 64 %.</p>
+              <span class="price">1,35 €</span>
+            </div>
+          </article>
+          <article class="product" data-cat="patisseries">
+            <div class="product__img"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=700&q=70" alt="Tartelettes aux fruits" loading="lazy" onerror="this.remove()"></div>
+            <div class="product__body">
+              <h3>Tartelette aux fruits</h3>
+              <p>Pâte sablée, crème pâtissière vanille, fruits de saison.</p>
+              <span class="price">3,90 €</span>
+            </div>
+          </article>
+          <article class="product" data-cat="patisseries">
+            <div class="product__img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=700&q=70" alt="Macarons et cookies maison" loading="lazy" onerror="this.remove()"></div>
+            <div class="product__body">
+              <h3>Cookies &amp; macarons</h3>
+              <p>Préparés chaque jour, parfums qui changent selon la saison.</p>
+              <span class="price">dès 1,50 €</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVIS -->
+    <section class="section" id="avis">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Ils nous font confiance</p>
+          <h2>Ce que disent nos clients</h2>
+          <p class="rating"><span class="stars" aria-hidden="true">★★★★★</span> <strong>4,9/5</strong> · plus de 300 avis</p>
+        </div>
+        <div class="reviews">
+          <blockquote class="review">
+            <span class="stars" aria-label="5 étoiles">★★★★★</span>
+            <p>« Le meilleur croissant du quartier, sans hésiter. L'accueil est toujours chaleureux. »</p>
+            <footer>Sophie M.</footer>
+          </blockquote>
+          <blockquote class="review">
+            <span class="stars" aria-label="5 étoiles">★★★★★</span>
+            <p>« Nous avons commandé le gâteau d'anniversaire de notre fille : magnifique et délicieux. Merci ! »</p>
+            <footer>Karim B.</footer>
+          </blockquote>
+          <blockquote class="review">
+            <span class="stars" aria-label="5 étoiles">★★★★★</span>
+            <p>« Un vrai pain au levain comme on n'en trouve plus. Je fais le détour chaque samedi. »</p>
+            <footer>Jean-Pierre L.</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORAIRES & ACCÈS -->
+    <section class="section section--alt" id="infos">
+      <div class="container infos__grid">
+        <div class="infos__card">
+          <p class="eyebrow">Horaires</p>
+          <h2>Quand venir nous voir</h2>
+          <table class="hours" id="hours">
+            <tbody>
+              <tr data-day="1"><th>Lundi</th><td>6h30 – 19h30</td></tr>
+              <tr data-day="2"><th>Mardi</th><td>6h30 – 19h30</td></tr>
+              <tr data-day="3"><th>Mercredi</th><td>Fermé</td></tr>
+              <tr data-day="4"><th>Jeudi</th><td>6h30 – 19h30</td></tr>
+              <tr data-day="5"><th>Vendredi</th><td>6h30 – 19h30</td></tr>
+              <tr data-day="6"><th>Samedi</th><td>7h00 – 19h30</td></tr>
+              <tr data-day="0"><th>Dimanche</th><td>7h00 – 13h30</td></tr>
+            </tbody>
+          </table>
+          <div class="address">
+            <p><strong>📍 12 place du Marché, 69002 Lyon</strong></p>
+            <p>📞 <a href="tel:+33400000000">04 00 00 00 00</a></p>
+            <p>✉️ <a href="mailto:contact@maison-doree.fr">contact@maison-doree.fr</a></p>
+            <a class="btn btn--small" href="https://www.google.com/maps/search/?api=1&query=place+du+Marché+Lyon" target="_blank" rel="noopener">Itinéraire</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Plan d'accès" src="https://maps.google.com/maps?q=Place%20Bellecour%2C%20Lyon&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container contact__grid">
+        <div>
+          <p class="eyebrow">Commandes &amp; événements</p>
+          <h2>Un gâteau, un buffet, une question ?</h2>
+          <p>Remplissez ce formulaire, nous vous rappelons dans la journée. Pour une commande de gâteau, merci de nous prévenir 48 h à l'avance.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Facebook">Facebook</a>
+          </div>
+        </div>
+        <form class="form" id="contactForm" novalidate>
+          <div class="form__row">
+            <label>Nom<input type="text" name="nom" required autocomplete="name"></label>
+            <label>Téléphone<input type="tel" name="tel" required autocomplete="tel"></label>
+          </div>
+          <label>Type de demande
+            <select name="type">
+              <option>Commande de gâteau</option>
+              <option>Buffet / événement</option>
+              <option>Question générale</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" rows="4" required></textarea></label>
+          <button type="submit" class="btn">Envoyer la demande</button>
+          <p class="form__msg" id="formMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Maison Dorée · 12 place du Marché, Lyon</p>
+      <p><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></p>
+    </div>
+  </footer>
+
+  <a href="tel:+33400000000" class="call-fab" aria-label="Appeler la boutique">📞</a>
+
+  <script src="script.js"></script>
+</body>
+</html>

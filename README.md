@@ -26,3 +26,16 @@ Site vitrine de démonstration à mettre en lien dans les mails de prospection.
 - Indicateur « Ouvert / Fermé » en temps réel et jour actuel surligné
 - Filtres de produits, avis clients, carte Google Maps, bouton d'appel direct
 - Formulaire de contact (démo : n'envoie rien ; brancher Formspree ou similaire pour un vrai client)
+
+---
+
+# Site d'exemple — Rushcars (achat / revente de voitures)
+
+Dossier `rushcars/` : site vitrine sobre, noir et épuré. En ligne à
+`https://pipouche18.github.io/site-web-exemple-/rushcars/` une fois GitHub Pages activé.
+
+- **Véhicules** : une carte `<article class="car">` par voiture dans `rushcars/index.html`
+  (`data-cat` = citadine / berline / suv / sport, `data-price` et `data-km` servent au tri).
+- **Couleurs** : variables en haut de `rushcars/style.css`.
+- **Photos** : liens Unsplash à remplacer ; une silhouette de voiture s'affiche si une image ne charge pas.
+- Formulaires « Estimation gratuite » et « Contact » en mode démo (brancher Formspree ou similaire).

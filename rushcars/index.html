@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rushcars — Achat &amp; revente de véhicules d'occasion</title>
+  <meta name="description" content="Rushcars, achat et revente de voitures d'occasion. Véhicules contrôlés et garantis, reprise de votre voiture au meilleur prix, paiement immédiat.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Rushcars — Achat &amp; revente de véhicules d'occasion">
+  <meta property="og:description" content="Véhicules contrôlés et garantis. Reprise de votre voiture au meilleur prix, paiement immédiat.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=70">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='white' font-family='Arial' font-weight='700' font-style='italic'>R</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Bandeau de démonstration : à supprimer pour un vrai client -->
+  <div class="demo-banner" id="demoBanner">
+    <p><strong>Site de démonstration.</strong> Un site comme celui-ci pour votre entreprise ?
+      <a href="mailto:VOTRE-EMAIL@exemple.fr?subject=Je%20veux%20un%20site%20pour%20mon%20entreprise">Contactez-moi</a></p>
+    <button type="button" aria-label="Fermer le bandeau" id="demoClose">&times;</button>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#accueil" class="logo" aria-label="Rushcars, retour à l'accueil">RUSH<span>CARS</span></a>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a href="#stock">Véhicules</a>
+        <a href="#rachat">Vendre ma voiture</a>
+        <a href="#services">Services</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact" class="btn btn--small">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1900&q=70" alt="" onerror="this.remove()">
+      </div>
+      <div class="container hero__content">
+        <p class="eyebrow">Achat · Revente · Reprise</p>
+        <h1>Votre prochaine voiture.<br><span class="muted">Sans compromis.</span></h1>
+        <p class="hero__lead">Des véhicules d'occasion sélectionnés, contrôlés et garantis. Et la reprise de votre voiture au juste prix, payée sous 24&nbsp;h.</p>
+        <div class="hero__actions">
+          <a href="#stock" class="btn">Voir les véhicules</a>
+          <a href="#rachat" class="btn btn--ghost">Faire estimer ma voiture</a>
+        </div>
+      </div>
+      <div class="container">
+        <ul class="stats">
+          <li><strong>1&nbsp;200+</strong><span>véhicules vendus</span></li>
+          <li><strong>12&nbsp;mois</strong><span>de garantie minimum</span></li>
+          <li><strong>24&nbsp;h</strong><span>pour être payé</span></li>
+          <li><strong>4,9/5</strong><span>avis clients</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- STOCK -->
+    <section class="section" id="stock">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Notre stock</p>
+            <h2>Véhicules disponibles</h2>
+          </div>
+          <div class="toolbar">
+            <div class="tabs" role="group" aria-label="Filtrer par catégorie">
+              <button class="tab is-active" type="button" data-filter="all" aria-pressed="true">Tous</button>
+              <button class="tab" type="button" data-filter="citadine" aria-pressed="false">Citadines</button>
+              <button class="tab" type="button" data-filter="berline" aria-pressed="false">Berlines</button>
+              <button class="tab" type="button" data-filter="suv" aria-pressed="false">SUV</button>
+              <button class="tab" type="button" data-filter="sport" aria-pressed="false">Sportives</button>
+            </div>
+            <label class="sort">
+              <span class="visually-hidden">Trier</span>
+              <select id="sort">
+                <option value="default">Trier : nouveautés</option>
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="km-asc">Kilométrage</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="cars" id="cars">
+          <article class="car" data-cat="sport" data-price="54900" data-km="38000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=900&q=70" alt="BMW M4 Competition" loading="lazy" onerror="this.remove()">
+              <span class="badge">Nouveauté</span>
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>BMW M4 Competition</h3>
+                <p class="car__price">54&nbsp;900&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2020</li><li>38&nbsp;000&nbsp;km</li><li>Essence</li><li>Auto</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="BMW M4 Competition">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="suv" data-price="42500" data-km="52000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=900&q=70" alt="Mercedes GLC 300e" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Mercedes GLC 300e AMG Line</h3>
+                <p class="car__price">42&nbsp;500&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2021</li><li>52&nbsp;000&nbsp;km</li><li>Hybride</li><li>Auto</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Mercedes GLC 300e AMG Line">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="berline" data-price="31900" data-km="64000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?w=900&q=70" alt="Audi A5 Sportback" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Audi A5 Sportback S line</h3>
+                <p class="car__price">31&nbsp;900&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2020</li><li>64&nbsp;000&nbsp;km</li><li>Diesel</li><li>Auto</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Audi A5 Sportback S line">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="citadine" data-price="16490" data-km="29000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=900&q=70" alt="Mini Cooper S" loading="lazy" onerror="this.remove()">
+              <span class="badge">Prix en baisse</span>
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Mini Cooper S</h3>
+                <p class="car__price">16&nbsp;490&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2019</li><li>29&nbsp;000&nbsp;km</li><li>Essence</li><li>Manuelle</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Mini Cooper S">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="sport" data-price="89900" data-km="21000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=70" alt="Porsche 911 Carrera" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Porsche 911 Carrera</h3>
+                <p class="car__price">89&nbsp;900&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2019</li><li>21&nbsp;000&nbsp;km</li><li>Essence</li><li>PDK</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Porsche 911 Carrera">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="suv" data-price="27900" data-km="47000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=900&q=70" alt="Volkswagen Tiguan R-Line" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Volkswagen Tiguan R-Line</h3>
+                <p class="car__price">27&nbsp;900&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2021</li><li>47&nbsp;000&nbsp;km</li><li>Essence</li><li>DSG</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Volkswagen Tiguan R-Line">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="citadine" data-price="13900" data-km="41000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=900&q=70" alt="Peugeot 208 GT Line" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Peugeot 208 GT Line</h3>
+                <p class="car__price">13&nbsp;900&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2020</li><li>41&nbsp;000&nbsp;km</li><li>Essence</li><li>Manuelle</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Peugeot 208 GT Line">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="car" data-cat="berline" data-price="38500" data-km="35000">
+            <div class="car__media">
+              <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=900&q=70" alt="Tesla Model 3 Long Range" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="car__body">
+              <div class="car__title">
+                <h3>Tesla Model 3 Long Range</h3>
+                <p class="car__price">38&nbsp;500&nbsp;€</p>
+              </div>
+              <ul class="specs">
+                <li>2022</li><li>35&nbsp;000&nbsp;km</li><li>Électrique</li><li>Auto</li>
+              </ul>
+              <a href="#contact" class="car__link" data-car="Tesla Model 3 Long Range">Je suis intéressé <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="cars__empty" id="carsEmpty" hidden>Aucun véhicule dans cette catégorie pour le moment. <a href="#contact">Dites-nous ce que vous cherchez</a>, on le trouve pour vous.</p>
+      </div>
+    </section>
+
+    <!-- RACHAT -->
+    <section class="section section--alt" id="rachat">
+      <div class="container rachat">
+        <div class="rachat__intro">
+          <p class="eyebrow">Vendre ma voiture</p>
+          <h2>On rachète votre voiture.<br><span class="muted">Au juste prix.</span></h2>
+          <p>Toutes marques, tous modèles, même avec crédit en cours. Estimation gratuite, sans engagement, et paiement par virement instantané le jour de la vente.</p>
+          <ol class="steps">
+            <li><span>01</span><div><strong>Vous décrivez votre véhicule</strong><p>Deux minutes via le formulaire.</p></div></li>
+            <li><span>02</span><div><strong>On vous fait une offre</strong><p>Sous 24&nbsp;h, par téléphone ou e-mail.</p></div></li>
+            <li><span>03</span><div><strong>Inspection &amp; paiement</strong><p>On s'occupe des papiers, vous êtes payé.</p></div></li>
+          </ol>
+        </div>
+
+        <form class="form" id="estimateForm" novalidate>
+          <h3>Estimation gratuite</h3>
+          <div class="form__row">
+            <label>Marque<input type="text" name="marque" placeholder="Ex. Audi" required></label>
+            <label>Modèle<input type="text" name="modele" placeholder="Ex. A3 Sportback" required></label>
+          </div>
+          <div class="form__row">
+            <label>Année<input type="number" name="annee" placeholder="2019" min="1980" max="2030" required></label>
+            <label>Kilométrage<input type="number" name="km" placeholder="75 000" min="0" step="1000" required></label>
+          </div>
+          <div class="form__row">
+            <label>Nom<input type="text" name="nom" autocomplete="name" required></label>
+            <label>Téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+          </div>
+          <button type="submit" class="btn btn--full">Recevoir mon offre</button>
+          <p class="form__msg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Pourquoi Rushcars</p>
+            <h2>L'occasion, en mieux.</h2>
+          </div>
+        </div>
+        <div class="services">
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            <h3>Contrôlés &amp; garantis</h3>
+            <p>Chaque véhicule passe un contrôle de 120 points et bénéficie d'une garantie de 12 mois minimum, extensible.</p>
+          </article>
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v10H3z"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/></svg>
+            <h3>Financement sur mesure</h3>
+            <p>Crédit classique, LOA ou LLD : nous comparons les offres de nos partenaires pour trouver la mensualité adaptée.</p>
+          </article>
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>
+            <h3>Reprise immédiate</h3>
+            <p>Votre ancien véhicule est repris et déduit du prix de votre prochaine voiture, le jour même.</p>
+          </article>
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16V8l3-3h9l3 4h2a1 1 0 0 1 1 1v6h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6"/></svg>
+            <h3>Livraison partout en France</h3>
+            <p>Achetez à distance en toute confiance : visite vidéo, documents en ligne et livraison à domicile.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVIS -->
+    <section class="section section--alt" id="avis">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Avis clients</p>
+            <h2>4,9/5 sur plus de 300 avis.</h2>
+          </div>
+        </div>
+        <div class="reviews">
+          <figure class="review">
+            <p class="review__stars" aria-label="5 étoiles sur 5">★★★★★</p>
+            <blockquote>« Voiture vendue en 48&nbsp;h, offre bien au-dessus de ce qu'on m'avait proposé ailleurs. Zéro paperasse de mon côté. »</blockquote>
+            <figcaption>Karim B. <span>— a vendu sa Golf 7</span></figcaption>
+          </figure>
+          <figure class="review">
+            <p class="review__stars" aria-label="5 étoiles sur 5">★★★★★</p>
+            <blockquote>« Transparence totale sur l'historique du véhicule. Mon GLC est arrivé impeccable, exactement comme sur les photos. »</blockquote>
+            <figcaption>Sophie L. <span>— a acheté un Mercedes GLC</span></figcaption>
+          </figure>
+          <figure class="review">
+            <p class="review__stars" aria-label="5 étoiles sur 5">★★★★★</p>
+            <blockquote>« Reprise de mon ancienne voiture et financement réglés en une seule visite. Équipe sérieuse et disponible. »</blockquote>
+            <figcaption>Thomas R. <span>— a acheté une Audi A5</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container contact">
+        <div class="contact__info">
+          <p class="eyebrow">Contact</p>
+          <h2>Passez nous voir.</h2>
+          <dl class="infos">
+            <div><dt>Adresse</dt><dd>24 avenue de la République<br>75011 Paris</dd></div>
+            <div><dt>Téléphone</dt><dd><a href="tel:+33100000000">01 00 00 00 00</a></dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:contact@rushcars.fr">contact@rushcars.fr</a></dd></div>
+            <div><dt>Horaires</dt><dd>Lun – Ven · 9h – 19h<br>Samedi · 10h – 18h</dd></div>
+          </dl>
+          <div class="map">
+            <iframe title="Plan d'accès Rushcars" src="https://www.google.com/maps?q=avenue+de+la+R%C3%A9publique+Paris&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <form class="form" id="contactForm" novalidate>
+          <h3>Une question, un essai ?</h3>
+          <div class="form__row">
+            <label>Nom<input type="text" name="nom" autocomplete="name" required></label>
+            <label>Téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+          </div>
+          <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+          <label>Véhicule concerné <span class="optional">(facultatif)</span><input type="text" name="vehicule" id="contactCar"></label>
+          <label>Message<textarea name="message" rows="4" required></textarea></label>
+          <button type="submit" class="btn btn--full">Envoyer</button>
+          <p class="form__msg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#accueil" class="logo">RUSH<span>CARS</span></a>
+      <p>© <span id="year"></span> Rushcars · Achat &amp; revente de véhicules d'occasion</p>
+      <a href="#accueil" class="footer__top">Haut de page ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

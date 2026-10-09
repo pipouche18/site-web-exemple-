@@ -1,0 +1,243 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "faq": {
+      "type": "nd-faq",
+      "blocks": {
+        "f1": {
+          "type": "category",
+          "settings": {
+            "title": "Livraison"
+          }
+        },
+        "f2": {
+          "type": "question",
+          "settings": {
+            "question": "Quel est le délai de livraison ?",
+            "answer": "<p>Comptez <strong>10 à 18 jours ouvrés</strong> entre la commande et la réception. La date estimée est affichée sur chaque fiche produit, sous le bouton d'achat. Nos parures sont expédiées depuis l'entrepôt de nos fabricants partenaires en Chine.</p>"
+          }
+        },
+        "f3": {
+          "type": "question",
+          "settings": {
+            "question": "Comment suivre mon colis ?",
+            "answer": "<p>Dès l'expédition, vous recevez un e-mail avec un numéro et un lien de suivi. Le suivi peut mettre 2 à 5 jours à s'activer : c'est normal.</p>"
+          }
+        },
+        "f4": {
+          "type": "question",
+          "settings": {
+            "question": "Combien coûte la livraison ?",
+            "answer": "<p>[À COMPLÉTER : frais de livraison, et seuil de livraison offerte s'il y en a un.]</p>"
+          }
+        },
+        "f5": {
+          "type": "question",
+          "settings": {
+            "question": "Livrez-vous en dehors de la France ?",
+            "answer": "<p>[À COMPLÉTER : pays livrés. Par défaut : France métropolitaine.]</p>"
+          }
+        },
+        "f6": {
+          "type": "category",
+          "settings": {
+            "title": "Retours et remboursements"
+          }
+        },
+        "f7": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je retourner ma parure ?",
+            "answer": "<p>Oui. Vous disposez de <strong>14 jours après réception</strong> pour exercer votre droit de rétractation, sans avoir à vous justifier. La parure doit être retournée neuve, non lavée et dans son emballage d'origine. Toute la procédure est détaillée sur notre page Livraison et retours.</p>"
+          }
+        },
+        "f8": {
+          "type": "question",
+          "settings": {
+            "question": "Qui paie les frais de retour ?",
+            "answer": "<p>[À COMPLÉTER : par défaut, les frais de retour sont à la charge du client, sauf produit défectueux ou erreur de notre part.]</p>"
+          }
+        },
+        "f9": {
+          "type": "question",
+          "settings": {
+            "question": "Quand serai-je remboursé ?",
+            "answer": "<p>Au plus tard 14 jours après que nous avons été informés de votre décision de vous rétracter. Nous pouvons attendre la réception du colis retourné (ou une preuve d'expédition) avant de rembourser, avec le même moyen de paiement que celui de la commande.</p>"
+          }
+        },
+        "f10": {
+          "type": "question",
+          "settings": {
+            "question": "Ma parure est arrivée abîmée, que faire ?",
+            "answer": "<p>Écrivez-nous dans les meilleurs délais avec votre numéro de commande et une photo. Nous vous proposerons un remplacement ou un remboursement, sans frais pour vous.</p>"
+          }
+        },
+        "f11": {
+          "type": "category",
+          "settings": {
+            "title": "Composition et qualité"
+          }
+        },
+        "f12": {
+          "type": "question",
+          "settings": {
+            "question": "De quoi sont faites vos parures ?",
+            "answer": "<p>Nos parures sont en <strong>coton</strong> : coton lavé ou double gaze de coton selon les modèles. La composition exacte est indiquée en haut de chaque fiche produit.</p>"
+          }
+        },
+        "f13": {
+          "type": "question",
+          "settings": {
+            "question": "Qu'est-ce que la double gaze de coton ?",
+            "answer": "<p>Ce sont deux fines couches de gaze de coton tissées ensemble. Le résultat : un tissu léger, respirant et très doux, au joli aspect gaufré et froissé, agréable toute l'année.</p>"
+          }
+        },
+        "f14": {
+          "type": "question",
+          "settings": {
+            "question": "Pourquoi le tissu est-il froissé ?",
+            "answer": "<p>C'est voulu ! Le coton est lavé lors de sa fabrication, ce qui lui donne cet aspect naturel et décontracté, et une grande souplesse dès la première nuit. Pas besoin de repasser.</p>"
+          }
+        },
+        "f15": {
+          "type": "category",
+          "settings": {
+            "title": "Tailles"
+          }
+        },
+        "f16": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle taille choisir pour mon lit ?",
+            "answer": "<p>Choisissez d'abord une housse de la même taille que votre couette. À titre indicatif : 200×200 cm pour un lit 140, 220×240 cm pour un lit 160 ou 180, 240×260 cm pour un lit 180 ou 200. Tous les détails sont dans notre guide des tailles.</p>"
+          }
+        },
+        "f17": {
+          "type": "question",
+          "settings": {
+            "question": "Les tailles sont-elles les mêmes que dans les magasins français ?",
+            "answer": "<p>Oui, nous proposons les tailles de housses les plus courantes en France. Les dimensions exactes de chaque pièce (housse, taies, drap) sont indiquées dans l'onglet « Dimensions » de chaque produit.</p>"
+          }
+        },
+        "f18": {
+          "type": "category",
+          "settings": {
+            "title": "Entretien"
+          }
+        },
+        "f19": {
+          "type": "question",
+          "settings": {
+            "question": "Comment laver ma parure ?",
+            "answer": "<p>En machine à 30 ou 40 °C, sur l'envers, avec une lessive douce et sans adoucissant. Séchage à l'air libre ou en sèche-linge à basse température. Retrouvez tous nos conseils sur la page Conseils d'entretien.</p>"
+          }
+        },
+        "f20": {
+          "type": "question",
+          "settings": {
+            "question": "Le coton va-t-il rétrécir ?",
+            "answer": "<p>Le coton lavé est déjà prélavé, le rétrécissement est donc limité (environ 2 à 3 % [à confirmer]). Évitez les lavages à haute température et le séchage trop chaud.</p>"
+          }
+        },
+        "f21": {
+          "type": "category",
+          "settings": {
+            "title": "Paiement"
+          }
+        },
+        "f22": {
+          "type": "question",
+          "settings": {
+            "question": "Quels moyens de paiement acceptez-vous ?",
+            "answer": "<p>[À COMPLÉTER selon vos réglages Shopify Payments : carte bancaire, Apple Pay, Google Pay, PayPal…]</p>"
+          }
+        },
+        "f23": {
+          "type": "question",
+          "settings": {
+            "question": "Le paiement est-il sécurisé ?",
+            "answer": "<p>Oui. Le paiement est traité par Shopify, sur une page chiffrée (HTTPS). Nous n'avons jamais accès à vos coordonnées bancaires.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "f20",
+        "f21",
+        "f22",
+        "f23"
+      ],
+      "settings": {
+        "heading": "",
+        "structured_data": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    },
+    "contact": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Vous n'avez pas trouvé votre réponse ?",
+            "heading_size": "h2"
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Nous écrire",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "b"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq",
+    "contact"
+  ]
+}

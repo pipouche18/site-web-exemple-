@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Une petite maison, une grande envie de douceur",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Maison Nuits Douces est née d'un coup de cœur pour le linge de lit en coton lavé, celui qu'on voit sur Pinterest et qu'on rêve d'avoir chez soi, mais qu'on trouve souvent hors de prix.</p><p>[À COMPLÉTER : quelques phrases personnelles, par exemple votre prénom, ce qui vous a donné envie de lancer la boutique, votre lien avec la décoration.]</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "honesty": {
+      "type": "nd-article",
+      "blocks": {
+        "b1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ce que nous faisons, honnêtement"
+          }
+        },
+        "b2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nous ne fabriquons pas nos parures nous-mêmes, et elles ne sont pas fabriquées en France. Nous les sélectionnons auprès de fabricants partenaires en Chine, pour leur matière, leur toucher et leurs couleurs, puis elles vous sont expédiées directement depuis leur entrepôt.</p><p>C'est ce qui nous permet de proposer des parures en coton lavé et en double gaze entre 89 et 149 €. La contrepartie, c'est le délai : comptez <strong>10 à 18 jours ouvrés</strong> de livraison. Nous préférons vous le dire clairement plutôt que de vous faire attendre sans explication.</p>"
+          }
+        },
+        "b3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nos engagements"
+          }
+        },
+        "b4": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>Des informations exactes</strong> : composition, dimensions et délais affichés sur chaque fiche.</li><li><strong>Pas de fausse urgence</strong> : pas de compte à rebours, pas de faux stock limité, pas de faux avis.</li><li><strong>Des prix justes</strong>, sans fausses promotions.</li><li><strong>Une vraie personne pour vous répondre</strong>, par e-mail, sous 48 h.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "story",
+    "honesty"
+  ]
+}

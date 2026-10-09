@@ -112,3 +112,11 @@ h1, h2, h3, .h0, .h1, .h2, .h3 { letter-spacing: 0.01em; line-height: 1.15; }
 
 /* Lien cookies dans le pied de page */
 .nd-cookie-link { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+
+/* ---------- Pages de contenu ---------- */
+.nd-article h2 { margin-top: 3.2rem; }
+.nd-article h2:first-child { margin-top: 0; }
+.nd-article__note { margin: 2rem 0; padding: 1.6rem 2rem; background: rgba(var(--color-foreground), 0.05); border-left: 3px solid rgb(var(--color-button)); }
+.nd-faq__category { margin: 3.2rem 0 1rem; }
+.nd-faq .accordion summary { min-height: 4.4rem; }
+.nd-table-wrap:focus-visible { outline: 2px solid rgb(var(--color-foreground)); outline-offset: 2px; }

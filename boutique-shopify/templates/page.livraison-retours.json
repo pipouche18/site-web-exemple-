@@ -1,0 +1,104 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "body": {
+      "type": "nd-article",
+      "blocks": {
+        "b1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Livraison"
+          }
+        },
+        "b2": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>Délai : 10 à 18 jours ouvrés</strong> entre votre commande et la réception de votre colis.</li><li><strong>Pourquoi ce délai ?</strong> Nos parures sont expédiées directement depuis l'entrepôt de nos fabricants partenaires en Chine. C'est ce qui nous permet de garder des prix justes.</li><li><strong>Frais de livraison :</strong> [À COMPLÉTER].</li><li><strong>Zone de livraison :</strong> [À COMPLÉTER, par exemple France métropolitaine].</li></ul>"
+          }
+        },
+        "b3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Suivi de colis"
+          }
+        },
+        "b4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dès que votre commande est expédiée, vous recevez un e-mail avec votre numéro de suivi. Le suivi peut mettre quelques jours à s'activer. En cas de retard au-delà de 18 jours ouvrés, écrivez-nous : nous nous en occupons.</p>"
+          }
+        },
+        "b5": {
+          "type": "heading",
+          "settings": {
+            "heading": "Droit de rétractation (14 jours)"
+          }
+        },
+        "b6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Conformément au Code de la consommation, vous disposez de <strong>14 jours à compter de la réception</strong> de votre commande pour vous rétracter, sans avoir à vous justifier ni à payer de pénalités.</p>"
+          }
+        },
+        "b7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Comment retourner un article"
+          }
+        },
+        "b8": {
+          "type": "text",
+          "settings": {
+            "text": "<ol><li>Écrivez-nous à <strong>[VOTRE-EMAIL]</strong> avec votre numéro de commande, dans les 14 jours suivant la réception. Vous pouvez aussi utiliser le formulaire de rétractation présent dans nos CGV.</li><li>Nous vous répondons sous 48 h avec l'adresse de retour : <strong>[À COMPLÉTER : adresse de retour]</strong>.</li><li>Renvoyez l'article <strong>neuf, non lavé et dans son emballage d'origine</strong>, dans les 14 jours suivant votre demande. Gardez votre preuve de dépôt.</li><li>Nous vous remboursons au plus tard 14 jours après votre demande, une fois le colis reçu (ou sur preuve d'expédition), avec le moyen de paiement utilisé lors de l'achat.</li></ol>"
+          }
+        },
+        "b9": {
+          "type": "note",
+          "settings": {
+            "text": "<p><strong>Frais de retour :</strong> [À COMPLÉTER : par défaut, à la charge du client]. Produit défectueux ou erreur de notre part : le retour est à nos frais.</p>"
+          }
+        },
+        "b10": {
+          "type": "heading",
+          "settings": {
+            "heading": "Produit abîmé ou non conforme"
+          }
+        },
+        "b11": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vous bénéficiez de la garantie légale de conformité (2 ans) et de la garantie des vices cachés. Écrivez-nous avec une photo et votre numéro de commande : nous vous proposerons un remplacement ou un remboursement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "body"
+  ]
+}

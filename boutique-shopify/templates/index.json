@@ -1,75 +1,177 @@
 {
   "sections": {
-    "image_banner": {
+    "hero": {
       "type": "image-banner",
       "blocks": {
         "heading": {
           "type": "heading",
+          "settings": { "heading": "Des nuits douces, naturellement froissées", "heading_size": "h0" }
+        },
+        "text": {
+          "type": "text",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "Parures en coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage. De 89 à 149 €.",
+            "text_style": "body"
           }
         },
-        "button": {
+        "buttons": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_label_1": "Découvrir les parures",
+            "button_link_1": "shopify://collections/parures",
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+      "block_order": ["heading", "text", "buttons"],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 25,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-5",
         "stack_images_on_mobile": false,
-        "show_text_below": false
+        "mobile_content_alignment": "left",
+        "show_text_below": true
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
+        "title": "Nos parures préférées",
+        "heading_size": "h1",
+        "description": "<p>Coton lavé et double gaze, couleurs douces et texture vivante.</p>",
+        "show_description": true,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
+        "collection": "parures",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "link",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
+        "padding_top": 48,
         "padding_bottom": 36
       }
+    },
+    "arguments": {
+      "type": "multicolumn",
+      "blocks": {
+        "arg1": {
+          "type": "column",
+          "settings": {
+            "title": "Un coton qui s'adoucit à chaque lavage",
+            "text": "<p>Le coton lavé et la double gaze sont déjà souples à la réception, et deviennent encore plus doux au fil des lavages.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "arg2": {
+          "type": "column",
+          "settings": {
+            "title": "Un style naturel, sans repassage",
+            "text": "<p>L'effet froissé fait partie du charme : un lit qui a l'air vécu, chaleureux, inspiré du Japon et du Nord.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "arg3": {
+          "type": "column",
+          "settings": {
+            "title": "Un prix juste",
+            "text": "<p>Une belle parure entre 89 et 149 €, sans intermédiaire inutile. Et des délais affichés honnêtement : 10 à 18 jours ouvrés.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["arg1", "arg2", "arg3"],
+      "settings": {
+        "title": "Pourquoi nos parures",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "styles": {
+      "type": "collection-list",
+      "blocks": {
+        "japonais": { "type": "featured_collection", "settings": { "collection": "style-japonais" } },
+        "nordique": { "type": "featured_collection", "settings": { "collection": "style-nordique" } },
+        "romantique": { "type": "featured_collection", "settings": { "collection": "style-romantique" } }
+      },
+      "block_order": ["japonais", "nordique", "romantique"],
+      "settings": {
+        "title": "Trouver mon style",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
+    },
+    "reviews": {
+      "type": "nd-reviews",
+      "settings": {
+        "heading": "Avis clients",
+        "empty_text": "<p>Maison Nuits Douces vient d'ouvrir ses portes : les premiers avis vérifiés de nos clients apparaîtront ici, sans tri ni retouche.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "reassurance": {
+      "type": "nd-reassurance",
+      "blocks": {
+        "r1": { "type": "item", "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Carte bancaire, Apple Pay, PayPal [à confirmer]" } },
+        "r2": { "type": "item", "settings": { "icon": "return", "title": "14 jours pour changer d'avis", "text": "Droit de rétractation légal" } },
+        "r3": { "type": "item", "settings": { "icon": "truck", "title": "Livraison en 10 à 18 jours ouvrés", "text": "Colis suivi, délai annoncé honnêtement" } },
+        "r4": { "type": "item", "settings": { "icon": "chat_bubble", "title": "Une question ?", "text": "Réponse sous 48 h par e-mail" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": { "heading": "", "color_scheme": "scheme-2", "padding_top": 40, "padding_bottom": 40 }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Des nouvelles douces, de temps en temps", "heading_size": "h1" } },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": { "text": "<p>Nouvelles couleurs, conseils d'entretien et idées de chambre. Un e-mail par mois environ, désinscription en un clic.</p>" }
+        },
+        "email_form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": { "color_scheme": "scheme-1", "full_width": false, "padding_top": 48, "padding_bottom": 56 }
     }
   },
-  "order": [
-    "image_banner",
-    "featured_collection"
-  ]
+  "order": ["hero", "featured_collection", "arguments", "styles", "reviews", "reassurance", "newsletter"]
 }

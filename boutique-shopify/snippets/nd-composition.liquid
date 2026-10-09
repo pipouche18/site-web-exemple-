@@ -1,0 +1,21 @@
+{% comment %}
+  Composition du produit, toujours visible près du prix.
+  Source : metafield produit custom.composition (+ custom.grammage).
+  Paramètres : product, block
+{% endcomment %}
+{%- assign composition = product.metafields.custom.composition.value -%}
+{%- assign grammage = product.metafields.custom.grammage.value -%}
+{%- if composition != blank -%}
+  <p class="nd-composition" {{ block.shopify_attributes }}>
+    <span class="nd-composition__label">Composition&nbsp;:</span>
+    <span class="nd-composition__value">{{ composition | escape }}</span>
+    {%- if grammage != blank %}
+      <span class="nd-composition__sep" aria-hidden="true">·</span>
+      <span class="nd-composition__value">{{ grammage | escape }}</span>
+    {%- endif -%}
+  </p>
+{%- elsif request.design_mode -%}
+  <p class="nd-composition nd-composition--missing" {{ block.shopify_attributes }}>
+    ⚠ Composition non renseignée : remplissez le metafield « Composition » de ce produit (visible uniquement dans l'éditeur).
+  </p>
+{%- endif -%}

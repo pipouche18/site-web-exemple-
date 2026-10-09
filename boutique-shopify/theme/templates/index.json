@@ -5,12 +5,15 @@
       "blocks": {
         "heading": {
           "type": "heading",
-          "settings": { "heading": "Des nuits douces, naturellement froissées", "heading_size": "h0" }
+          "settings": {
+            "heading": "Des nuits douces, naturellement froissées",
+            "heading_size": "h0"
+          }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Parures en coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage. De 89 à 149 €.",
+            "text": "Parures en coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage.",
             "text_style": "body"
           }
         },
@@ -26,7 +29,11 @@
           }
         }
       },
-      "block_order": ["heading", "text", "buttons"],
+      "block_order": [
+        "heading",
+        "text",
+        "buttons"
+      ],
       "settings": {
         "image_overlay_opacity": 25,
         "image_height": "large",
@@ -93,13 +100,17 @@
           "type": "column",
           "settings": {
             "title": "Un prix juste",
-            "text": "<p>Une belle parure entre 89 et 149 €, sans intermédiaire inutile. Et des délais affichés honnêtement : 10 à 18 jours ouvrés.</p>",
+            "text": "<p>Une belle parure en coton à moins de 150 €, sans intermédiaire inutile. Et des délais affichés honnêtement : 10 à 18 jours ouvrés.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
-      "block_order": ["arg1", "arg2", "arg3"],
+      "block_order": [
+        "arg1",
+        "arg2",
+        "arg3"
+      ],
       "settings": {
         "title": "Pourquoi nos parures",
         "heading_size": "h1",
@@ -120,11 +131,30 @@
     "styles": {
       "type": "collection-list",
       "blocks": {
-        "japonais": { "type": "featured_collection", "settings": { "collection": "style-japonais" } },
-        "nordique": { "type": "featured_collection", "settings": { "collection": "style-nordique" } },
-        "romantique": { "type": "featured_collection", "settings": { "collection": "style-romantique" } }
+        "japonais": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "style-japonais"
+          }
+        },
+        "nordique": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "style-nordique"
+          }
+        },
+        "romantique": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "style-romantique"
+          }
+        }
       },
-      "block_order": ["japonais", "nordique", "romantique"],
+      "block_order": [
+        "japonais",
+        "nordique",
+        "romantique"
+      ],
       "settings": {
         "title": "Trouver mon style",
         "heading_size": "h1",
@@ -151,27 +181,93 @@
     "reassurance": {
       "type": "nd-reassurance",
       "blocks": {
-        "r1": { "type": "item", "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Carte bancaire, Apple Pay, PayPal [à confirmer]" } },
-        "r2": { "type": "item", "settings": { "icon": "return", "title": "14 jours pour changer d'avis", "text": "Droit de rétractation légal" } },
-        "r3": { "type": "item", "settings": { "icon": "truck", "title": "Livraison en 10 à 18 jours ouvrés", "text": "Colis suivi, délai annoncé honnêtement" } },
-        "r4": { "type": "item", "settings": { "icon": "chat_bubble", "title": "Une question ?", "text": "Réponse sous 48 h par e-mail" } }
+        "r1": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Carte bancaire, Apple Pay, PayPal [à confirmer]"
+          }
+        },
+        "r2": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "14 jours pour changer d'avis",
+            "text": "Droit de rétractation légal"
+          }
+        },
+        "r3": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Livraison en 10 à 18 jours ouvrés",
+            "text": "Colis suivi, délai annoncé honnêtement"
+          }
+        },
+        "r4": {
+          "type": "item",
+          "settings": {
+            "icon": "chat_bubble",
+            "title": "Une question ?",
+            "text": "Réponse sous 48 h par e-mail"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
-      "settings": { "heading": "", "color_scheme": "scheme-2", "padding_top": 40, "padding_bottom": 40 }
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {
+        "heading": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     },
     "newsletter": {
       "type": "newsletter",
       "blocks": {
-        "heading": { "type": "heading", "settings": { "heading": "Des nouvelles douces, de temps en temps", "heading_size": "h1" } },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Des nouvelles douces, de temps en temps",
+            "heading_size": "h1"
+          }
+        },
         "paragraph": {
           "type": "paragraph",
-          "settings": { "text": "<p>Nouvelles couleurs, conseils d'entretien et idées de chambre. Un e-mail par mois environ, désinscription en un clic.</p>" }
+          "settings": {
+            "text": "<p>Nouvelles couleurs, conseils d'entretien et idées de chambre. Un e-mail par mois environ, désinscription en un clic.</p>"
+          }
         },
-        "email_form": { "type": "email_form", "settings": {} }
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
       },
-      "block_order": ["heading", "paragraph", "email_form"],
-      "settings": { "color_scheme": "scheme-1", "full_width": false, "padding_top": 48, "padding_bottom": 56 }
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
     }
   },
-  "order": ["hero", "featured_collection", "arguments", "styles", "reviews", "reassurance", "newsletter"]
+  "order": [
+    "hero",
+    "featured_collection",
+    "arguments",
+    "styles",
+    "reviews",
+    "reassurance",
+    "newsletter"
+  ]
 }

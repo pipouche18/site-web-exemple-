@@ -36,7 +36,8 @@
   document.querySelectorAll('[data-nd-bed-size]').forEach((el) => {
     const map = {};
     try {
-      JSON.parse(el.querySelector('[data-nd-bed-map]').textContent).forEach((line) => {
+      JSON.parse(el.querySelector('[data-nd-bed-map]').textContent).forEach((raw) => {
+        const line = raw.replace(/<br\s*\/?>/gi, '').trim();
         const [size, ...rest] = line.split('=');
         if (size && rest.length) map[normalize(size)] = rest.join('=').trim();
       });

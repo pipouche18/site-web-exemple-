@@ -18,13 +18,13 @@
           "type": "announcement",
           "settings": {
             "text": "Livraison suivie en 10 à 18 jours ouvrés · 14 jours pour changer d'avis",
-            "text_alignment": "center",
-            "color_scheme": "scheme-2",
             "link": "shopify://pages/livraison-et-retours"
           }
         }
       },
-      "block_order": ["announcement-1"]
+      "block_order": [
+        "announcement-1"
+      ]
     },
     "header": {
       "type": "header",
@@ -45,5 +45,8 @@
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

@@ -20,7 +20,7 @@
           "type": "question",
           "settings": {
             "question": "Quel est le délai de livraison ?",
-            "answer": "<p>Comptez <strong>10 à 18 jours ouvrés</strong> entre la commande et la réception. La date estimée est affichée sur chaque fiche produit, sous le bouton d'achat. Nos parures sont expédiées directement depuis l'entrepôt de notre fabricant partenaire.</p>"
+            "answer": "<p>Comptez <strong>10 à 18 jours ouvrés</strong> entre la commande et la réception. La date estimée est affichée sur chaque fiche produit, sous le bouton d'achat.</p>"
           }
         },
         "f3": {

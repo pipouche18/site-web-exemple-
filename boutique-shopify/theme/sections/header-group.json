@@ -5,7 +5,7 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "settings": {
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-6",
         "show_line_separator": false,
         "show_social": false,
         "auto_rotate": true,
@@ -31,7 +31,7 @@
       "settings": {
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
-        "logo_position": "middle-center",
+        "logo_position": "top-center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
@@ -40,8 +40,10 @@
         "enable_language_selector": false,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
-        "padding_top": 16,
-        "padding_bottom": 16
+        "padding_top": 20,
+        "padding_bottom": 16,
+        "wordmark_small": "Maison",
+        "wordmark_main": "Nuits Douces"
       }
     }
   },

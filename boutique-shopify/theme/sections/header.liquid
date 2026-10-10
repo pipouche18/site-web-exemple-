@@ -205,7 +205,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          {% render 'nd-wordmark', small: section.settings.wordmark_small, main: section.settings.wordmark_main %}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -248,7 +248,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          {% render 'nd-wordmark', small: section.settings.wordmark_small, main: section.settings.wordmark_main %}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -504,6 +504,23 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
+    {
+      "type": "header",
+      "content": "Nom de la marque (sans logo)"
+    },
+    {
+      "type": "text",
+      "id": "wordmark_small",
+      "label": "Petit mot au-dessus",
+      "default": "Maison"
+    },
+    {
+      "type": "text",
+      "id": "wordmark_main",
+      "label": "Nom principal",
+      "default": "Nuits Douces",
+      "info": "Affiché quand aucun logo n'est choisi."
+    },
     {
       "type": "select",
       "id": "logo_position",

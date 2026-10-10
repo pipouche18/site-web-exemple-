@@ -12,12 +12,28 @@
             "subtext": "<p>Linge de lit en coton lavé et double gaze de coton, au style naturel et froissé. Une petite boutique indépendante, des délais annoncés honnêtement.</p>"
           }
         },
-        "shop": { "type": "link_list", "settings": { "heading": "Boutique", "menu": "footer" } },
-        "help": { "type": "link_list", "settings": { "heading": "Aide et informations", "menu": "aide" } }
+        "shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Boutique",
+            "menu": "footer"
+          }
+        },
+        "help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Aide et informations",
+            "menu": "aide"
+          }
+        }
       },
-      "block_order": ["brand", "shop", "help"],
+      "block_order": [
+        "brand",
+        "shop",
+        "help"
+      ],
       "settings": {
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-6",
         "newsletter_enable": false,
         "newsletter_heading": "Recevoir nos nouvelles",
         "enable_follow_on_shop": false,
@@ -32,5 +48,7 @@
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

@@ -7,87 +7,109 @@
       "color_schemes": {
         "scheme-1": {
           "settings": {
-            "background": "#F6F1EA",
-            "text": "#3A332D",
-            "button": "#8E5B40",
+            "background": "#FAF6F0",
+            "background_gradient": "",
+            "text": "#2B2420",
+            "button": "#9A5236",
             "button_label": "#FFFFFF",
-            "secondary_button_label": "#3A332D",
-            "shadow": "#3A332D",
-            "background_gradient": ""
+            "secondary_button_label": "#2B2420",
+            "shadow": "#2B2420"
           }
         },
         "scheme-2": {
           "settings": {
-            "background": "#E8DCCB",
-            "text": "#3A332D",
-            "button": "#3A332D",
-            "button_label": "#F6F1EA",
-            "secondary_button_label": "#3A332D",
-            "shadow": "#3A332D",
-            "background_gradient": ""
+            "background": "#EADFCF",
+            "background_gradient": "",
+            "text": "#2B2420",
+            "button": "#2B2420",
+            "button_label": "#FAF6F0",
+            "secondary_button_label": "#2B2420",
+            "shadow": "#2B2420"
           }
         },
         "scheme-3": {
           "settings": {
             "background": "#FFFFFF",
-            "text": "#3A332D",
-            "button": "#8E5B40",
+            "background_gradient": "",
+            "text": "#2B2420",
+            "button": "#9A5236",
             "button_label": "#FFFFFF",
-            "secondary_button_label": "#3A332D",
-            "shadow": "#3A332D",
-            "background_gradient": ""
+            "secondary_button_label": "#2B2420",
+            "shadow": "#2B2420"
           }
         },
         "scheme-4": {
           "settings": {
-            "background": "#DCE0D3",
-            "text": "#2F3130",
-            "button": "#2F3130",
-            "button_label": "#F6F1EA",
-            "secondary_button_label": "#2F3130",
-            "shadow": "#2F3130",
-            "background_gradient": ""
+            "background": "#D9DDCC",
+            "background_gradient": "",
+            "text": "#2B2420",
+            "button": "#2B2420",
+            "button_label": "#FAF6F0",
+            "secondary_button_label": "#2B2420",
+            "shadow": "#2B2420"
           }
         },
         "scheme-5": {
           "settings": {
-            "background": "#8E5B40",
+            "background": "#7A4128",
+            "background_gradient": "",
             "text": "#FFFFFF",
-            "button": "#F6F1EA",
-            "button_label": "#3A332D",
+            "button": "#FAF6F0",
+            "button_label": "#2B2420",
             "secondary_button_label": "#FFFFFF",
-            "shadow": "#3A332D",
-            "background_gradient": ""
+            "shadow": "#FFFFFF"
+          }
+        },
+        "scheme-6": {
+          "settings": {
+            "background": "#2B2420",
+            "background_gradient": "",
+            "text": "#F3EBDF",
+            "button": "#C9A27E",
+            "button_label": "#2B2420",
+            "secondary_button_label": "#F3EBDF",
+            "shadow": "#F3EBDF"
+          }
+        },
+        "scheme-7": {
+          "settings": {
+            "background": "#4F5A42",
+            "background_gradient": "",
+            "text": "#F3EBDF",
+            "button": "#F3EBDF",
+            "button_label": "#2B2420",
+            "secondary_button_label": "#F3EBDF",
+            "shadow": "#F3EBDF"
           }
         }
       },
-      "type_header_font": "cormorant_n4",
-      "heading_scale": 120,
+      "type_header_font": "fraunces_n4",
+      "heading_scale": 110,
       "type_body_font": "jost_n4",
-      "body_scale": 100,
+      "body_scale": 105,
       "page_width": 1300,
-      "spacing_sections": 24,
+      "spacing_sections": 0,
       "spacing_grid_horizontal": 8,
       "spacing_grid_vertical": 8,
       "animations_reveal_on_scroll": false,
       "animations_hover_elements": "default",
       "buttons_border_thickness": 1,
       "buttons_border_opacity": 100,
-      "buttons_radius": 2,
+      "buttons_radius": 0,
       "buttons_shadow_opacity": 0,
       "buttons_shadow_horizontal_offset": 0,
       "buttons_shadow_vertical_offset": 4,
       "buttons_shadow_blur": 5,
       "variant_pills_border_thickness": 1,
-      "variant_pills_border_opacity": 40,
-      "variant_pills_radius": 4,
+      "variant_pills_border_opacity": 55,
+      "variant_pills_radius": 0,
       "variant_pills_shadow_opacity": 0,
       "variant_pills_shadow_horizontal_offset": 0,
       "variant_pills_shadow_vertical_offset": 4,
       "variant_pills_shadow_blur": 5,
       "inputs_border_thickness": 1,
       "inputs_border_opacity": 55,
-      "inputs_radius": 2,
+      "inputs_radius": 0,
       "inputs_shadow_opacity": 0,
       "inputs_shadow_horizontal_offset": 0,
       "inputs_shadow_vertical_offset": 4,
@@ -153,7 +175,7 @@
       "drawer_shadow_vertical_offset": 4,
       "drawer_shadow_blur": 5,
       "badge_position": "bottom left",
-      "badge_corner_radius": 2,
+      "badge_corner_radius": 0,
       "sale_badge_color_scheme": "scheme-5",
       "sold_out_badge_color_scheme": "scheme-2",
       "brand_headline": "Du linge de lit en coton lavé, doux, naturel et honnête.",

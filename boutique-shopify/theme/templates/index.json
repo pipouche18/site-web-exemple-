@@ -1,50 +1,17 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Des nuits douces, naturellement froissées",
-            "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Parures en coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage.",
-            "text_style": "body"
-          }
-        },
-        "buttons": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Découvrir les parures",
-            "button_link_1": "shopify://collections/parures",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "buttons"
-      ],
+      "type": "nd-hero",
       "settings": {
-        "image_overlay_opacity": 30,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "color_scheme": "scheme-5",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "left",
-        "show_text_below": true
+        "overlay": 40,
+        "kicker": "Coton lavé & double gaze",
+        "heading": "Des nuits douces, naturellement froissées",
+        "text": "Parures en coton qui s'adoucissent à chaque lavage. Livraison suivie en 10 à 18 jours ouvrés.",
+        "button_label": "Découvrir les parures",
+        "button_link": "shopify://collections/parures",
+        "height_mobile": 80,
+        "height_desktop": 85,
+        "color_scheme": "scheme-2"
       }
     },
     "featured_collection": {
@@ -129,24 +96,33 @@
       }
     },
     "styles": {
-      "type": "collection-list",
+      "type": "nd-styles",
       "blocks": {
         "japonais": {
-          "type": "featured_collection",
+          "type": "style",
           "settings": {
-            "collection": "style-japonais"
+            "collection": "style-japonais",
+            "title": "Japonais",
+            "text": "Épuré, apaisant, wabi-sabi",
+            "color_scheme": "scheme-4"
           }
         },
         "nordique": {
-          "type": "featured_collection",
+          "type": "style",
           "settings": {
-            "collection": "style-nordique"
+            "collection": "style-nordique",
+            "title": "Nordique",
+            "text": "Clair, simple, lumineux",
+            "color_scheme": "scheme-2"
           }
         },
         "romantique": {
-          "type": "featured_collection",
+          "type": "style",
           "settings": {
-            "collection": "style-romantique"
+            "collection": "style-romantique",
+            "title": "Romantique",
+            "text": "Motifs tissés, charme vintage",
+            "color_scheme": "scheme-5"
           }
         }
       },
@@ -156,16 +132,10 @@
         "romantique"
       ],
       "settings": {
-        "title": "Trouver mon style",
-        "heading_size": "h1",
-        "image_ratio": "portrait",
-        "columns_desktop": 3,
+        "heading": "Trouver mon style",
         "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
         "padding_top": 48,
-        "padding_bottom": 36
+        "padding_bottom": 48
       }
     },
     "reviews": {

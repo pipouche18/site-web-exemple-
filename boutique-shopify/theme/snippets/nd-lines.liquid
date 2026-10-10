@@ -1,0 +1,20 @@
+{% comment %}
+  Transforme un texte multiligne en liste. Une ligne « Libellé : valeur »
+  est affichée avec le libellé en gras.
+  Paramètres : text
+{% endcomment %}
+{%- assign lines = text | newline_to_br | split: '<br />' -%}
+<ul class="nd-lines">
+  {%- for line in lines -%}
+    {%- assign clean = line | strip -%}
+    {%- if clean != blank -%}
+      {%- if clean contains ' : ' -%}
+        {%- assign label = clean | split: ' : ' | first -%}
+        {%- assign value = clean | remove_first: label | remove_first: ' : ' -%}
+        <li><strong>{{ label | escape }}&nbsp;:</strong> {{ value | escape }}</li>
+      {%- else -%}
+        <li>{{ clean | escape }}</li>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

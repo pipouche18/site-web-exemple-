@@ -1,0 +1,141 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "table": {
+      "type": "nd-size-guide",
+      "blocks": {
+        "row1": {
+          "type": "row",
+          "settings": {
+            "size": "140×200 cm",
+            "bed": "Lit 1 personne : 90×190 ou 90×200 cm",
+            "note": "Housse 1 personne standard"
+          }
+        },
+        "row2": {
+          "type": "row",
+          "settings": {
+            "size": "200×200 cm",
+            "bed": "Lit 2 personnes : 140×190 ou 140×200 cm",
+            "note": "La taille la plus courante pour un lit 140"
+          }
+        },
+        "row3": {
+          "type": "row",
+          "settings": {
+            "size": "220×240 cm (ou 240×220 cm)",
+            "bed": "Lit 160×200 cm, ou 180×200 cm pour un rendu ajusté",
+            "note": "Le format « grand lit » le plus polyvalent"
+          }
+        },
+        "row4": {
+          "type": "row",
+          "settings": {
+            "size": "240×260 cm (ou 260×240 cm)",
+            "bed": "Lit 180×200 ou 200×200 cm",
+            "note": "Pour un lit de 2 m de large ou un rendu très enveloppant"
+          }
+        }
+      },
+      "block_order": [
+        "row1",
+        "row2",
+        "row3",
+        "row4"
+      ],
+      "settings": {
+        "heading": "Housses de couette : quelle taille pour mon lit ?",
+        "intro": "<p>La taille d'une housse de couette se choisit d'abord selon <strong>la taille de votre couette</strong> (elle doit être identique), puis selon la largeur de votre lit. Mesurez votre couette avant de commander : c'est le moyen le plus sûr.</p>",
+        "col_1": "Taille de housse",
+        "col_2": "Lit correspondant",
+        "col_3": "Bon à savoir",
+        "footnote": "<p>Les deux nombres peuvent être inversés selon les marques (240×220 ou 220×240) : c'est la même taille, seul l'ordre largeur × longueur change.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 16,
+        "padding_bottom": 24
+      }
+    },
+    "pillows": {
+      "type": "nd-size-guide",
+      "blocks": {
+        "p1": {
+          "type": "row",
+          "settings": {
+            "size": "65×65 cm",
+            "bed": "Oreiller carré",
+            "note": "Le format le plus répandu en France"
+          }
+        },
+        "p2": {
+          "type": "row",
+          "settings": {
+            "size": "50×70 cm",
+            "bed": "Oreiller rectangulaire",
+            "note": "Format courant en Scandinavie"
+          }
+        },
+        "p3": {
+          "type": "row",
+          "settings": {
+            "size": "50×75 cm",
+            "bed": "Oreiller rectangulaire",
+            "note": "Variante du format rectangulaire"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "heading": "Taies d'oreiller",
+        "col_1": "Taille de taie",
+        "col_2": "Oreiller",
+        "col_3": "Bon à savoir",
+        "footnote": "<p>Les dimensions exactes des taies livrées avec chaque parure sont indiquées dans l'onglet « Dimensions » de la fiche produit.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 16,
+        "padding_bottom": 24
+      }
+    },
+    "tips": {
+      "type": "nd-article",
+      "blocks": {
+        "b1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nos conseils pour bien choisir"
+          }
+        },
+        "b2": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>Couette déjà achetée ?</strong> Prenez la housse de la même taille que la couette.</li><li><strong>Vous aimez un lit généreux et enveloppant</strong> ? Choisissez une taille au-dessus de votre lit : le coton lavé tombe joliment sur les côtés.</li><li><strong>Le coton lavé et la double gaze peuvent rétrécir légèrement</strong> au premier lavage (environ 2 à 3 % [à confirmer avec le fournisseur]). Nos tailles en tiennent compte.</li><li>Un doute ? Écrivez-nous en indiquant la taille de votre lit et de votre couette, nous vous répondons sous 48 h.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "table",
+    "pillows",
+    "tips"
+  ]
+}

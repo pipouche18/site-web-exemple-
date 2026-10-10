@@ -1,0 +1,251 @@
+{
+  "sections": {
+    "hero": {
+      "type": "nd-hero",
+      "settings": {
+        "overlay": 40,
+        "kicker": "Coton lavé & double gaze",
+        "heading": "Des nuits douces, naturellement froissées",
+        "text": "Parures en coton qui s'adoucissent à chaque lavage. Livraison suivie en 10 à 18 jours ouvrés.",
+        "button_label": "Découvrir les parures",
+        "button_link": "shopify://collections/parures",
+        "height_mobile": 80,
+        "height_desktop": 85,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Nos parures préférées",
+        "heading_size": "h1",
+        "description": "<p>Coton lavé et double gaze, couleurs douces et texture vivante.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "parures",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 72,
+        "padding_bottom": 56
+      }
+    },
+    "arguments": {
+      "type": "nd-features",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Un coton qui s'adoucit",
+            "text": "<p>Coton lavé ou double gaze : souple dès la première nuit, encore plus doux à chaque lavage.</p>"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Le charme du froissé",
+            "text": "<p>Pas de repassage : l'effet froissé naturel donne au lit un air vécu, chaleureux et apaisant.</p>"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Un prix juste, des délais honnêtes",
+            "text": "<p>De belles parures à moins de 150 €, livrées en 10 à 18 jours ouvrés avec suivi. On vous le dit dès le départ.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "kicker": "Pourquoi Maison Nuits Douces",
+        "heading": "Le linge qu'on a envie de garder longtemps",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "styles": {
+      "type": "nd-styles",
+      "blocks": {
+        "japonais": {
+          "type": "style",
+          "settings": {
+            "collection": "style-japonais",
+            "title": "Japonais",
+            "text": "Épuré, apaisant, wabi-sabi",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "nordique": {
+          "type": "style",
+          "settings": {
+            "collection": "style-nordique",
+            "title": "Nordique",
+            "text": "Clair, simple, lumineux",
+            "color_scheme": "scheme-2"
+          }
+        },
+        "romantique": {
+          "type": "style",
+          "settings": {
+            "collection": "style-romantique",
+            "title": "Romantique",
+            "text": "Motifs tissés, charme vintage",
+            "color_scheme": "scheme-5"
+          }
+        }
+      },
+      "block_order": [
+        "japonais",
+        "nordique",
+        "romantique"
+      ],
+      "settings": {
+        "heading": "Trouver mon style",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "reviews": {
+      "type": "nd-reviews",
+      "settings": {
+        "heading": "Avis clients",
+        "empty_text": "<p>Maison Nuits Douces vient d'ouvrir ses portes : les premiers avis vérifiés de nos clients apparaîtront ici, sans tri ni retouche.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "reassurance": {
+      "type": "nd-reassurance",
+      "blocks": {
+        "r1": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Carte bancaire, Apple Pay, PayPal [à confirmer]"
+          }
+        },
+        "r2": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "14 jours pour changer d'avis",
+            "text": "Droit de rétractation légal"
+          }
+        },
+        "r3": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Livraison en 10 à 18 jours ouvrés",
+            "text": "Colis suivi, délai annoncé honnêtement"
+          }
+        },
+        "r4": {
+          "type": "item",
+          "settings": {
+            "icon": "chat_bubble",
+            "title": "Une question ?",
+            "text": "Réponse sous 48 h par e-mail"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {
+        "heading": "",
+        "color_scheme": "scheme-6",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Des nouvelles douces, de temps en temps",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Nouvelles couleurs, conseils d'entretien et idées de chambre. Un e-mail par mois environ, désinscription en un clic.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "marquee": {
+      "type": "nd-marquee",
+      "settings": {
+        "items": "Coton lavé | Double gaze | Sans repassage | Livraison suivie | 14 jours pour changer d'avis",
+        "speed": 40,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "editorial": {
+      "type": "nd-editorial",
+      "settings": {
+        "kicker": "Notre idée du lit parfait",
+        "quote": "Un lit qu'on ne fait plus vraiment, parce qu'il est <em>beau</em> même défait.",
+        "signature": "Maison Nuits Douces",
+        "button_label": "Notre histoire",
+        "button_link": "shopify://pages/a-propos",
+        "color_scheme": "scheme-2",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "featured_collection",
+    "arguments",
+    "editorial",
+    "styles",
+    "reviews",
+    "reassurance",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "body": {
+      "type": "nd-article",
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Le coton lavé et la double gaze de coton sont des matières vivantes, qui gagnent en douceur au fil des lavages. Voici comment en prendre soin pour qu'elles vous accompagnent longtemps.</p>"
+          }
+        },
+        "b2": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le premier lavage"
+          }
+        },
+        "b3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lavez votre parure avant la première utilisation : elle sera encore plus souple et l'effet froissé se révélera. Lavez-la seule ou avec des couleurs proches, car les teintes naturelles peuvent légèrement dégorger les premières fois.</p>"
+          }
+        },
+        "b4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le lavage"
+          }
+        },
+        "b5": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>En machine à <strong>30 °C ou 40 °C</strong> maximum [à confirmer selon l'étiquette du produit], programme délicat ou coton.</li><li>Retournez la housse et fermez-la pour protéger les fibres.</li><li>Une <strong>lessive douce</strong>, en quantité modérée. Évitez l'eau de Javel et les détachants agressifs.</li><li><strong>Pas d'adoucissant</strong> : il alourdit les fibres et fait perdre au coton sa légèreté. Un peu de vinaigre blanc dans le bac à adoucissant suffit.</li><li>Ne surchargez pas le tambour : le linge doit pouvoir bouger.</li></ul>"
+          }
+        },
+        "b6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le séchage"
+          }
+        },
+        "b7": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>À l'air libre</strong>, idéalement à l'ombre pour préserver les couleurs.</li><li>En sèche-linge, <strong>à basse température</strong> seulement, et sortez le linge encore légèrement humide.</li><li>Secouez bien chaque pièce avant de l'étendre : c'est là que naît le joli froissé.</li></ul>"
+          }
+        },
+        "b8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Garder l'effet froissé"
+          }
+        },
+        "b9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bonne nouvelle : il n'y a rien à repasser. Pour un froissé naturel et régulier, essorez à vitesse moyenne (800 tours environ), secouez, puis étendez sans tendre. Si vous préférez un aspect plus net, repassez à température moyenne sur un tissu encore humide.</p>"
+          }
+        },
+        "b10": {
+          "type": "note",
+          "settings": {
+            "text": "<p><strong>Petites bouloches ?</strong> La double gaze peut former de légères peluches les premières semaines : c'est normal et cela disparaît avec les lavages.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "body"
+  ]
+}

@@ -1,0 +1,41 @@
+{% comment %} Grande phrase éditoriale, façon magazine (fonctionne sans photo). {% endcomment %}
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) { .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; } }
+  .nd-editorial-{{ section.id }} { max-width: 90rem; margin: 0 auto; text-align: center; }
+  .nd-editorial-{{ section.id }} blockquote { margin: 0; padding: 0; border: 0; font-family: var(--font-heading-family); font-size: clamp(2.6rem, 4.6vw, 4.6rem); line-height: 1.25; font-style: normal; }
+  .nd-editorial-{{ section.id }} blockquote em { font-style: italic; color: rgb(var(--color-button)); }
+  .nd-editorial-{{ section.id }} .nd-editorial__sign { margin-top: 2.4rem; font-size: 1.3rem; letter-spacing: .18em; text-transform: uppercase; }
+  .nd-editorial-{{ section.id }} .button { margin-top: 3.2rem; }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="nd-editorial-{{ section.id }}">
+      {%- if section.settings.kicker != blank -%}<p class="nd-kicker">{{ section.settings.kicker | escape }}</p>{%- endif -%}
+      <blockquote>{{ section.settings.quote }}</blockquote>
+      {%- if section.settings.signature != blank -%}<p class="nd-editorial__sign">{{ section.settings.signature | escape }}</p>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a class="button button--secondary" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Phrase éditoriale",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Petit texte au-dessus" },
+    { "type": "inline_richtext", "id": "quote", "label": "Phrase", "info": "Mettez un mot en italique pour le colorer.", "default": "Un lit qui a l'air <em>vécu</em>, doux et accueillant." },
+    { "type": "text", "id": "signature", "label": "Signature" },
+    { "type": "text", "id": "button_label", "label": "Bouton" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 80 }
+  ],
+  "presets": [{ "name": "Phrase éditoriale" }]
+}
+{% endschema %}

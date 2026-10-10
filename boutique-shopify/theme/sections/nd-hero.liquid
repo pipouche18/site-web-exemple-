@@ -1,0 +1,69 @@
+{% comment %}
+  Grande image d'accueil. Sans photo, affiche un fond uni élégant
+  (jamais d'illustration de remplacement).
+{% endcomment %}
+{%- liquid
+  assign img = section.settings.image
+  assign img_mobile = section.settings.image_mobile | default: img
+-%}
+{%- style -%}
+  #Hero-{{ section.id }} { position: relative; display: flex; align-items: flex-end; min-height: {{ section.settings.height_mobile }}vh; overflow: hidden; }
+  #Hero-{{ section.id }}.nd-hero--empty { align-items: center; min-height: {{ section.settings.height_mobile | times: 0.7 | round }}vh;
+    background:
+      radial-gradient(120% 80% at 85% 0%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(90% 70% at 0% 100%, rgba(142,91,64,.12), transparent 60%),
+      rgb(var(--color-background)); }
+  #Hero-{{ section.id }} picture, #Hero-{{ section.id }} picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #Hero-{{ section.id }} .nd-hero__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,24,20,{{ section.settings.overlay | divided_by: 100.0 }}), transparent 70%); }
+  #Hero-{{ section.id }} .nd-hero__content { position: relative; width: 100%; padding: 4.8rem 2rem; }
+  #Hero-{{ section.id }}.nd-hero--photo .nd-hero__content, #Hero-{{ section.id }}.nd-hero--photo .nd-hero__content * { color: #fff; }
+  #Hero-{{ section.id }} .nd-hero__kicker { margin: 0 0 1.2rem; font-size: 1.3rem; letter-spacing: .18em; text-transform: uppercase; }
+  #Hero-{{ section.id }} .nd-hero__title { margin: 0 0 1.6rem; font-size: clamp(3.6rem, 9vw, 7.2rem); line-height: 1.05; max-width: 14ch; }
+  #Hero-{{ section.id }} .nd-hero__text { margin: 0 0 2.8rem; font-size: 1.7rem; max-width: 46ch; }
+  #Hero-{{ section.id }}.nd-hero--empty .nd-hero__content { text-align: center; }
+  #Hero-{{ section.id }}.nd-hero--empty .nd-hero__title, #Hero-{{ section.id }}.nd-hero--empty .nd-hero__text { margin-left: auto; margin-right: auto; }
+  @media screen and (min-width: 750px) {
+    #Hero-{{ section.id }} { min-height: {{ section.settings.height_desktop }}vh; }
+    #Hero-{{ section.id }}.nd-hero--empty { min-height: {{ section.settings.height_desktop | times: 0.7 | round }}vh; }
+    #Hero-{{ section.id }} .nd-hero__content { padding: 8rem 5rem; }
+  }
+{%- endstyle -%}
+<div id="Hero-{{ section.id }}" class="nd-hero color-{{ section.settings.color_scheme }} {% if img != blank %}nd-hero--photo{% else %}nd-hero--empty{% endif %}">
+  {%- if img != blank -%}
+    <picture>
+      <source media="(max-width: 749px)" srcset="{{ img_mobile | image_url: width: 750 }} 750w, {{ img_mobile | image_url: width: 1100 }} 1100w" sizes="100vw">
+      {{ img | image_url: width: 2400 | image_tag: widths: '1000, 1500, 2000, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: img.alt }}
+    </picture>
+    <div class="nd-hero__shade" aria-hidden="true"></div>
+  {%- endif -%}
+  <div class="nd-hero__content page-width">
+    {%- if section.settings.kicker != blank -%}<p class="nd-hero__kicker">{{ section.settings.kicker | escape }}</p>{%- endif -%}
+    <h1 class="nd-hero__title">{{ section.settings.heading | escape }}</h1>
+    {%- if section.settings.text != blank -%}<p class="nd-hero__text">{{ section.settings.text | escape }}</p>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a class="button{% if img != blank %} button--secondary{% endif %}" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Grande image d'accueil",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo (format paysage)", "info": "Sans photo, un fond uni s'affiche." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Photo pour téléphone (format vertical, facultatif)" },
+    { "type": "range", "id": "overlay", "label": "Assombrir la photo", "min": 0, "max": 80, "step": 10, "unit": "%", "default": 40 },
+    { "type": "text", "id": "kicker", "label": "Petit texte au-dessus du titre", "default": "Coton lavé & double gaze" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Des nuits douces, naturellement froissées" },
+    { "type": "text", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Découvrir les parures" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton" },
+    { "type": "range", "id": "height_mobile", "label": "Hauteur sur téléphone", "min": 50, "max": 100, "step": 5, "unit": "vh", "default": 80 },
+    { "type": "range", "id": "height_desktop", "label": "Hauteur sur ordinateur", "min": 50, "max": 100, "step": 5, "unit": "vh", "default": 85 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs (sans photo)", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "Grande image d'accueil" }]
+}
+{% endschema %}

@@ -39,3 +39,9 @@ Dossier `rushcars/` : site vitrine sobre, noir et épuré. En ligne à
 - **Couleurs** : variables en haut de `rushcars/style.css`.
 - **Photos** : liens Unsplash à remplacer ; une silhouette de voiture s'affiche si une image ne charge pas.
 - Formulaires « Estimation gratuite » et « Contact » en mode démo (brancher Formspree ou similaire).
+
+---
+
+## Thème Shopify « Maison Nuits Douces »
+
+Le dossier [`boutique-shopify/`](boutique-shopify/README.md) contient un thème Shopify complet (basé sur Dawn) pour une boutique de linge de lit en coton. Ce n'est pas un site statique : voir son propre README pour l'installer.

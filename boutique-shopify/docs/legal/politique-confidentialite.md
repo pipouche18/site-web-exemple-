@@ -22,13 +22,13 @@ Les données de paiement sont traitées directement par Shopify et ses prestatai
 ## Destinataires
 
 - **Shopify** (hébergement de la boutique, paiement) ;
-- **nos fabricants partenaires et leur logisticien en Chine**, qui préparent et expédient votre colis : ils reçoivent uniquement vos nom, adresse de livraison et, si nécessaire, votre téléphone ;
+- **notre fabricant partenaire et son logisticien**, qui préparent et expédient votre colis : ils reçoivent uniquement vos nom, adresse de livraison et, si nécessaire, votre téléphone ;
 - **les transporteurs** chargés de la livraison ;
 - [À COMPLÉTER : outil d'e-mails / newsletter (par exemple Shopify Email), appli d'avis (par exemple Judge.me), Pinterest si vous acceptez les cookies publicitaires].
 
 ## Transferts hors de l'Union européenne
 
-Certaines données sont transférées hors de l'Union européenne, notamment **vers la Chine** pour l'expédition de votre commande, et vers les États-Unis ou le Canada pour certains prestataires techniques. Ces transferts sont nécessaires à l'exécution de votre commande et sont encadrés par des garanties appropriées (clauses contractuelles types de la Commission européenne ou décision d'adéquation). [À COMPLÉTER : vérifier les garanties prévues avec votre fournisseur / application de dropshipping.]
+Certaines données sont transférées hors de l'Union européenne, notamment vers le pays de notre fabricant partenaire pour l'expédition de votre commande, et vers les États-Unis ou le Canada pour certains prestataires techniques. Ces transferts sont nécessaires à l'exécution de votre commande et sont encadrés par des garanties appropriées (clauses contractuelles types de la Commission européenne ou décision d'adéquation). [À COMPLÉTER : vérifier les garanties prévues avec votre fournisseur / application de dropshipping.]
 
 ## Vos droits
 

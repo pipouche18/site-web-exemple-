@@ -27,7 +27,7 @@ Le paiement s'effectue en ligne par [À COMPLÉTER : carte bancaire, Apple Pay, 
 ## Article 6 – Livraison
 
 - **Zone** : [À COMPLÉTER : France métropolitaine]
-- **Délai** : **10 à 18 jours ouvrés** à compter de la validation de la commande. Les produits sont expédiés depuis l'entrepôt de nos fabricants partenaires en Chine.
+- **Délai** : **10 à 18 jours ouvrés** à compter de la validation de la commande. Les produits sont expédiés directement depuis l'entrepôt de notre fabricant partenaire.
 - **Frais** : [À COMPLÉTER]
 - Un numéro de suivi est communiqué par e-mail lors de l'expédition.
 

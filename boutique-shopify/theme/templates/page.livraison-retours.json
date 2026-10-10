@@ -19,7 +19,7 @@
         "b2": {
           "type": "text",
           "settings": {
-            "text": "<ul><li><strong>Délai : 10 à 18 jours ouvrés</strong> entre votre commande et la réception de votre colis.</li><li><strong>Pourquoi ce délai ?</strong> Nos parures sont expédiées directement depuis l'entrepôt de nos fabricants partenaires en Chine. C'est ce qui nous permet de garder des prix justes.</li><li><strong>Frais de livraison :</strong> [À COMPLÉTER].</li><li><strong>Zone de livraison :</strong> [À COMPLÉTER, par exemple France métropolitaine].</li></ul>"
+            "text": "<ul><li><strong>Délai : 10 à 18 jours ouvrés</strong> entre votre commande et la réception de votre colis.</li><li><strong>Pourquoi ce délai ?</strong> Nous ne gardons pas de stock : chaque parure est expédiée directement depuis l'entrepôt de notre fabricant partenaire. C'est ce qui nous permet de garder des prix justes.</li><li><strong>Frais de livraison :</strong> [À COMPLÉTER].</li><li><strong>Zone de livraison :</strong> [À COMPLÉTER, par exemple France métropolitaine].</li></ul>"
           }
         },
         "b3": {

@@ -6,7 +6,7 @@ Cochez chaque ligne (`[ ]` → `[x]`). Ne publiez pas la boutique tant qu'une li
 - [ ] ⚠️ Mentions légales complètes : nom, adresse, SIRET, mention « EI », TVA, hébergeur, e-mail
 - [ ] ⚠️ CGV complètes : délai 10 à 18 jours ouvrés, rétractation 14 jours, formulaire de rétractation, garanties légales (encadré officiel), frais de retour
 - [ ] ⚠️ Médiateur de la consommation choisi, et ses coordonnées présentes dans les mentions légales et les CGV
-- [ ] ⚠️ Politique de confidentialité (transfert des adresses vers le fournisseur en Chine mentionné) et politique cookies publiées
+- [ ] ⚠️ Politique de confidentialité (transfert des adresses hors de l'Union européenne mentionné) et politique cookies publiées
 - [ ] ⚠️ Bannière cookies Shopify active, avec « Refuser » aussi visible qu'« Accepter »
 - [ ] ⚠️ Test en navigation privée : avant tout clic sur la bannière, aucun tag Pinterest ne se déclenche (extension « Pinterest Tag Helper » ou outils du navigateur > Réseau, filtre « pinterest »)
 - [ ] ⚠️ Aucun prix barré, sauf ancien prix réellement pratiqué (le plus bas des 30 derniers jours)

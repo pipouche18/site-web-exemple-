@@ -3,22 +3,45 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "composition": { "type": "nd_composition", "settings": {} },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "composition": {
+          "type": "nd_composition",
+          "settings": {}
+        },
         "variant_picker": {
           "type": "variant_picker",
-          "settings": { "picker_type": "button", "swatch_shape": "circle" }
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
         },
-        "bed_size": { "type": "nd_bed_size", "settings": {} },
-        "quantity_selector": { "type": "quantity_selector", "settings": {} },
+        "bed_size": {
+          "type": "nd_bed_size",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
-          "settings": { "show_dynamic_checkout": false, "show_gift_card_recipient": false }
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
         },
         "delivery": {
           "type": "nd_delivery",
-          "settings": { "note": "Expédié depuis notre entrepôt partenaire, avec numéro de suivi." }
+          "settings": {
+            "note": "Expédié depuis notre entrepôt partenaire, avec numéro de suivi."
+          }
         },
         "reassurance": {
           "type": "icon-with-text",
@@ -36,9 +59,9 @@
           "type": "nd_tabs",
           "settings": {
             "care_default": "<p>Lavage en machine à 30 °C ou 40 °C, sur l'envers, avec une lessive douce sans adoucissant. Séchage à l'air libre ou en sèche-linge à basse température. Pas de repassage nécessaire : l'effet froissé fait tout le charme.</p>",
-            "care_page": "",
+            "care_page": "conseils-entretien",
             "shipping_text": "<p><strong>Livraison en [MIN] à [MAX] jours ouvrés.</strong> Nos parures sont expédiées depuis notre entrepôt partenaire en Chine. Vous recevez un numéro de suivi par e-mail dès l'expédition.</p><p><strong>Retours :</strong> vous disposez de 14 jours après réception pour changer d'avis. Le produit doit être retourné neuf, non lavé, dans son emballage d'origine.</p>",
-            "shipping_page": ""
+            "shipping_page": "livraison-et-retours"
           }
         },
         "complementary": {
@@ -54,7 +77,12 @@
             "enable_quick_add": true
           }
         },
-        "share": { "type": "share", "settings": { "share_label": "Partager" } }
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Partager"
+          }
+        }
       },
       "block_order": [
         "title",
@@ -115,5 +143,9 @@
       }
     }
   },
-  "order": ["main", "reviews", "related-products"]
+  "order": [
+    "main",
+    "reviews",
+    "related-products"
+  ]
 }

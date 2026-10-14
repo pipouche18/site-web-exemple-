@@ -9,8 +9,8 @@
         "text": "Parures en coton qui s'adoucissent à chaque lavage. Livraison suivie en 10 à 18 jours ouvrés.",
         "button_label": "Découvrir les parures",
         "button_link": "shopify://collections/parures",
-        "height_mobile": 80,
-        "height_desktop": 85,
+        "height_mobile": 85,
+        "height_desktop": 90,
         "color_scheme": "scheme-2"
       }
     },
@@ -123,16 +123,6 @@
         "padding_bottom": 72
       }
     },
-    "reviews": {
-      "type": "nd-reviews",
-      "settings": {
-        "heading": "Avis clients",
-        "empty_text": "<p>Maison Nuits Douces vient d'ouvrir ses portes : les premiers avis vérifiés de nos clients apparaîtront ici, sans tri ni retouche.</p>",
-        "color_scheme": "scheme-1",
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
-    },
     "reassurance": {
       "type": "nd-reassurance",
       "blocks": {
@@ -213,14 +203,6 @@
         "full_width": true,
         "padding_top": 72,
         "padding_bottom": 72
-      }
-    },
-    "marquee": {
-      "type": "nd-marquee",
-      "settings": {
-        "items": "Coton lavé | Double gaze | Sans repassage | Livraison suivie | 14 jours pour changer d'avis",
-        "speed": 40,
-        "color_scheme": "scheme-6"
       }
     },
     "editorial": {
@@ -371,15 +353,13 @@
   },
   "order": [
     "hero",
-    "marquee",
     "featured_collection",
     "colors",
     "arguments",
     "sizes",
-    "editorial",
     "styles",
+    "editorial",
     "journal",
-    "reviews",
     "reassurance",
     "newsletter"
   ]

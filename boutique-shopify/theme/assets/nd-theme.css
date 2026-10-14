@@ -178,3 +178,79 @@ body { color: rgb(var(--color-foreground)); }
 /* Journal (articles sans image) */
 .blog .article-card .card__heading, .article-card .card__heading { font-size: 2.2rem; }
 .article-card .card--text .card__inner, .blog .card--text .card__inner { background: #EADFCF; }
+
+/* =========================================================
+   v4 : principes de design Apple, adaptés au web
+   ========================================================= */
+
+/* Courbes : sortie douce sans rebond (équivalent ressort amorti 1.0) */
+:root {
+  --nd-ease: cubic-bezier(.32, .72, 0, 1);
+  --nd-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --nd-fast: 120ms;
+  --nd-med: 400ms;
+}
+
+/* 1. Réponse immédiate : retour au moment de l'appui, pas au relâchement */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, summary, label, .button, [role='tab'] { touch-action: manipulation; }
+.button, .nd-size, .nd-style-card, .nd-colors__link, .product-form__input label, .card-wrapper, .nd-pin, [role='tab'] {
+  transition: transform var(--nd-fast) ease-out, background-color var(--nd-fast) ease-out, box-shadow var(--nd-fast) ease-out, color var(--nd-fast) ease-out;
+}
+.button:active:not([disabled]), .nd-pin:active { transform: scale(.97); }
+.nd-size:active, .nd-style-card:active, .card-wrapper:active { transform: scale(.985); }
+.nd-colors__link:active .nd-colors__dot { transform: scale(.94); transition-duration: var(--nd-fast); }
+.product-form__input input[type='radio'] + label:active { transform: scale(.96); }
+[role='tab']:active { transform: scale(.97); }
+
+/* Cartes produit : l'image réagit au survol, légèrement et sans à-coup */
+.card__media .media img { transition: transform var(--nd-med) var(--nd-ease-out); }
+@media (hover: hover) { .card-wrapper:hover .card__media .media img { transform: scale(1.03); } }
+
+/* 2. Matière translucide : l'en-tête est une couche de « verre » au-dessus du contenu */
+.section-header .header-wrapper {
+  background: rgba(var(--color-background), .72);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 0;
+}
+.section-header .header-wrapper--border-bottom { border-bottom: 0; }
+/* Effet de bord au défilement au lieu d'un trait fixe */
+.section-header.scrolled-past-header .header-wrapper { box-shadow: 0 1px 0 rgba(var(--color-foreground), .06), 0 8px 24px -12px rgba(var(--color-foreground), .18); }
+.section-header.animate { transition: transform .35s var(--nd-ease); }
+
+/* Panneaux (panier, menu mobile) : entrée et sortie par le même chemin, courbe douce */
+.drawer__inner, .menu-drawer { transition: transform var(--nd-med) var(--nd-ease), visibility 0s linear var(--nd-med) !important; }
+cart-drawer.active .drawer__inner, .menu-opening .menu-drawer { transition: transform var(--nd-med) var(--nd-ease), visibility 0s !important; }
+.drawer { background-color: rgba(43, 36, 32, .35); }
+
+/* Barre d'achat collante : matière translucide, glisse depuis le bas et repart par le bas */
+.nd-sticky { background: rgba(var(--color-background), .78) !important; -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); transition: transform var(--nd-med) var(--nd-ease) !important; border-top: 0 !important; box-shadow: 0 -1px 0 rgba(var(--color-foreground), .06), 0 -12px 32px -16px rgba(var(--color-foreground), .2) !important; }
+
+/* 3. Typographie : interlettrage selon la taille (serré sur les grands titres, neutre sur le texte) */
+body { letter-spacing: 0; line-height: 1.6; font-optical-sizing: auto; }
+h1, .h0, .h1, .nd-hero__title { letter-spacing: -0.025em; line-height: 1.04; font-optical-sizing: auto; }
+h2, .h2 { letter-spacing: -0.018em; line-height: 1.12; }
+h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
+.rte p, .rte li { max-width: 68ch; }
+.nd-editorial__sign, .nd-kicker { letter-spacing: .2em; }
+
+/* Respiration : plus d'espace blanc entre les grandes sections */
+.nd-features__head, .nd-colors__head { margin-bottom: 4.8rem; }
+
+/* Focus clavier net, cohérent partout */
+:focus-visible { outline: 2px solid rgb(var(--color-foreground)); outline-offset: 3px; }
+
+/* 4. Accessibilité : les trois réglages du système */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; animation-iteration-count: 1 !important; }
+  .card-wrapper:hover .card__media .media img { transform: none; }
+  .nd-sticky { transition: opacity 200ms ease !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .section-header .header-wrapper, .nd-sticky { background: rgb(var(--color-background)) !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .section-header .header-wrapper, .nd-sticky { background: rgb(var(--color-background)) !important; backdrop-filter: none; border-bottom: 1px solid rgb(var(--color-foreground)); }
+  .nd-kicker, .nd-feature__text, .nd-size__note { color: rgb(var(--color-foreground)); }
+}

@@ -256,6 +256,14 @@
       {%- endif -%}
     {%- endif -%}
 
+    {%- comment -%} Maison Nuits Douces : champ de recherche toujours visible à gauche (ordinateur) {%- endcomment -%}
+    <form action="{{ routes.search_url }}" method="get" role="search" class="nd-search-pill small-hide medium-hide">
+      <label class="visually-hidden" for="NdSearchPill">{{ 'general.search.search' | t }}</label>
+      <span class="svg-wrapper" aria-hidden="true">{{- 'icon-search.svg' | inline_asset_content -}}</span>
+      <input id="NdSearchPill" type="search" name="q" placeholder="Rechercher une parure…" autocomplete="off">
+      <input type="hidden" name="options[prefix]" value="last">
+    </form>
+
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}

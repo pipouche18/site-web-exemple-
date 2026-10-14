@@ -142,3 +142,49 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+<script>
+  /* Maison Nuits Douces : à la souris, les menus déroulants s'ouvrent au survol.
+     Petit délai à la sortie (180 ms) pour pouvoir descendre dans le menu sans qu'il se ferme.
+     Au doigt et au clavier, rien ne change (ouverture au toucher / à la touche Entrée). */
+  (function () {
+    if (window.ndHoverMenu) return;
+    window.ndHoverMenu = true;
+    var canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var timer;
+    var ITEM = '.header__inline-menu .list-menu--inline > li';
+    function setOpen(d, open) {
+      if (!d || d.open === open) return;
+      d.open = open;
+      var s = d.querySelector('summary');
+      if (s) s.setAttribute('aria-expanded', open);
+    }
+    function closeAll(except) {
+      document.querySelectorAll('.header__inline-menu header-menu details').forEach(function (d) {
+        if (d !== except) setOpen(d, false);
+      });
+    }
+    document.addEventListener('pointerover', function (e) {
+      if (e.pointerType !== 'mouse' || !canHover.matches) return;
+      var li = e.target.closest(ITEM);
+      if (!li) return;
+      clearTimeout(timer);
+      var d = li.querySelector('header-menu details');
+      closeAll(d);
+      setOpen(d, true);
+    });
+    document.addEventListener('pointerout', function (e) {
+      if (e.pointerType !== 'mouse' || !canHover.matches) return;
+      var li = e.target.closest(ITEM);
+      if (!li || li.contains(e.relatedTarget)) return;
+      clearTimeout(timer);
+      timer = setTimeout(function () { closeAll(null); }, 180);
+    });
+    // Un clic sur un menu déjà ouvert au survol ne doit pas le refermer
+    document.addEventListener('click', function (e) {
+      if (!canHover.matches || e.detail === 0) return;
+      var s = e.target.closest(ITEM + ' header-menu summary');
+      if (s && s.parentElement.open) e.preventDefault();
+    });
+  })();
+</script>

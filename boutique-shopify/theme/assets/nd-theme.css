@@ -260,7 +260,6 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
    ========================================================= */
 
 /* ---------- Trouver ma taille ---------- */
-.nd-finder { --cover-w: .71; --cover-l: .86; --bed-w: .57; --bed-l: .71; }
 .nd-finder__head { text-align: center; max-width: 62rem; margin: 0 auto 3.2rem; }
 .nd-finder__intro { margin-inline: auto; }
 .nd-seg { border: 0; margin: 0 auto 4rem; padding: 0; text-align: center; }
@@ -276,18 +275,6 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
 
 .nd-finder__result { display: grid; gap: 3.2rem; align-items: center; max-width: 100rem; margin: 0 auto; }
 @media screen and (min-width: 750px) { .nd-finder__result { grid-template-columns: 1fr 1fr; gap: 6.4rem; } }
-
-/* Schéma à l'échelle : la housse (sable) et le matelas (ivoire) se redimensionnent en douceur */
-.nd-finder__diagram { text-align: center; }
-.nd-finder__stage { position: relative; width: min(100%, 36rem); aspect-ratio: 1; margin: 0 auto; }
-.nd-finder__cover, .nd-finder__bed { position: absolute; left: 50%; top: 0; width: 100%; height: 100%; transform-origin: 50% 0; transition: transform .5s var(--nd-ease); will-change: transform; }
-.nd-finder__cover { transform: translateX(-50%) scale(var(--cover-w), var(--cover-l)); background: #D8C3A5; border-radius: 6px; }
-.nd-finder__bed { top: 4%; transform: translateX(-50%) scale(var(--bed-w), var(--bed-l)); background: #FAF6F0; border: 2px dashed rgba(43,36,32,.35); border-radius: 4px; display: flex; justify-content: space-evenly; align-items: flex-start; padding-top: 4%; }
-.nd-finder__pillow { width: 34%; height: 14%; background: #EADFCF; border-radius: 4px; }
-.nd-finder__legend { margin-top: 1.6rem; font-size: 1.3rem; display: inline-flex; gap: .8rem; align-items: center; }
-.nd-finder__key { display: inline-block; width: 1.2rem; height: 1.2rem; border-radius: 2px; }
-.nd-finder__key--cover { background: #D8C3A5; }
-.nd-finder__key--bed { background: #FAF6F0; border: 1px dashed rgba(43,36,32,.5); margin-left: .8rem; }
 
 /* Réponses : sans JS toutes visibles ; avec JS seule la réponse choisie, en fondu */
 .nd-finder__answers { list-style: none; margin: 0; padding: 0; display: grid; }
@@ -316,26 +303,123 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
   .nd-styles__item { flex: 0 0 82%; scroll-snap-align: start; }
 }
 .nd-styles__item { min-width: 0; }
-.nd-style-card { position: relative; display: flex; align-items: flex-end; aspect-ratio: 4 / 5 !important; overflow: hidden; border-radius: 4px; text-decoration: none; color: inherit; isolation: isolate; }
-.nd-style-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: transform .8s var(--nd-ease-out); }
-.nd-style-card--photo::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(30,24,20,.6), rgba(30,24,20,0) 55%); }
-.nd-style-card--photo, .nd-style-card--photo * { color: #fff; }
-.nd-style-card__index { position: absolute; top: 2rem; left: 2.4rem; font-family: var(--font-heading-family); font-size: 1.4rem; letter-spacing: .1em; opacity: .7; }
-.nd-style-card__body { width: 100%; padding: 2.8rem 2.4rem; }
-.nd-style-card__title { margin: 0 0 .8rem; font-size: clamp(3rem, 4vw, 4rem); letter-spacing: -.02em; line-height: 1.05; }
-.nd-style-card__text { margin: 0 0 1.6rem; font-size: 1.5rem; line-height: 1.5; opacity: .9; }
-.nd-style-card__palette { display: flex; gap: .6rem; margin-bottom: 2rem; }
-.nd-style-card__palette span { width: 2rem; height: 2rem; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255,255,255,.7); }
-.nd-style-card__cta { display: inline-flex; align-items: center; gap: .8rem; font-size: 1.25rem; letter-spacing: .16em; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) {
+  .is-enhanced .nd-finder__answer { transform: none !important; }
+  .nd-d, .nd-seg__thumb, .nd-finder__stage { transition: none !important; }
+}
+
+/* =========================================================
+   v6 : schéma de lit vu du dessus, cartes « Par style », menu visuel
+   ========================================================= */
+
+/* ---------- Schéma : lit vu du dessus, à l'échelle ----------
+   --u = 1 cm à l'écran (la scène fait 300 cm de large). La hauteur de la scène
+   suit la housse : pas de vide sous le dessin. Tout glisse depuis sa position actuelle. */
+.nd-finder__diagram { margin: 0; text-align: center; container-type: inline-size; }
+.nd-finder__stage { --u: calc(min(100cqw, 38rem) / 300); position: relative; width: calc(300 * var(--u)); height: calc((48 + var(--cl) + 28) * var(--u)); margin: 0 auto; transition: height .5s var(--nd-ease); }
+.nd-d { position: absolute; box-sizing: border-box; transition: left .5s var(--nd-ease), top .5s var(--nd-ease), width .5s var(--nd-ease), height .5s var(--nd-ease); }
+.nd-d--head { top: 0; height: calc(12 * var(--u)); left: calc(50% - (var(--bw) + 16) * var(--u) / 2); width: calc((var(--bw) + 16) * var(--u)); background: #A9876A; border-radius: 6px 6px 3px 3px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.08); }
+.nd-d--mattress, .nd-d--outline { top: calc(10 * var(--u)); height: calc(var(--bl) * var(--u)); left: calc(50% - var(--bw) * var(--u) / 2); width: calc(var(--bw) * var(--u)); border-radius: 6px; }
+.nd-d--mattress { background: #FFFDF9; box-shadow: 0 0 0 1px rgba(43,36,32,.1), 0 6px 18px -10px rgba(43,36,32,.25); }
+.nd-d--pillows { top: calc(17 * var(--u)); height: calc(34 * var(--u)); left: calc(50% - var(--bw) * var(--u) / 2); width: calc(var(--bw) * var(--u)); display: flex; justify-content: center; gap: calc(8 * var(--u)); }
+.nd-d--pillows span { width: calc(60 * var(--u)); height: 100%; border-radius: 30% / 40%; background: linear-gradient(180deg, #F6F0E6, #EADFCF); box-shadow: 0 2px 4px -2px rgba(43,36,32,.25); }
+.is-single .nd-d--pillows span + span { display: none; }
+/* La housse : coton sable, rabat retourné en haut, légère trame */
+.nd-d--cover { top: calc(48 * var(--u)); height: calc(var(--cl) * var(--u)); left: calc(50% - var(--cw) * var(--u) / 2); width: calc(var(--cw) * var(--u)); border-radius: 10px 10px 14px 14px; background:
+    linear-gradient(180deg, #EFE6D6 0 8%, rgba(43,36,32,.12) 8%, rgba(43,36,32,0) 10%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 2px, transparent 2px 5px),
+    linear-gradient(160deg, #DCC8AB, #CDB492);
+  box-shadow: 0 14px 28px -16px rgba(43,36,32,.45), inset 0 0 0 1px rgba(255,255,255,.25); }
+/* Le matelas en pointillés par-dessus : on voit de combien la housse retombe */
+.nd-d--outline { border: 1.5px dashed rgba(43,36,32,.45); pointer-events: none; }
+/* Cotes */
+.nd-d--dim-w { top: calc((48 + var(--cl) + 8) * var(--u)); height: 0; left: calc(50% - var(--cw) * var(--u) / 2); width: calc(var(--cw) * var(--u)); border-top: 1px solid rgba(43,36,32,.45); }
+.nd-d--dim-w::before, .nd-d--dim-w::after { content: ''; position: absolute; top: -5px; width: 1px; height: 9px; background: rgba(43,36,32,.45); }
+.nd-d--dim-w::before { left: 0; } .nd-d--dim-w::after { right: 0; }
+.nd-d--dim-w span { position: absolute; left: 50%; top: .4rem; transform: translateX(-50%); font-size: 1.2rem; letter-spacing: .04em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nd-d--dim-l { top: calc(48 * var(--u)); height: calc(var(--cl) * var(--u)); left: calc(50% + (var(--cw) / 2 + 8) * var(--u)); width: 0; border-left: 1px solid rgba(43,36,32,.45); }
+.nd-d--dim-l::before, .nd-d--dim-l::after { content: ''; position: absolute; left: -5px; height: 1px; width: 9px; background: rgba(43,36,32,.45); }
+.nd-d--dim-l::before { top: 0; } .nd-d--dim-l::after { bottom: 0; }
+.nd-d--dim-l span { position: absolute; top: 50%; left: .4rem; transform: translateY(-50%); writing-mode: vertical-rl; font-size: 1.2rem; letter-spacing: .04em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nd-finder__legend { margin-top: 1.6rem; font-size: 1.3rem; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: .8rem; align-items: center; color: rgba(var(--color-foreground), .8); }
+.nd-finder__key { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: 3px; }
+.nd-finder__key--cover { background: linear-gradient(160deg, #DCC8AB, #CDB492); }
+.nd-finder__key--bed { background: #FFFDF9; border: 1.5px dashed rgba(43,36,32,.5); margin-left: 1.2rem; }
+
+/* ---------- Visuel d'univers (cartes + menu) ---------- */
+.nd-sv { position: relative; display: block; width: 100%; height: 100%; }
+/* Photo dans une arche */
+.nd-sv__arch { position: absolute; left: 50%; bottom: 0; width: 64%; height: 100%; transform: translateX(-50%); border-radius: 999px 999px 10px 10px; overflow: hidden; box-shadow: 0 18px 36px -20px rgba(43,36,32,.5); }
+.nd-sv__arch img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--nd-ease-out); }
+.nd-sv__chips { position: absolute; right: 12%; bottom: 8%; display: flex; }
+.nd-sv__chips span { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px rgba(255,255,255,.85), 0 4px 10px -4px rgba(0,0,0,.3); margin-left: -.6rem; }
+/* Sans photo : une pile de linge plié, aux teintes de l'univers */
+.nd-sv__stack { position: absolute; left: 50%; bottom: 0; width: 70%; height: 100%; transform: translateX(-50%); display: flex; flex-direction: column-reverse; justify-content: flex-start; }
+.nd-sv__fold { position: relative; display: block; height: 20%; max-height: 5.6rem; margin-top: -1.2%; border-radius: 1.2rem 1.2rem 1.6rem 1.6rem; background:
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 35%, rgba(0,0,0,0) 70%, rgba(0,0,0,.12)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 2px, transparent 2px 5px),
+    var(--c);
+  box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 6px 12px -8px rgba(43,36,32,.45);
+  transform: translateX(calc((var(--i) - 1) * 3%)) ;
+  width: calc(100% - var(--i) * 6%); align-self: center;
+  transition: transform .5s var(--nd-ease); }
+/* Pli visible sur la face avant */
+.nd-sv__fold::after { content: ''; position: absolute; left: 6%; right: 6%; top: 52%; height: 1px; background: rgba(0,0,0,.08); box-shadow: 0 1px 0 rgba(255,255,255,.25); }
+
+/* ---------- Cartes « Par style » ---------- */
+.nd-style-card { --nd-card-bg: rgb(var(--color-background)); position: relative; display: flex; flex-direction: column; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; text-decoration: none; color: rgb(var(--color-foreground)); background: var(--nd-card-bg) !important; isolation: isolate; transition: transform var(--nd-fast) ease-out, box-shadow .4s var(--nd-ease); }
+.nd-style-card__top { display: flex; justify-content: space-between; align-items: center; padding: 2rem 2.4rem 0; font-size: 1.2rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(var(--color-foreground), .7); }
+.nd-style-card__index { font-family: var(--font-heading-family); font-size: 1.5rem; letter-spacing: .06em; }
+.nd-style-card__count { padding: .4rem 1rem; border-radius: 99rem; background: rgba(255,255,255,.55); color: rgb(var(--color-foreground)); }
+.nd-style-card__visual { flex: 1 1 auto; min-height: 0; margin: 2rem 2.4rem 0; position: relative; }
+.nd-style-card__body { display: block; padding: 2.4rem; }
+.nd-style-card__title { margin: 0 0 .6rem; font-size: clamp(2.8rem, 3.2vw, 3.6rem); letter-spacing: -.02em; line-height: 1.05; color: inherit; }
+.nd-style-card__text { display: block; margin: 0 0 .4rem; font-size: 1.5rem; line-height: 1.45; }
+.nd-style-card__tones { display: block; margin: 0 0 1.6rem; font-size: 1.3rem; color: rgba(var(--color-foreground), .7); }
+.nd-style-card__cta { display: inline-flex; align-items: center; gap: .8rem; min-height: 4.4rem; padding: 0 2rem; border-radius: 99rem; background: rgb(var(--color-foreground)); color: rgb(var(--color-background)); font-size: 1.25rem; letter-spacing: .14em; text-transform: uppercase; }
 .nd-style-card__cta svg { transition: transform .4s var(--nd-ease); }
 @media (hover: hover) {
-  .nd-style-card:hover .nd-style-card__img { transform: scale(1.04); }
+  .nd-style-card:hover { box-shadow: 0 24px 48px -28px rgba(43,36,32,.45); }
+  .nd-style-card:hover .nd-sv__arch img { transform: scale(1.05); }
+  .nd-style-card:hover .nd-sv__fold { transform: translateX(calc((var(--i) - 1) * 3%)) translateY(calc(var(--i) * -6%)); }
   .nd-style-card:hover .nd-style-card__cta svg { transform: translateX(4px); }
 }
 .nd-style-card:active { transform: scale(.985); }
 .nd-style-card:focus-visible { outline: 2px solid rgb(var(--color-foreground)); outline-offset: 4px; }
 
+/* ---------- Menu « Par style » visuel ---------- */
+.section-header .header-wrapper { background: rgba(var(--color-background), .9); }
+.section-header:has(details[open]) .header-wrapper { background: rgb(var(--color-background)); }
+.mega-menu__content:has(.nd-mega) { padding-top: 0; padding-bottom: 0; box-shadow: 0 24px 40px -28px rgba(43,36,32,.35); }
+.nd-mega { display: grid; grid-template-columns: 1fr 26rem; gap: 3.2rem; align-items: stretch; padding-top: 3.2rem; padding-bottom: 3.6rem; }
+.nd-mega__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem; list-style: none; margin: 0; padding: 0; }
+.nd-mega__card { display: block; text-decoration: none; color: rgb(var(--color-foreground)); border-radius: 6px; transition: transform var(--nd-fast) ease-out; }
+.nd-mega__visual { display: block; aspect-ratio: 4 / 3; border-radius: 6px; padding: 1.6rem 1.6rem 0; overflow: hidden; }
+.nd-mega__visual .nd-sv__chips span { width: 1.8rem; height: 1.8rem; }
+.nd-mega__title { display: block; margin-top: 1.2rem; font-family: var(--font-heading-family); font-size: 2rem; letter-spacing: -.01em; }
+.nd-mega__desc { display: block; margin-top: .2rem; font-size: 1.35rem; line-height: 1.45; color: rgba(var(--color-foreground), .72); }
+.nd-mega__card.is-current .nd-mega__title { text-decoration: underline; text-underline-offset: .4rem; text-decoration-thickness: 1px; }
+.nd-mega__aside { display: flex; flex-direction: column; justify-content: flex-end; gap: .4rem; padding: 2.4rem; border-radius: 6px; background: #2B2420; color: #F3EBDF; text-decoration: none; transition: transform var(--nd-fast) ease-out; }
+.nd-mega__aside svg { margin-bottom: auto; opacity: .85; }
+.nd-mega__aside-kicker { font-size: 1.15rem; letter-spacing: .18em; text-transform: uppercase; opacity: .75; }
+.nd-mega__aside-title { font-family: var(--font-heading-family); font-size: 2.4rem; line-height: 1.1; letter-spacing: -.015em; }
+.nd-mega__aside-link { margin-top: .8rem; font-size: 1.35rem; }
+.nd-mega__aside-link span { display: inline-block; transition: transform .4s var(--nd-ease); }
+@media (hover: hover) {
+  .nd-mega__card:hover .nd-sv__arch img { transform: scale(1.05); }
+  .nd-mega__card:hover .nd-sv__fold { transform: translateX(calc((var(--i) - 1) * 3%)) translateY(calc(var(--i) * -6%)); }
+  .nd-mega__card:hover .nd-mega__title { text-decoration: underline; text-underline-offset: .4rem; text-decoration-thickness: 1px; }
+  .nd-mega__aside:hover .nd-mega__aside-link span { transform: translateX(4px); }
+}
+.nd-mega__card:active, .nd-mega__aside:active { transform: scale(.98); }
+/* Les cartes arrivent l'une après l'autre, depuis le menu (vers le bas) */
+.mega-menu[open] .nd-mega__grid > li, .mega-menu[open] .nd-mega__aside { animation: ndMegaIn .45s var(--nd-ease) both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes ndMegaIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
 @media (prefers-reduced-motion: reduce) {
-  .is-enhanced .nd-finder__answer { transform: none !important; }
-  .nd-finder__cover, .nd-finder__bed, .nd-seg__thumb { transition: none !important; }
+  .mega-menu[open] .nd-mega__grid > li, .mega-menu[open] .nd-mega__aside { animation: none; }
+  .nd-sv__fold, .nd-sv__arch img { transition: none !important; transform: none !important; }
+}
+@media (prefers-contrast: more) {
+  .nd-style-card__tones, .nd-mega__desc, .nd-style-card__top { color: rgb(var(--color-foreground)); }
 }

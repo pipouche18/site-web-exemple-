@@ -102,7 +102,8 @@
             "color_scheme": "scheme-2",
             "mood": "Clair, simple, lumineux",
             "palette": "#EFE6D6, #A39A90, #D9DDCC",
-            "palette_names": "écru, gris galet, vert d'eau"
+            "palette_names": "écru, gris galet, vert d'eau",
+            "background": "#E7E5DE"
           }
         },
         "romantique": {
@@ -110,10 +111,11 @@
           "settings": {
             "collection": "style-romantique",
             "title": "Romantique",
-            "color_scheme": "scheme-5",
+            "color_scheme": "scheme-2",
             "mood": "Motifs tissés, charme vintage",
             "palette": "#C9A29A, #EFE6D6, #B5754F",
-            "palette_names": "vieux rose, écru, terracotta"
+            "palette_names": "vieux rose, écru, terracotta",
+            "background": "#EBDAD2"
           }
         }
       },

@@ -30,6 +30,55 @@
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
+                {%- liquid
+                  # Maison Nuits Douces : si tous les sous-liens sont des collections,
+                  # le menu devient visuel (une carte par univers + accès au guide des tailles).
+                  assign nd_visual = false
+                  if link.levels == 1
+                    assign nd_visual = true
+                    for childlink in link.links
+                      if childlink.type != 'collection_link'
+                        assign nd_visual = false
+                      endif
+                    endfor
+                  endif
+                  assign nd_palettes = '#A7B59A, #D8C3A5, #EFE6D6|#EFE6D6, #A39A90, #D9DDCC|#C9A29A, #EFE6D6, #B5754F' | split: '|'
+                  assign nd_bgs = '#D9DDCC|#E7E5DE|#EBDAD2' | split: '|'
+                -%}
+                {%- if nd_visual -%}
+                  <div class="nd-mega page-width">
+                    <ul class="nd-mega__grid" role="list">
+                      {%- for childlink in link.links -%}
+                        {%- assign i = forloop.index0 | modulo: 3 -%}
+                        <li style="--i: {{ forloop.index0 }};">
+                          <a
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            href="{{ childlink.url }}"
+                            class="nd-mega__card{% if childlink.current %} is-current{% endif %}"
+                            {% if childlink.current %}
+                              aria-current="page"
+                            {% endif %}
+                          >
+                            <span class="nd-mega__visual" style="background: {{ nd_bgs[i] }};">
+                              {%- render 'nd-style-visual', collection: childlink.object, palette: nd_palettes[i], sizes: '240px' -%}
+                            </span>
+                            <span class="nd-mega__title">{{ childlink.title | escape }}</span>
+                            {%- assign desc = childlink.object.description | strip_html | truncatewords: 9, '…' -%}
+                            {%- if desc != blank -%}<span class="nd-mega__desc">{{ desc }}</span>{%- endif -%}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                    {%- if settings.size_guide_page != blank -%}
+                      <a href="{{ settings.size_guide_page.url }}" class="nd-mega__aside" style="--i: {{ link.links.size }};">
+                        <svg aria-hidden="true" focusable="false" width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="9" y="6" width="26" height="4" rx="1.5"/><rect x="11" y="10" width="22" height="28" rx="2"/><rect x="14" y="13" width="7" height="4" rx="1"/><rect x="23" y="13" width="7" height="4" rx="1"/><path d="M11 21h22"/></svg>
+                        <span class="nd-mega__aside-kicker">Avant de choisir</span>
+                        <span class="nd-mega__aside-title">Quelle taille pour mon lit ?</span>
+                        <span class="nd-mega__aside-link">Le guide en un geste <span aria-hidden="true">→</span></span>
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- else -%}
                 <ul
                   class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
@@ -67,6 +116,7 @@
                     </li>
                   {%- endfor -%}
                 </ul>
+                {%- endif -%}
               </div>
             </details>
           </header-menu>

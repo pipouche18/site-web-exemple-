@@ -7,8 +7,14 @@
   .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
   @media screen and (min-width: 750px) { .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; } }
 {%- endstyle -%}
+{%- liquid
+  assign d = section.blocks[section.settings.default_index]
+  if d == blank
+    assign d = section.blocks.first
+  endif
+-%}
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding nd-finder" data-nd-finder>
+  <div class="page-width section-{{ section.id }}-padding nd-finder" data-nd-finder style="--bw: {{ d.settings.bed_w | default: 140 }}; --bl: {{ d.settings.bed_l | default: 190 }}; --cw: {{ d.settings.cover_w | default: 200 }}; --cl: {{ d.settings.cover_l | default: 200 }};">
     <div class="nd-finder__head">
       {%- if section.settings.kicker != blank -%}<p class="nd-kicker">{{ section.settings.kicker | escape }}</p>{%- endif -%}
       <h2 class="h1">{{ section.settings.heading | escape }}</h2>
@@ -29,13 +35,18 @@
     </fieldset>
 
     <div class="nd-finder__result">
-      <div class="nd-finder__diagram" aria-hidden="true">
-        <div class="nd-finder__stage">
-          <span class="nd-finder__cover"></span>
-          <span class="nd-finder__bed"><span class="nd-finder__pillow"></span><span class="nd-finder__pillow"></span></span>
+      <figure class="nd-finder__diagram" aria-hidden="true">
+        <div class="nd-finder__stage{% if d.settings.bed_w < 120 %} is-single{% endif %}">
+          <span class="nd-d nd-d--head"></span>
+          <span class="nd-d nd-d--mattress"></span>
+          <span class="nd-d nd-d--pillows"><span></span><span></span></span>
+          <span class="nd-d nd-d--cover"></span>
+          <span class="nd-d nd-d--outline"></span>
+          <span class="nd-d nd-d--dim-w"><span data-dim-w>{{ d.settings.cover_w }} cm</span></span>
+          <span class="nd-d nd-d--dim-l"><span data-dim-l>{{ d.settings.cover_l }} cm</span></span>
         </div>
-        <p class="nd-finder__legend"><span class="nd-finder__key nd-finder__key--cover"></span>Housse <span class="nd-finder__key nd-finder__key--bed"></span>Matelas</p>
-      </div>
+        <figcaption class="nd-finder__legend"><span class="nd-finder__key nd-finder__key--cover"></span>Housse de couette <span class="nd-finder__key nd-finder__key--bed"></span>Matelas</figcaption>
+      </figure>
 
       <ol class="nd-finder__answers" role="list">
         {%- for block in section.blocks -%}
@@ -48,6 +59,8 @@
             <dl class="nd-finder__list">
               {%- if block.settings.pillow != blank -%}<div><dt>Taies</dt><dd>{{ block.settings.pillow | escape }}</dd></div>{%- endif -%}
               {%- if block.settings.fitted != blank -%}<div><dt>Drap-housse</dt><dd>{{ block.settings.fitted | escape }}</dd></div>{%- endif -%}
+              {%- assign overhang = block.settings.cover_w | minus: block.settings.bed_w | divided_by: 2 -%}
+              {%- if overhang > 0 -%}<div><dt>Retombée sur les côtés</dt><dd>≈ {{ overhang }} cm de chaque côté</dd></div>{%- endif -%}
               {%- if block.settings.alt != blank -%}<div><dt>Plus enveloppant</dt><dd>{{ block.settings.alt | escape }}</dd></div>{%- endif -%}
             </dl>
             {%- if block.settings.note != blank -%}<p class="nd-finder__note">{{ block.settings.note | escape }}</p>{%- endif -%}
@@ -70,15 +83,21 @@
     var radios = root.querySelectorAll('.nd-seg input');
     var answers = root.querySelectorAll('.nd-finder__answer');
     var track = root.querySelector('.nd-seg__track');
-    var MAX = 280; // plus grande housse (cm) = 100 % du schéma
+    var stage = root.querySelector('.nd-finder__stage');
+    var dimW = root.querySelector('[data-dim-w]');
+    var dimL = root.querySelector('[data-dim-l]');
     function show(i) {
       var a = answers[i]; if (!a) return;
       answers.forEach(function (el) { if (el === a) { el.setAttribute('aria-current', 'true'); } else { el.removeAttribute('aria-current'); } });
+      // Le schéma part de sa position actuelle : on peut changer d'avis en plein mouvement
       var s = root.style;
-      s.setProperty('--cover-w', a.dataset.coverW / MAX);
-      s.setProperty('--cover-l', a.dataset.coverL / MAX);
-      s.setProperty('--bed-w', a.dataset.bedW / MAX);
-      s.setProperty('--bed-l', a.dataset.bedL / MAX);
+      s.setProperty('--bw', a.dataset.bedW);
+      s.setProperty('--bl', a.dataset.bedL);
+      s.setProperty('--cw', a.dataset.coverW);
+      s.setProperty('--cl', a.dataset.coverL);
+      stage.classList.toggle('is-single', Number(a.dataset.bedW) < 120);
+      dimW.textContent = a.dataset.coverW + ' cm';
+      dimL.textContent = a.dataset.coverL + ' cm';
       var opt = radios[i].closest('.nd-seg__option');
       track.style.setProperty('--thumb-x', opt.offsetLeft + 'px');
       track.style.setProperty('--thumb-w', opt.offsetWidth + 'px');

@@ -175,19 +175,34 @@
                           {%- for product in c.products limit: 4 -%}
                             <li style="--i: {{ forloop.index0 }};">
                               <a href="{{ product.url }}" class="nd-mega__card">
-                                <span class="nd-mega__visual nd-mega__visual--product">
+                                {%- liquid
+                                  assign shades = 0
+                                  for option in product.options_with_values
+                                    assign oname = option.name | downcase
+                                    if oname contains 'couleur' or oname contains 'coloris' or oname contains 'teinte'
+                                      assign shades = option.values.size
+                                    endif
+                                  endfor
+                                  assign second = product.media[1]
+                                -%}
+                                <span class="nd-mega__visual nd-mega__visual--product{% if second.media_type == 'image' %} has-second{% endif %}">
                                   {%- if product.featured_image != blank -%}
-                                    {{- product.featured_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '220px', loading: 'lazy', alt: product.featured_image.alt | default: product.title, class: 'nd-mega__img' -}}
+                                    {{- product.featured_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '240px', loading: 'lazy', alt: product.featured_image.alt | default: product.title, class: 'nd-mega__img' -}}
+                                    {%- if second.media_type == 'image' -%}
+                                      {{- second.preview_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '240px', loading: 'lazy', alt: '', class: 'nd-mega__img nd-mega__img--second' -}}
+                                    {%- endif -%}
                                   {%- else -%}
                                     {%- assign i = forloop.index0 | modulo: 3 -%}
                                     <span class="nd-mega__fill" style="background: {{ nd_bgs[i] }};">
                                       {%- render 'nd-style-visual', collection: false, palette: nd_palettes[i], sizes: '220px' -%}
                                     </span>
                                   {%- endif -%}
+                                  {%- if shades > 1 -%}<span class="nd-mega__badge">{{ shades }} coloris</span>{%- endif -%}
                                 </span>
                                 <span class="nd-mega__title nd-mega__title--small">{{ product.title | escape }}</span>
                                 <span class="nd-mega__price">
-                                  {%- if product.price_varies -%}Dès {{ product.price_min | money }}{%- else -%}{{ product.price | money }}{%- endif -%}
+                                  {%- assign amount = product.price_min | money_without_currency | remove: ',00' | remove: '.00' -%}
+                                  {%- if product.price_varies -%}Dès {{ amount }} €{%- else -%}{{ amount }} €{%- endif -%}
                                 </span>
                               </a>
                             </li>
@@ -321,7 +336,8 @@
      - Souris : le panneau s'ouvre au survol, se ferme 180 ms après la sortie
        (le temps de descendre dedans). Passer d'un onglet à l'autre change le
        panneau instantanément, sans rejouer l'animation.
-     - Clic sur l'onglet : ouvre la page complète (Ctrl/Cmd + clic : nouvel onglet).
+     - Clic sur l'onglet : ouvre la page complète (Ctrl/Cmd + clic : nouvel onglet) et
+       referme le panneau, qui reste fermé tant que la souris n'a pas quitté l'onglet.
      - Clavier et toucher : comportement d'origine (Entrée / toucher ouvre le panneau,
        qui contient toujours un lien vers la page complète). */
   (function () {
@@ -329,6 +345,14 @@
     window.ndHoverMenu = true;
     var canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
     var timer;
+    // Onglet cliqué : son panneau ne se rouvre pas tant que la souris ne l'a pas quitté
+    // (y compris sur la page suivante, si la souris n'a pas bougé de l'onglet).
+    var muted = null;
+    try {
+      var saved = JSON.parse(sessionStorage.getItem('ndMenuClicked') || 'null');
+      if (saved && Date.now() - saved.t < 20000) muted = saved.id;
+      sessionStorage.removeItem('ndMenuClicked');
+    } catch (err) {}
     var ITEM = '.header__inline-menu .list-menu--inline > li';
     function nav() { return document.querySelector('.header__inline-menu'); }
     function setOpen(d, open) {
@@ -351,6 +375,7 @@
       var li = e.target.closest(ITEM);
       if (!li) return;
       clearTimeout(timer);
+      if (muted && li.querySelector('#' + CSS.escape(muted))) return;
       var d = li.querySelector('header-menu details');
       var current = openOne();
       if (d && current && current !== d && nav()) nav().setAttribute('data-nd-switch', '');
@@ -365,6 +390,7 @@
       if (e.pointerType !== 'mouse' || !canHover.matches) return;
       var li = e.target.closest(ITEM);
       if (!li || li.contains(e.relatedTarget)) return;
+      if (muted && li.querySelector('#' + CSS.escape(muted))) muted = null;
       clearTimeout(timer);
       timer = setTimeout(function () { closeAll(null); }, 180);
     });
@@ -374,6 +400,10 @@
       e.preventDefault();
       var href = s.getAttribute('data-href');
       if (!href) return;
+      clearTimeout(timer);
+      closeAll(null);
+      muted = s.id;
+      try { sessionStorage.setItem('ndMenuClicked', JSON.stringify({ id: s.id, t: Date.now() })); } catch (err) {}
       if (e.metaKey || e.ctrlKey || e.shiftKey) { window.open(href, '_blank'); return; }
       window.location.href = href;
     });

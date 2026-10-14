@@ -525,3 +525,27 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
   .mega-menu[open] .nd-mega__sizes > li, .mega-menu[open] .nd-mega__articles > li, .mega-menu[open] .nd-mega__story, .mega-menu[open] .nd-mega__help { animation: none; }
 }
 @media (prefers-contrast: more) { .nd-mega__kicker, .nd-mega__price, .nd-mega__size-bed, .nd-mega__size-label, .nd-mega__article-date { color: rgb(var(--color-foreground)); } }
+
+/* =========================================================
+   v9 : photos du menu (cadrage sur le lit, 2e vue au survol, coloris)
+   ========================================================= */
+/* Les photos d'ambiance ont le lit en bas : on zoome légèrement vers le bas
+   pour montrer le linge plutôt que le mur. */
+.nd-mega__visual--product { position: relative; isolation: isolate; border-radius: 8px; }
+.nd-mega__img { position: absolute; inset: 0; transform: scale(1.22); transform-origin: 50% 92%; transition: transform .9s var(--nd-ease-out), opacity .45s ease; }
+.nd-mega__img--second { opacity: 0; transform: scale(1.08); transform-origin: 50% 50%; }
+.nd-mega__visual--product::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(43,36,32,.06); background: linear-gradient(to top, rgba(43,36,32,.18), rgba(43,36,32,0) 38%); }
+.nd-mega__badge { position: absolute; left: 1rem; bottom: 1rem; z-index: 2; padding: .4rem 1rem; border-radius: 99rem; background: rgba(250,246,240,.92); color: #2B2420; font-size: 1.15rem; letter-spacing: .04em; box-shadow: 0 4px 12px -6px rgba(0,0,0,.35); }
+.nd-mega__fill { display: flex; align-items: flex-end; }
+@media (hover: hover) {
+  .nd-mega__card:hover .nd-mega__img { transform: scale(1.27); }
+  .nd-mega__card:hover .has-second .nd-mega__img:not(.nd-mega__img--second) { opacity: 0; }
+  .nd-mega__card:hover .nd-mega__img--second { opacity: 1; transform: scale(1.02); }
+}
+.nd-mega__title--small { margin-top: 1.2rem; }
+.nd-mega__price { font-size: 1.4rem; }
+@media (prefers-reduced-motion: reduce) {
+  .nd-mega__img { transition: opacity .2s ease !important; }
+  .nd-mega__card:hover .nd-mega__img { transform: scale(1.22); }
+  .nd-mega__card:hover .nd-mega__img--second { transform: scale(1.08); }
+}

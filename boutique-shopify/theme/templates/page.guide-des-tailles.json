@@ -50,7 +50,7 @@
         "row4"
       ],
       "settings": {
-        "heading": "Housses de couette : quelle taille pour mon lit ?",
+        "heading": "Le tableau complet",
         "intro": "<p>La taille d'une housse de couette se choisit d'abord selon <strong>la taille de votre couette</strong> (elle doit être identique), puis selon la largeur de votre lit. Mesurez votre couette avant de commander : c'est le moyen le plus sûr.</p>",
         "col_1": "Taille de housse",
         "col_2": "Lit correspondant",
@@ -130,10 +130,99 @@
         "padding_top": 36,
         "padding_bottom": 40
       }
+    },
+    "finder": {
+      "type": "nd-size-finder",
+      "blocks": {
+        "bed1": {
+          "type": "bed",
+          "settings": {
+            "label": "90",
+            "bed_w": 90,
+            "bed_l": 190,
+            "cover_w": 140,
+            "cover_l": 200,
+            "pillow": "1 × 65×65 cm",
+            "fitted": "90×190 cm"
+          }
+        },
+        "bed2": {
+          "type": "bed",
+          "settings": {
+            "label": "140",
+            "bed_w": 140,
+            "bed_l": 190,
+            "cover_w": 200,
+            "cover_l": 200,
+            "pillow": "2 × 65×65 cm",
+            "fitted": "140×190 cm",
+            "alt": "220×240 cm"
+          }
+        },
+        "bed3": {
+          "type": "bed",
+          "settings": {
+            "label": "160",
+            "bed_w": 160,
+            "bed_l": 200,
+            "cover_w": 220,
+            "cover_l": 240,
+            "pillow": "2 × 65×65 cm",
+            "fitted": "160×200 cm",
+            "alt": "240×260 cm"
+          }
+        },
+        "bed4": {
+          "type": "bed",
+          "settings": {
+            "label": "180",
+            "bed_w": 180,
+            "bed_l": 200,
+            "cover_w": 240,
+            "cover_l": 260,
+            "pillow": "2 × 65×65 cm",
+            "fitted": "180×200 cm",
+            "note": "220×240 cm pour un rendu plus ajusté"
+          }
+        },
+        "bed5": {
+          "type": "bed",
+          "settings": {
+            "label": "200",
+            "bed_w": 200,
+            "bed_l": 200,
+            "cover_w": 240,
+            "cover_l": 260,
+            "pillow": "2 × 65×65 cm",
+            "fitted": "200×200 cm"
+          }
+        }
+      },
+      "block_order": [
+        "bed1",
+        "bed2",
+        "bed3",
+        "bed4",
+        "bed5"
+      ],
+      "settings": {
+        "kicker": "Guide des tailles",
+        "heading": "Trouvez la bonne taille en un geste",
+        "text": "<p>Choisissez la largeur de votre matelas : on vous indique la housse, le drap-housse et les taies qui vont avec.</p>",
+        "question": "Mon lit mesure…",
+        "default_index": 1,
+        "button_label": "Voir les parures",
+        "button_link": "shopify://collections/parures",
+        "tip": "La housse doit avoir la même taille que votre couette : en cas de doute, mesurez votre couette.",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
     "main",
+    "finder",
     "table",
     "pillows",
     "tips"

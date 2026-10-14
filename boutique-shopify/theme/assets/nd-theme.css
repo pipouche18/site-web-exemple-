@@ -254,3 +254,88 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
   .section-header .header-wrapper, .nd-sticky { background: rgb(var(--color-background)) !important; backdrop-filter: none; border-bottom: 1px solid rgb(var(--color-foreground)); }
   .nd-kicker, .nd-feature__text, .nd-size__note { color: rgb(var(--color-foreground)); }
 }
+
+/* =========================================================
+   v5 : Guide des tailles interactif + « Par style »
+   ========================================================= */
+
+/* ---------- Trouver ma taille ---------- */
+.nd-finder { --cover-w: .71; --cover-l: .86; --bed-w: .57; --bed-l: .71; }
+.nd-finder__head { text-align: center; max-width: 62rem; margin: 0 auto 3.2rem; }
+.nd-finder__intro { margin-inline: auto; }
+.nd-seg { border: 0; margin: 0 auto 4rem; padding: 0; text-align: center; }
+.nd-seg__legend { width: 100%; margin-bottom: 1.6rem; font-size: 1.3rem; letter-spacing: .18em; text-transform: uppercase; }
+.nd-seg__track { position: relative; display: inline-flex; gap: .4rem; padding: .4rem; border-radius: 99rem; background: rgba(var(--color-foreground), .07); max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.nd-seg__track::-webkit-scrollbar { display: none; }
+.nd-seg__thumb { position: absolute; top: .4rem; bottom: .4rem; left: 0; width: var(--thumb-w, 0); transform: translateX(var(--thumb-x, 0)); border-radius: 99rem; background: rgb(var(--color-background)); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px -4px rgba(0,0,0,.12); transition: transform .4s var(--nd-ease), width .4s var(--nd-ease); }
+.nd-finder:not(.is-enhanced) .nd-seg__thumb { display: none; }
+.nd-seg__option { position: relative; z-index: 1; min-width: 6.4rem; min-height: 4.4rem; display: grid; place-items: center; padding: 0 1.8rem; border-radius: 99rem; cursor: pointer; font-family: var(--font-heading-family); font-size: 2rem; letter-spacing: -.01em; color: rgba(var(--color-foreground), .7); transition: color var(--nd-fast) ease-out, transform var(--nd-fast) ease-out; touch-action: manipulation; }
+.nd-seg__option:active { transform: scale(.95); }
+.nd-seg__option:has(input:checked) { color: rgb(var(--color-foreground)); }
+.nd-seg__option:has(input:focus-visible) { outline: 2px solid rgb(var(--color-foreground)); outline-offset: 2px; }
+
+.nd-finder__result { display: grid; gap: 3.2rem; align-items: center; max-width: 100rem; margin: 0 auto; }
+@media screen and (min-width: 750px) { .nd-finder__result { grid-template-columns: 1fr 1fr; gap: 6.4rem; } }
+
+/* Schéma à l'échelle : la housse (sable) et le matelas (ivoire) se redimensionnent en douceur */
+.nd-finder__diagram { text-align: center; }
+.nd-finder__stage { position: relative; width: min(100%, 36rem); aspect-ratio: 1; margin: 0 auto; }
+.nd-finder__cover, .nd-finder__bed { position: absolute; left: 50%; top: 0; width: 100%; height: 100%; transform-origin: 50% 0; transition: transform .5s var(--nd-ease); will-change: transform; }
+.nd-finder__cover { transform: translateX(-50%) scale(var(--cover-w), var(--cover-l)); background: #D8C3A5; border-radius: 6px; }
+.nd-finder__bed { top: 4%; transform: translateX(-50%) scale(var(--bed-w), var(--bed-l)); background: #FAF6F0; border: 2px dashed rgba(43,36,32,.35); border-radius: 4px; display: flex; justify-content: space-evenly; align-items: flex-start; padding-top: 4%; }
+.nd-finder__pillow { width: 34%; height: 14%; background: #EADFCF; border-radius: 4px; }
+.nd-finder__legend { margin-top: 1.6rem; font-size: 1.3rem; display: inline-flex; gap: .8rem; align-items: center; }
+.nd-finder__key { display: inline-block; width: 1.2rem; height: 1.2rem; border-radius: 2px; }
+.nd-finder__key--cover { background: #D8C3A5; }
+.nd-finder__key--bed { background: #FAF6F0; border: 1px dashed rgba(43,36,32,.5); margin-left: .8rem; }
+
+/* Réponses : sans JS toutes visibles ; avec JS seule la réponse choisie, en fondu */
+.nd-finder__answers { list-style: none; margin: 0; padding: 0; display: grid; }
+.nd-finder__answer { padding: 2.4rem 0; border-top: 1px solid rgba(var(--color-foreground), .12); }
+.is-enhanced .nd-finder__answers > * { grid-area: 1 / 1; }
+.is-enhanced .nd-finder__answer { border: 0; padding: 0; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .3s ease, transform .4s var(--nd-ease), visibility 0s linear .3s; }
+.is-enhanced .nd-finder__answer[aria-current='true'] { opacity: 1; visibility: visible; transform: none; transition: opacity .3s ease, transform .4s var(--nd-ease), visibility 0s; }
+.nd-finder__bed-label { margin: 0 0 .8rem; font-size: 1.3rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(var(--color-foreground), .75); }
+.nd-finder__main { margin: 0 0 2rem; font-family: var(--font-heading-family); font-size: clamp(3.2rem, 5vw, 4.8rem); line-height: 1.05; letter-spacing: -.02em; }
+.nd-finder__main strong { font-weight: inherit; color: rgb(var(--color-button)); }
+.nd-finder__list { margin: 0 0 2rem; }
+.nd-finder__list div { display: flex; justify-content: space-between; gap: 1.6rem; padding: 1rem 0; border-bottom: 1px solid rgba(var(--color-foreground), .1); }
+.nd-finder__list dt { color: rgba(var(--color-foreground), .75); }
+.nd-finder__list dd { margin: 0; font-weight: 500; text-align: right; }
+.nd-finder__note { font-size: 1.4rem; color: rgba(var(--color-foreground), .75); margin: 0 0 2.4rem; }
+.nd-finder__tip { max-width: 56rem; margin: 4rem auto 0; text-align: center; font-size: 1.4rem; color: rgba(var(--color-foreground), .75); }
+
+/* ---------- Trouver mon style ---------- */
+.nd-styles__head { text-align: center; max-width: 64rem; margin-bottom: 4rem; }
+.nd-styles__intro { margin: 1.2rem auto 0; color: rgba(var(--color-foreground), .8); }
+.nd-styles__grid { display: grid; gap: 2.4rem; margin: 0 auto; padding: 0 5rem; list-style: none; max-width: var(--page-width); }
+/* Téléphone : carrousel natif (inertie + arrêt magnétique + rebond du système) */
+@media screen and (max-width: 989px) {
+  .nd-styles__grid { display: flex !important; gap: 1.2rem; padding: 0 1.6rem 1.2rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 1.6rem; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .nd-styles__grid::-webkit-scrollbar { display: none; }
+  .nd-styles__item { flex: 0 0 82%; scroll-snap-align: start; }
+}
+.nd-styles__item { min-width: 0; }
+.nd-style-card { position: relative; display: flex; align-items: flex-end; aspect-ratio: 4 / 5 !important; overflow: hidden; border-radius: 4px; text-decoration: none; color: inherit; isolation: isolate; }
+.nd-style-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: transform .8s var(--nd-ease-out); }
+.nd-style-card--photo::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(30,24,20,.6), rgba(30,24,20,0) 55%); }
+.nd-style-card--photo, .nd-style-card--photo * { color: #fff; }
+.nd-style-card__index { position: absolute; top: 2rem; left: 2.4rem; font-family: var(--font-heading-family); font-size: 1.4rem; letter-spacing: .1em; opacity: .7; }
+.nd-style-card__body { width: 100%; padding: 2.8rem 2.4rem; }
+.nd-style-card__title { margin: 0 0 .8rem; font-size: clamp(3rem, 4vw, 4rem); letter-spacing: -.02em; line-height: 1.05; }
+.nd-style-card__text { margin: 0 0 1.6rem; font-size: 1.5rem; line-height: 1.5; opacity: .9; }
+.nd-style-card__palette { display: flex; gap: .6rem; margin-bottom: 2rem; }
+.nd-style-card__palette span { width: 2rem; height: 2rem; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255,255,255,.7); }
+.nd-style-card__cta { display: inline-flex; align-items: center; gap: .8rem; font-size: 1.25rem; letter-spacing: .16em; text-transform: uppercase; }
+.nd-style-card__cta svg { transition: transform .4s var(--nd-ease); }
+@media (hover: hover) {
+  .nd-style-card:hover .nd-style-card__img { transform: scale(1.04); }
+  .nd-style-card:hover .nd-style-card__cta svg { transform: translateX(4px); }
+}
+.nd-style-card:active { transform: scale(.985); }
+.nd-style-card:focus-visible { outline: 2px solid rgb(var(--color-foreground)); outline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-enhanced .nd-finder__answer { transform: none !important; }
+  .nd-finder__cover, .nd-finder__bed, .nd-seg__thumb { transition: none !important; }
+}

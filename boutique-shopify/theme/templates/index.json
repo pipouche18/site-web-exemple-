@@ -88,8 +88,10 @@
           "settings": {
             "collection": "style-japonais",
             "title": "Japonais",
-            "text": "Épuré, apaisant, wabi-sabi",
-            "color_scheme": "scheme-4"
+            "color_scheme": "scheme-4",
+            "mood": "Épuré, apaisant, wabi-sabi",
+            "palette": "#A7B59A, #D8C3A5, #EFE6D6",
+            "palette_names": "sauge, sable, écru"
           }
         },
         "nordique": {
@@ -97,8 +99,10 @@
           "settings": {
             "collection": "style-nordique",
             "title": "Nordique",
-            "text": "Clair, simple, lumineux",
-            "color_scheme": "scheme-2"
+            "color_scheme": "scheme-2",
+            "mood": "Clair, simple, lumineux",
+            "palette": "#EFE6D6, #A39A90, #D9DDCC",
+            "palette_names": "écru, gris galet, vert d'eau"
           }
         },
         "romantique": {
@@ -106,8 +110,10 @@
           "settings": {
             "collection": "style-romantique",
             "title": "Romantique",
-            "text": "Motifs tissés, charme vintage",
-            "color_scheme": "scheme-5"
+            "color_scheme": "scheme-5",
+            "mood": "Motifs tissés, charme vintage",
+            "palette": "#C9A29A, #EFE6D6, #B5754F",
+            "palette_names": "vieux rose, écru, terracotta"
           }
         }
       },
@@ -120,7 +126,9 @@
         "heading": "Trouver mon style",
         "color_scheme": "scheme-1",
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "kicker": "Par style",
+        "text": "Trois ambiances, un même coton doux. Choisissez celle qui vous ressemble."
       }
     },
     "reassurance": {

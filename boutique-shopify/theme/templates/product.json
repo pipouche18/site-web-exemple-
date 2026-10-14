@@ -141,11 +141,19 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "sticky": {
+      "type": "nd-sticky-atc",
+      "settings": {
+        "label": "Ajouter au panier",
+        "color_scheme": "scheme-3"
+      }
     }
   },
   "order": [
     "main",
     "reviews",
-    "related-products"
+    "related-products",
+    "sticky"
   ]
 }

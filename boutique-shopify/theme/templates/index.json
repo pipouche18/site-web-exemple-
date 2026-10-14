@@ -235,15 +235,150 @@
         "padding_top": 88,
         "padding_bottom": 88
       }
+    },
+    "colors": {
+      "type": "nd-colors",
+      "blocks": {
+        "c1": {
+          "type": "color",
+          "settings": {
+            "name": "Écru",
+            "color": "#EFE6D6",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "color",
+          "settings": {
+            "name": "Sable",
+            "color": "#D8C3A5",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "color",
+          "settings": {
+            "name": "Sauge",
+            "color": "#A7B59A",
+            "link": ""
+          }
+        },
+        "c4": {
+          "type": "color",
+          "settings": {
+            "name": "Argile",
+            "color": "#B5754F",
+            "link": ""
+          }
+        },
+        "c5": {
+          "type": "color",
+          "settings": {
+            "name": "Gris chaud",
+            "color": "#A39A90",
+            "link": ""
+          }
+        },
+        "c6": {
+          "type": "color",
+          "settings": {
+            "name": "Vieux rose",
+            "color": "#C9A29A",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "kicker": "Nos teintes",
+        "heading": "Choisir par couleur",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "sizes": {
+      "type": "nd-size-helper",
+      "blocks": {
+        "s1": {
+          "type": "size",
+          "settings": {
+            "bed": "Lit 140",
+            "cover": "200×200 cm",
+            "note": "Le format le plus courant",
+            "link": ""
+          }
+        },
+        "s2": {
+          "type": "size",
+          "settings": {
+            "bed": "Lit 160 ou 180",
+            "cover": "220×240 cm",
+            "note": "Le grand lit polyvalent",
+            "link": ""
+          }
+        },
+        "s3": {
+          "type": "size",
+          "settings": {
+            "bed": "Lit 180 ou 200",
+            "cover": "240×260 cm",
+            "note": "Pour un lit très enveloppant",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "kicker": "Le bon format",
+        "heading": "Quelle taille pour mon lit ?",
+        "text": "<p>La housse se choisit à la taille de votre couette. Voici les correspondances les plus courantes en France.</p>",
+        "button_label": "Voir le guide des tailles",
+        "button_link": "shopify://pages/guide-des-tailles",
+        "color_scheme": "scheme-2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "journal": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "journal",
+        "post_limit": 3,
+        "heading": "Le journal",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": false,
+        "show_date": false,
+        "show_author": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "hero",
     "marquee",
     "featured_collection",
+    "colors",
     "arguments",
+    "sizes",
     "editorial",
     "styles",
+    "journal",
     "reviews",
     "reassurance",
     "newsletter"

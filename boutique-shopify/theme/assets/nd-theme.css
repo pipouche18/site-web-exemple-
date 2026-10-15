@@ -558,3 +558,26 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
   .product--thumbnail .product__media-item.is-active { animation: ndMediaIn .35s ease both; }
 }
 @keyframes ndMediaIn { from { opacity: .35; } to { opacity: 1; } }
+
+/* =========================================================
+   v11 : fiche produit en deux zones qui défilent chacune de leur côté
+   (ordinateur) : souris sur les photos → on fait défiler les photos ;
+   souris sur la droite → on fait défiler les descriptions.
+   Arrivé au bout d'une zone, la page continue normalement (avis, suggestions).
+   ========================================================= */
+@media screen and (min-width: 990px) and (min-height: 600px) {
+  .product--stacked:not(.product--no-media) { --nd-pane: calc(100vh - var(--header-height, 0px) - 4.8rem); align-items: flex-start; }
+  .product--stacked:not(.product--no-media) > .product__media-wrapper,
+  .product--stacked:not(.product--no-media) > .product__info-wrapper {
+    max-height: var(--nd-pane);
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(43, 36, 32, .25) transparent;
+  }
+  .product--stacked:not(.product--no-media) > .product__info-wrapper { padding-right: 1.2rem; }
+  .product--stacked .product__media-list { row-gap: 1.2rem; }
+  .product--stacked .product__media-item { width: 100% !important; max-width: 100% !important; }
+  .product--stacked .product__media-item .media { border-radius: 6px; overflow: hidden; }
+  .product--stacked .product__media-item.is-active { animation: ndMediaIn .35s ease both; }
+}

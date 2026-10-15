@@ -130,7 +130,7 @@ Boutique en ligne → Pages → « Conditions générales de vente » et « Ment
 | Pop-up « −10 % première commande » | ✅ (code BIENVENUE10) |
 | Texte SEO avec questions en titres + « En savoir plus » | ✅ (collections Parures et Couvre-lits) |
 | Menu Nos produits / Nouveautés / Styles / Cadeaux | ⏳ ta confirmation (ça change le menu en ligne) |
-| Pack « AVANTAGE PACK −10 % » parure + boutis | ⏳ ta confirmation : je le crée avec l'app gratuite **Shopify Bundles** |
+| Pack « AVANTAGE PACK −10 % » parure + boutis | ✅ Créé : « Pack esprit japonais : parure double gaze + boutis cachemire », de 223 € à 259 € au lieu de 248 € à 288 € (la somme des deux prix séparés). Contenu « 1 × … » affiché. |
 | Upsell « + 2 taies » | ❌ Impossible pour l'instant : tu ne vends pas de taies seules. Demande un prix à l'agent pour des taies assorties. |
 | Paiement en 3x/4x | 👉 voir Applications |
 | Avis avec répartition des notes et photos | 👉 Judge.me (les étoiles apparaissent dès les premiers vrais avis) |

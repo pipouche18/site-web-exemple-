@@ -558,3 +558,15 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
   .product--thumbnail .product__media-item.is-active { animation: ndMediaIn .35s ease both; }
 }
 @keyframes ndMediaIn { from { opacity: .35; } to { opacity: 1; } }
+
+/* =========================================================
+   v11 : fiche produit — toutes les photos l'une sous l'autre (ordinateur)
+   La colonne de gauche se remplit de photos quand on descend ;
+   les infos à droite restent visibles à côté.
+   ========================================================= */
+@media screen and (min-width: 990px) {
+  .product--stacked .product__media-list { row-gap: 1.2rem; column-gap: 1.2rem; }
+  .product--stacked .product__media-item .media { border-radius: 6px; overflow: hidden; }
+  .product--stacked .product__media-item.is-active { animation: ndMediaIn .35s ease both; }
+  .product__info-container--sticky { top: calc(var(--header-height, 0px) + 2.4rem); }
+}

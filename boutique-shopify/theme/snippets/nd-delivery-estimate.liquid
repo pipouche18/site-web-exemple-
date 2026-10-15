@@ -1,0 +1,33 @@
+{% comment %}
+  « Livraison estimée entre le … et le … », calculée dans le navigateur
+  (date du jour + délai min./max.). Délais : metafields custom.delai_min /
+  custom.delai_max du produit, sinon réglages du thème.
+  Paramètres : product, block
+{% endcomment %}
+{%- liquid
+  assign min_days = product.metafields.custom.delai_min.value | default: settings.delivery_min_days
+  assign max_days = product.metafields.custom.delai_max.value | default: settings.delivery_max_days
+  if settings.delivery_business_days
+    assign days_label = 'jours ouvrés'
+  else
+    assign days_label = 'jours'
+  endif
+-%}
+<div
+  class="nd-delivery"
+  data-nd-delivery
+  data-min="{{ min_days }}"
+  data-max="{{ max_days }}"
+  data-business="{{ settings.delivery_business_days }}"
+  {{ block.shopify_attributes }}
+>
+  <span class="nd-delivery__icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg>
+  </span>
+  <p class="nd-delivery__text">
+    <span data-nd-delivery-text>Livraison en {{ min_days }} à {{ max_days }} {{ days_label }}.</span>
+    {%- if block.settings.note != blank -%}
+      <span class="nd-delivery__note">{{ block.settings.note }}</span>
+    {%- endif -%}
+  </p>
+</div>

@@ -1,0 +1,97 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "body": {
+      "type": "nd-article",
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Le coton est une matière facile à vivre. L'étiquette d'entretien cousue sur chaque pièce est la référence : suivez toujours ses indications (température, séchage, repassage). Voici en plus quelques gestes simples.</p>"
+          }
+        },
+        "b2": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le premier lavage"
+          }
+        },
+        "b3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pour les premiers lavages, lavez votre parure seule ou avec des couleurs proches : les teintes peuvent légèrement dégorger au début.</p>"
+          }
+        },
+        "b4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le lavage"
+          }
+        },
+        "b5": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Respectez la <strong>température indiquée sur l'étiquette</strong>.</li><li>Retournez la housse et fermez-la pour protéger le tissu.</li><li>Une <strong>lessive douce</strong>, en quantité modérée. Évitez l'eau de Javel et les détachants agressifs.</li><li>Ne surchargez pas le tambour : le linge doit pouvoir bouger.</li></ul>"
+          }
+        },
+        "b6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le séchage"
+          }
+        },
+        "b7": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>À l'air libre</strong>, idéalement à l'ombre pour préserver les couleurs.</li><li>Sèche-linge : seulement si l'étiquette l'autorise, et à la température indiquée.</li><li>Secouez bien chaque pièce avant de l'étendre.</li></ul>"
+          }
+        },
+        "b8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Garder l'effet froissé"
+          }
+        },
+        "b9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pour un aspect froissé naturel, secouez le linge à la sortie de la machine puis étendez-le sans le tendre. Si vous préférez un rendu plus lisse, repassez en suivant les indications de l'étiquette.</p>"
+          }
+        },
+        "b10": {
+          "type": "note",
+          "settings": {
+            "text": "<p><strong>Une question sur l'entretien d'un produit précis ?</strong> Écrivez-nous depuis la page Contact : nous vous répondons sous 48 h.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "body"
+  ]
+}

@@ -1,0 +1,36 @@
+{% comment %}
+  Suggestion d'un produit complémentaire dans le panier latéral.
+  Réglage : Paramètres du thème > Panier > Produit suggéré.
+{% endcomment %}
+{%- assign upsell = settings.cart_upsell_product -%}
+{%- if upsell != blank and upsell.available and cart != empty -%}
+  {%- assign in_cart = false -%}
+  {%- for item in cart.items -%}
+    {%- if item.product_id == upsell.id -%}{%- assign in_cart = true -%}{%- endif -%}
+  {%- endfor -%}
+  {%- unless in_cart -%}
+    {%- assign upsell_variant = upsell.selected_or_first_available_variant -%}
+    <div class="nd-upsell">
+      <p class="nd-upsell__title">{{ settings.cart_upsell_heading | escape }}</p>
+      <div class="nd-upsell__item">
+        {%- if upsell.featured_image != blank -%}
+          {{ upsell.featured_image | image_url: width: 140 | image_tag: loading: 'lazy', width: 70, alt: upsell.featured_image.alt | default: upsell.title }}
+        {%- endif -%}
+        <div class="nd-upsell__info">
+          <a href="{{ upsell.url }}">{{ upsell.title | escape }}</a>
+          <div>{{ upsell_variant.price | money }}</div>
+        </div>
+        <form action="{{ routes.cart_add_url }}" method="post" data-nd-upsell-form>
+          <input type="hidden" name="id" value="{{ upsell_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" class="button button--secondary nd-upsell__button">
+            Ajouter<span class="visually-hidden"> {{ upsell.title | escape }} au panier</span>
+          </button>
+        </form>
+      </div>
+      {%- if upsell.has_only_default_variant == false -%}
+        <p class="caption">Plusieurs tailles disponibles : <a href="{{ upsell.url }}">choisir la mienne</a></p>
+      {%- endif -%}
+    </div>
+  {%- endunless -%}
+{%- endif -%}

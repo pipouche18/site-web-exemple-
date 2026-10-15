@@ -1,0 +1,62 @@
+{% comment %}
+  Deux blocs mis en avant côte à côte (ex. « Nouveauté » et « Coup de cœur »).
+  Photo d'ambiance, surtitre, titre, phrase et bouton. Sur téléphone, l'un sous l'autre.
+{% endcomment %}
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) { .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; } }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <ul class="nd-duo list-unstyled" role="list">
+      {%- for block in section.blocks -%}
+        <li class="nd-duo__item" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | default: '#' }}" class="nd-duo__card">
+            <span class="nd-duo__media">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '500, 750, 1000, 1400', sizes: '(min-width: 750px) 50vw, 100vw', loading: 'lazy', alt: block.settings.image.alt | default: block.settings.title }}
+              {%- else -%}
+                {%- render 'nd-style-visual', collection: false, palette: '#D8C3A5, #EFE6D6, #A7B59A', sizes: '50vw' -%}
+              {%- endif -%}
+            </span>
+            <span class="nd-duo__body">
+              {%- if block.settings.kicker != blank -%}<span class="nd-duo__kicker">{{ block.settings.kicker | escape }}</span>{%- endif -%}
+              <span class="nd-duo__title h2">{{ block.settings.title | escape }}</span>
+              {%- if block.settings.text != blank -%}<span class="nd-duo__text">{{ block.settings.text | escape }}</span>{%- endif -%}
+              {%- if block.settings.button_label != blank -%}<span class="nd-duo__btn">{{ block.settings.button_label | escape }}</span>{%- endif -%}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Deux mises en avant",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Mise en avant",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo d'ambiance" },
+        { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Nouveauté" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "La parure pied-de-poule" },
+        { "type": "text", "id": "text", "label": "Phrase" },
+        { "type": "text", "id": "button_label", "label": "Bouton", "default": "Découvrir la collection" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Deux mises en avant", "blocks": [{ "type": "card" }, { "type": "card" }] }]
+}
+{% endschema %}

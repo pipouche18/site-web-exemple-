@@ -1,0 +1,13 @@
+{% comment %} « +5 coloris » sous le prix d'une carte produit. {% endcomment %}
+{%- liquid
+  assign shades = 0
+  for option in card_product.options_with_values
+    assign oname = option.name | downcase
+    if oname contains 'couleur' or oname contains 'coloris' or oname contains 'teinte'
+      assign shades = option.values.size
+    endif
+  endfor
+-%}
+{%- if shades > 1 -%}
+  <p class="nd-card-shades caption">+{{ shades }} coloris</p>
+{%- endif -%}

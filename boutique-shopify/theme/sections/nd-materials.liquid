@@ -1,0 +1,59 @@
+{% comment %} « Explorez nos matières » : une carte par matière, avec son bénéfice. {% endcomment %}
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) { .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; } }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="nd-mat__head">
+      {%- if section.settings.kicker != blank -%}<p class="nd-kicker">{{ section.settings.kicker | escape }}</p>{%- endif -%}
+      <h2 class="h1">{{ section.settings.heading | escape }}</h2>
+    </div>
+    <ul class="nd-mat list-unstyled" role="list">
+      {%- for block in section.blocks -%}
+        <li class="nd-mat__item" {{ block.shopify_attributes }}>
+          <span class="nd-mat__swatch" style="--c: {{ block.settings.color }};" aria-hidden="true"></span>
+          <h3 class="nd-mat__title">{{ block.settings.title | escape }}</h3>
+          <p class="nd-mat__benefit">{{ block.settings.benefit | escape }}</p>
+          {%- if block.settings.text != blank -%}<div class="nd-mat__text">{{ block.settings.text }}</div>{%- endif -%}
+          {%- if block.settings.link != blank -%}<a class="nd-mat__link" href="{{ block.settings.link }}">Voir les modèles <span aria-hidden="true">→</span></a>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if section.settings.compare_link != blank -%}
+      <p class="nd-mat__compare"><a class="button button--secondary" href="{{ section.settings.compare_link }}">{{ section.settings.compare_label | escape }}</a></p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nos matières",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Nos matières" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Explorez nos matières" },
+    { "type": "url", "id": "compare_link", "label": "Lien « Comparer »" },
+    { "type": "text", "id": "compare_label", "label": "Texte du lien « Comparer »", "default": "Comparer nos matières" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 64 }
+  ],
+  "blocks": [
+    {
+      "type": "material",
+      "name": "Matière",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Matière", "default": "Coton lavé" },
+        { "type": "text", "id": "benefit", "label": "Bénéfice (quelques mots)", "default": "Doux et naturellement froissé" },
+        { "type": "richtext", "id": "text", "label": "Texte" },
+        { "type": "color", "id": "color", "label": "Couleur de la pastille", "default": "#D8C3A5" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Nos matières", "blocks": [{ "type": "material" }, { "type": "material" }, { "type": "material" }] }]
+}
+{% endschema %}

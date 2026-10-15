@@ -1,0 +1,39 @@
+{% comment %}
+  Visuel d'un univers (style) : photo dans une arche si la collection ou un de
+  ses produits en a une ; sinon une pile de linge plié aux teintes de l'univers.
+
+  Paramètres :
+  - collection : la collection
+  - image : (facultatif) photo choisie à la main
+  - palette : couleurs séparées par des virgules
+  - sizes : attribut sizes de l'image
+{% endcomment %}
+{%- liquid
+  assign img = image
+  if img == blank
+    assign img = collection.image
+  endif
+  if img == blank
+    for p in collection.products limit: 6
+      if p.featured_image != blank
+        assign img = p.featured_image
+        break
+      endif
+    endfor
+  endif
+  assign cols = palette | split: ','
+-%}
+<span class="nd-sv{% if img != blank %} nd-sv--photo{% endif %}" aria-hidden="true">
+  {%- if img != blank -%}
+    <span class="nd-sv__arch">
+      {{- img | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: sizes, loading: 'lazy', alt: '' -}}
+    </span>
+    <span class="nd-sv__chips">
+      {%- for col in cols limit: 3 -%}<span style="--c: {{ col | strip }};"></span>{%- endfor -%}
+    </span>
+  {%- else -%}
+    <span class="nd-sv__stack">
+      {%- for col in cols limit: 4 -%}<span class="nd-sv__fold" style="--c: {{ col | strip }}; --i: {{ forloop.index0 }};"></span>{%- endfor -%}
+    </span>
+  {%- endif -%}
+</span>

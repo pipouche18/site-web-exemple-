@@ -1,0 +1,68 @@
+{% comment %}
+  Onglets de la fiche produit : Description, Dimensions, Entretien,
+  Livraison et retours. Accessibles au clavier (flèches gauche/droite).
+  Sans JavaScript, tous les panneaux restent visibles.
+  Paramètres : product, block, section
+{% endcomment %}
+{%- liquid
+  assign mf = product.metafields.custom
+  assign uid = block.id | append: '-' | append: section.id
+  assign min_days = mf.delai_min.value | default: settings.delivery_min_days
+  assign max_days = mf.delai_max.value | default: settings.delivery_max_days
+-%}
+<div class="nd-tabs" data-nd-tabs {{ block.shopify_attributes }}>
+  <div class="nd-tabs__list" role="tablist" aria-label="Informations produit" hidden>
+    <button type="button" role="tab" id="Tab-desc-{{ uid }}" aria-controls="Panel-desc-{{ uid }}" aria-selected="true">Description</button>
+    <button type="button" role="tab" id="Tab-dim-{{ uid }}" aria-controls="Panel-dim-{{ uid }}" aria-selected="false" tabindex="-1">Dimensions</button>
+    <button type="button" role="tab" id="Tab-care-{{ uid }}" aria-controls="Panel-care-{{ uid }}" aria-selected="false" tabindex="-1">Entretien</button>
+    <button type="button" role="tab" id="Tab-ship-{{ uid }}" aria-controls="Panel-ship-{{ uid }}" aria-selected="false" tabindex="-1">Livraison et retours</button>
+  </div>
+
+  <div class="nd-tabs__panel rte" role="tabpanel" id="Panel-desc-{{ uid }}" aria-labelledby="Tab-desc-{{ uid }}" tabindex="0">
+    <h2 class="nd-tabs__fallback-title h4">Description</h2>
+    {{ product.description }}
+  </div>
+
+  <div class="nd-tabs__panel rte" role="tabpanel" id="Panel-dim-{{ uid }}" aria-labelledby="Tab-dim-{{ uid }}" tabindex="0">
+    <h2 class="nd-tabs__fallback-title h4">Dimensions</h2>
+    <dl class="nd-specs">
+      {%- if mf.composition.value != blank -%}
+        <div><dt>Composition</dt><dd>{{ mf.composition.value | escape }}</dd></div>
+      {%- endif -%}
+      {%- if mf.grammage.value != blank -%}
+        <div><dt>Grammage</dt><dd>{{ mf.grammage.value | escape }}</dd></div>
+      {%- endif -%}
+    </dl>
+    {%- if mf.dimensions.value != blank -%}
+      <h3 class="h5">Dimensions de chaque pièce</h3>
+      {% render 'nd-lines', text: mf.dimensions.value %}
+    {%- endif -%}
+    {%- if mf.contenu_colis.value != blank -%}
+      <h3 class="h5">Contenu du colis</h3>
+      {% render 'nd-lines', text: mf.contenu_colis.value %}
+    {%- endif -%}
+    {%- if settings.size_guide_page != blank -%}
+      <p><a href="{{ settings.size_guide_page.url }}">Quelle taille pour mon lit ? Voir le guide des tailles</a></p>
+    {%- endif -%}
+  </div>
+
+  <div class="nd-tabs__panel rte" role="tabpanel" id="Panel-care-{{ uid }}" aria-labelledby="Tab-care-{{ uid }}" tabindex="0">
+    <h2 class="nd-tabs__fallback-title h4">Entretien</h2>
+    {%- if mf.entretien.value != blank -%}
+      {% render 'nd-lines', text: mf.entretien.value %}
+    {%- else -%}
+      {{ block.settings.care_default }}
+    {%- endif -%}
+    {%- if block.settings.care_page != blank -%}
+      <p><a href="{{ block.settings.care_page.url }}">Tous nos conseils d'entretien</a></p>
+    {%- endif -%}
+  </div>
+
+  <div class="nd-tabs__panel rte" role="tabpanel" id="Panel-ship-{{ uid }}" aria-labelledby="Tab-ship-{{ uid }}" tabindex="0">
+    <h2 class="nd-tabs__fallback-title h4">Livraison et retours</h2>
+    {{ block.settings.shipping_text | replace: '[MIN]', min_days | replace: '[MAX]', max_days }}
+    {%- if block.settings.shipping_page != blank -%}
+      <p><a href="{{ block.settings.shipping_page.url }}">Tout savoir sur la livraison et les retours</a></p>
+    {%- endif -%}
+  </div>
+</div>

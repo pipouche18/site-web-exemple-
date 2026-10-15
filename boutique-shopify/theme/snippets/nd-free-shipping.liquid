@@ -1,0 +1,28 @@
+{% comment %}
+  Panier : barre de progression vers la livraison offerte (France).
+  Le seuil se règle dans Paramètres du thème > Maison Nuits Douces et doit
+  correspondre aux tarifs d'expédition réels.
+{% endcomment %}
+{%- if cart != empty and settings.free_shipping_threshold != blank and settings.free_shipping_threshold > 0 -%}
+  {%- liquid
+    assign threshold = settings.free_shipping_threshold | times: 100
+    assign remaining = threshold | minus: cart.total_price
+    assign pct = cart.total_price | times: 100 | divided_by: threshold
+    if pct > 100
+      assign pct = 100
+    endif
+  -%}
+  <div class="nd-ship{% if remaining <= 0 %} is-done{% endif %}">
+    <p class="nd-ship__text">
+      {%- if remaining > 0 -%}
+        Plus que <strong>{{ remaining | money_without_currency | remove: ',00' }} €</strong> pour la livraison offerte en France
+      {%- else -%}
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3L13 4.5"/></svg>
+        Livraison suivie offerte en France
+      {%- endif -%}
+    </p>
+    <div class="nd-ship__track" role="progressbar" aria-label="Progression vers la livraison offerte" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}">
+      <span style="width: {{ pct }}%;"></span>
+    </div>
+  </div>
+{%- endif -%}

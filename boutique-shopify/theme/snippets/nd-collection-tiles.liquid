@@ -1,0 +1,38 @@
+{% comment %}
+  Tuiles photo vers des collections (Découvrez aussi, page 404).
+  Paramètres : handles (texte séparé par des virgules), exclude (handle à ignorer), sizes.
+{% endcomment %}
+{%- assign list = handles | split: ',' -%}
+<ul class="nd-tiles list-unstyled" role="list">
+  {%- for h in list -%}
+    {%- assign hh = h | strip -%}
+    {%- assign c = collections[hh] -%}
+    {%- if c != blank and c.handle != exclude and c.products_count > 0 -%}
+      {%- liquid
+        assign img = c.image
+        if img == blank
+          for p in c.products limit: 4
+            if p.featured_image != blank
+              assign img = p.featured_image
+              break
+            endif
+          endfor
+        endif
+        assign i = forloop.index0 | modulo: 3
+        assign bgs = '#D9DDCC|#EADFCF|#EBDAD2' | split: '|'
+      -%}
+      <li>
+        <a href="{{ c.url }}" class="nd-tile">
+          <span class="nd-tile__img" style="background: {{ bgs[i] }};">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 800 | image_tag: widths: '300, 500, 800', sizes: sizes, loading: 'lazy', alt: '' }}
+            {%- else -%}
+              {%- render 'nd-style-visual', collection: false, palette: '#D8C3A5, #EFE6D6, #A7B59A', sizes: sizes -%}
+            {%- endif -%}
+          </span>
+          <span class="nd-tile__title">{{ c.title | escape }} <span aria-hidden="true">→</span></span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

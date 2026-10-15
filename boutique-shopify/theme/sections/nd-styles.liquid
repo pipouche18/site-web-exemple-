@@ -1,0 +1,83 @@
+{% comment %}
+  « Trouver mon style » : une carte par univers (collection). Sur téléphone,
+  carrousel qui glisse sous le doigt avec arrêt magnétique (défilement natif) ;
+  sur ordinateur, grille. Photo (choisie, de la collection ou d'un produit) dans une
+  arche ; sinon une pile de linge plié aux teintes de l'univers.
+{% endcomment %}
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) { .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; } }
+  #Styles-{{ section.id }} .nd-styles__grid { grid-template-columns: repeat({{ section.blocks.size | at_least: 1 | at_most: 4 }}, 1fr); }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding nd-styles" id="Styles-{{ section.id }}">
+    <div class="page-width nd-styles__head">
+      {%- if section.settings.kicker != blank -%}<p class="nd-kicker">{{ section.settings.kicker | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<p class="nd-styles__intro">{{ section.settings.text | escape }}</p>{%- endif -%}
+    </div>
+    <ul class="nd-styles__grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign title = block.settings.title | default: c.title
+          assign count = c.products_count
+        -%}
+        <li class="nd-styles__item" {{ block.shopify_attributes }}>
+          <a href="{{ c.url | default: '#' }}" class="nd-style-card color-{{ block.settings.color_scheme }}"{% if block.settings.background != blank %} style="--nd-card-bg: {{ block.settings.background }};"{% endif %}>
+            <span class="nd-style-card__top">
+              <span class="nd-style-card__index" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <span class="nd-style-card__count">{% if count > 0 %}{{ count }} {% if count > 1 %}modèles{% else %}modèle{% endif %}{% else %}Bientôt{% endif %}</span>
+            </span>
+            <span class="nd-style-card__visual">
+              {%- render 'nd-style-visual', collection: c, image: block.settings.image, palette: block.settings.palette, sizes: '(min-width: 990px) 22vw, 60vw' -%}
+            </span>
+            <span class="nd-style-card__body">
+              <h3 class="nd-style-card__title">{{ title | escape }}</h3>
+              {%- if block.settings.mood != blank -%}<span class="nd-style-card__text">{{ block.settings.mood | escape }}</span>{%- endif -%}
+              {%- if block.settings.palette_names != blank -%}<span class="nd-style-card__tones">{{ block.settings.palette_names | escape }}</span>{%- endif -%}
+              <span class="nd-style-card__cta">
+                {% if count > 0 %}Découvrir{% else %}Voir l'univers{% endif %}
+                <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trouver mon style",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Petit texte au-dessus", "default": "Par style" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Trouver mon style" },
+    { "type": "text", "id": "text", "label": "Introduction" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs de la section", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "style",
+      "name": "Style",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Photo (facultatif)", "info": "Sinon, la photo de la collection ; sinon, une tuile de couleur." },
+        { "type": "text", "id": "title", "label": "Titre (facultatif)" },
+        { "type": "text", "id": "mood", "label": "Ambiance (une phrase)" },
+        { "type": "text", "id": "palette", "label": "Teintes (codes couleur séparés par des virgules)", "default": "#D8C3A5, #A7B59A, #EFE6D6" },
+        { "type": "text", "id": "palette_names", "label": "Noms des teintes (pour l'accessibilité)", "default": "sable, sauge, écru" },
+        { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs de la carte", "default": "scheme-2" },
+        { "type": "color", "id": "background", "label": "Fond de la carte (facultatif)", "info": "Remplace le fond du jeu de couleurs." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Trouver mon style", "blocks": [{ "type": "style" }, { "type": "style" }, { "type": "style" }] }]
+}
+{% endschema %}

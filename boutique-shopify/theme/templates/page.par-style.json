@@ -1,0 +1,103 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "styles": {
+      "type": "nd-styles",
+      "blocks": {
+        "japonais": {
+          "type": "style",
+          "settings": {
+            "collection": "style-japonais",
+            "title": "Japonais",
+            "color_scheme": "scheme-4",
+            "mood": "Épuré, apaisant, wabi-sabi",
+            "palette": "#A7B59A, #D8C3A5, #EFE6D6",
+            "palette_names": "sauge, sable, écru"
+          }
+        },
+        "romantique": {
+          "type": "style",
+          "settings": {
+            "collection": "style-romantique",
+            "title": "Romantique",
+            "color_scheme": "scheme-2",
+            "mood": "Motifs tissés, charme vintage",
+            "palette": "#C9A29A, #EFE6D6, #B5754F",
+            "palette_names": "vieux rose, écru, terracotta",
+            "background": "#EBDAD2"
+          }
+        }
+      },
+      "block_order": [
+        "japonais",
+        "romantique"
+      ],
+      "settings": {
+        "heading": "Choisissez votre ambiance",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 72,
+        "kicker": "Trois univers",
+        "text": "Trois ambiances, un même coton doux. Choisissez celle qui vous ressemble."
+      }
+    },
+    "sizes": {
+      "type": "nd-size-helper",
+      "blocks": {
+        "s1": {
+          "type": "size",
+          "settings": {
+            "bed": "Lit 140",
+            "cover": "200×200 cm",
+            "note": "Le format le plus courant",
+            "link": ""
+          }
+        },
+        "s2": {
+          "type": "size",
+          "settings": {
+            "bed": "Lit 160 ou 180",
+            "cover": "220×240 cm",
+            "note": "Le grand lit polyvalent",
+            "link": ""
+          }
+        },
+        "s3": {
+          "type": "size",
+          "settings": {
+            "bed": "Lit 180 ou 200",
+            "cover": "240×260 cm",
+            "note": "Pour un lit très enveloppant",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "kicker": "Le bon format",
+        "heading": "Quelle taille pour mon lit ?",
+        "text": "<p>La housse se choisit à la taille de votre couette. Voici les correspondances les plus courantes en France.</p>",
+        "button_label": "Voir le guide des tailles",
+        "button_link": "shopify://pages/guide-des-tailles",
+        "color_scheme": "scheme-2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "main",
+    "styles",
+    "sizes"
+  ]
+}

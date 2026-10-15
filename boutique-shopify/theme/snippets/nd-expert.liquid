@@ -1,0 +1,15 @@
+{% comment %} Fiche produit : 3 questions / réponses courtes (« Nos réponses »). {% endcomment %}
+<div class="nd-expert" {{ block.shopify_attributes }}>
+  {%- if block.settings.kicker != blank -%}<p class="nd-expert__kicker">{{ block.settings.kicker | escape }}</p>{%- endif -%}
+  <h2 class="nd-expert__title h4">{{ block.settings.heading | escape }}</h2>
+  {%- for i in (1..3) -%}
+    {%- assign qk = 'q' | append: i -%}
+    {%- assign ak = 'a' | append: i -%}
+    {%- if block.settings[qk] != blank and block.settings[ak] != blank -%}
+      <details class="nd-expert__item"{% if forloop.first %} open{% endif %}>
+        <summary>{{ block.settings[qk] | escape }}</summary>
+        <div class="rte">{{ block.settings[ak] }}</div>
+      </details>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

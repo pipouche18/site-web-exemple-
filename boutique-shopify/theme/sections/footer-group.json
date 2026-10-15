@@ -1,0 +1,77 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Nos parures",
+            "menu": "nos-parures"
+          }
+        },
+        "concept": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Notre concept",
+            "menu": "notre-concept"
+          }
+        },
+        "help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Aide",
+            "menu": "aide"
+          }
+        },
+        "legal": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Infos légales",
+            "menu": "infos-legales"
+          }
+        }
+      },
+      "block_order": [
+        "shop",
+        "concept",
+        "help",
+        "legal"
+      ],
+      "settings": {
+        "color_scheme": "scheme-6",
+        "newsletter_enable": true,
+        "newsletter_heading": "-10 % sur votre première commande",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
+    },
+    "popup": {
+      "type": "nd-popup",
+      "settings": {
+        "enable": true,
+        "delay": 10,
+        "image": "shopify://shop_images/maison-nuits-douces-11.png",
+        "kicker": "Bienvenue chez Maison Nuits Douces",
+        "heading": "-10 % sur votre première commande",
+        "text": "Inscrivez-vous et recevez votre code tout de suite, avec nos conseils et nouveautés (un e-mail par mois environ).",
+        "button": "Recevoir mon code",
+        "code": "BIENVENUE10",
+        "legal": "<p>En vous inscrivant, vous acceptez de recevoir nos e-mails. Désinscription en un clic. Voir notre <a href=\"/policies/privacy-policy\">politique de confidentialité</a>.</p>"
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "popup"
+  ]
+}

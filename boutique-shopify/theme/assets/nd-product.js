@@ -94,19 +94,10 @@
 })();
 
 /* ---------------------------------------------------------------
-   Galerie produit (ordinateur) : la molette sur la grande photo (ou sous
-   les miniatures) passe
-   à la photo suivante / précédente. Un geste = une photo (on attend la
-   fin de l'inertie du pavé tactile avant d'autoriser le pas suivant).
-   À la première ou à la dernière photo, la page défile normalement.
-   Un petit compteur « 2 / 5 » indique où l'on en est.
+   Galerie produit (ordinateur) : petit compteur « 2 / 5 » sur la grande
+   photo. La molette garde partout son comportement normal (défilement).
    --------------------------------------------------------------- */
 (function () {
-  var desktop = window.matchMedia('(min-width: 750px)');
-  var acc = 0;
-  var locked = false;
-  var idle;
-
   function thumbs(gallery) {
     return Array.prototype.slice
       .call(gallery.querySelectorAll('[id^="GalleryThumbnails"] .thumbnail-list__item'))
@@ -149,37 +140,4 @@
   // La galerie est re-rendue quand on change de variante : on se rebranche.
   new MutationObserver(setup).observe(document.body, { childList: true, subtree: true });
 
-  document.addEventListener('wheel', function (e) {
-    if (!desktop.matches || e.ctrlKey) return;
-    // Sur les miniatures, la molette garde son comportement normal
-    if (e.target.closest && e.target.closest('[id^="GalleryThumbnails"]')) return;
-    // Le reste de la colonne de gauche compte : grande photo et l'espace dessous
-    var zone = e.target.closest && e.target.closest('.product__media-wrapper');
-    var gallery = zone ? zone.querySelector('media-gallery') : e.target.closest && e.target.closest('media-gallery');
-    if (!gallery) return;
-    if (!isThumbLayout(gallery)) return;
-    var list = thumbs(gallery);
-    if (list.length < 2) return;
-
-    var d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-    if (e.deltaMode === 1) d *= 16;
-    if (!d) return;
-    var dir = d > 0 ? 1 : -1;
-    var i = currentIndex(list);
-    var atEdge = (dir > 0 && i >= list.length - 1) || (dir < 0 && i <= 0);
-    if (atEdge && !locked) return; // bout de la galerie : la page reprend la main
-
-    e.preventDefault();
-    clearTimeout(idle);
-    idle = setTimeout(function () { locked = false; acc = 0; }, 180);
-    if (locked) return;
-
-    acc += d;
-    if (Math.abs(acc) < 40) return;
-    locked = true;
-    acc = 0;
-    var next = list[Math.min(list.length - 1, Math.max(0, i + dir))];
-    var btn = next && next.querySelector('button');
-    if (btn) btn.click();
-  }, { passive: false });
 })();

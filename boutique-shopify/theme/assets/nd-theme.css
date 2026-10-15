@@ -549,3 +549,12 @@ h3, .h3, .h4, .card__heading { letter-spacing: -0.008em; line-height: 1.25; }
   .nd-mega__card:hover .nd-mega__img { transform: scale(1.22); }
   .nd-mega__card:hover .nd-mega__img--second { transform: scale(1.08); }
 }
+
+/* =========================================================
+   v10 : fiche produit — la photo change en fondu quand on choisit une couleur
+   ========================================================= */
+@media screen and (min-width: 750px) {
+  .product--thumbnail_slider .product__media-item.is-active,
+  .product--thumbnail .product__media-item.is-active { animation: ndMediaIn .35s ease both; }
+}
+@keyframes ndMediaIn { from { opacity: .35; } to { opacity: 1; } }

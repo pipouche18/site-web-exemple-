@@ -14,7 +14,15 @@
       radial-gradient(90% 70% at 0% 100%, rgba(142,91,64,.12), transparent 60%),
       rgb(var(--color-background)); }
   #Hero-{{ section.id }} picture, #Hero-{{ section.id }} picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  #Hero-{{ section.id }} .nd-hero__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,24,20,{{ section.settings.overlay | divided_by: 100.0 }}), transparent 70%); }
+  {%- assign k = section.settings.overlay | divided_by: 100.0 -%}
+  /* Voile sombre là où se trouve le texte (bas sur téléphone, gauche sur ordinateur) : la photo reste lumineuse ailleurs */
+  #Hero-{{ section.id }} .nd-hero__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,24,20,{{ k | times: 1.9 | at_most: 0.85 }}) 0%, rgba(30,24,20,{{ k | times: 1.1 | at_most: 0.6 }}) 40%, rgba(30,24,20,0) 75%); }
+  #Hero-{{ section.id }}.nd-hero--photo .nd-hero__content { text-shadow: 0 1px 2px rgba(20,16,12,.25), 0 2px 24px rgba(20,16,12,.35); }
+  #Hero-{{ section.id }}.nd-hero--photo .nd-hero__kicker { font-weight: 500; }
+  #Hero-{{ section.id }}.nd-hero--photo .nd-hero__text { font-weight: 500; }
+  #Hero-{{ section.id }}.nd-hero--photo .nd-hero__btn { background: #FAF6F0; color: #2B2420 !important; text-shadow: none; border: 0; box-shadow: none; }
+  #Hero-{{ section.id }}.nd-hero--photo .nd-hero__btn::after, #Hero-{{ section.id }}.nd-hero--photo .nd-hero__btn::before { box-shadow: none; }
+  @media (hover: hover) { #Hero-{{ section.id }}.nd-hero--photo .nd-hero__btn:hover { background: #fff; } }
   #Hero-{{ section.id }} .nd-hero__content { position: relative; width: 100%; padding: 4.8rem 2rem; }
   #Hero-{{ section.id }}.nd-hero--photo .nd-hero__content, #Hero-{{ section.id }}.nd-hero--photo .nd-hero__content * { color: #fff; }
   #Hero-{{ section.id }} .nd-hero__kicker { margin: 0 0 1.2rem; font-size: 1.3rem; letter-spacing: .18em; text-transform: uppercase; }
@@ -26,6 +34,9 @@
     #Hero-{{ section.id }} { min-height: {{ section.settings.height_desktop }}vh; }
     #Hero-{{ section.id }}.nd-hero--empty { min-height: {{ section.settings.height_desktop | times: 0.7 | round }}vh; }
     #Hero-{{ section.id }} .nd-hero__content { padding: 8rem 5rem; }
+    #Hero-{{ section.id }} .nd-hero__shade { background:
+      linear-gradient(to right, rgba(30,24,20,{{ k | times: 2 | at_most: 0.8 }}) 0%, rgba(30,24,20,{{ k | times: 1.2 | at_most: 0.55 }}) 35%, rgba(30,24,20,0) 65%),
+      linear-gradient(to top, rgba(30,24,20,{{ k | times: 0.8 | at_most: 0.4 }}), rgba(30,24,20,0) 50%); }
   }
 {%- endstyle -%}
 <div id="Hero-{{ section.id }}" class="nd-hero color-{{ section.settings.color_scheme }} {% if img != blank %}nd-hero--photo{% else %}nd-hero--empty{% endif %}">
@@ -41,7 +52,7 @@
     <h1 class="nd-hero__title">{{ section.settings.heading | escape }}</h1>
     {%- if section.settings.text != blank -%}<p class="nd-hero__text">{{ section.settings.text | escape }}</p>{%- endif -%}
     {%- if section.settings.button_label != blank -%}
-      <a class="button{% if img != blank %} button--secondary{% endif %}" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
+      <a class="button{% if img != blank %} nd-hero__btn{% endif %}" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
     {%- endif -%}
   </div>
 </div>

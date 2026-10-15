@@ -3,7 +3,7 @@
     "hero": {
       "type": "nd-hero",
       "settings": {
-        "overlay": 30,
+        "overlay": 40,
         "kicker": "Maison Nuits Douces",
         "heading": "Des nuits douces, naturellement froissées",
         "text": "Coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage.",

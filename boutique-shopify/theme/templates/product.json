@@ -99,10 +99,10 @@
         "share"
       ],
       "settings": {
-        "enable_sticky_info": false,
+        "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_position": "left",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",

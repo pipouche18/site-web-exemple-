@@ -151,7 +151,9 @@
 
   document.addEventListener('wheel', function (e) {
     if (!desktop.matches || e.ctrlKey) return;
-    var gallery = e.target.closest && e.target.closest('media-gallery');
+    // Toute la colonne de gauche compte : grande photo, miniatures et l'espace dessous
+    var zone = e.target.closest && e.target.closest('.product__media-wrapper');
+    var gallery = zone ? zone.querySelector('media-gallery') : e.target.closest && e.target.closest('media-gallery');
     if (!gallery) return;
     if (!isThumbLayout(gallery)) return;
     var list = thumbs(gallery);

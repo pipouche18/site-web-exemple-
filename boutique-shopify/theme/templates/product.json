@@ -47,12 +47,12 @@
           "type": "icon-with-text",
           "settings": {
             "layout": "vertical",
-            "icon_1": "lock",
-            "heading_1": "Paiement sécurisé",
+            "icon_1": "truck",
+            "heading_1": "Livraison offerte en France",
             "icon_2": "return",
             "heading_2": "14 jours pour changer d'avis",
-            "icon_3": "truck",
-            "heading_3": "Colis suivi"
+            "icon_3": "lock",
+            "heading_3": "Paiement 100 % sécurisé"
           }
         },
         "tabs": {
@@ -82,11 +82,20 @@
           "settings": {
             "share_label": "Partager"
           }
+        },
+        "benefits": {
+          "type": "nd_benefits",
+          "settings": {
+            "b1": "Un coton qui s'adoucit à chaque lavage",
+            "b2": "Effet froissé naturel, sans repassage",
+            "b3": "Livraison suivie offerte en France"
+          }
         }
       },
       "block_order": [
         "title",
         "price",
+        "benefits",
         "composition",
         "variant_picker",
         "bed_size",

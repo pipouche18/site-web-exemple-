@@ -1,0 +1,35 @@
+{% comment %} Panier vide : tuiles vers les collections au lieu d'une page vide. {% endcomment %}
+{%- liquid
+  assign handles = 'parures,couvre-lits,style-japonais' | split: ','
+-%}
+<p class="nd-empty__kicker">Envie d'inspiration ?</p>
+<ul class="nd-empty list-unstyled" role="list">
+  {%- for h in handles -%}
+    {%- assign c = collections[h] -%}
+    {%- if c != blank and c.products_count > 0 -%}
+      {%- liquid
+        assign img = c.image
+        if img == blank
+          for p in c.products limit: 4
+            if p.featured_image != blank
+              assign img = p.featured_image
+              break
+            endif
+          endfor
+        endif
+      -%}
+      <li>
+        <a href="{{ c.url }}" class="nd-empty__tile">
+          <span class="nd-empty__img">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 400 | image_tag: sizes: '120px', loading: 'lazy', alt: '' }}
+            {%- else -%}
+              {%- render 'nd-style-visual', collection: false, palette: '#D8C3A5, #EFE6D6, #A7B59A', sizes: '120px' -%}
+            {%- endif -%}
+          </span>
+          <span class="nd-empty__title">{{ c.title | escape }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

@@ -491,6 +491,8 @@
                   {% render 'nd-composition', product: product, block: block %}
                 {%- when 'nd_bed_size' -%}
                   {% render 'nd-bed-size', product: product, block: block, section: section %}
+                {%- when 'nd_benefits' -%}
+                  {% render 'nd-benefits', block: block %}
                 {%- when 'nd_delivery' -%}
                   {% render 'nd-delivery-estimate', product: product, block: block %}
                 {%- when 'nd_tabs' -%}
@@ -792,6 +794,16 @@
           "type": "paragraph",
           "content": "Affiche « Convient à : lit … » selon la taille choisie. La correspondance se règle dans Paramètres du thème > Maison Nuits Douces."
         }
+      ]
+    },
+    {
+      "type": "nd_benefits",
+      "name": "Points forts",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "b1", "label": "Point fort 1", "default": "Un coton qui s'adoucit à chaque lavage" },
+        { "type": "text", "id": "b2", "label": "Point fort 2", "default": "Effet froissé naturel, sans repassage" },
+        { "type": "text", "id": "b3", "label": "Point fort 3", "default": "Livraison suivie offerte en France" }
       ]
     },
     {

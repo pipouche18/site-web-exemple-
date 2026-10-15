@@ -1,0 +1,46 @@
+{% comment %}
+  Bas de page collection : « Découvrez aussi » (autres collections) +
+  long texte SEO replié derrière « En savoir plus » (metafield custom.texte_seo).
+{% endcomment %}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width nd-more">
+    {%- if section.settings.handles != blank -%}
+      <h2 class="h2 nd-more__title">{{ section.settings.heading | escape }}</h2>
+      {%- render 'nd-collection-tiles', handles: section.settings.handles, exclude: collection.handle, sizes: '(min-width: 750px) 25vw, 50vw' -%}
+    {%- endif -%}
+    {%- assign seo = collection.metafields.custom.texte_seo.value -%}
+    {%- if seo != blank -%}
+      <details class="nd-seo">
+        <summary class="nd-seo__toggle"><span>En savoir plus sur nos {{ collection.title | downcase | escape }}</span></summary>
+        <div class="nd-seo__body rte">
+          {%- assign paras = seo | newline_to_br | split: '<br />' -%}
+          {%- for p in paras -%}
+            {%- assign t = p | strip -%}
+            {%- if t != blank -%}
+              {%- assign last = t | slice: -1, 1 -%}
+              {%- if t.size < 70 and last == '?' or t.size < 30 -%}
+                <h3>{{ t | escape }}</h3>
+              {%- else -%}
+                <p>{{ t | escape }}</p>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </details>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Découvrez aussi + SEO",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Découvrez aussi" },
+    { "type": "text", "id": "handles", "label": "Collections (identifiants séparés par des virgules)", "default": "parures, couvre-lits, style-japonais, style-romantique, style-nordique" },
+    { "type": "paragraph", "content": "Le texte « En savoir plus » vient du champ « Texte SEO (bas de page) » de chaque collection." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

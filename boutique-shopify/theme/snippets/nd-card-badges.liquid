@@ -1,0 +1,19 @@
+{% comment %}
+  Badges honnêtes sur les cartes produit, pilotés par les étiquettes (tags) :
+  « nouveau » → NOUVEAU · « nouveaux-coloris » → NOUVEAUX COLORIS · « best-seller » → BEST-SELLER.
+  À n'ajouter que quand c'est vrai.
+{% endcomment %}
+{%- liquid
+  assign tags = card_product.tags | join: ',' | downcase
+  assign label = ''
+  if tags contains 'best-seller'
+    assign label = 'Best-seller'
+  elsif tags contains 'nouveaux-coloris'
+    assign label = 'Nouveaux coloris'
+  elsif tags contains 'nouveau'
+    assign label = 'Nouveau'
+  endif
+-%}
+{%- if label != '' and card_product.available -%}
+  <span class="badge nd-badge">{{ label }}</span>
+{%- endif -%}

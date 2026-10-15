@@ -27,10 +27,18 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "more": {
+      "type": "nd-collection-more",
+      "settings": {
+        "heading": "Découvrez aussi",
+        "handles": "parures, couvre-lits, style-japonais, style-romantique, style-nordique"
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "more"
   ]
 }

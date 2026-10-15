@@ -3,21 +3,22 @@
     "hero": {
       "type": "nd-hero",
       "settings": {
-        "overlay": 40,
-        "kicker": "Coton lavé & double gaze",
+        "overlay": 30,
+        "kicker": "Maison Nuits Douces",
         "heading": "Des nuits douces, naturellement froissées",
-        "text": "Parures en coton qui s'adoucissent à chaque lavage. Livraison suivie en 10 à 18 jours ouvrés.",
+        "text": "Coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage.",
         "button_label": "Découvrir les parures",
         "button_link": "shopify://collections/parures",
         "height_mobile": 85,
         "height_desktop": 90,
-        "color_scheme": "scheme-2"
+        "color_scheme": "scheme-2",
+        "image": "shopify://shop_images/maison-nuits-douces-4.png"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Nos parures préférées",
+        "title": "Notre sélection",
         "heading_size": "h1",
         "description": "<p>Coton lavé et double gaze, couleurs douces et texture vivante.</p>",
         "show_description": true,
@@ -73,7 +74,7 @@
         "f3"
       ],
       "settings": {
-        "kicker": "Pourquoi Maison Nuits Douces",
+        "kicker": "Notre savoir-faire",
         "heading": "Le linge qu'on a envie de garder longtemps",
         "color_scheme": "scheme-1",
         "padding_top": 72,
@@ -359,13 +360,100 @@
         "padding_top": 64,
         "padding_bottom": 64
       }
+    },
+    "duo": {
+      "type": "nd-duo",
+      "blocks": {
+        "d1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/maison-nuits-douces-6.png",
+            "kicker": "Nouveauté",
+            "title": "La parure pied-de-poule",
+            "text": "Double gaze de coton, cinq coloris doux.",
+            "button_label": "Découvrir la collection",
+            "link": "shopify://products/parure-de-lit-pied-de-poule-double-gaze"
+          }
+        },
+        "d2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/maison-nuits-douces-2.png",
+            "kicker": "Coup de cœur",
+            "title": "L'esprit japonais",
+            "text": "Lignes simples, tons sable et sauge, coton qui respire.",
+            "button_label": "Découvrir la collection",
+            "link": "shopify://collections/style-japonais"
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    },
+    "materials": {
+      "type": "nd-materials",
+      "blocks": {
+        "m1": {
+          "type": "material",
+          "settings": {
+            "title": "Coton lavé",
+            "benefit": "Doux et naturellement froissé",
+            "text": "<p>Lavé avant confection pour une souplesse immédiate. Pas besoin de repasser : son froissé fait tout son charme.</p>",
+            "color": "#D8C3A5",
+            "link": "shopify://collections/parures"
+          }
+        },
+        "m2": {
+          "type": "material",
+          "settings": {
+            "title": "Double gaze de coton",
+            "benefit": "Fraîche et légère",
+            "text": "<p>Deux fines couches de coton tissées ensemble : un voile aérien qui respire, idéal toute l'année.</p>",
+            "color": "#A7B59A",
+            "link": "shopify://products/parure-de-lit-double-gaze-coton"
+          }
+        },
+        "m3": {
+          "type": "material",
+          "settings": {
+            "title": "Satin de coton",
+            "benefit": "Lisse et soyeux",
+            "text": "<p>Un tissage serré qui donne un toucher doux et un léger lustre, pour un lit élégant.</p>",
+            "color": "#EFE6D6",
+            "link": "shopify://products/parure-de-lit-satin-coton"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ],
+      "settings": {
+        "kicker": "Nos matières",
+        "heading": "Explorez nos matières",
+        "compare_link": "shopify://pages/comparer-nos-matieres",
+        "compare_label": "Comparer nos matières",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
     "hero",
     "featured_collection",
-    "colors",
+    "duo",
     "arguments",
+    "materials",
+    "colors",
     "sizes",
     "styles",
     "editorial",

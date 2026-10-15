@@ -1539,6 +1539,13 @@
         "default": "Taille"
       },
       {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Livraison offerte à partir de (€)",
+        "info": "Doit correspondre à vos réglages Paramètres > Expédition. Laisser vide pour masquer la barre du panier.",
+        "default": 65
+      },
+      {
         "type": "page",
         "id": "size_guide_page",
         "label": "Page du guide des tailles"

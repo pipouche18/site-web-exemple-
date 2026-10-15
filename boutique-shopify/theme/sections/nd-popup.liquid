@@ -1,0 +1,106 @@
+{% comment %}
+  Pop-up d'inscription (moitié photo, moitié formulaire).
+  - S'ouvre après un délai, ou quand la souris quitte la page (ordinateur).
+  - Ne réapparaît plus une fois fermée (mémorisé dans le navigateur) ni après inscription.
+  - Inscription à la newsletter Shopify (consentement explicite) ; le code s'affiche après validation.
+{% endcomment %}
+{%- if section.settings.enable -%}
+  {%- form 'customer', id: 'NdPopupForm', class: 'nd-pop__form' -%}
+    {%- assign posted = form.posted_successfully? -%}
+    {%- assign has_errors = form.errors -%}
+    <dialog class="nd-pop" id="NdPopup" aria-labelledby="NdPopupTitle" data-delay="{{ section.settings.delay }}" {% if posted or has_errors %}data-open-now{% endif %}>
+      <div class="nd-pop__inner">
+        <div class="nd-pop__media">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 900 | image_tag: sizes: '(min-width: 750px) 400px, 100vw', loading: 'lazy', alt: '' }}
+          {%- endif -%}
+        </div>
+        <div class="nd-pop__body">
+          <button type="button" class="nd-pop__close" data-nd-close aria-label="Fermer">
+            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l12 12M13 1L1 13"/></svg>
+          </button>
+          {%- if posted -%}
+            <p class="nd-pop__kicker">Bienvenue</p>
+            <h2 class="nd-pop__title" id="NdPopupTitle">Merci, c'est noté !</h2>
+            <p class="nd-pop__text">Voici votre code pour votre première commande :</p>
+            <p class="nd-pop__code"><span>{{ section.settings.code }}</span><button type="button" class="nd-pop__copy" data-nd-copy="{{ section.settings.code }}">Copier</button></p>
+            <button type="button" class="button nd-pop__btn" data-nd-close>Découvrir les parures</button>
+          {%- else -%}
+            <p class="nd-pop__kicker">{{ section.settings.kicker | escape }}</p>
+            <h2 class="nd-pop__title" id="NdPopupTitle">{{ section.settings.heading | escape }}</h2>
+            <p class="nd-pop__text">{{ section.settings.text | escape }}</p>
+            <input type="hidden" name="contact[tags]" value="newsletter,bienvenue">
+            <label class="visually-hidden" for="NdPopupEmail">E-mail</label>
+            <input id="NdPopupEmail" class="nd-pop__input" type="email" name="contact[email]" required autocomplete="email" placeholder="Votre adresse e-mail"{% if has_errors %} aria-invalid="true" aria-describedby="NdPopupError"{% endif %}>
+            {%- if has_errors -%}<p class="nd-pop__error" id="NdPopupError">Cette adresse ne semble pas valide, ou elle est déjà inscrite.</p>{%- endif -%}
+            <button type="submit" class="button nd-pop__btn">{{ section.settings.button | escape }}</button>
+            <div class="nd-pop__legal">{{ section.settings.legal }}</div>
+            <button type="button" class="nd-pop__no" data-nd-close>Non merci</button>
+          {%- endif -%}
+        </div>
+      </div>
+    </dialog>
+  {%- endform -%}
+
+  <script>
+    (function () {
+      var dlg = document.getElementById('NdPopup');
+      if (!dlg || typeof dlg.showModal !== 'function') return;
+      var KEY = 'ndPopupDone';
+      var done = false;
+      try { done = localStorage.getItem(KEY) === '1'; } catch (e) {}
+      var shown = false;
+      function open() {
+        if (shown || dlg.open) return;
+        shown = true;
+        dlg.showModal();
+      }
+      function close() {
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        dlg.classList.add('is-closing');
+        setTimeout(function () { dlg.classList.remove('is-closing'); dlg.close(); }, 220);
+      }
+      dlg.addEventListener('click', function (e) {
+        if (e.target === dlg || e.target.closest('[data-nd-close]')) close();
+        var c = e.target.closest('[data-nd-copy]');
+        if (c && navigator.clipboard) { navigator.clipboard.writeText(c.getAttribute('data-nd-copy')); c.textContent = 'Copié ✓'; }
+      });
+      dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+      // Après envoi du formulaire (succès ou erreur) : on rouvre pour montrer le résultat
+      if (dlg.hasAttribute('data-open-now')) {
+        if (dlg.querySelector('.nd-pop__code')) { try { localStorage.setItem(KEY, '1'); } catch (e) {} }
+        open();
+        return;
+      }
+      if (done) return;
+      if (/\/(cart|checkouts?|account)/.test(location.pathname)) return;
+      var delay = (parseInt(dlg.getAttribute('data-delay'), 10) || 10) * 1000;
+      setTimeout(open, delay);
+      // Intention de sortie (ordinateur) : la souris file vers le haut de la fenêtre
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('mouseout', function (e) {
+          if (!e.relatedTarget && e.clientY <= 0) open();
+        });
+      }
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pop-up bienvenue",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Activer la pop-up", "default": true },
+    { "type": "range", "id": "delay", "label": "Délai avant affichage", "min": 3, "max": 60, "step": 1, "unit": "s", "default": 10 },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Bienvenue chez Maison Nuits Douces" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "-10 % sur votre première commande" },
+    { "type": "text", "id": "text", "label": "Texte", "default": "Inscrivez-vous et recevez votre code tout de suite, avec nos conseils et nouveautés (un e-mail par mois environ)." },
+    { "type": "text", "id": "button", "label": "Bouton", "default": "Recevoir mon code" },
+    { "type": "text", "id": "code", "label": "Code de réduction affiché", "info": "Doit exister dans Remises.", "default": "BIENVENUE10" },
+    { "type": "richtext", "id": "legal", "label": "Mention RGPD", "default": "<p>En vous inscrivant, vous acceptez de recevoir nos e-mails. Désinscription en un clic. Voir notre <a href=\"/policies/privacy-policy\">politique de confidentialité</a>.</p>" }
+  ]
+}
+{% endschema %}

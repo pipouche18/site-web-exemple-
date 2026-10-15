@@ -94,7 +94,8 @@
 })();
 
 /* ---------------------------------------------------------------
-   Galerie produit (ordinateur) : la molette sur la grande photo passe
+   Galerie produit (ordinateur) : la molette sur les photos (grande photo
+   ou miniatures) passe
    à la photo suivante / précédente. Un geste = une photo (on attend la
    fin de l'inertie du pavé tactile avant d'autoriser le pas suivant).
    À la première ou à la dernière photo, la page défile normalement.
@@ -150,9 +151,8 @@
 
   document.addEventListener('wheel', function (e) {
     if (!desktop.matches || e.ctrlKey) return;
-    var viewer = e.target.closest && e.target.closest('media-gallery [id^="GalleryViewer"]');
-    if (!viewer) return;
-    var gallery = viewer.closest('media-gallery');
+    var gallery = e.target.closest && e.target.closest('media-gallery');
+    if (!gallery) return;
     if (!isThumbLayout(gallery)) return;
     var list = thumbs(gallery);
     if (list.length < 2) return;

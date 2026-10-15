@@ -6,7 +6,7 @@
         "overlay": 40,
         "kicker": "Maison Nuits Douces",
         "heading": "Des nuits douces, naturellement froissées",
-        "text": "Coton lavé et double gaze de coton, qui s'adoucissent à chaque lavage.",
+        "text": "Double gaze et satin de coton, boutis brodés : du linge de lit aux teintes douces.",
         "button_label": "Découvrir les parures",
         "button_link": "shopify://collections/parures",
         "height_mobile": 85,
@@ -49,22 +49,22 @@
         "f1": {
           "type": "feature",
           "settings": {
-            "title": "Un coton qui s'adoucit",
-            "text": "<p>Coton lavé ou double gaze : souple dès la première nuit, encore plus doux à chaque lavage.</p>"
+            "title": "Des matières naturelles",
+            "text": "<p>Double gaze de coton, satin de coton, boutis au dessus en coton : des matières choisies pour leur aspect et leurs couleurs.</p>"
           }
         },
         "f2": {
           "type": "feature",
           "settings": {
             "title": "Le charme du froissé",
-            "text": "<p>Pas de repassage : l'effet froissé naturel donne au lit un air vécu, chaleureux et apaisant.</p>"
+            "text": "<p>Le relief de la double gaze donne au lit un air naturel et décontracté, beau même quand il n'est pas fait.</p>"
           }
         },
         "f3": {
           "type": "feature",
           "settings": {
-            "title": "Un prix juste, des délais honnêtes",
-            "text": "<p>De belles parures à moins de 150 €, livrées en 10 à 18 jours ouvrés avec suivi. On vous le dit dès le départ.</p>"
+            "title": "Des délais annoncés honnêtement",
+            "text": "<p>Livraison suivie en 10 à 18 jours ouvrés, offerte en France dès 65 €. La date estimée est indiquée sur chaque fiche produit.</p>"
           }
         }
       },
@@ -95,18 +95,6 @@
             "palette_names": "sauge, sable, écru"
           }
         },
-        "nordique": {
-          "type": "style",
-          "settings": {
-            "collection": "style-nordique",
-            "title": "Nordique",
-            "color_scheme": "scheme-2",
-            "mood": "Clair, simple, lumineux",
-            "palette": "#EFE6D6, #A39A90, #D9DDCC",
-            "palette_names": "écru, gris galet, vert d'eau",
-            "background": "#E7E5DE"
-          }
-        },
         "romantique": {
           "type": "style",
           "settings": {
@@ -122,7 +110,6 @@
       },
       "block_order": [
         "japonais",
-        "nordique",
         "romantique"
       ],
       "settings": {
@@ -131,7 +118,7 @@
         "padding_top": 72,
         "padding_bottom": 72,
         "kicker": "Par style",
-        "text": "Trois ambiances, un même coton doux. Choisissez celle qui vous ressemble."
+        "text": "Deux ambiances, à choisir selon votre chambre."
       }
     },
     "reassurance": {
@@ -142,31 +129,31 @@
           "settings": {
             "icon": "lock",
             "title": "Paiement sécurisé",
-            "text": "Carte bancaire, Apple Pay, PayPal [à confirmer]"
+            "text": "Paiement chiffré, traité par Shopify"
           }
         },
         "r2": {
           "type": "item",
           "settings": {
-            "icon": "return",
-            "title": "14 jours pour changer d'avis",
-            "text": "Droit de rétractation légal"
+            "icon": "truck",
+            "title": "Livraison offerte dès 65 €",
+            "text": "En France, suivie, en 10 à 18 jours ouvrés"
           }
         },
         "r3": {
           "type": "item",
           "settings": {
-            "icon": "truck",
-            "title": "Livraison en 10 à 18 jours ouvrés",
-            "text": "Colis suivi, délai annoncé honnêtement"
+            "icon": "return",
+            "title": "14 jours pour changer d'avis",
+            "text": "Droit de rétractation, procédure simple"
           }
         },
         "r4": {
           "type": "item",
           "settings": {
             "icon": "chat_bubble",
-            "title": "Une question ?",
-            "text": "Réponse sous 48 h par e-mail"
+            "title": "Une vraie personne vous répond",
+            "text": "Par e-mail, sous 48 h"
           }
         }
       },
@@ -381,7 +368,7 @@
             "image": "shopify://shop_images/maison-nuits-douces-2.png",
             "kicker": "Coup de cœur",
             "title": "L'esprit japonais",
-            "text": "Lignes simples, tons sable et sauge, coton qui respire.",
+            "text": "Lignes simples et tons doux, pour une chambre apaisée.",
             "button_label": "Découvrir la collection",
             "link": "shopify://collections/style-japonais"
           }
@@ -403,31 +390,31 @@
         "m1": {
           "type": "material",
           "settings": {
-            "title": "Coton lavé",
-            "benefit": "Doux et naturellement froissé",
-            "text": "<p>Lavé avant confection pour une souplesse immédiate. Pas besoin de repasser : son froissé fait tout son charme.</p>",
-            "color": "#D8C3A5",
-            "link": "shopify://collections/parures"
+            "title": "Double gaze de coton",
+            "benefit": "Légère et froissée",
+            "text": "<p>Deux fines couches de gaze de coton tissées ensemble : un relief délicat et un aspect naturellement froissé.</p>",
+            "color": "#A7B59A",
+            "link": "shopify://products/parure-de-lit-double-gaze-coton"
           }
         },
         "m2": {
           "type": "material",
           "settings": {
-            "title": "Double gaze de coton",
-            "benefit": "Fraîche et légère",
-            "text": "<p>Deux fines couches de coton tissées ensemble : un voile aérien qui respire, idéal toute l'année.</p>",
-            "color": "#A7B59A",
-            "link": "shopify://products/parure-de-lit-double-gaze-coton"
+            "title": "Satin de coton",
+            "benefit": "Lisse et lumineux",
+            "text": "<p>Un tissage satin qui donne au coton une surface lisse et un léger lustre.</p>",
+            "color": "#EFE6D6",
+            "link": "shopify://products/parure-de-lit-satin-coton"
           }
         },
         "m3": {
           "type": "material",
           "settings": {
-            "title": "Satin de coton",
-            "benefit": "Lisse et soyeux",
-            "text": "<p>Un tissage serré qui donne un toucher doux et un léger lustre, pour un lit élégant.</p>",
-            "color": "#EFE6D6",
-            "link": "shopify://products/parure-de-lit-satin-coton"
+            "title": "Boutis matelassé",
+            "benefit": "Relief et motifs",
+            "text": "<p>Un dessus en coton matelassé, brodé ou imprimé, qui habille le lit et apporte du relief.</p>",
+            "color": "#D8C3A5",
+            "link": "shopify://collections/couvre-lits"
           }
         }
       },

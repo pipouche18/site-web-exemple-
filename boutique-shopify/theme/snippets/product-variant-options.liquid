@@ -95,7 +95,18 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
+    {%- liquid
+      # Maison Nuits Douces : pastille photo pour les coloris qui ont une photo associée
+      assign nd_oname = option.name | downcase
+      assign nd_thumb = null
+      if nd_oname contains 'coloris' or nd_oname contains 'couleur' or nd_oname contains 'teinte'
+        assign nd_thumb = value.variant.featured_media.preview_image
+      endif
+    -%}
+    <label for="{{ input_id }}"{% if nd_thumb %} class="nd-swatch-label"{% endif %}>
+      {%- if nd_thumb -%}
+        <span class="nd-swatch-thumb" aria-hidden="true">{{ nd_thumb | image_url: width: 96, height: 96, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 48, height: 48 }}</span>
+      {%- endif -%}
       {{ value -}}
       {{ label_unavailable }}
     </label>

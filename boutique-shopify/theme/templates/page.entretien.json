@@ -13,7 +13,7 @@
         "b1": {
           "type": "text",
           "settings": {
-            "text": "<p>Le coton lavé et la double gaze de coton sont des matières vivantes, qui gagnent en douceur au fil des lavages. Voici comment en prendre soin pour qu'elles vous accompagnent longtemps.</p>"
+            "text": "<p>Le coton est une matière facile à vivre. L'étiquette d'entretien cousue sur chaque pièce est la référence : suivez toujours ses indications (température, séchage, repassage). Voici en plus quelques gestes simples.</p>"
           }
         },
         "b2": {
@@ -25,7 +25,7 @@
         "b3": {
           "type": "text",
           "settings": {
-            "text": "<p>Lavez votre parure avant la première utilisation : elle sera encore plus souple et l'effet froissé se révélera. Lavez-la seule ou avec des couleurs proches, car les teintes naturelles peuvent légèrement dégorger les premières fois.</p>"
+            "text": "<p>Pour les premiers lavages, lavez votre parure seule ou avec des couleurs proches : les teintes peuvent légèrement dégorger au début.</p>"
           }
         },
         "b4": {
@@ -37,7 +37,7 @@
         "b5": {
           "type": "text",
           "settings": {
-            "text": "<ul><li>En machine à <strong>30 °C ou 40 °C</strong> maximum [à confirmer selon l'étiquette du produit], programme délicat ou coton.</li><li>Retournez la housse et fermez-la pour protéger les fibres.</li><li>Une <strong>lessive douce</strong>, en quantité modérée. Évitez l'eau de Javel et les détachants agressifs.</li><li><strong>Pas d'adoucissant</strong> : il alourdit les fibres et fait perdre au coton sa légèreté. Un peu de vinaigre blanc dans le bac à adoucissant suffit.</li><li>Ne surchargez pas le tambour : le linge doit pouvoir bouger.</li></ul>"
+            "text": "<ul><li>Respectez la <strong>température indiquée sur l'étiquette</strong>.</li><li>Retournez la housse et fermez-la pour protéger le tissu.</li><li>Une <strong>lessive douce</strong>, en quantité modérée. Évitez l'eau de Javel et les détachants agressifs.</li><li>Ne surchargez pas le tambour : le linge doit pouvoir bouger.</li></ul>"
           }
         },
         "b6": {
@@ -49,7 +49,7 @@
         "b7": {
           "type": "text",
           "settings": {
-            "text": "<ul><li><strong>À l'air libre</strong>, idéalement à l'ombre pour préserver les couleurs.</li><li>En sèche-linge, <strong>à basse température</strong> seulement, et sortez le linge encore légèrement humide.</li><li>Secouez bien chaque pièce avant de l'étendre : c'est là que naît le joli froissé.</li></ul>"
+            "text": "<ul><li><strong>À l'air libre</strong>, idéalement à l'ombre pour préserver les couleurs.</li><li>Sèche-linge : seulement si l'étiquette l'autorise, et à la température indiquée.</li><li>Secouez bien chaque pièce avant de l'étendre.</li></ul>"
           }
         },
         "b8": {
@@ -61,13 +61,13 @@
         "b9": {
           "type": "text",
           "settings": {
-            "text": "<p>Bonne nouvelle : il n'y a rien à repasser. Pour un froissé naturel et régulier, essorez à vitesse moyenne (800 tours environ), secouez, puis étendez sans tendre. Si vous préférez un aspect plus net, repassez à température moyenne sur un tissu encore humide.</p>"
+            "text": "<p>Pour un aspect froissé naturel, secouez le linge à la sortie de la machine puis étendez-le sans le tendre. Si vous préférez un rendu plus lisse, repassez en suivant les indications de l'étiquette.</p>"
           }
         },
         "b10": {
           "type": "note",
           "settings": {
-            "text": "<p><strong>Petites bouloches ?</strong> La double gaze peut former de légères peluches les premières semaines : c'est normal et cela disparaît avec les lavages.</p>"
+            "text": "<p><strong>Une question sur l'entretien d'un produit précis ?</strong> Écrivez-nous depuis la page Contact : nous vous répondons sous 48 h.</p>"
           }
         }
       },

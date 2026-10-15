@@ -58,7 +58,7 @@
         "tabs": {
           "type": "nd_tabs",
           "settings": {
-            "care_default": "<p>Lavage en machine à 30 °C ou 40 °C, sur l'envers, avec une lessive douce sans adoucissant. Séchage à l'air libre ou en sèche-linge à basse température. Pas de repassage nécessaire : l'effet froissé fait tout le charme.</p>",
+            "care_default": "<p>Suivez les consignes de l'étiquette d'entretien cousue sur chaque pièce : elles font foi.</p>",
             "care_page": "conseils-entretien",
             "shipping_text": "<p><strong>Livraison en [MIN] à [MAX] jours ouvrés.</strong> Vous recevez un numéro de suivi par e-mail dès l'expédition.</p><p><strong>Retours :</strong> vous disposez de 14 jours après réception pour changer d'avis. Le produit doit être retourné neuf, non lavé, dans son emballage d'origine.</p>",
             "shipping_page": "livraison-et-retours"
@@ -86,10 +86,14 @@
         "benefits": {
           "type": "nd_benefits",
           "settings": {
-            "b1": "Un coton qui s'adoucit à chaque lavage",
-            "b2": "Effet froissé naturel, sans repassage",
-            "b3": "Livraison suivie offerte en France"
+            "b1": "",
+            "b2": "",
+            "b3": ""
           }
+        },
+        "expert": {
+          "type": "nd_expert",
+          "settings": {}
         }
       },
       "block_order": [
@@ -104,6 +108,7 @@
         "delivery",
         "reassurance",
         "tabs",
+        "expert",
         "complementary",
         "share"
       ],

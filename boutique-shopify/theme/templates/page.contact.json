@@ -13,7 +13,7 @@
         "b1": {
           "type": "text",
           "settings": {
-            "text": "<p>Une question sur une taille, une couleur ou votre commande ? Écrivez-nous via le formulaire ci-dessous ou directement à <strong>[VOTRE-EMAIL]</strong>. Nous répondons sous 48 h ouvrées.</p><p>Pour une commande, pensez à indiquer votre numéro de commande.</p>"
+            "text": "<p>Une question sur une taille, une couleur ou votre commande ? Écrivez-nous via le formulaire ci-dessous : nous répondons sous 48 h ouvrées.</p><p>Pour une commande, pensez à indiquer votre numéro de commande.</p>"
           }
         }
       },

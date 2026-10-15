@@ -575,6 +575,7 @@
           </small>
         </div>
 
+        {%- render 'nd-gift-note' -%}
         <!-- CTAs -->
 
         <div class="cart__ctas" {{ block.shopify_attributes }}>
@@ -591,6 +592,11 @@
             {{ 'sections.cart.checkout' | t }}
           </button>
         </div>
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          <ul class="nd-pay list-unstyled" role="list" aria-label="Moyens de paiement acceptés">
+            {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>{%- endfor -%}
+          </ul>
+        {%- endif -%}
       </div>
     </div>
   </div>

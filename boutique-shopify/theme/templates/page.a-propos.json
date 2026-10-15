@@ -20,7 +20,7 @@
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Maison Nuits Douces est née d'un coup de cœur pour le linge de lit en coton lavé, celui qu'on voit sur Pinterest et qu'on rêve d'avoir chez soi, mais qu'on trouve souvent hors de prix.</p><p>Derrière la marque, pas de grand groupe : une petite maison indépendante, née d'une envie simple, rendre ce linge doux et naturel accessible au plus grand nombre.</p><p>La chambre, c'est l'endroit où chaque journée commence et se termine. Nous la voulons apaisante et belle sans effort : un lit qu'on n'a pas besoin de faire parfaitement, des matières qui respirent, des couleurs qui reposent les yeux. C'est tout ce que nous mettons dans nos parures.</p>",
+            "text": "<p>Maison Nuits Douces est née d'un coup de cœur pour le linge de lit en coton lavé, celui qu'on voit sur Pinterest et qu'on rêve d'avoir chez soi, mais qu'on trouve souvent hors de prix.</p><p>Derrière la marque, pas de grand groupe : une petite maison indépendante, née d'une envie simple, rendre ce linge doux et naturel accessible au plus grand nombre.</p><p>La chambre, c'est l'endroit où chaque journée commence et se termine. Nous la voulons apaisante et belle sans effort : un lit qu'on n'a pas besoin de faire parfaitement, des matières naturelles, des couleurs qui reposent les yeux. C'est tout ce que nous mettons dans nos parures.</p>",
             "text_style": "body"
           }
         }
@@ -55,7 +55,7 @@
         "b2": {
           "type": "text",
           "settings": {
-            "text": "<p>Nous avons une idée simple du linge de lit : il doit être doux dès la première nuit, beau même quand le lit n'est pas fait, et rester accessible.</p><p>Chaque parure est choisie pour son toucher, la qualité de son coton et ses couleurs naturelles, faciles à vivre et à associer. Pas de collections à rallonge : quelques modèles que nous aimons vraiment, pensés pour durer.</p>"
+            "text": "<p>Nous avons une idée simple du linge de lit : il doit être beau même quand le lit n'est pas fait, agréable à vivre et rester accessible.</p><p>Chaque parure est choisie pour sa matière, ses finitions et ses couleurs, faciles à associer. Pas de collections à rallonge : quelques modèles que nous aimons vraiment.</p>"
           }
         },
         "b3": {

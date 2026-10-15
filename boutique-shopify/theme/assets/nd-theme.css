@@ -685,10 +685,41 @@ media-gallery [id^="GalleryViewer"] { position: relative; }
 .nd-seo__toggle::after { content: '+'; font-size: 2.2rem; line-height: 1; transition: transform .35s var(--nd-ease); }
 .nd-seo[open] .nd-seo__toggle::after { transform: rotate(45deg); }
 .nd-seo__body { padding: 0 0 2.4rem; max-width: 72ch; color: rgba(var(--color-foreground), .85); }
-.nd-seo__body h3 { margin: 2rem 0 .6rem; font-size: 1.9rem; }
+.nd-seo__body h2 { margin: 2rem 0 .6rem; font-size: 1.9rem; }
 /* 404 */
 .nd-404 { padding-top: 6.4rem; padding-bottom: 7.2rem; text-align: center; }
 .nd-404__title { margin: .8rem auto 1.2rem; max-width: 20ch; }
 .nd-404__text { margin: 0 auto 4rem; max-width: 52ch; color: rgba(var(--color-foreground), .8); }
 .nd-404 .nd-tiles { text-align: left; }
 .nd-404__cta { margin-top: 4rem; }
+
+/* =========================================================
+   v14 : pastilles photo des coloris, bloc « Votre expert », 4 piliers, message cadeau
+   ========================================================= */
+.product-form__input input[type='radio'] + label.nd-swatch-label { display: inline-flex; align-items: center; gap: .8rem; padding: .4rem 1.4rem .4rem .4rem; border-radius: 99rem; }
+.nd-swatch-thumb { width: 3.2rem; height: 3.2rem; border-radius: 50%; overflow: hidden; flex: none; box-shadow: 0 0 0 1px rgba(var(--color-foreground), .15); }
+.nd-swatch-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.product-form__input input[type='radio']:checked + label.nd-swatch-label .nd-swatch-thumb { box-shadow: 0 0 0 2px rgb(var(--color-background)), 0 0 0 3px rgb(var(--color-foreground)); }
+/* Panier : message cadeau + moyens de paiement */
+.nd-gift { margin: 0 0 1.2rem; border: 1px solid rgba(var(--color-foreground), .12); border-radius: 6px; }
+.nd-gift__toggle { list-style: none; cursor: pointer; display: flex; align-items: center; gap: .8rem; min-height: 4.4rem; padding: 0 1.2rem; font-size: 1.4rem; }
+.nd-gift__toggle::-webkit-details-marker { display: none; }
+.nd-gift__toggle::after { content: '+'; margin-left: auto; font-size: 1.8rem; transition: transform .3s var(--nd-ease); }
+.nd-gift[open] .nd-gift__toggle::after { transform: rotate(45deg); }
+.nd-gift__body { padding: 0 1.2rem 1.2rem; }
+.nd-gift__label { display: block; font-size: 1.25rem; margin-bottom: .4rem; color: rgba(var(--color-foreground), .75); }
+.nd-gift__msg { width: 100%; box-sizing: border-box; border: 1px solid rgba(var(--color-foreground), .25); border-radius: 4px; padding: .8rem 1rem; font: inherit; font-size: 1.4rem; background: rgb(var(--color-background)); color: inherit; resize: vertical; }
+.nd-gift__hint { margin: .4rem 0 0; font-size: 1.15rem; color: rgba(var(--color-foreground), .6); }
+.nd-pay { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 1.2rem 0 0; }
+.nd-pay svg { width: 3.8rem; height: 2.4rem; }
+/* Fiche produit : « Nos réponses » */
+.nd-expert { margin: 2.4rem 0; padding: 2rem 2rem .8rem; border-radius: 6px; background: rgba(var(--color-foreground), .04); }
+.nd-expert__kicker { margin: 0 0 .2rem; font-size: 1.1rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(var(--color-foreground), .65); }
+.nd-expert__title { margin: 0 0 .8rem; }
+.nd-expert__item { border-top: 1px solid rgba(var(--color-foreground), .1); }
+.nd-expert__item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: 4.4rem; font-size: 1.45rem; font-weight: 500; }
+.nd-expert__item summary::-webkit-details-marker { display: none; }
+.nd-expert__item summary::after { content: '+'; font-size: 1.8rem; transition: transform .3s var(--nd-ease); }
+.nd-expert__item[open] summary::after { transform: rotate(45deg); }
+.nd-expert__item .rte { padding-bottom: 1.2rem; font-size: 1.4rem; color: rgba(var(--color-foreground), .85); }
+.nd-expert__item .rte p { margin: 0; }

@@ -21,18 +21,6 @@
             "palette_names": "sauge, sable, écru"
           }
         },
-        "nordique": {
-          "type": "style",
-          "settings": {
-            "collection": "style-nordique",
-            "title": "Nordique",
-            "color_scheme": "scheme-2",
-            "mood": "Clair, simple, lumineux",
-            "palette": "#EFE6D6, #A39A90, #D9DDCC",
-            "palette_names": "écru, gris galet, vert d'eau",
-            "background": "#E7E5DE"
-          }
-        },
         "romantique": {
           "type": "style",
           "settings": {
@@ -48,7 +36,6 @@
       },
       "block_order": [
         "japonais",
-        "nordique",
         "romantique"
       ],
       "settings": {

@@ -20,7 +20,7 @@
           "type": "question",
           "settings": {
             "question": "Quel est le délai de livraison ?",
-            "answer": "<p>Comptez <strong>10 à 18 jours ouvrés</strong> entre la commande et la réception. La date estimée est affichée sur chaque fiche produit, sous le bouton d'achat.</p>"
+            "answer": "<p>Comptez <strong>10 à 18 jours ouvrés</strong> entre la commande et la réception : nos parures sont préparées à la commande puis expédiées par transporteur international avec suivi. La date estimée est affichée sur chaque fiche produit, sous le bouton d'achat.</p>"
           }
         },
         "f3": {
@@ -34,14 +34,14 @@
           "type": "question",
           "settings": {
             "question": "Combien coûte la livraison ?",
-            "answer": "<p>[À COMPLÉTER : frais de livraison, et seuil de livraison offerte s'il y en a un.]</p>"
+            "answer": "<p>En France : livraison standard <strong>offerte dès 65 € d'achat</strong> (7,99 € en dessous). Union européenne : 22 €. Autres pays desservis : 29 €. Le montant exact s'affiche avant le paiement.</p>"
           }
         },
         "f5": {
           "type": "question",
           "settings": {
             "question": "Livrez-vous en dehors de la France ?",
-            "answer": "<p>[À COMPLÉTER : pays livrés. Par défaut : France métropolitaine.]</p>"
+            "answer": "<p>Oui : nous livrons la France, les pays de l'Union européenne et plusieurs autres pays. La liste des destinations s'affiche au moment de saisir votre adresse.</p>"
           }
         },
         "f6": {
@@ -61,7 +61,7 @@
           "type": "question",
           "settings": {
             "question": "Qui paie les frais de retour ?",
-            "answer": "<p>[À COMPLÉTER : par défaut, les frais de retour sont à la charge du client, sauf produit défectueux ou erreur de notre part.]</p>"
+            "answer": "<p>Les frais de retour sont à votre charge, sauf si le produit est défectueux, abîmé ou ne correspond pas à votre commande : dans ce cas, c'est nous qui les prenons en charge.</p>"
           }
         },
         "f9": {
@@ -88,21 +88,21 @@
           "type": "question",
           "settings": {
             "question": "De quoi sont faites vos parures ?",
-            "answer": "<p>Nos parures sont en <strong>coton</strong> : coton lavé ou double gaze de coton selon les modèles. La composition exacte est indiquée en haut de chaque fiche produit.</p>"
+            "answer": "<p>Nos parures sont en <strong>coton</strong> : double gaze de coton ou satin de coton selon les modèles. Nos boutis ont un dessus en coton. La composition de chaque produit est indiquée en haut de sa fiche.</p>"
           }
         },
         "f13": {
           "type": "question",
           "settings": {
             "question": "Qu'est-ce que la double gaze de coton ?",
-            "answer": "<p>Ce sont deux fines couches de gaze de coton tissées ensemble. Le résultat : un tissu léger, respirant et très doux, au joli aspect gaufré et froissé, agréable toute l'année.</p>"
+            "answer": "<p>C'est un tissu fait de deux fines couches de gaze de coton tissées ensemble. Il se reconnaît à son relief léger et à son aspect naturellement froissé.</p>"
           }
         },
         "f14": {
           "type": "question",
           "settings": {
             "question": "Pourquoi le tissu est-il froissé ?",
-            "answer": "<p>C'est voulu ! Le coton est lavé lors de sa fabrication, ce qui lui donne cet aspect naturel et décontracté, et une grande souplesse dès la première nuit. Pas besoin de repasser.</p>"
+            "answer": "<p>C'est voulu : l'aspect froissé fait partie du style de la double gaze et des tissus lavés. Il donne au lit une allure naturelle et décontractée.</p>"
           }
         },
         "f15": {
@@ -135,14 +135,14 @@
           "type": "question",
           "settings": {
             "question": "Comment laver ma parure ?",
-            "answer": "<p>En machine à 30 ou 40 °C, sur l'envers, avec une lessive douce et sans adoucissant. Séchage à l'air libre ou en sèche-linge à basse température. Retrouvez tous nos conseils sur la page Conseils d'entretien.</p>"
+            "answer": "<p>Chaque pièce porte une étiquette d'entretien cousue : c'est elle qui fait foi. Quelques gestes simples aident aussi : housse retournée et fermée, lessive douce, tambour pas trop rempli. Retrouvez nos conseils sur la page Conseils d'entretien.</p>"
           }
         },
         "f20": {
           "type": "question",
           "settings": {
             "question": "Le coton va-t-il rétrécir ?",
-            "answer": "<p>Le coton lavé est déjà prélavé, le rétrécissement est donc limité (environ 2 à 3 % [à confirmer]). Évitez les lavages à haute température et le séchage trop chaud.</p>"
+            "answer": "<p>Comme tout textile en coton, un léger rétrécissement est possible. Pour le limiter, respectez la température indiquée sur l'étiquette et évitez les séchages trop chauds.</p>"
           }
         },
         "f21": {
@@ -155,7 +155,7 @@
           "type": "question",
           "settings": {
             "question": "Quels moyens de paiement acceptez-vous ?",
-            "answer": "<p>[À COMPLÉTER selon vos réglages Shopify Payments : carte bancaire, Apple Pay, Google Pay, PayPal…]</p>"
+            "answer": "<p>Carte bancaire et les autres moyens de paiement affichés au moment de régler votre commande.</p>"
           }
         },
         "f23": {

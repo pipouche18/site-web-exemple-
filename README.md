@@ -39,3 +39,24 @@ Dossier `rushcars/` : site vitrine sobre, noir et épuré. En ligne à
 - **Couleurs** : variables en haut de `rushcars/style.css`.
 - **Photos** : liens Unsplash à remplacer ; une silhouette de voiture s'affiche si une image ne charge pas.
 - Formulaires « Estimation gratuite » et « Contact » en mode démo (brancher Formspree ou similaire).
+
+---
+
+# Logo — Maison Lettrine (créations en cire)
+
+Dossier `maison-lettrine/logo/` : une lettrine « L » transformée en bougie (flamme, coulures de cire)
+dans un cadre doré, avec le nom en lettres capitales et le slogan « Créations en cire ».
+Les textes sont vectorisés : aucune police à installer.
+
+| Fichier | Usage |
+|---|---|
+| `logo-principal` (.svg / .png) | Version principale, fond crème |
+| `logo-principal-transparent` | Même chose sans fond (étiquettes, emballages) |
+| `logo-horizontal` | En-tête de site, signature mail, bannières |
+| `embleme` | Icône seule : favicon, photo de profil réseaux sociaux |
+| `logo-fond-sombre` | Sur fond foncé |
+| `logo-monochrome` | Une seule couleur : tampon, gravure, impression N&B |
+
+Couleurs : encre `#2B211D`, crème `#F5ECDD`, or `#C59A4A`, flamme `#E8A33D` / `#F7D58A`.
+Pour modifier le slogan ou les couleurs : `pip install fonttools cairosvg`, éditer puis lancer
+`python3 maison-lettrine/logo/generer_logo.py maison-lettrine/logo`.

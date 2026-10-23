@@ -42,10 +42,10 @@ Dossier `rushcars/` : site vitrine sobre, noir et épuré. En ligne à
 
 ---
 
-# Logo — Maison Lettrine (créations en cire)
+# Logo — Maison Lettrine (cachets de cire)
 
-Dossier `maison-lettrine/logo/` : une lettrine « L » transformée en bougie (flamme, coulures de cire)
-dans un cadre doré, avec le nom en lettres capitales et le slogan « Créations en cire ».
+Dossier `maison-lettrine/logo/` : un cachet de cire bordeaux en relief, avec la lettrine « L » au centre
+et « Maison Lettrine » en couronne, accompagné du nom et du slogan « Cachets de cire ».
 Les textes sont vectorisés : aucune police à installer.
 
 | Fichier | Usage |
@@ -53,10 +53,10 @@ Les textes sont vectorisés : aucune police à installer.
 | `logo-principal` (.svg / .png) | Version principale, fond crème |
 | `logo-principal-transparent` | Même chose sans fond (étiquettes, emballages) |
 | `logo-horizontal` | En-tête de site, signature mail, bannières |
-| `embleme` | Icône seule : favicon, photo de profil réseaux sociaux |
+| `embleme` | Cachet seul : favicon, photo de profil réseaux sociaux |
 | `logo-fond-sombre` | Sur fond foncé |
 | `logo-monochrome` | Une seule couleur : tampon, gravure, impression N&B |
 
-Couleurs : encre `#2B211D`, crème `#F5ECDD`, or `#C59A4A`, flamme `#E8A33D` / `#F7D58A`.
+Couleurs : cire `#8E1F2B` (ombre `#5E1119`, reflet `#B8424D`), encre `#2B211D`, crème `#F5ECDD`, or `#B8893E`.
 Pour modifier le slogan ou les couleurs : `pip install fonttools cairosvg`, éditer puis lancer
 `python3 maison-lettrine/logo/generer_logo.py maison-lettrine/logo`.

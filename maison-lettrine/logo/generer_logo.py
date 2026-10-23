@@ -1,4 +1,9 @@
-import sys, os
+"""Génère les déclinaisons du logo Maison Lettrine (cachet de cire).
+
+Usage : python3 generer_logo.py <dossier_de_sortie>
+Dépendances : pip install fonttools cairosvg
+"""
+import math, os, sys
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
@@ -7,107 +12,162 @@ import cairosvg
 OUT = sys.argv[1]
 FF = '/usr/share/fonts/truetype/freefont/'
 FONTS = {
-  'serif': TTFont(FF+'FreeSerif.ttf'),
-  'serifB': TTFont(FF+'FreeSerifBold.ttf'),
-  'ital': TTFont(FF+'FreeSerifItalic.ttf'),
-  'sans': TTFont('/usr/share/fonts/opentype/inter/Inter-Medium.otf'),
+    'serif': TTFont(FF + 'FreeSerif.ttf'),
+    'serifB': TTFont(FF + 'FreeSerifBold.ttf'),
+    'ital': TTFont(FF + 'FreeSerifItalic.ttf'),
+    'sans': TTFont('/usr/share/fonts/opentype/inter/Inter-Medium.otf'),
 }
 
+INK, CREAM, GOLD = '#2B211D', '#F5ECDD', '#B8893E'
+WAX, WAX_DARK, WAX_LIGHT = '#8E1F2B', '#5E1119', '#B8424D'
+
+
+def glyphs(font, s, size):
+    f = FONTS[font]
+    gs, cm = f.getGlyphSet(), f.getBestCmap()
+    sc = size / f['head'].unitsPerEm
+    return gs, [(gs[cm[ord(c)]], gs[cm[ord(c)]].width * sc) for c in s], sc
+
+
 def text_path(font, s, x, y, size, track=0.0, anchor='middle'):
-    """Return (svg path d, width) for string s; baseline at y; track in em."""
-    f = FONTS[font]; gs = f.getGlyphSet(); cm = f.getBestCmap()
-    upm = f['head'].unitsPerEm; sc = size/upm
-    adv = [gs[cm[ord(c)]].width*sc for c in s]
-    w = sum(adv) + track*size*(len(s)-1)
-    cx = x - (w/2 if anchor=='middle' else (w if anchor=='end' else 0))
+    """Chemin SVG d'une ligne de texte ; ligne de base en y ; track en em."""
+    gs, gl, sc = glyphs(font, s, size)
+    w = sum(a for _, a in gl) + track * size * (len(s) - 1)
+    cx = x - (w / 2 if anchor == 'middle' else (w if anchor == 'end' else 0))
     pen = SVGPathPen(gs)
-    for c, a in zip(s, adv):
-        g = gs[cm[ord(c)]]
+    for g, a in gl:
         g.draw(TransformPen(pen, (sc, 0, 0, -sc, cx, y)))
-        cx += a + track*size
+        cx += a + track * size
     return pen.getCommands(), w
 
-INK, CREAM, GOLD, FLAME, FLAME2 = '#2B211D', '#F5ECDD', '#C59A4A', '#E8A33D', '#F7D58A'
 
-def emblem(x, y, s, ink=INK, wax=CREAM, gold=GOLD, mono=None):
-    """Drop-cap tile of size s at (x,y): framed square, candle-L, flame, drip."""
-    k = s/400
+def ring_text(font, s, cx, cy, r, size, track=0.0):
+    """Texte disposé sur un cercle (lecture dans le sens horaire, centré en haut)."""
+    gs, gl, sc = glyphs(font, s, size)
+    total = sum(a for _, a in gl) + track * size * len(s)
+    ang = -math.pi / 2 - (total / r) / 2
+    pen = SVGPathPen(gs)
+    for g, a in gl:
+        mid = ang + (a / 2) / r
+        ca, sa = math.cos(mid), math.sin(mid)
+        # repère local : x tangent, y vers l'extérieur ; glyphe centré sur mid
+        px, py = cx + r * ca, cy + r * sa
+        tx, ty = -sa, ca            # tangent (sens horaire)
+        ox, oy = ca, sa             # normale extérieure
+        a_, b_ = tx * sc, ty * sc
+        c_, d_ = ox * sc, oy * sc
+        e_ = px - tx * a / 2
+        f_ = py - ty * a / 2
+        g.draw(TransformPen(pen, (a_, b_, c_, d_, e_, f_)))
+        ang += (a + track * size) / r
+    return pen.getCommands()
+
+
+def blob(cx, cy, r, n=14, amp=0.035):
+    """Contour irrégulier d'une goutte de cire écrasée (déterministe)."""
+    pts = []
+    for i in range(n):
+        t = 2 * math.pi * i / n
+        k = 1 + amp * (math.sin(3 * t + 0.7) + 0.6 * math.sin(5 * t + 2.1) + 0.4 * math.sin(8 * t))
+        pts.append((cx + r * k * math.cos(t), cy + r * k * math.sin(t)))
+    d = ''
+    for i in range(n):
+        p0, p1, p2, p3 = pts[i - 1], pts[i], pts[(i + 1) % n], pts[(i + 2) % n]
+        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
+        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
+        if i == 0:
+            d += f'M{p1[0]:.1f} {p1[1]:.1f}'
+        d += f'C{c1[0]:.1f} {c1[1]:.1f} {c2[0]:.1f} {c2[1]:.1f} {p2[0]:.1f} {p2[1]:.1f}'
+    return d + 'Z'
+
+
+def seal(x, y, s, mono=None, uid='a'):
+    """Cachet de cire de taille s posé en (x, y)."""
+    k = s / 400
     if mono:
-        ink, wax, gold = mono['bg'], mono['fg'], mono['fg']
-        fl1 = fl2 = mono['fg']
+        base = dark = light = mono['bg']
+        fill = f'fill="{base}"'
+        defs = ''
+        line = mono['fg']
     else:
-        fl1, fl2 = FLAME, FLAME2
-    # L glyph from FreeSerif Bold: stem x 106-268, top serif 20-369, height 676
-    L, _ = text_path('serifB', 'L', 0, 0, 1000, anchor='start')
-    g = f'<g transform="translate({x},{y}) scale({k})">'
-    g += f'<rect width="400" height="400" rx="6" fill="{ink}"/>'
-    g += f'<rect x="14" y="14" width="372" height="372" fill="none" stroke="{gold}" stroke-width="2.5"/>'
-    g += f'<rect x="22" y="22" width="356" height="356" fill="none" stroke="{gold}" stroke-width="1"/>'
-    for cx, cy in [(14,14),(386,14),(14,386),(386,386)]:
-        g += f'<rect x="{cx-5}" y="{cy-5}" width="10" height="10" transform="rotate(45 {cx} {cy})" fill="{gold}"/>'
-    # letter placement: scale 0.38, baseline at y=338, glyph left at x≈ 200-(649*.38)/2
-    ls = 0.35; ox = 200 - 649*ls/2 + 4; base = 334
-    g += f'<g transform="translate({ox},{base}) scale({ls})" fill="{wax}">'
-    g += f'<path d="{L}"/>'
-    # wax drips hanging from the top serif (overlap the stem to avoid seams)
-    g += ('<path d="M260 -651 L334 -651 C334 -612 318 -592 314 -566 L312 -500 '
-          'C312 -476 298 -464 287 -464 C276 -464 260 -476 260 -500 Z"/>')
-    g += ('<path d="M114 -651 L52 -651 C52 -628 68 -614 74 -598 C78 -584 84 -574 96 -574 '
-          'C108 -574 114 -586 114 -598 Z"/>')
-    g += '</g>'
-    # wick + flame above the stem (stem centre x = 187 glyph units)
-    fx = ox + 187*ls; top = base - 676*ls
-    g += f'<path d="M{fx} {top} L{fx} {top-12}" stroke="{wax}" stroke-width="3" stroke-linecap="round"/>'
-    fy = top - 10
-    F = 0.8
-    g += (f'<path d="M{fx} {fy-78*F} C{fx+8*F} {fy-52*F} {fx+30*F} {fy-38*F} {fx+30*F} {fy-16*F} '
-          f'C{fx+30*F} {fy+2*F} {fx+16*F} {fy+8*F} {fx} {fy+8*F} C{fx-16*F} {fy+8*F} {fx-30*F} {fy+2*F} {fx-30*F} {fy-16*F} '
-          f'C{fx-30*F} {fy-38*F} {fx-6*F} {fy-50*F} {fx} {fy-78*F} Z" fill="{fl1}"/>')
-    g += (f'<path d="M{fx} {fy-38*F} C{fx+4*F} {fy-26*F} {fx+14*F} {fy-20*F} {fx+14*F} {fy-9*F} '
-          f'C{fx+14*F} {fy} {fx+7*F} {fy+4*F} {fx} {fy+4*F} C{fx-7*F} {fy+4*F} {fx-14*F} {fy} {fx-14*F} {fy-9*F} '
-          f'C{fx-14*F} {fy-20*F} {fx-3*F} {fy-27*F} {fx} {fy-38*F} Z" fill="{fl2 if not mono else ink}"/>')
-    # small gold rule & dot to the right, like a drop-cap ornament
+        base, dark, light, line = WAX, WAX_DARK, WAX_LIGHT, '#D27A83'
+        defs = (f'<defs><radialGradient id="w{uid}" cx="38%" cy="32%" r="75%">'
+                f'<stop offset="0" stop-color="{WAX_LIGHT}"/><stop offset=".55" stop-color="{WAX}"/>'
+                f'<stop offset="1" stop-color="{WAX_DARK}"/></radialGradient></defs>')
+        fill = f'fill="url(#w{uid})"'
+    g = f'{defs}<g transform="translate({x},{y}) scale({k})">'
+    # goutte de cire étalée
+    g += f'<path d="{blob(200, 200, 176)}" {fill}/>'
+    # empreinte du sceau : creux légèrement décalé pour l'effet de relief
+    if not mono:
+        g += f'<circle cx="203" cy="204" r="148" fill="{light}" opacity=".55"/>'
+        g += f'<circle cx="197" cy="196" r="148" fill="{dark}"/>'
+        g += f'<circle cx="200" cy="200" r="146" fill="{base}"/>'
+    else:
+        g += f'<circle cx="200" cy="200" r="146" fill="none" stroke="{line}" stroke-width="3"/>'
+    g += f'<circle cx="200" cy="200" r="138" fill="none" stroke="{line}" stroke-width="1.5" opacity=".9"/>'
+    g += f'<circle cx="200" cy="200" r="98" fill="none" stroke="{line}" stroke-width="1.5" opacity=".9"/>'
+    # texte en couronne
+    ring = ring_text('serif', 'MAISON LETTRINE', 200, 200, 110, 26, track=0.14)
+    if not mono:
+        g += f'<path d="{ring}" fill="{dark}" transform="translate(-1.2,-1.2)"/>'
+    g += f'<path d="{ring}" fill="{line}"/>'
+    # petits losanges de part et d'autre, bas de la couronne
+    for ang in (115, 90, 65):
+        rad = math.radians(ang)
+        px, py = 200 + 118 * math.cos(rad), 200 + 118 * math.sin(rad)
+        sz = 5 if ang == 90 else 3
+        g += f'<rect x="{px-sz:.1f}" y="{py-sz:.1f}" width="{2*sz}" height="{2*sz}" transform="rotate(45 {px:.1f} {py:.1f})" fill="{line}"/>'
+    # lettrine centrale « L », en relief (ombre + reflet + face)
+    L, _ = text_path('serifB', 'L', 202, 258, 170)
+    if not mono:
+        g += f'<path d="{L}" fill="{dark}" transform="translate(-4,-4)"/>'
+        g += f'<path d="{L}" fill="#D27A83" transform="translate(2.5,2.5)"/>'
+        g += f'<path d="{L}" fill="{base}"/>'
+    else:
+        g += f'<path d="{L}" fill="{line}"/>'
+    # filets décoratifs sous la lettre
+    g += f'<path d="M158 278 H242" stroke="{line}" stroke-width="1.5"/>'
+    g += f'<circle cx="200" cy="278" r="3" fill="{line}"/>'
     g += '</g>'
     return g
+
 
 def svg(w, h, body, bg=None):
     b = f'<rect width="{w}" height="{h}" fill="{bg}"/>' if bg else ''
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">'
             f'<title>Maison Lettrine</title>{b}{body}</svg>\n')
 
-def wordmark(cx, y, scale=1.0, ink=INK, gold=GOLD, align='middle'):
-    m, mw = text_path('ital', 'Maison', cx, y, 46*scale, track=0.02, anchor=align)
-    l, lw = text_path('serif', 'LETTRINE', cx, y+66*scale, 64*scale, track=0.16, anchor=align)
-    t, tw = text_path('sans', 'CRÉATIONS EN CIRE', cx, y+112*scale, 15*scale, track=0.32, anchor=align)
-    out = f'<path d="{m}" fill="{gold}"/><path d="{l}" fill="{ink}"/><path d="{t}" fill="{ink}" opacity=".75"/>'
+
+def wordmark(cx, y, scale=1.0, ink=INK, accent=WAX, align='middle'):
+    m, mw = text_path('ital', 'Maison', cx, y, 46 * scale, track=0.02, anchor=align)
+    l, lw = text_path('serif', 'LETTRINE', cx, y + 66 * scale, 64 * scale, track=0.16, anchor=align)
+    t, tw = text_path('sans', 'CACHETS DE CIRE', cx, y + 112 * scale, 15 * scale, track=0.32, anchor=align)
+    out = (f'<path d="{m}" fill="{accent}"/><path d="{l}" fill="{ink}"/>'
+           f'<path d="{t}" fill="{ink}" opacity=".75"/>')
     return out, max(mw, lw, tw)
 
+
 def save(name, s, png_w=None):
-    p = os.path.join(OUT, name + '.svg'); open(p, 'w').write(s)
+    open(os.path.join(OUT, name + '.svg'), 'w').write(s)
     cairosvg.svg2png(bytestring=s.encode(), write_to=os.path.join(OUT, name + '.png'),
                      output_width=png_w)
 
-# 1. Logo principal (vertical)
-W, H = 600, 600
-wm, _ = wordmark(300, 430)
-save('logo-principal', svg(W, H, emblem(160, 60, 280) + wm, bg=CREAM), 1200)
-# transparent version
-save('logo-principal-transparent', svg(W, H, emblem(160, 60, 280) + wm), 1200)
 
-# 2. Logo horizontal
-wm_l, wml = wordmark(0, 0, 1.0, align='start')
-W2 = 200 + 40 + 470 + 40
-body = emblem(30, 30, 200) + f'<g transform="translate(260,72)">{wm_l}</g>'
-save('logo-horizontal', svg(int(260 + wml + 40), 260, body, bg=CREAM), 1600)
+W, H = 600, 620
+wm, _ = wordmark(300, 440)
+save('logo-principal', svg(W, H, seal(150, 40, 300) + wm, bg=CREAM), 1200)
+save('logo-principal-transparent', svg(W, H, seal(150, 40, 300) + wm), 1200)
 
-# 3. Emblème seul (favicon / réseaux sociaux)
-save('embleme', svg(400, 400, emblem(0, 0, 400)), 512)
+wm_h, wml = wordmark(0, 0, align='start')
+save('logo-horizontal', svg(int(270 + wml + 40), 260, seal(25, 25, 210) +
+                            f'<g transform="translate(270,72)">{wm_h}</g>', bg=CREAM), 1600)
 
-# 4. Version sur fond foncé
-wm_d, _ = wordmark(300, 430, ink=CREAM)
-save('logo-fond-sombre', svg(W, H, emblem(160, 60, 280, ink='#3A2D27') + wm_d, bg=INK), 1200)
+save('embleme', svg(400, 400, seal(0, 0, 400)), 512)
 
-# 5. Monochrome (tampon, étiquettes, gravure)
-mono = {'bg': INK, 'fg': '#FFFFFF'}
-wm_m, _ = wordmark(300, 430, ink=INK, gold=INK)
-save('logo-monochrome', svg(W, H, emblem(160, 60, 280, mono=mono) + wm_m, bg='#FFFFFF'), 1200)
+wm_d, _ = wordmark(300, 440, ink=CREAM, accent=GOLD)
+save('logo-fond-sombre', svg(W, H, seal(150, 40, 300) + wm_d, bg=INK), 1200)
+
+wm_m, _ = wordmark(300, 440, ink=INK, accent=INK)
+save('logo-monochrome', svg(W, H, seal(150, 40, 300, mono={'bg': INK, 'fg': '#FFFFFF'}) + wm_m,
+                            bg='#FFFFFF'), 1200)

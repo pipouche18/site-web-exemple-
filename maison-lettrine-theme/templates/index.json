@@ -1,0 +1,376 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "nd-hero",
+      "settings": {
+        "overlay": 40,
+        "kicker": "Coffrets cachet de cire à initiales",
+        "heading": "Vos faire-part scellés à la cire. Réussis dès le premier cachet.",
+        "text": "Un coffret complet : votre initiale gravée, la cire souple et la méthode pas-à-pas. Même si vous n'avez jamais fait de cachet.",
+        "button_label": "Découvrir les coffrets",
+        "button_link": "shopify://collections/coffrets-cachet-de-cire",
+        "height_mobile": 80,
+        "height_desktop": 85,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "reassurance": {
+      "type": "nd-reassurance",
+      "blocks": {
+        "r1": {
+          "type": "item",
+          "settings": {
+            "icon": "chat_bubble",
+            "title": "Guide pas-à-pas inclus",
+            "text": "Carte + vidéo pour réussir vos premiers cachets"
+          }
+        },
+        "r2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Colis suivi",
+            "text": "Livraison en [10 à 16] jours ouvrés [à confirmer]"
+          }
+        },
+        "r3": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Carte bancaire, Apple Pay [à confirmer]"
+          }
+        },
+        "r4": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "Une vraie personne vous répond",
+            "text": "Par e-mail, sous 48 h"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {
+        "heading": "",
+        "color_scheme": "scheme-6",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Choisissez votre coffret",
+        "heading_size": "h1",
+        "description": "<p>Tout est dedans. Rien à commander en plus, rien à calculer.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "coffrets-cachet-de-cire",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "padding_top": 72,
+        "padding_bottom": 56
+      }
+    },
+    "arguments": {
+      "type": "nd-features",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "La cire colle au sceau",
+            "text": "<p>Le métal chauffe d'un cachet à l'autre. Le guide montre l'astuce du sceau refroidi sur un glaçon : il se décolle net.</p>"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Cire noircie ou pleine de bulles",
+            "text": "<p>La flamme directe salit la cire. Le petit four chauffe la cuillère à distance, sans suie ni surchauffe.</p>"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Abîmé par La Poste",
+            "text": "<p>Une cire dure casse dans les machines de tri. La cire souple plie au lieu de se fendre, et le guide donne la méthode d'envoi.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "kicker": "Pourquoi les premiers cachets ratent",
+        "heading": "Trois erreurs, trois solutions dans le coffret",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "sizes": {
+      "type": "nd-size-helper",
+      "blocks": {
+        "s1": {
+          "type": "size",
+          "settings": {
+            "bed": "50 faire-part",
+            "cover": "≈ 165 perles",
+            "note": "Environ 1 boîte de cire",
+            "link": ""
+          }
+        },
+        "s2": {
+          "type": "size",
+          "settings": {
+            "bed": "100 faire-part",
+            "cover": "≈ 330 perles",
+            "note": "Environ 2 boîtes de cire",
+            "link": ""
+          }
+        },
+        "s3": {
+          "type": "size",
+          "settings": {
+            "bed": "150 faire-part",
+            "cover": "≈ 500 perles",
+            "note": "Environ 3 boîtes de cire",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "kicker": "Calculateur",
+        "heading": "Combien de cire pour vos faire-part ?",
+        "text": "<p>Comptez environ 3 perles par cachet de 25 mm, plus 10 % pour vos essais. Une boîte contient environ 150 perles.</p>",
+        "button_label": "Lire le guide complet",
+        "button_link": "shopify://pages/guide-cachet-de-cire",
+        "color_scheme": "scheme-2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "colors": {
+      "type": "nd-colors",
+      "blocks": {
+        "c1": {
+          "type": "color",
+          "settings": {
+            "name": "Bordeaux",
+            "color": "#8E1F2B",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "color",
+          "settings": {
+            "name": "Terracotta",
+            "color": "#B5583A",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "color",
+          "settings": {
+            "name": "Sauge",
+            "color": "#8A9A7B",
+            "link": ""
+          }
+        },
+        "c4": {
+          "type": "color",
+          "settings": {
+            "name": "Or",
+            "color": "#C9A54A",
+            "link": ""
+          }
+        },
+        "c5": {
+          "type": "color",
+          "settings": {
+            "name": "Blanc ivoire",
+            "color": "#EDE6D6",
+            "link": ""
+          }
+        },
+        "c6": {
+          "type": "color",
+          "settings": {
+            "name": "Bleu nuit",
+            "color": "#26324A",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "kicker": "Nos cires souples",
+        "heading": "Six couleurs pour vos enveloppes",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "faq": {
+      "type": "nd-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Est-ce difficile si je n'en ai jamais fait ?",
+            "answer": "<p>Non. La carte guide et la vidéo montrent chaque geste. Comptez 2 ou 3 essais sur la feuille fournie, puis vos cachets sortent nets.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Les cachets résistent-ils à l'envoi postal ?",
+            "answer": "<p>La cire souple plie au lieu de casser dans les machines de tri. Pour plus de sécurité, collez aussi le rabat et choisissez une enveloppe épaisse. La méthode complète est dans notre guide.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de faire-part puis-je sceller ?",
+            "answer": "<p>Environ 3 perles par cachet de 25 mm, soit une cinquantaine de cachets par boîte de cire. Voir le calculateur plus haut.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Quel est le délai de livraison ?",
+            "answer": "<p>[10 à 16] jours ouvrés avec suivi [à confirmer]. Pour un mariage, commandez au moins [4] semaines avant l'envoi de vos faire-part.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je voir ma gravure avant fabrication ?",
+            "answer": "<p>Oui, pour le Coffret Mariage : nous vous envoyons un aperçu de vos initiales à valider avant la gravure.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Que se passe-t-il si mon sceau arrive abîmé ?",
+            "answer": "<p>Écrivez-nous avec une photo et votre numéro de commande : nous trouvons une solution (remplacement ou remboursement). [Conditions à confirmer]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "heading": "Vos questions, nos réponses",
+        "structured_data": true,
+        "color_scheme": "scheme-3",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "editorial": {
+      "type": "nd-editorial",
+      "settings": {
+        "kicker": "Notre idée de la lettre",
+        "quote": "Une lettre scellée, c'est une lettre qu'on <em>garde</em>.",
+        "signature": "Maison Lettrine",
+        "button_label": "Notre histoire",
+        "button_link": "shopify://pages/a-propos",
+        "color_scheme": "scheme-2",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Le mini-guide des 7 erreurs à éviter",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Offert par e-mail, avant même d'acheter : tout ce qu'on aurait aimé savoir avant nos premiers cachets. Désinscription en un clic.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "reassurance",
+    "featured_collection",
+    "arguments",
+    "sizes",
+    "colors",
+    "faq",
+    "editorial",
+    "newsletter"
+  ]
+}

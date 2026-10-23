@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "body": {
+      "type": "nd-article",
+      "blocks": {
+        "b1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Livraison"
+          }
+        },
+        "b2": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>Délai : [10 à 16] jours ouvrés</strong> entre votre commande et la réception, dont jusqu'à [5] jours de préparation (gravure comprise) [à confirmer].</li><li><strong>Frais :</strong> livraison offerte dès [50] € d'achat, sinon [X] € [à configurer].</li><li><strong>Zone :</strong> France métropolitaine [à confirmer].</li><li><strong>Un seul colis :</strong> tout votre coffret arrive ensemble.</li></ul>"
+          }
+        },
+        "b3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Suivi de colis"
+          }
+        },
+        "b4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dès l'expédition, vous recevez un e-mail avec votre numéro de suivi. Il peut mettre quelques jours à s'activer. En cas de retard au-delà du délai annoncé, écrivez-nous : nous nous en occupons.</p>"
+          }
+        },
+        "b5": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pour un mariage : commandez tôt"
+          }
+        },
+        "b6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nous vous conseillons de commander au moins <strong>[4] semaines</strong> avant la date d'envoi de vos faire-part, pour garder le temps de vous entraîner.</p>"
+          }
+        },
+        "b7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Droit de rétractation"
+          }
+        },
+        "b8": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Coffret Initiale et recharges :</strong> vous disposez de 14 jours à compter de la réception pour vous rétracter, sans justification. Le produit doit être retourné complet et non utilisé.</p><p><strong>Coffret Mariage :</strong> le sceau étant gravé à vos initiales, il s'agit d'un bien confectionné selon vos spécifications, exclu du droit de rétractation (article L221-28, 3° du Code de la consommation). Les garanties légales s'appliquent toujours en cas de défaut.</p>"
+          }
+        },
+        "b9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Comment retourner un article"
+          }
+        },
+        "b10": {
+          "type": "text",
+          "settings": {
+            "text": "<ol><li>Écrivez-nous à <strong>[VOTRE-EMAIL]</strong> avec votre numéro de commande, dans les 14 jours suivant la réception.</li><li>Nous vous répondons sous 48 h avec l'adresse de retour : <strong>[ADRESSE DE RETOUR]</strong>.</li><li>Renvoyez l'article dans les 14 jours suivant votre demande. Gardez votre preuve de dépôt.</li><li>Nous vous remboursons au plus tard 14 jours après votre demande, une fois le colis reçu ou sur preuve d'expédition.</li></ol>"
+          }
+        },
+        "b11": {
+          "type": "note",
+          "settings": {
+            "text": "<p><strong>Frais de retour :</strong> à la charge du client [à confirmer]. Produit défectueux ou erreur de notre part : à nos frais.</p>"
+          }
+        },
+        "b12": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sceau défectueux, mal gravé ou abîmé"
+          }
+        },
+        "b13": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vous bénéficiez de la garantie légale de conformité (2 ans) et de la garantie des vices cachés. Écrivez-nous avec une photo et votre numéro de commande : nous vous proposerons un remplacement ou un remboursement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "body"
+  ]
+}

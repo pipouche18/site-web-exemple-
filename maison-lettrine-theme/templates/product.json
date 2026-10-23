@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "initiales": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- if product.tags contains 'mariage' -%}<div class=\"product-form__input\" style=\"margin-top:1rem\"><label class=\"form__label\" for=\"ml-initiales-{{ section.id }}\">Vos deux initiales (ex. : C &amp; T)</label><input class=\"field__input\" style=\"border:1px solid rgba(var(--color-foreground),.55);padding:1.2rem;width:100%;max-width:44rem\" id=\"ml-initiales-{{ section.id }}\" type=\"text\" name=\"properties[Initiales à graver]\" form=\"product-form-{{ section.id }}\" maxlength=\"9\" required placeholder=\"C &amp; T\"><p style=\"font-size:1.3rem;opacity:.75;margin:.6rem 0 0\">Nous vous envoyons un aperçu de la gravure à valider par e-mail avant fabrication.</p></div>{%- endif -%}"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "delivery": {
+          "type": "nd_delivery",
+          "settings": {
+            "note": "Colis suivi : numéro envoyé par e-mail dès l'expédition."
+          }
+        },
+        "reassurance": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "lock",
+            "heading_1": "Paiement sécurisé",
+            "icon_2": "truck",
+            "heading_2": "Un seul colis suivi",
+            "icon_3": "chat_bubble",
+            "heading_3": "Guide pas-à-pas inclus"
+          }
+        },
+        "tabs": {
+          "type": "nd_tabs",
+          "settings": {
+            "care_default": "<p>Après usage, laissez refroidir le sceau puis retirez les résidus de cire avec un chiffon doux. Évitez l'eau sur le manche en bois et rangez le sceau dans son coffret.</p>",
+            "care_page": "",
+            "shipping_text": "<p><strong>Livraison en [10 à 16] jours ouvrés [à confirmer].</strong> Numéro de suivi envoyé par e-mail dès l'expédition.</p><p><strong>Retours :</strong> 14 jours pour le Coffret Initiale et les recharges. Le Coffret Mariage, gravé à vos initiales, est exclu du droit de rétractation sauf défaut.</p>",
+            "shipping_page": "livraison-et-retours"
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "À ajouter à votre coffret",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 4,
+            "products_per_page": 2,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Partager"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "initiales",
+        "quantity_selector",
+        "buy_buttons",
+        "delivery",
+        "reassurance",
+        "tabs",
+        "complementary",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_position": "left",
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 24,
+        "padding_bottom": 12
+      }
+    },
+    "reviews": {
+      "type": "nd-reviews",
+      "settings": {
+        "heading": "Avis clients",
+        "empty_text": "<p>Notre boutique vient d'ouvrir : les premiers avis vérifiés apparaîtront ici. Vous avez reçu votre coffret ? Partagez une photo de vos cachets, cela nous aide beaucoup.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Vous aimerez aussi",
+        "heading_size": "h2",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "sticky": {
+      "type": "nd-sticky-atc",
+      "settings": {
+        "label": "Ajouter au panier",
+        "color_scheme": "scheme-3"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "reviews",
+    "related-products",
+    "sticky"
+  ]
+}

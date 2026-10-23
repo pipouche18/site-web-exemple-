@@ -1,0 +1,177 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "faq": {
+      "type": "nd-faq",
+      "blocks": {
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Débuter"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Je n'en ai jamais fait, est-ce que je vais y arriver ?",
+            "answer": "<p>Oui. Suivez les 6 étapes du guide et faites 2 ou 3 essais sur la feuille fournie. La plupart des ratés viennent d'un sceau trop chaud, ce que l'astuce du glaçon règle.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de temps pour sceller 100 faire-part ?",
+            "answer": "<p>Comptez environ 1 minute par cachet une fois le geste pris, soit 1 h 30 à 2 h avec les pauses pour refroidir le sceau.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Cuillère ou pistolet à colle ?",
+            "answer": "<p>La cuillère est plus simple pour débuter et donne un rendu plus authentique. Le pistolet devient intéressant au-delà de 150 cachets.</p>"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "La cire"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de perles par cachet ?",
+            "answer": "<p>Environ 3 perles pour un sceau de 25 mm. Une boîte d'environ 150 perles permet une cinquantaine de cachets.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Peut-on mélanger les couleurs ?",
+            "answer": "<p>Oui : faites fondre deux couleurs ensemble sans mélanger pour un effet marbré.</p>"
+          }
+        },
+        "q8": {
+          "type": "question",
+          "settings": {
+            "question": "Qu'est-ce que la cire souple ?",
+            "answer": "<p>Une cire qui reste légèrement flexible une fois refroidie : elle plie au lieu de se fendre, ce qui la rend adaptée aux envois postaux.</p>"
+          }
+        },
+        "c9": {
+          "type": "category",
+          "settings": {
+            "title": "Envoi postal"
+          }
+        },
+        "q10": {
+          "type": "question",
+          "settings": {
+            "question": "Mes cachets vont-ils survivre à La Poste ?",
+            "answer": "<p>Avec une cire souple, un rabat collé et une enveloppe épaisse, le risque est fortement réduit. Pour une sécurité maximale, déposez vos enveloppes au guichet. Aucune méthode n'est garantie à 100 %.</p>"
+          }
+        },
+        "q11": {
+          "type": "question",
+          "settings": {
+            "question": "Faut-il un affranchissement spécial ?",
+            "answer": "<p>Une enveloppe avec cachet peut être plus épaisse qu'une lettre standard. [Vérifier le tarif La Poste en vigueur.]</p>"
+          }
+        },
+        "c12": {
+          "type": "category",
+          "settings": {
+            "title": "Commande et livraison"
+          }
+        },
+        "q13": {
+          "type": "question",
+          "settings": {
+            "question": "Quels sont les délais ?",
+            "answer": "<p>Préparation jusqu'à [5] jours ouvrés, puis [7 à 11] jours de transport avec suivi [à confirmer]. Pour un mariage, commandez au moins [4] semaines avant l'envoi de vos faire-part.</p>"
+          }
+        },
+        "q14": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je valider ma gravure avant fabrication ?",
+            "answer": "<p>Oui, pour le Coffret Mariage : un aperçu de vos initiales vous est envoyé par e-mail avant la gravure.</p>"
+          }
+        },
+        "q15": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je payer en plusieurs fois ?",
+            "answer": "<p>[À activer : paiement en 3 fois via Alma ou Klarna.]</p>"
+          }
+        },
+        "q16": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je retourner un coffret ?",
+            "answer": "<p>Le Coffret Initiale bénéficie du droit de rétractation de 14 jours. Le Coffret Mariage, gravé à vos initiales, est un produit personnalisé exclu du droit de rétractation (article L221-28 du Code de la consommation), sauf défaut. Détails sur la page Livraison et retours.</p>"
+          }
+        },
+        "c17": {
+          "type": "category",
+          "settings": {
+            "title": "Entretien"
+          }
+        },
+        "q18": {
+          "type": "question",
+          "settings": {
+            "question": "Comment nettoyer mon sceau ?",
+            "answer": "<p>Laissez-le refroidir, puis retirez les résidus de cire avec un chiffon doux. Évitez l'eau sur le manche en bois.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "q2",
+        "q3",
+        "q4",
+        "c5",
+        "q6",
+        "q7",
+        "q8",
+        "c9",
+        "q10",
+        "q11",
+        "c12",
+        "q13",
+        "q14",
+        "q15",
+        "q16",
+        "c17",
+        "q18"
+      ],
+      "settings": {
+        "heading": "",
+        "structured_data": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 16,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

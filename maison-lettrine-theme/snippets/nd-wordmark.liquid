@@ -1,0 +1,5 @@
+{% comment %} Logo texte : « MAISON » en petites capitales au-dessus de « Nuits Douces ». {% endcomment %}
+<span class="nd-wordmark">
+  {%- if small != blank -%}<span class="nd-wordmark__small">{{ small | escape }}</span>{%- endif -%}
+  <span class="nd-wordmark__main">{{ main | default: shop.name | escape }}</span>
+</span>

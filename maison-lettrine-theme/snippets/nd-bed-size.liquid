@@ -1,0 +1,36 @@
+{% comment %}
+  Affiche « Convient à : lit 160 ou 180 » selon la taille choisie.
+  La correspondance se règle dans Paramètres du thème > Maison Nuits Douces.
+  Paramètres : product, block, section
+{% endcomment %}
+{%- liquid
+  assign size_option_name = settings.size_option_name | default: 'Taille' | downcase
+  assign size_index = null
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name == size_option_name
+      assign size_index = forloop.index0
+    endif
+  endfor
+-%}
+{%- if size_index != null -%}
+  <div
+    class="nd-bed-size"
+    data-nd-bed-size
+    data-section="{{ section.id }}"
+    data-option-index="{{ size_index }}"
+    data-current="{{ product.selected_or_first_available_variant.options[size_index] | escape }}"
+    {{ block.shopify_attributes }}
+  >
+    <script type="application/json" data-nd-bed-map>
+      {{ settings.bed_size_mapping | newline_to_br | split: '<br />' | json }}
+    </script>
+    <p class="nd-bed-size__text" role="status" aria-live="polite">
+      <span class="nd-bed-size__label">Convient à&nbsp;:</span>
+      <span data-nd-bed-value>—</span>
+    </p>
+    {%- if settings.size_guide_page != blank -%}
+      <a class="nd-bed-size__link link" href="{{ settings.size_guide_page.url }}">Voir le guide des tailles</a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

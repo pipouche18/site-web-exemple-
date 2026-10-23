@@ -1,0 +1,39 @@
+{%- comment -%}
+  « Commandé aujourd'hui, reçu entre le … et le … », calculé dans le navigateur
+  (jours ouvrés : samedi et dimanche exclus). Délais : métachamps
+  custom.delai_min / custom.delai_max du produit, sinon réglages du thème.
+  Sans JavaScript, la phrase « Livraison en X à Y jours ouvrés » reste affichée.
+  Paramètres : product, block
+{%- endcomment -%}
+{%- liquid
+  assign min_days = product.metafields.custom.delai_min.value | default: settings.delivery_min_days
+  assign max_days = product.metafields.custom.delai_max.value | default: settings.delivery_max_days
+  if settings.delivery_business_days
+    assign unit = 'ml.delivery.business_days' | t
+  else
+    assign unit = 'ml.delivery.days' | t
+  endif
+  if settings.delivery_to_confirm
+    assign to_confirm = 'ml.general.to_confirm' | t
+  endif
+-%}
+<div
+  class="ml-delivery"
+  data-ml-delivery
+  data-min="{{ min_days }}"
+  data-max="{{ max_days }}"
+  data-business="{{ settings.delivery_business_days }}"
+  data-template="{{ 'ml.delivery.estimate_html' | t | escape }}"
+  {{ block.shopify_attributes }}
+>
+  {%- render 'ml-icon', icon: 'truck', size: 22 -%}
+  <p class="ml-delivery__text">
+    <span data-ml-delivery-text>
+      {{- 'ml.delivery.fallback' | t: min: min_days, max: max_days, unit: unit -}}
+    </span>
+    {%- if to_confirm != blank %} <span class="ml-to-confirm">{{ to_confirm }}</span>{% endif -%}
+    {%- if block.settings.note != blank -%}
+      <span class="ml-delivery__note">{{ block.settings.note }}</span>
+    {%- endif -%}
+  </p>
+</div>

@@ -1,0 +1,71 @@
+{%- comment -%}
+  Produit complémentaire ajouté en un clic (la recharge de cire) :
+  sur la fiche produit et dans le panier latéral.
+  Dans le panier, il disparaît s'il y est déjà.
+  Paramètres :
+  - addon : produit proposé
+  - heading, text : titre et phrase
+  - context : 'product' ou 'cart'
+  - block : bloc de section (facultatif, pour l'éditeur)
+{%- endcomment -%}
+{%- liquid
+  assign show_addon = false
+  if addon != blank and addon.available
+    assign show_addon = true
+  endif
+  if context == 'cart' and show_addon
+    for item in cart.items
+      if item.product_id == addon.id
+        assign show_addon = false
+        break
+      endif
+    endfor
+  endif
+  if context == 'product' and product.id == addon.id
+    assign show_addon = false
+  endif
+-%}
+{%- if show_addon -%}
+  {%- assign addon_variant = addon.selected_or_first_available_variant -%}
+  <div class="ml-addon ml-addon--{{ context }}" {{ block.shopify_attributes }}>
+    {%- if heading != blank -%}
+      <p class="ml-addon__title">{{ heading | escape }}</p>
+    {%- endif -%}
+    <form action="{{ routes.cart_add_url }}" method="post" class="ml-addon__item" data-ml-add-form>
+      {%- if addon.featured_image != blank -%}
+        <a href="{{ addon.url }}" class="ml-addon__media" tabindex="-1" aria-hidden="true">
+          {{
+            addon.featured_image
+            | image_url: width: 160
+            | image_tag: loading: 'lazy', width: 72, height: 72, alt: '', widths: '80, 160'
+          }}
+        </a>
+      {%- endif -%}
+      <div class="ml-addon__info">
+        <a href="{{ addon.url }}" class="ml-addon__name">{{ addon.title | escape }}</a>
+        <span class="ml-addon__price">{{ addon_variant.price | money }}</span>
+        {%- if text != blank -%}
+          <span class="ml-addon__text">{{ text | escape }}</span>
+        {%- endif -%}
+        {%- if addon.has_only_default_variant -%}
+          <input type="hidden" name="id" value="{{ addon_variant.id }}">
+        {%- else -%}
+          {%- assign select_id = 'Addon-' | append: context | append: '-' | append: addon.id -%}
+          <label class="visually-hidden" for="{{ select_id }}">{{ addon.options.first | escape }}</label>
+          <select id="{{ select_id }}" name="id" class="ml-addon__select">
+            {%- for variant in addon.variants -%}
+              <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}{% if variant.id == addon_variant.id %} selected{% endif %}>
+                {{- variant.title | escape -}}
+              </option>
+            {%- endfor -%}
+          </select>
+        {%- endif -%}
+      </div>
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" class="button button--secondary ml-addon__button">
+        {{- 'ml.addon.add' | t -}}
+        <span class="visually-hidden"> {{ addon.title | escape }}</span>
+      </button>
+    </form>
+  </div>
+{%- endif -%}

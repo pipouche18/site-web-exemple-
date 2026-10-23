@@ -1,0 +1,90 @@
+{%- comment -%}
+  Occasions d'usage (mariage, naissance, cadeau, correspondance).
+  Photo facultative ; sans photo, une icône au trait est affichée.
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- render 'ml-heading',
+      kicker: section.settings.kicker,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+    <ul class="ml-occasions" role="list">
+      {%- for block in section.blocks -%}
+        <li class="ml-occasion" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="ml-occasion__media">
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  widths: '300, 450, 600, 800',
+                  sizes: '(min-width: 990px) 25vw, 46vw',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt
+              }}
+            </div>
+          {%- else -%}
+            <span class="ml-occasion__icon">{%- render 'ml-icon', icon: block.settings.icon, size: 32 -%}</span>
+          {%- endif -%}
+          <h3 class="ml-occasion__title">
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}">{{ block.settings.title | escape }}</a>
+            {%- else -%}
+              {{ block.settings.title | escape }}
+            {%- endif -%}
+          </h3>
+          {%- if block.settings.text != blank -%}
+            <p class="ml-occasion__text">{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Occasions",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Pour quelles occasions ?" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Une lettre scellée, c'est une lettre qu'on garde" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "occasion",
+      "name": "Occasion",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône (sans photo)",
+          "default": "rings",
+          "options": [
+            { "value": "rings", "label": "Alliances" },
+            { "value": "baby", "label": "Naissance" },
+            { "value": "gift", "label": "Cadeau" },
+            { "value": "envelope", "label": "Enveloppe" },
+            { "value": "pen", "label": "Plume" },
+            { "value": "seal", "label": "Cachet" }
+          ]
+        },
+        { "type": "image_picker", "id": "image", "label": "Photo (facultatif)" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Mariage" },
+        { "type": "text", "id": "text", "label": "Texte" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Occasions", "blocks": [{ "type": "occasion" }, { "type": "occasion" }, { "type": "occasion" }, { "type": "occasion" }] }]
+}
+{% endschema %}

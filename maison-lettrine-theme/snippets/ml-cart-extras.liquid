@@ -1,0 +1,49 @@
+{%- comment -%}
+  Sous les articles du panier latéral :
+  - recharge de cire proposée en un clic (Paramètres du thème > Maison Lettrine) ;
+  - rappel des délais de livraison ;
+  - mention d'exclusion du droit de rétractation si un produit gravé est au panier.
+{%- endcomment -%}
+{%- liquid
+  assign engraving_tag = settings.engraving_tag | strip
+  assign has_engraving = false
+  if engraving_tag != blank
+    for item in cart.items
+      if item.product.tags contains engraving_tag
+        assign has_engraving = true
+        break
+      endif
+    endfor
+  endif
+  if settings.delivery_business_days
+    assign unit = 'ml.delivery.business_days' | t
+  else
+    assign unit = 'ml.delivery.days' | t
+  endif
+-%}
+{%- if cart != empty -%}
+  <div class="ml-cart-extras">
+    {%- render 'ml-addon',
+      addon: settings.cart_upsell_product,
+      heading: settings.cart_upsell_heading,
+      text: settings.cart_upsell_text,
+      context: 'cart'
+    -%}
+
+    <p class="ml-cart-note">
+      {%- render 'ml-icon', icon: 'truck', size: 18 -%}
+      <span>
+        {{- 'ml.delivery.fallback' | t: min: settings.delivery_min_days, max: settings.delivery_max_days, unit: unit -}}
+        {%- if settings.delivery_to_confirm %} {{ 'ml.general.to_confirm' | t }}{% endif -%}
+        . {{ 'ml.cart.tracking' | t -}}
+      </span>
+    </p>
+
+    {%- if has_engraving -%}
+      <p class="ml-cart-note ml-cart-note--legal">
+        {%- render 'ml-icon', icon: 'pen', size: 18 -%}
+        <span>{{ 'ml.cart.withdrawal' | t }}</span>
+      </p>
+    {%- endif -%}
+  </div>
+{%- endif -%}

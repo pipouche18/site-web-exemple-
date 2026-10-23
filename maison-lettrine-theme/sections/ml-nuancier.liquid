@@ -1,0 +1,79 @@
+{%- comment -%}
+  Nuancier des cires : chaque pastille mène au produit choisi avec la variante
+  de même nom présélectionnée (ex. « Sauge » → Coffret Mariage, cire Sauge).
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+{%- assign target = section.settings.product -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- render 'ml-heading',
+      kicker: section.settings.kicker,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+    <ul class="ml-swatches" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign link = block.settings.link
+          if link == blank and target != blank
+            assign link = target.url
+            for variant in target.variants
+              if variant.options contains block.settings.name
+                assign link = variant.url
+                break
+              endif
+            endfor
+          endif
+        -%}
+        <li {{ block.shopify_attributes }}>
+          {%- if link != blank -%}
+            <a class="ml-swatch" href="{{ link }}">
+          {%- else -%}
+            <span class="ml-swatch">
+          {%- endif -%}
+          <span class="ml-swatch__wax" style="--wax: {{ block.settings.color }};" aria-hidden="true">
+            <span class="ml-swatch__ring"></span>
+          </span>
+          <span class="ml-swatch__name">{{ block.settings.name | escape }}</span>
+          {%- if link != blank -%}
+            <span class="visually-hidden">{{ 'ml.swatches.choose' | t }}</span>
+            </a>
+          {%- else -%}
+            </span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nuancier des cires",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Nos cires souples" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Six couleurs pour vos enveloppes" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "product", "id": "product", "label": "Produit ouvert au clic", "info": "La variante portant le même nom que la couleur est présélectionnée." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 64 }
+  ],
+  "blocks": [
+    {
+      "type": "color",
+      "name": "Couleur",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Nom (identique à la variante)", "default": "Bordeaux" },
+        { "type": "color", "id": "color", "label": "Teinte", "default": "#8E1F2B" },
+        { "type": "url", "id": "link", "label": "Lien (facultatif)", "info": "Vide : produit choisi plus haut, variante présélectionnée." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Nuancier des cires", "blocks": [{ "type": "color" }] }]
+}
+{% endschema %}

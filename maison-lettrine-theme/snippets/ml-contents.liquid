@@ -1,0 +1,20 @@
+{%- comment -%}
+  Bloc « Dans votre coffret » : liste à cocher (un élément par ligne).
+  Paramètres : block
+{%- endcomment -%}
+{%- assign lines = block.settings.items | newline_to_br | split: '<br />' -%}
+{%- if block.settings.items != blank -%}
+  <div class="ml-contents" {{ block.shopify_attributes }}>
+    {%- if block.settings.heading != blank -%}
+      <p class="ml-contents__title">{{ block.settings.heading | escape }}</p>
+    {%- endif -%}
+    <ul class="ml-checklist" role="list">
+      {%- for line in lines -%}
+        {%- assign clean_line = line | strip -%}
+        {%- if clean_line != blank -%}
+          <li>{%- render 'ml-icon', icon: 'check', size: 18 -%}<span>{{ clean_line | escape }}</span></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

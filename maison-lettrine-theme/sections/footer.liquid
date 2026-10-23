@@ -318,11 +318,11 @@
         {%- endif -%}
         {%- if settings.show_cookie_preferences_link -%}
           <small class="copyright__content">
-            <button type="button" class="nd-cookie-link" data-nd-cookie-prefs hidden>Gérer mes cookies</button>
+            <button type="button" class="ml-cookie-link" data-ml-cookie-prefs hidden>{{ 'ml.footer.cookies' | t }}</button>
           </small>
           <script>
             (function () {
-              var btn = document.querySelector('[data-nd-cookie-prefs]');
+              var btn = document.querySelector('[data-ml-cookie-prefs]');
               var tries = 0;
               (function wait() {
                 if (window.privacyBanner && window.privacyBanner.showPreferences) {

@@ -1,0 +1,57 @@
+{%- comment -%}
+  Champ obligatoire « Vos deux initiales » (propriété de ligne de commande)
+  + aperçu typographique en direct dans un cachet de la couleur de cire choisie.
+  Paramètres : product, block, form_id
+{%- endcomment -%}
+{%- liquid
+  assign field_id = 'Engraving-' | append: block.id
+  assign color_index = -1
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'couleur'
+      assign color_index = forloop.index0
+      assign current_color = option.selected_value
+    endif
+  endfor
+-%}
+<div
+  class="ml-engraving"
+  data-ml-engraving
+  data-color-index="{{ color_index }}"
+  data-placeholder="{{ block.settings.placeholder | escape }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ml-engraving__preview">
+    {%- render 'ml-seal', text: block.settings.placeholder, size: 'medium', color: '#8E1F2B' -%}
+    <p class="ml-engraving__caption">{{ 'ml.engraving.preview' | t }}</p>
+  </div>
+  <div class="ml-field ml-engraving__field">
+    <label for="{{ field_id }}">
+      {{- block.settings.label | escape -}}
+      <span class="ml-required" aria-hidden="true">*</span>
+      <span class="visually-hidden">{{ 'ml.engraving.required' | t }}</span>
+    </label>
+    <input
+      id="{{ field_id }}"
+      type="text"
+      name="properties[{{ block.settings.property | escape }}]"
+      form="{{ form_id }}"
+      maxlength="{{ block.settings.max_length }}"
+      required
+      autocomplete="off"
+      autocapitalize="characters"
+      spellcheck="false"
+      placeholder="{{ block.settings.placeholder | escape }}"
+      aria-describedby="{{ field_id }}-help"
+      data-ml-engraving-input
+      data-message="{{ 'ml.engraving.missing' | t | escape }}"
+    >
+    <p id="{{ field_id }}-help" class="ml-engraving__help">
+      {{ block.settings.help | escape }}
+      <span class="ml-engraving__count"><span data-ml-count>0</span>/{{ block.settings.max_length }}</span>
+    </p>
+  </div>
+  <script type="application/json" data-ml-wax-colors>
+    {{ settings.wax_colors | newline_to_br | split: '<br />' | json }}
+  </script>
+</div>

@@ -17,7 +17,7 @@
         "color_scheme": "scheme-6",
         "show_line_separator": false,
         "show_social": false,
-        "auto_rotate": true,
+        "auto_rotate": false,
         "change_slides_speed": 6,
         "enable_country_selector": false,
         "enable_language_selector": false
@@ -26,7 +26,7 @@
         "announcement-1": {
           "type": "announcement",
           "settings": {
-            "text": "Guide pas-à-pas inclus dans chaque coffret · Livraison offerte dès [50] €",
+            "text": "Guide pas-à-pas inclus dans chaque coffret · Livraison offerte dès 50 €",
             "link": "shopify://pages/guide-cachet-de-cire"
           }
         }
@@ -40,17 +40,17 @@
       "settings": {
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
-        "logo_position": "top-center",
+        "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
-        "sticky_header_type": "always",
+        "sticky_header_type": "on-scroll-up",
         "show_line_separator": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 16,
+        "padding_top": 12,
+        "padding_bottom": 12,
         "wordmark_small": "Maison",
         "wordmark_main": "Lettrine"
       }

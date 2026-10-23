@@ -1,0 +1,30 @@
+{%- comment -%}
+  Aperçu de l'option choisie (ex. l'initiale du Coffret Initiale) dans un cachet.
+  Mis à jour en direct par ml-product.js quand la cliente change d'option.
+  Paramètres : product, block, section
+{%- endcomment -%}
+{%- liquid
+  assign option_index = -1
+  for option in product.options_with_values
+    if option.name == block.settings.option_name
+      assign option_index = forloop.index0
+      assign current = option.selected_value
+    endif
+  endfor
+-%}
+{%- if option_index >= 0 -%}
+  <div
+    class="ml-seal-preview"
+    data-ml-seal-preview
+    data-option-name="{{ block.settings.option_name | escape }}"
+    data-option-index="{{ option_index }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- render 'ml-seal', text: current, size: 'large' -%}
+    <p class="ml-seal-preview__caption">
+      {{ block.settings.caption | escape }}
+      <span class="visually-hidden">: <span data-ml-seal-live>{{ current | escape }}</span></span>
+    </p>
+  </div>
+{%- endif -%}

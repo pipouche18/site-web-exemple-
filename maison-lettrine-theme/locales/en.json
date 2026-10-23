@@ -283,7 +283,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -536,6 +535,85 @@
       "max_characters": "{{ max_chars }} characters max",
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
+    }
+  },
+  "ml": {
+    "general": {
+      "page": "Page {{ number }}",
+      "to_confirm": "[to be confirmed]"
+    },
+    "coffrets": {
+      "choose": "Choose this box"
+    },
+    "problems": {
+      "issue": "The problem",
+      "solution": "In the box"
+    },
+    "steps": {
+      "play_video": "Play video",
+      "step": "Step {{ number }}:"
+    },
+    "calculator": {
+      "legend": "How many envelopes will you seal?",
+      "custom_label": "Or enter a number",
+      "custom_placeholder": "E.g. 120",
+      "beads": "wax beads",
+      "boxes": "box(es) of about 150 beads",
+      "summary": "For [envelopes] envelopes: about [beads] beads, or [boxes] box(es) of wax.",
+      "advice_small": "Our advice: the [title], its wax is enough.",
+      "advice_large": "Our advice: the [title].",
+      "advice_refills": "Add [refills] so you don't run out of wax.",
+      "refill_one": "1 refill",
+      "refill_many": "[count] refills",
+      "see_product": "See the {{ title }}",
+      "refill_color": "Refill colour",
+      "add_refills": {
+        "one": "Add 1 refill to cart",
+        "other": "Add {{ count }} refills to cart"
+      }
+    },
+    "swatches": {
+      "choose": "(choose this colour)"
+    },
+    "faq": {
+      "filter_label": "Filter questions by topic",
+      "all": "All"
+    },
+    "signup": {
+      "email_label": "Your email address",
+      "email_placeholder": "name@example.com"
+    },
+    "engraving": {
+      "preview": "Preview",
+      "required": "(required)",
+      "missing": "Enter the initials to engrave to continue."
+    },
+    "delivery": {
+      "business_days": "business days",
+      "days": "days",
+      "fallback": "Delivery in {{ min }} to {{ max }} {{ unit }}",
+      "estimate_html": "Order today, receive it between <strong>[from]</strong> and <strong>[to]</strong>"
+    },
+    "installments": {
+      "text": "or {{ count }} × {{ amount }} interest-free",
+      "with": "with {{ provider }}"
+    },
+    "addon": {
+      "add": "Add"
+    },
+    "pinterest": {
+      "save": "Save",
+      "new_window": "on Pinterest (new window)"
+    },
+    "cart": {
+      "free_shipping_remaining_html": "Only <strong>{{ amount }}</strong> left for free shipping",
+      "free_shipping_reached": "Shipping is on us",
+      "free_shipping_label": "Progress towards free shipping",
+      "tracking": "One tracked parcel.",
+      "withdrawal": "The Wedding box is engraved to order: it is excluded from the right of withdrawal (article L221-28, 3° of the French Consumer Code). Check your initials carefully; a preview will be sent before production."
+    },
+    "footer": {
+      "cookies": "Manage cookies"
     }
   }
 }

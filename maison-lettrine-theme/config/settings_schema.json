@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Maison Nuits Douces",
+    "theme_name": "Maison Lettrine",
     "theme_version": "16.0.0",
-    "theme_author": "Maison Nuits Douces",
+    "theme_author": "Maison Lettrine",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
@@ -1449,25 +1449,6 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
-      },
-      {
-        "type": "header",
-        "content": "Suggestion dans le panier"
-      },
-      {
-        "type": "paragraph",
-        "content": "Un produit complémentaire (drap housse, plaid…) proposé dans le panier latéral. Il n'apparaît pas s'il est déjà dans le panier."
-      },
-      {
-        "type": "product",
-        "id": "cart_upsell_product",
-        "label": "Produit suggéré"
-      },
-      {
-        "type": "text",
-        "id": "cart_upsell_heading",
-        "label": "Titre de la suggestion",
-        "default": "Pour compléter votre lit"
       }
     ]
   },
@@ -1487,15 +1468,15 @@
     ]
   },
   {
-    "name": "Maison Nuits Douces",
+    "name": "Maison Lettrine",
     "settings": [
       {
         "type": "header",
-        "content": "Délai de livraison"
+        "content": "Livraison"
       },
       {
         "type": "paragraph",
-        "content": "Utilisé pour calculer « Livraison estimée entre le … et le … » sur les fiches produit. Un produit peut avoir ses propres délais via les metafields « Délai min. » et « Délai max. »."
+        "content": "Délais utilisés pour « Commandé aujourd'hui, reçu entre le … et le … » (fiche produit) et pour le rappel dans le panier. Un produit peut avoir ses propres délais via les métachamps custom.delai_min et custom.delai_max."
       },
       {
         "type": "range",
@@ -1513,7 +1494,7 @@
         "min": 1,
         "max": 45,
         "step": 1,
-        "default": 18
+        "default": 16
       },
       {
         "type": "checkbox",
@@ -1522,37 +1503,82 @@
         "default": true
       },
       {
-        "type": "header",
-        "content": "Correspondance housse ↔ lit"
+        "type": "checkbox",
+        "id": "delivery_to_confirm",
+        "label": "Afficher « [à confirmer] » après les délais",
+        "default": true,
+        "info": "Décochez quand les délais sont validés."
       },
       {
-        "type": "textarea",
-        "id": "bed_size_mapping",
-        "label": "Tableau de correspondance",
-        "info": "Une ligne par taille, au format : taille de housse = lit correspondant. La taille doit être écrite comme dans l'option « Taille » de vos produits.",
-        "default": "140×200 = Lit 1 personne (90×190 ou 90×200)\n200×200 = Lit 140 (140×190 ou 140×200)\n220×240 = Lit 160 ou 180\n240×220 = Lit 160 ou 180\n240×260 = Lit 180 ou 200\n260×240 = Lit 180 ou 200"
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Livraison offerte dès (€)",
+        "default": 50,
+        "info": "Barre de progression du panier. Mettez 0 pour la masquer. Le tarif lui-même se règle dans Paramètres > Expédition."
+      },
+      {
+        "type": "header",
+        "content": "Suggestion dans le panier"
+      },
+      {
+        "type": "paragraph",
+        "content": "Produit proposé en un clic dans le panier (la recharge de cire). Il disparaît s'il est déjà dans le panier."
+      },
+      {
+        "type": "product",
+        "id": "cart_upsell_product",
+        "label": "Produit suggéré"
       },
       {
         "type": "text",
-        "id": "size_option_name",
-        "label": "Nom de l'option de taille",
-        "default": "Taille"
+        "id": "cart_upsell_heading",
+        "label": "Titre de la suggestion",
+        "default": "Un peu plus de cire ?"
       },
       {
-        "type": "page",
-        "id": "size_guide_page",
-        "label": "Page du guide des tailles"
+        "type": "text",
+        "id": "cart_upsell_text",
+        "label": "Phrase de la suggestion",
+        "default": "Une recharge ≈ 50 cachets de plus."
       },
       {
         "type": "header",
-        "content": "Pinterest"
+        "content": "Personnalisation"
+      },
+      {
+        "type": "text",
+        "id": "engraving_tag",
+        "label": "Tag des produits gravés sur mesure",
+        "default": "mariage",
+        "info": "Ces produits affichent la mention d'exclusion du droit de rétractation (art. L221-28, 3° du Code de la consommation) sur la fiche et au panier."
+      },
+      {
+        "type": "textarea",
+        "id": "wax_colors",
+        "label": "Couleurs des cires",
+        "info": "Pastilles des variantes et aperçu du cachet. Une ligne par couleur : nom de la variante = code couleur (ou « multi » pour un mélange).",
+        "default": "Bordeaux = #8E1F2B\nTerracotta = #B5583A\nSauge = #8A9A7B\nOr = #C9A54A\nBlanc ivoire = #EDE6D6\nBleu nuit = #26324A\nMélange 10 couleurs = multi"
+      },
+      {
+        "type": "header",
+        "content": "Partage et Pinterest"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image de partage par défaut",
+        "info": "Utilisée par Pinterest et les réseaux quand une page n'a pas de photo. Format conseillé : 1000 × 1500 px."
       },
       {
         "type": "checkbox",
         "id": "pinterest_save_button",
-        "label": "Afficher le bouton « Enregistrer sur Pinterest » sur les photos produit",
+        "label": "Bouton « Enregistrer » Pinterest sur les photos produit",
         "default": true,
-        "info": "Simple lien, sans script Pinterest : aucun traceur n'est chargé."
+        "info": "Simple lien, sans script Pinterest : aucun traceur chargé."
+      },
+      {
+        "type": "paragraph",
+        "content": "Balise Pinterest et API de conversions : installez l'appli officielle « Pinterest » depuis l'App Store Shopify. Elle respecte la bannière de consentement. Ne collez aucun code de suivi dans le thème."
       },
       {
         "type": "header",

@@ -1,0 +1,115 @@
+{%- comment -%}
+  Barre d'achat fixée en bas de l'écran.
+  - Téléphone : visible dès l'arrivée tant que le vrai bouton d'achat n'est pas
+    à l'écran (le bouton d'achat est donc toujours visible sans défiler).
+  - Ordinateur : visible une fois le vrai bouton dépassé.
+  Elle clique le vrai bouton : variante et initiales saisies sont respectées.
+  Produits « à choisir » (tag réglable, ex. initiale) : tant que la cliente n'a
+  pas choisi d'option, la barre l'emmène d'abord au sélecteur, pour éviter
+  d'ajouter par erreur l'initiale proposée par défaut.
+{%- endcomment -%}
+{%- if product -%}
+  {%- liquid
+    assign choice_tag = section.settings.choice_tag | strip
+    assign needs_choice = false
+    if choice_tag != blank and product.tags contains choice_tag and product.selected_variant == blank
+      assign needs_choice = true
+    endif
+  -%}
+  <div
+    class="ml-sticky color-{{ section.settings.color_scheme }} gradient"
+    data-ml-sticky
+    data-needs-choice="{{ needs_choice }}"
+    hidden
+  >
+    <div class="ml-sticky__inner page-width">
+      <div class="ml-sticky__info">
+        <p class="ml-sticky__title">{{ product.title | escape }}</p>
+        <p class="ml-sticky__price" data-ml-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</p>
+      </div>
+      <button
+        type="button"
+        class="button ml-sticky__button"
+        data-ml-sticky-button
+        data-add-label="{{ section.settings.label | escape }}"
+        data-choice-label="{{ section.settings.choice_label | escape }}"
+      >
+        {%- if needs_choice -%}
+          {{- section.settings.choice_label | escape -}}
+        {%- else -%}
+          {{- section.settings.label | escape -}}
+        {%- endif -%}
+      </button>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var bar = document.querySelector('[data-ml-sticky]');
+      var target = document.querySelector('product-form [type="submit"][name="add"]');
+      if (!bar || !target || !('IntersectionObserver' in window)) return;
+      var button = bar.querySelector('[data-ml-sticky-button]');
+      var price = bar.querySelector('[data-ml-sticky-price]');
+      var picker = document.querySelector('variant-selects');
+      var needsChoice = bar.dataset.needsChoice === 'true';
+      var mobile = window.matchMedia('(max-width: 749px)');
+      var visible = false;
+
+      bar.hidden = false;
+      var setVisible = function (show) {
+        visible = show;
+        bar.classList.toggle('is-visible', show);
+        bar.inert = !show;
+        document.body.classList.toggle('ml-has-sticky', show);
+      };
+      new IntersectionObserver(function (entries) {
+        var entry = entries[0];
+        var passed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        var notYet = !entry.isIntersecting && entry.boundingClientRect.top > 0;
+        setVisible(passed || (mobile.matches && notYet));
+      }).observe(target);
+
+      if (picker) {
+        picker.addEventListener('change', function () {
+          if (!needsChoice) return;
+          needsChoice = false;
+          button.textContent = button.dataset.addLabel;
+        });
+      }
+
+      button.addEventListener('click', function () {
+        if (needsChoice && picker) {
+          picker.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          var first = picker.querySelector('input:checked, input, select');
+          if (first) first.focus({ preventScroll: true });
+          return;
+        }
+        target.click();
+      });
+
+      if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+        subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+          var variant = event.data && event.data.variant;
+          if (!variant) return;
+          var newPrice = event.data.html && event.data.html.querySelector('#price-' + event.data.sectionId + ' .price-item--last');
+          if (newPrice) price.textContent = newPrice.textContent.trim();
+          button.disabled = !variant.available;
+        });
+      }
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Barre d'achat fixe",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "label", "label": "Texte du bouton", "default": "Ajouter au panier" },
+    { "type": "text", "id": "choice_tag", "label": "Tag des produits où il faut d'abord choisir", "default": "initiale", "info": "Pour ces produits, la barre mène d'abord au choix de l'option." },
+    { "type": "text", "id": "choice_label", "label": "Texte du bouton avant le choix", "default": "Choisir mon initiale" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-3" }
+  ],
+  "presets": [{ "name": "Barre d'achat fixe" }]
+}
+{% endschema %}

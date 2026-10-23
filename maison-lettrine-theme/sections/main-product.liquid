@@ -40,7 +40,8 @@
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'nd-product.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'ml-product.js' | asset_url }}" defer="defer"></script>
+  {%- render 'ml-wax-style' -%}
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
@@ -79,7 +80,7 @@
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
           {% render 'product-media-gallery', variant_images: variant_images %}
-          {% render 'nd-pinterest-save', product: product %}
+          {% render 'ml-pinterest-save', product: product %}
         </div>
         <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <section
@@ -89,6 +90,16 @@
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
             {%- for block in section.blocks -%}
+              {%- comment -%}
+                Blocs Maison Lettrine : réglage « only_tag » = n'afficher le bloc
+                que sur les produits portant ce tag (ex. « mariage », « initiale »).
+              {%- endcomment -%}
+              {%- if block.settings.only_tag != blank -%}
+                {%- assign ml_only_tag = block.settings.only_tag | strip -%}
+                {%- unless product.tags contains ml_only_tag -%}
+                  {%- continue -%}
+                {%- endunless -%}
+              {%- endif -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
                   {% render block %}
@@ -487,14 +498,22 @@
                     block: block,
                     surface: 'product_page'
                   -%}
-                {%- when 'nd_composition' -%}
-                  {% render 'nd-composition', product: product, block: block %}
-                {%- when 'nd_bed_size' -%}
-                  {% render 'nd-bed-size', product: product, block: block, section: section %}
-                {%- when 'nd_delivery' -%}
-                  {% render 'nd-delivery-estimate', product: product, block: block %}
-                {%- when 'nd_tabs' -%}
-                  {% render 'nd-product-tabs', product: product, block: block, section: section %}
+                {%- when 'ml_seal_preview' -%}
+                  {% render 'ml-seal-preview', product: product, block: block, section: section %}
+                {%- when 'ml_engraving' -%}
+                  {% render 'ml-engraving', product: product, block: block, form_id: product_form_id %}
+                {%- when 'ml_contents' -%}
+                  {% render 'ml-contents', block: block %}
+                {%- when 'ml_delivery' -%}
+                  {% render 'ml-delivery-estimate', product: product, block: block %}
+                {%- when 'ml_assurance' -%}
+                  {% render 'ml-assurance', block: block %}
+                {%- when 'ml_installments' -%}
+                  {% render 'ml-installments', product: product, block: block %}
+                {%- when 'ml_withdrawal' -%}
+                  {% render 'ml-withdrawal', product: product, block: block %}
+                {%- when 'ml_addon' -%}
+                  {% render 'ml-addon', addon: block.settings.product, heading: block.settings.heading, text: block.settings.text, block: block, context: 'product' %}
                 {%- when 'variant_picker' -%}
                   {% render 'product-variant-picker',
                     product: product,
@@ -773,76 +792,88 @@
       "type": "@app"
     },
     {
-      "type": "nd_composition",
-      "name": "Composition (metafield)",
+      "type": "ml_seal_preview",
+      "name": "Aperçu du cachet (initiale)",
       "limit": 1,
       "settings": [
-        {
-          "type": "paragraph",
-          "content": "Affiche les metafields « Composition » et « Grammage » du produit. À placer juste sous le prix."
-        }
+        { "type": "paragraph", "content": "Affiche l'option choisie (ex. l'initiale) en grand, dans un cachet de cire." },
+        { "type": "text", "id": "option_name", "label": "Nom de l'option à afficher", "default": "Initiale" },
+        { "type": "text", "id": "caption", "label": "Légende", "default": "Aperçu de votre cachet" },
+        { "type": "text", "id": "only_tag", "label": "Afficher seulement si le produit a le tag", "default": "initiale", "info": "Vide : tous les produits." }
       ]
     },
     {
-      "type": "nd_bed_size",
-      "name": "Taille de lit",
+      "type": "ml_engraving",
+      "name": "Initiales à graver",
       "limit": 1,
       "settings": [
-        {
-          "type": "paragraph",
-          "content": "Affiche « Convient à : lit … » selon la taille choisie. La correspondance se règle dans Paramètres du thème > Maison Nuits Douces."
-        }
+        { "type": "paragraph", "content": "Champ obligatoire enregistré sur la commande (propriété « Initiales à graver »), avec aperçu en direct dans un cachet." },
+        { "type": "text", "id": "label", "label": "Libellé du champ", "default": "Vos deux initiales" },
+        { "type": "text", "id": "property", "label": "Nom de la propriété sur la commande", "default": "Initiales à graver" },
+        { "type": "text", "id": "placeholder", "label": "Exemple dans le champ", "default": "C & T" },
+        { "type": "range", "id": "max_length", "label": "Nombre de caractères maximum", "min": 1, "max": 20, "step": 1, "default": 9 },
+        { "type": "text", "id": "help", "label": "Aide sous le champ", "default": "Aperçu de la gravure envoyé par e-mail avant fabrication." },
+        { "type": "text", "id": "only_tag", "label": "Afficher seulement si le produit a le tag", "default": "mariage", "info": "Vide : tous les produits." }
       ]
     },
     {
-      "type": "nd_delivery",
-      "name": "Livraison estimée",
-      "limit": 1,
+      "type": "ml_contents",
+      "name": "Dans votre coffret",
       "settings": [
-        {
-          "type": "paragraph",
-          "content": "Calcule « Livraison estimée entre le … et le … » à partir des délais réglés dans Paramètres du thème > Maison Nuits Douces."
-        },
-        {
-          "type": "inline_richtext",
-          "id": "note",
-          "label": "Note sous la date",
-          "default": "Colis suivi : numéro envoyé par e-mail dès l'expédition."
-        }
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Dans votre coffret" },
+        { "type": "textarea", "id": "items", "label": "Contenu", "info": "Un élément par ligne." },
+        { "type": "text", "id": "only_tag", "label": "Afficher seulement si le produit a le tag", "info": "Vide : tous les produits." }
       ]
     },
     {
-      "type": "nd_tabs",
-      "name": "Onglets produit",
+      "type": "ml_delivery",
+      "name": "Date de livraison estimée",
       "limit": 1,
       "settings": [
-        {
-          "type": "paragraph",
-          "content": "Onglets Description, Dimensions, Entretien, Livraison et retours. Les contenus viennent des metafields du produit."
-        },
-        {
-          "type": "richtext",
-          "id": "care_default",
-          "label": "Entretien (si le metafield du produit est vide)",
-          "default": "<p>Lavage en machine à 30 °C ou 40 °C, sur l'envers, avec une lessive douce sans adoucissant. Séchage à l'air libre ou en sèche-linge à basse température. Pas de repassage nécessaire : l'effet froissé fait tout le charme.</p>"
-        },
-        {
-          "type": "page",
-          "id": "care_page",
-          "label": "Page « Conseils d'entretien »"
-        },
-        {
-          "type": "richtext",
-          "id": "shipping_text",
-          "label": "Texte livraison et retours",
-          "info": "[MIN] et [MAX] sont remplacés par les délais du produit.",
-          "default": "<p><strong>Livraison en [MIN] à [MAX] jours ouvrés.</strong> Vous recevez un numéro de suivi par e-mail dès l'expédition.</p><p><strong>Retours :</strong> vous disposez de 14 jours après réception pour changer d'avis. Le produit doit être retourné neuf, non lavé, dans son emballage d'origine.</p>"
-        },
-        {
-          "type": "page",
-          "id": "shipping_page",
-          "label": "Page « Livraison et retours »"
-        }
+        { "type": "paragraph", "content": "« Commandé aujourd'hui, reçu entre le … et le … », en jours ouvrés. Délais : métachamps custom.delai_min / custom.delai_max du produit, sinon Paramètres du thème > Maison Lettrine." },
+        { "type": "inline_richtext", "id": "note", "label": "Note sous la date", "default": "Un seul colis, suivi : numéro envoyé par e-mail dès l'expédition." }
+      ]
+    },
+    {
+      "type": "ml_assurance",
+      "name": "Réassurance sous le bouton",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "line_1", "label": "Ligne 1", "default": "Guide pas-à-pas et vidéo inclus" },
+        { "type": "text", "id": "line_2", "label": "Ligne 2", "default": "Paiement sécurisé" },
+        { "type": "text", "id": "line_3", "label": "Ligne 3", "default": "Une vraie personne vous répond sous 48 h" }
+      ]
+    },
+    {
+      "type": "ml_installments",
+      "name": "Paiement en 3 fois",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Masqué tant que la case n'est pas cochée. Ne la cochez qu'après avoir installé et activé une appli de paiement fractionné (ex. Alma). Si l'appli fournit son propre bloc, utilisez plutôt celui-ci." },
+        { "type": "checkbox", "id": "enabled", "label": "Une appli de paiement en 3 fois est active", "default": false },
+        { "type": "range", "id": "count", "label": "Nombre d'échéances", "min": 2, "max": 4, "step": 1, "default": 3 },
+        { "type": "number", "id": "min_price", "label": "Prix minimum pour l'afficher (€)", "default": 50 },
+        { "type": "text", "id": "provider", "label": "Nom du service (facultatif)" }
+      ]
+    },
+    {
+      "type": "ml_withdrawal",
+      "name": "Mention personnalisation (rétractation)",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "S'affiche sur les produits portant le tag réglé dans Paramètres du thème > Maison Lettrine > Personnalisation." },
+        { "type": "richtext", "id": "text", "label": "Texte", "default": "<p><strong>Création sur mesure.</strong> Gravé à vos initiales, ce coffret est exclu du droit de rétractation (article L221-28, 3° du Code de la consommation). La garantie légale de conformité s'applique toujours.</p>" }
+      ]
+    },
+    {
+      "type": "ml_addon",
+      "name": "Produit complémentaire",
+      "limit": 1,
+      "settings": [
+        { "type": "product", "id": "product", "label": "Produit" },
+        { "type": "text", "id": "heading", "label": "Titre", "default": "À ajouter à votre coffret" },
+        { "type": "text", "id": "text", "label": "Phrase", "default": "Une recharge ≈ 50 cachets de plus." },
+        { "type": "text", "id": "only_tag", "label": "Afficher seulement si le produit a le tag", "info": "Vide : tous les produits." }
       ]
     },
     {

@@ -1,0 +1,19 @@
+{%- comment -%}
+  Pastilles de couleur sur les boutons de variante « couleur de cire ».
+  Les couleurs viennent de Paramètres du thème > Maison Lettrine > Couleurs
+  des cires (« Nom = #code », ou « Nom = multi » pour un mélange).
+{%- endcomment -%}
+{%- assign wax_lines = settings.wax_colors | newline_to_br | split: '<br />' -%}
+{%- style -%}
+  {%- for line in wax_lines -%}
+    {%- assign parts = line | split: '=' -%}
+    {%- if parts.size == 2 -%}
+      {%- assign wax_name = parts[0] | strip | replace: '"', '' -%}
+      {%- assign wax_color = parts[1] | strip | replace: ';', '' | replace: '}', '' -%}
+      {%- if wax_color == 'multi' -%}
+        {%- assign wax_color = 'conic-gradient(#8E1F2B, #B5583A, #C9A54A, #8A9A7B, #26324A, #EDE6D6, #8E1F2B)' -%}
+      {%- endif -%}
+      .product-form__input--pill input[type='radio'][value="{{ wax_name }}"] + label::after { content: ''; background: {{ wax_color }}; }
+    {%- endif -%}
+  {%- endfor -%}
+{%- endstyle -%}

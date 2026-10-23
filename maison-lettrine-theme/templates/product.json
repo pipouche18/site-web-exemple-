@@ -11,99 +11,6 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "initiales": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- if product.tags contains 'mariage' -%}<div class=\"product-form__input\" style=\"margin-top:1rem\"><label class=\"form__label\" for=\"ml-initiales-{{ section.id }}\">Vos deux initiales (ex. : C &amp; T)</label><input class=\"field__input\" style=\"border:1px solid rgba(var(--color-foreground),.55);padding:1.2rem;width:100%;max-width:44rem\" id=\"ml-initiales-{{ section.id }}\" type=\"text\" name=\"properties[Initiales à graver]\" form=\"product-form-{{ section.id }}\" maxlength=\"9\" required placeholder=\"C &amp; T\"><p style=\"font-size:1.3rem;opacity:.75;margin:.6rem 0 0\">Nous vous envoyons un aperçu de la gravure à valider par e-mail avant fabrication.</p></div>{%- endif -%}"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "delivery": {
-          "type": "nd_delivery",
-          "settings": {
-            "note": "Colis suivi : numéro envoyé par e-mail dès l'expédition."
-          }
-        },
-        "reassurance": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "lock",
-            "heading_1": "Paiement sécurisé",
-            "icon_2": "truck",
-            "heading_2": "Un seul colis suivi",
-            "icon_3": "chat_bubble",
-            "heading_3": "Guide pas-à-pas inclus"
-          }
-        },
-        "tabs": {
-          "type": "nd_tabs",
-          "settings": {
-            "care_default": "<p>Après usage, laissez refroidir le sceau puis retirez les résidus de cire avec un chiffon doux. Évitez l'eau sur le manche en bois et rangez le sceau dans son coffret.</p>",
-            "care_page": "",
-            "shipping_text": "<p><strong>Livraison en [10 à 16] jours ouvrés [à confirmer].</strong> Numéro de suivi envoyé par e-mail dès l'expédition.</p><p><strong>Retours :</strong> 14 jours pour le Coffret Initiale et les recharges. Le Coffret Mariage, gravé à vos initiales, est exclu du droit de rétractation sauf défaut.</p>",
-            "shipping_page": "livraison-et-retours"
-          }
-        },
-        "complementary": {
-          "type": "complementary",
-          "settings": {
-            "block_heading": "À ajouter à votre coffret",
-            "make_collapsible_row": false,
-            "icon": "price_tag",
-            "product_list_limit": 4,
-            "products_per_page": 2,
-            "pagination_style": "counter",
-            "image_ratio": "square",
-            "enable_quick_add": true
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Partager"
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "price",
-        "variant_picker",
-        "initiales",
-        "quantity_selector",
-        "buy_buttons",
-        "delivery",
-        "reassurance",
-        "tabs",
-        "complementary",
-        "share"
-      ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -113,22 +20,194 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "image_zoom": "lightbox",
-        "mobile_thumbnails": "show",
+        "mobile_thumbnails": "hide",
         "hide_variants": false,
         "enable_video_looping": false,
-        "padding_top": 24,
-        "padding_bottom": 12
-      }
+        "padding_top": 12,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "installments": {
+          "type": "ml_installments",
+          "settings": {
+            "enabled": false,
+            "count": 3,
+            "min_price": 50,
+            "provider": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "seal_preview": {
+          "type": "ml_seal_preview",
+          "settings": {
+            "option_name": "Initiale",
+            "caption": "Aperçu de votre cachet",
+            "only_tag": "initiale"
+          }
+        },
+        "engraving": {
+          "type": "ml_engraving",
+          "settings": {
+            "label": "Vos deux initiales",
+            "property": "Initiales à graver",
+            "placeholder": "C & T",
+            "max_length": 9,
+            "help": "Aperçu de la gravure envoyé par e-mail avant fabrication.",
+            "only_tag": "mariage"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "withdrawal": {
+          "type": "ml_withdrawal",
+          "settings": {
+            "text": "<p><strong>Création sur mesure.</strong> Gravé à vos initiales, ce coffret est exclu du droit de rétractation (article L221-28, 3° du Code de la consommation). La garantie légale de conformité s'applique toujours.</p>"
+          }
+        },
+        "delivery": {
+          "type": "ml_delivery",
+          "settings": {
+            "note": "Un seul colis, suivi : numéro envoyé par e-mail dès l'expédition."
+          }
+        },
+        "assurance": {
+          "type": "ml_assurance",
+          "settings": {
+            "line_1": "Guide pas-à-pas et vidéo inclus",
+            "line_2": "Paiement sécurisé",
+            "line_3": "Une vraie personne vous répond sous 48 h"
+          }
+        },
+        "contents_initiale": {
+          "type": "ml_contents",
+          "settings": {
+            "heading": "Dans votre coffret",
+            "only_tag": "initiale",
+            "items": "Sceau à votre initiale, tête 25 mm [matière à confirmer : laiton ou acier]\nCire souple en 10 couleurs (environ 150 perles)\nPetit four en bois et cuillère\nPapier et enveloppe en lin pour vos essais\nCarte guide avec QR code vers la vidéo\nCoffret cadeau Maison Lettrine"
+          }
+        },
+        "contents_mariage": {
+          "type": "ml_contents",
+          "settings": {
+            "heading": "Dans votre coffret",
+            "only_tag": "mariage",
+            "items": "Sceau gravé sur mesure : vos 2 initiales et une couronne\nAperçu de la gravure envoyé par e-mail avant fabrication\nCire souple dans la couleur choisie [quantité à confirmer]\nPetit four en bois et cuillère\nGuide « 100 faire-part sans stress »"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "addon": {
+          "type": "ml_addon",
+          "settings": {
+            "product": "recharge-de-cire-souple-environ-50-cachets",
+            "heading": "À ajouter à votre coffret",
+            "text": "Une recharge ≈ 50 cachets de plus.",
+            "only_tag": ""
+          }
+        },
+        "tab_success": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Comment réussir vos cachets",
+            "icon": "check_mark",
+            "content": "<ol><li>Posez le sceau sur un glaçon quelques secondes.</li><li>Faites fondre 3 perles dans la cuillère, sur le petit four, jamais dans la flamme.</li><li>Versez en cercle, à 1 cm du papier.</li><li>Attendez 5 secondes, pressez le sceau bien droit 10 secondes.</li><li>Soulevez d'un geste net. Refroidissez le sceau tous les 3 ou 4 cachets.</li></ol><p>La méthode complète, photos et vidéo, est dans <a href=\"/pages/guide-cachet-de-cire\">notre guide</a>.</p>",
+            "page": ""
+          }
+        },
+        "tab_post": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Envoi par La Poste",
+            "icon": "plane",
+            "content": "<p>La cire souple plie au lieu de casser : elle réduit fortement le risque dans les machines de tri. Aucune méthode n'est garantie à 100 %, alors mettez toutes les chances de votre côté :</p><ol><li>Collez le rabat : le cachet décore, il ne ferme pas seul.</li><li>Choisissez une enveloppe épaisse.</li><li>Déposez vos enveloppes au guichet [vérifier le tarif La Poste en vigueur].</li><li>Envoyez-vous d'abord une enveloppe test.</li></ol>",
+            "page": ""
+          }
+        },
+        "tab_dimensions": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dimensions",
+            "icon": "ruler",
+            "content": "<p>Tête du sceau : 25 mm de diamètre. Matière : [laiton ou acier, à confirmer]. Manche en bois.</p><p>Cachet obtenu : environ 30 à 35 mm de diamètre avec 3 perles de cire.</p><p>Coffret : [dimensions à confirmer].</p>",
+            "page": ""
+          }
+        },
+        "tab_shipping": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Livraison",
+            "icon": "truck",
+            "content": "<p><strong>10 à 16 jours ouvrés [à confirmer]</strong> : préparation jusqu'à 5 jours ouvrés, puis 7 à 11 jours de transport.</p><p>Un seul colis, suivi : numéro envoyé par e-mail dès l'expédition. Livraison offerte dès 50 €.</p><p>Pour un mariage, commandez au moins [4] semaines avant l'envoi de vos faire-part.</p>",
+            "page": ""
+          }
+        },
+        "tab_returns": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Retours",
+            "icon": "return",
+            "content": "<p><strong>Coffret Initiale et recharges :</strong> 14 jours après réception pour changer d'avis. Frais de retour [à confirmer].</p><p><strong>Coffret Mariage :</strong> gravé sur mesure, il est exclu du droit de rétractation (article L221-28, 3° du Code de la consommation). La garantie légale de conformité s'applique toujours.</p><p>Un souci à la réception ? Écrivez-nous avec une photo et votre numéro de commande : nous trouvons une solution.</p>",
+            "page": "livraison-et-retours"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "installments",
+        "variant_picker",
+        "seal_preview",
+        "engraving",
+        "buy_buttons",
+        "withdrawal",
+        "delivery",
+        "assurance",
+        "contents_initiale",
+        "contents_mariage",
+        "description",
+        "addon",
+        "tab_success",
+        "tab_post",
+        "tab_dimensions",
+        "tab_shipping",
+        "tab_returns"
+      ]
     },
     "reviews": {
-      "type": "nd-reviews",
+      "type": "ml-avis",
       "settings": {
+        "kicker": "Vos retours",
         "heading": "Avis clients",
-        "empty_text": "<p>Notre boutique vient d'ouvrir : les premiers avis vérifiés apparaîtront ici. Vous avez reçu votre coffret ? Partagez une photo de vos cachets, cela nous aide beaucoup.</p>",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+        "empty_text": "<p>Notre boutique vient d'ouvrir : les premiers avis vérifiés apparaîtront ici, sans tri ni retouche.</p>",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {},
+      "block_order": []
     },
     "related-products": {
       "type": "related-products",
@@ -143,15 +222,17 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
     "sticky": {
-      "type": "nd-sticky-atc",
+      "type": "ml-sticky-atc",
       "settings": {
         "label": "Ajouter au panier",
+        "choice_tag": "initiale",
+        "choice_label": "Choisir mon initiale",
         "color_scheme": "scheme-3"
       }
     }

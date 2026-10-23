@@ -1,0 +1,79 @@
+{%- comment -%}
+  Bande de réassurance : 4 points courts avec icône.
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="visually-hidden">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    <ul class="ml-reassurance" role="list">
+      {%- for block in section.blocks -%}
+        <li class="ml-reassurance__item" {{ block.shopify_attributes }}>
+          {%- render 'ml-icon', icon: block.settings.icon, size: 28 -%}
+          <div>
+            <p class="ml-reassurance__title">{{ block.settings.title | escape }}</p>
+            {%- if block.settings.text != blank -%}
+              <p class="ml-reassurance__text">{{ block.settings.text }}</p>
+            {%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Réassurance",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre (lu par les lecteurs d'écran)", "default": "Nos engagements" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-2" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 32 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 32 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "default": "guide",
+          "options": [
+            { "value": "guide", "label": "Guide" },
+            { "value": "wax", "label": "Cire" },
+            { "value": "box", "label": "Colis" },
+            { "value": "chat", "label": "Message" },
+            { "value": "seal", "label": "Cachet" },
+            { "value": "truck", "label": "Livraison" },
+            { "value": "lock", "label": "Cadenas" },
+            { "value": "return", "label": "Retour" },
+            { "value": "gift", "label": "Cadeau" },
+            { "value": "envelope", "label": "Enveloppe" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Guide pas-à-pas inclus" },
+        { "type": "inline_richtext", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Réassurance",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "guide", "title": "Guide pas-à-pas inclus" } },
+        { "type": "item", "settings": { "icon": "wax", "title": "Cire souple pensée pour La Poste" } },
+        { "type": "item", "settings": { "icon": "box", "title": "Un seul colis, suivi" } },
+        { "type": "item", "settings": { "icon": "chat", "title": "Une vraie personne répond sous 48 h" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

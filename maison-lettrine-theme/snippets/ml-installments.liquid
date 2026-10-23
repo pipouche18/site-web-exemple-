@@ -1,0 +1,17 @@
+{%- comment -%}
+  « ou 3 × … sans frais » : affiché seulement si une appli de paiement
+  fractionné est déclarée active dans le bloc (sinon rien n'est affiché).
+  Paramètres : product, block
+{%- endcomment -%}
+{%- liquid
+  assign price = product.selected_or_first_available_variant.price
+  assign min_price = block.settings.min_price | times: 100
+  assign count = block.settings.count
+-%}
+{%- if block.settings.enabled and price >= min_price -%}
+  {%- assign share = price | plus: count | minus: 1 | divided_by: count | money -%}
+  <p class="ml-installments" {{ block.shopify_attributes }}>
+    {{ 'ml.installments.text' | t: count: count, amount: share }}
+    {%- if block.settings.provider != blank %} {{ 'ml.installments.with' | t: provider: block.settings.provider }}{% endif -%}
+  </p>
+{%- endif -%}

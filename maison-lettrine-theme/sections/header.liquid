@@ -182,7 +182,7 @@
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <div class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
         {%- if settings.logo != blank -%}
@@ -205,11 +205,11 @@
             }}
           </div>
         {%- else -%}
-          {% render 'nd-wordmark', small: section.settings.wordmark_small, main: section.settings.wordmark_main %}
+          {% render 'ml-wordmark', small: section.settings.wordmark_small, main: section.settings.wordmark_main %}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
-        </h1>
+        </div>
       {%- endif -%}
     {%- endif -%}
 
@@ -225,7 +225,7 @@
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <div class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
         {%- if settings.logo != blank -%}
@@ -248,11 +248,11 @@
             }}
           </div>
         {%- else -%}
-          {% render 'nd-wordmark', small: section.settings.wordmark_small, main: section.settings.wordmark_main %}
+          {% render 'ml-wordmark', small: section.settings.wordmark_small, main: section.settings.wordmark_main %}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
-        </h1>
+        </div>
       {%- endif -%}
     {%- endif -%}
 
@@ -458,6 +458,9 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 
+{%- liquid
+  assign org_links = settings.social_pinterest_link | append: '|' | append: settings.social_instagram_link | append: '|' | append: settings.social_facebook_link | append: '|' | append: settings.social_tiktok_link | append: '|' | append: settings.social_youtube_link | append: '|' | append: settings.social_twitter_link | split: '|'
+-%}
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -466,18 +469,13 @@
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
+    {%- capture same_as -%}
+      {%- for link in org_links -%}
+        {%- if link != blank -%},{{ link | json }}{%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    "sameAs": [{{ same_as | remove_first: ',' }}],
+    "url": {{ request.origin | json }}
   }
 </script>
 

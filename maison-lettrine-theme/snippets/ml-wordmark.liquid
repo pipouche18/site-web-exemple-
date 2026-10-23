@@ -1,0 +1,5 @@
+{% comment %} Logo texte : « MAISON » en petites capitales au-dessus de « Lettrine ». {% endcomment %}
+<span class="ml-wordmark">
+  {%- if small != blank -%}<span class="ml-wordmark__small">{{ small | escape }}</span>{%- endif -%}
+  <span class="ml-wordmark__main">{{ main | default: shop.name | escape }}</span>
+</span>

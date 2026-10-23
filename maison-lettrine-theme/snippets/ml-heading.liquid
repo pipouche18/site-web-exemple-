@@ -1,0 +1,21 @@
+{%- comment -%}
+  En-tête de section : petit surtitre, titre, texte d'introduction.
+  Paramètres :
+  - kicker, heading, text (texte riche)
+  - align : 'center' (défaut) ou 'left'
+  - tag : balise du titre ('h2' par défaut)
+{%- endcomment -%}
+{%- if kicker != blank or heading != blank or text != blank -%}
+  {%- assign tag = tag | default: 'h2' -%}
+  <div class="ml-head ml-head--{{ align | default: 'center' }}">
+    {%- if kicker != blank -%}
+      <p class="ml-kicker">{{ kicker | escape }}</p>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <{{ tag }} class="ml-title">{{ heading }}</{{ tag }}>
+    {%- endif -%}
+    {%- if text != blank -%}
+      <div class="ml-head__text rte">{{ text }}</div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

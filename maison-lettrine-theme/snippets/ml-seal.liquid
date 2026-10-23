@@ -1,0 +1,17 @@
+{%- comment -%}
+  Cachet de cire dessiné en CSS (aucune image), utilisé pour les aperçus.
+  Paramètres :
+  - text : lettre(s) affichée(s)
+  - color : couleur de la cire (hexadécimal, bordeaux par défaut)
+  - size : 'small', 'medium' ou 'large'
+{%- endcomment -%}
+<span
+  class="ml-seal ml-seal--{{ size | default: 'medium' }}"
+  style="--wax: {{ color | default: '#8E1F2B' }};"
+  data-ml-seal
+  aria-hidden="true"
+>
+  <span class="ml-seal__ring">
+    <span class="ml-seal__text" data-ml-seal-text data-length="{{ text | size }}">{{ text | escape }}</span>
+  </span>
+</span>

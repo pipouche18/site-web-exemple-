@@ -1,0 +1,15 @@
+{%- comment -%}
+  Réassurance sous le bouton d'achat : 3 lignes courtes avec icône.
+  Paramètres : block
+{%- endcomment -%}
+<ul class="ml-assurance" role="list" {{ block.shopify_attributes }}>
+  {%- if block.settings.line_1 != blank -%}
+    <li>{%- render 'ml-icon', icon: 'guide', size: 20 -%}<span>{{ block.settings.line_1 | escape }}</span></li>
+  {%- endif -%}
+  {%- if block.settings.line_2 != blank -%}
+    <li>{%- render 'ml-icon', icon: 'lock', size: 20 -%}<span>{{ block.settings.line_2 | escape }}</span></li>
+  {%- endif -%}
+  {%- if block.settings.line_3 != blank -%}
+    <li>{%- render 'ml-icon', icon: 'chat', size: 20 -%}<span>{{ block.settings.line_3 | escape }}</span></li>
+  {%- endif -%}
+</ul>

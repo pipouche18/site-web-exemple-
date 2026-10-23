@@ -1,0 +1,56 @@
+{%- comment -%}
+  Avis clients, prête pour une appli d'avis (Judge.me…).
+  Tant qu'aucun bloc d'appli n'est ajouté : message honnête, jamais d'avis
+  ni de note inventés (pratique commerciale trompeuse).
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding" id="avis">
+    {%- render 'ml-heading', kicker: section.settings.kicker, heading: section.settings.heading -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="ml-reviews__app">
+        {%- for block in section.blocks -%}
+          {% render block %}
+        {%- endfor -%}
+      </div>
+    {%- elsif section.settings.empty_text != blank -%}
+      <div class="ml-reviews__empty">
+        {%- render 'ml-icon', icon: 'seal', size: 40 -%}
+        <div class="rte">{{ section.settings.empty_text }}</div>
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <a class="ml-link" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Avis clients",
+  "tag": "section",
+  "class": "section",
+  "blocks": [{ "type": "@app" }],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Installez une appli d'avis (par exemple Judge.me), puis « Ajouter un bloc » ici et choisissez son widget. Tant qu'aucun bloc n'est ajouté, le message ci-dessous s'affiche. N'ajoutez jamais d'avis inventés."
+    },
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Vos retours" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Avis clients" },
+    {
+      "type": "richtext",
+      "id": "empty_text",
+      "label": "Message tant qu'il n'y a pas d'avis",
+      "default": "<p>Notre boutique vient d'ouvrir : les premiers avis vérifiés apparaîtront ici, sans tri ni retouche. Vous avez reçu votre coffret ? Envoyez-nous une photo de vos cachets, cela nous aide beaucoup.</p>"
+    },
+    { "type": "text", "id": "button_label", "label": "Lien sous le message", "default": "Nous écrire" },
+    { "type": "url", "id": "button_link", "label": "Destination du lien" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 56 }
+  ],
+  "presets": [{ "name": "Avis clients" }]
+}
+{% endschema %}

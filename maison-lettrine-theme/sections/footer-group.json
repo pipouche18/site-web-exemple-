@@ -18,7 +18,7 @@
           "type": "text",
           "settings": {
             "heading": "Maison Lettrine",
-            "subtext": "<p>Coffrets cachet de cire à initiales, avec tout le nécessaire et la méthode pour réussir vos faire-part et vos lettres. Une petite boutique indépendante.</p>"
+            "subtext": "<p>Coffrets cachet de cire à initiales : le sceau, la cire souple et la méthode pour réussir vos faire-part et vos lettres. Une petite boutique indépendante, une vraie personne vous répond.</p>"
           }
         },
         "shop": {
@@ -34,12 +34,20 @@
             "heading": "Aide et informations",
             "menu": "aide"
           }
+        },
+        "legal": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Informations légales",
+            "menu": "infos-legales"
+          }
         }
       },
       "block_order": [
         "brand",
         "shop",
-        "help"
+        "help",
+        "legal"
       ],
       "settings": {
         "color_scheme": "scheme-6",
@@ -50,7 +58,7 @@
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 0,
         "padding_top": 48,
         "padding_bottom": 36

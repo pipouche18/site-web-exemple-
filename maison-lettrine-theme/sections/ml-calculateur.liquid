@@ -1,0 +1,172 @@
+{%- comment -%}
+  Calculateur de cire : nombre d'enveloppes → perles → boîtes → coffret conseillé.
+  Calcul : perles = enveloppes × perles par cachet, + marge d'essais (%),
+  boîtes = perles ÷ perles par boîte (arrondi au-dessus).
+  Le bouton ajoute directement les recharges conseillées au panier.
+  Le coffret, lui, se personnalise sur sa fiche (initiale ou initiales à graver).
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+{%- liquid
+  assign small = section.settings.product_small
+  assign large = section.settings.product_large
+  assign refill = section.settings.refill_product
+  assign presets = section.settings.presets | split: ','
+-%}
+<script src="{{ 'ml-calculator.js' | asset_url }}" defer="defer"></script>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <ml-calculator
+      class="ml-calc"
+      data-per-seal="{{ section.settings.beads_per_seal }}"
+      data-margin="{{ section.settings.extra_percent }}"
+      data-per-box="{{ section.settings.beads_per_box }}"
+      data-threshold="{{ section.settings.threshold }}"
+      data-small-beads="{{ section.settings.small_beads }}"
+      data-large-beads="{{ section.settings.large_beads }}"
+      data-refill-beads="{{ section.settings.refill_beads }}"
+    >
+      <div class="ml-calc__intro">
+        {%- render 'ml-heading',
+          kicker: section.settings.kicker,
+          heading: section.settings.heading,
+          text: section.settings.text,
+          align: 'left'
+        -%}
+      </div>
+
+      <div class="ml-calc__panel">
+        <fieldset class="ml-calc__presets">
+          <legend class="ml-calc__legend">{{ 'ml.calculator.legend' | t }}</legend>
+          <div class="ml-calc__chips">
+            {%- for preset in presets -%}
+              {%- assign value = preset | strip | plus: 0 -%}
+              {%- if value > 0 -%}
+                <button
+                  type="button"
+                  class="ml-chip"
+                  data-value="{{ value }}"
+                  aria-pressed="{% if forloop.index == 2 %}true{% else %}false{% endif %}"
+                >
+                  {{- value -}}
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="ml-field ml-calc__custom">
+            <label for="Calc-{{ section.id }}">{{ 'ml.calculator.custom_label' | t }}</label>
+            <input
+              id="Calc-{{ section.id }}"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              max="2000"
+              step="1"
+              placeholder="{{ 'ml.calculator.custom_placeholder' | t }}"
+              data-calc-input
+            >
+          </div>
+        </fieldset>
+
+        <div class="ml-calc__result" aria-live="polite">
+          <p class="ml-calc__figures">
+            <span><strong data-calc-beads>–</strong> {{ 'ml.calculator.beads' | t }}</span>
+            <span><strong data-calc-boxes>–</strong> {{ 'ml.calculator.boxes' | t }}</span>
+          </p>
+          <p class="ml-calc__summary" data-calc-summary></p>
+          <p class="ml-calc__advice" data-calc-advice></p>
+        </div>
+
+        <div class="ml-calc__actions">
+          {%- if small != blank -%}
+            <a class="button" href="{{ small.url }}" data-calc-product="small" data-title="{{ small.title | escape }}">
+              {{- 'ml.calculator.see_product' | t: title: small.title -}}
+            </a>
+          {%- endif -%}
+          {%- if large != blank -%}
+            <a class="button" href="{{ large.url }}" data-calc-product="large" data-title="{{ large.title | escape }}" hidden>
+              {{- 'ml.calculator.see_product' | t: title: large.title -}}
+            </a>
+          {%- endif -%}
+
+          {%- if refill != blank and refill.available -%}
+            <form
+              action="{{ routes.cart_add_url }}"
+              method="post"
+              class="ml-calc__refill"
+              data-ml-add-form
+              data-calc-refill
+              hidden
+            >
+              {%- if refill.has_only_default_variant -%}
+                <input type="hidden" name="id" value="{{ refill.selected_or_first_available_variant.id }}">
+              {%- else -%}
+                <div class="ml-field">
+                  <label for="CalcRefill-{{ section.id }}">{{ 'ml.calculator.refill_color' | t }}</label>
+                  <select id="CalcRefill-{{ section.id }}" name="id">
+                    {%- for variant in refill.variants -%}
+                      <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                        {{- variant.title | escape }} – {{ variant.price | money -}}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </div>
+              {%- endif -%}
+              <input type="hidden" name="quantity" value="1" data-calc-qty>
+              <button type="submit" class="button button--secondary" data-calc-refill-label>
+                {{- 'ml.calculator.add_refills' | t: count: 1 -}}
+              </button>
+            </form>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.note != blank -%}
+          <div class="ml-calc__note rte">{{ section.settings.note }}</div>
+        {%- endif -%}
+      </div>
+
+      <script type="application/json" data-calc-strings>
+        {
+          "summary": {{ 'ml.calculator.summary' | t | json }},
+          "adviceSmall": {{ 'ml.calculator.advice_small' | t | json }},
+          "adviceLarge": {{ 'ml.calculator.advice_large' | t | json }},
+          "adviceRefills": {{ 'ml.calculator.advice_refills' | t | json }},
+          "refillOne": {{ 'ml.calculator.refill_one' | t | json }},
+          "refillMany": {{ 'ml.calculator.refill_many' | t | json }},
+          "addOne": {{ 'ml.calculator.add_refills.one' | t: count: 1 | json }},
+          "addMany": {{ 'ml.calculator.add_refills.other' | t: count: '[count]' | json }}
+        }
+      </script>
+    </ml-calculator>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Calculateur de cire",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Calculateur" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Combien de cire pour vos enveloppes ?" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Comptez 3 perles par cachet, plus 10 % pour vos essais. Une boîte contient environ 150 perles.</p>" },
+    { "type": "text", "id": "presets", "label": "Choix rapides (séparés par des virgules)", "default": "30, 50, 80, 100, 150" },
+    { "type": "header", "content": "Calcul" },
+    { "type": "range", "id": "beads_per_seal", "label": "Perles par cachet", "min": 1, "max": 6, "step": 1, "default": 3 },
+    { "type": "range", "id": "extra_percent", "label": "Marge pour les essais", "min": 0, "max": 30, "step": 5, "unit": "%", "default": 10 },
+    { "type": "number", "id": "beads_per_box", "label": "Perles par boîte de cire", "default": 150 },
+    { "type": "header", "content": "Recommandation" },
+    { "type": "product", "id": "product_small", "label": "Coffret conseillé pour les petites quantités" },
+    { "type": "number", "id": "small_beads", "label": "Perles incluses dans ce coffret", "default": 150 },
+    { "type": "product", "id": "product_large", "label": "Coffret conseillé au-delà du seuil" },
+    { "type": "number", "id": "large_beads", "label": "Perles incluses dans ce coffret", "default": 150, "info": "[à confirmer] quantité de cire du Coffret Mariage." },
+    { "type": "number", "id": "threshold", "label": "Seuil (nombre d'enveloppes)", "default": 50 },
+    { "type": "product", "id": "refill_product", "label": "Recharge de cire" },
+    { "type": "number", "id": "refill_beads", "label": "Perles par recharge", "default": 150 },
+    { "type": "richtext", "id": "note", "label": "Note sous le calcul", "default": "<p>Estimation pour des cachets de 25 mm. Un cachet plus épais demande un peu plus de cire.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 72 }
+  ],
+  "presets": [{ "name": "Calculateur de cire" }]
+}
+{% endschema %}

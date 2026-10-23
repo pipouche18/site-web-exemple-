@@ -1,0 +1,132 @@
+{%- comment -%}
+  Hero de l'accueil.
+  - Avec photo ou vidéo : média plein cadre, texte en surimpression.
+  - Sans média : fond uni élégant, avec le cachet de la marque si une image
+    de cachet est choisie (jamais d'image de remplacement).
+  L'image du hero n'est pas chargée en différé (elle est visible dès l'arrivée).
+{%- endcomment -%}
+{%- liquid
+  assign img = section.settings.image
+  assign img_mobile = section.settings.image_mobile | default: img
+  assign video = section.settings.video
+  assign has_media = false
+  if img != blank or video != blank
+    assign has_media = true
+  endif
+-%}
+{%- style -%}
+  #Hero-{{ section.id }} { --hero-min: {{ section.settings.height_mobile }}svh; }
+  #Hero-{{ section.id }} .ml-hero__shade { background: linear-gradient(to top, rgba(42, 33, 30, {{ section.settings.overlay | divided_by: 100.0 }}), rgba(42, 33, 30, {{ section.settings.overlay | divided_by: 300.0 }}) 70%); }
+  @media screen and (min-width: 750px) {
+    #Hero-{{ section.id }} { --hero-min: {{ section.settings.height_desktop }}vh; }
+  }
+{%- endstyle -%}
+
+<div
+  id="Hero-{{ section.id }}"
+  class="ml-hero color-{{ section.settings.color_scheme }} gradient {% if has_media %}ml-hero--media{% else %}ml-hero--plain{% endif %}"
+>
+  {%- if has_media -%}
+    <div class="ml-hero__media">
+      {%- if video != blank -%}
+        {{
+          video
+          | video_tag:
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            controls: false,
+            preload: 'metadata',
+            image_size: '1600x'
+        }}
+      {%- else -%}
+        <picture>
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ img_mobile | image_url: width: 750 }} 750w, {{ img_mobile | image_url: width: 1100 }} 1100w"
+            sizes="100vw"
+          >
+          {{
+            img
+            | image_url: width: 2400
+            | image_tag:
+              widths: '1000, 1500, 2000, 2400',
+              sizes: '100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              alt: img.alt
+          }}
+        </picture>
+      {%- endif -%}
+      <div class="ml-hero__shade" aria-hidden="true"></div>
+    </div>
+  {%- endif -%}
+
+  <div class="ml-hero__inner page-width">
+    <div class="ml-hero__content">
+      {%- if section.settings.kicker != blank -%}
+        <p class="ml-kicker">{{ section.settings.kicker | escape }}</p>
+      {%- endif -%}
+      <h1 class="ml-hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}
+        <p class="ml-hero__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      <div class="ml-hero__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a
+            class="button{% if has_media %} ml-button--light{% endif %}"
+            href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
+          >
+            {{- section.settings.button_label | escape -}}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
+          <a class="ml-link" href="{{ section.settings.link_url }}">{{ section.settings.link_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if has_media == false and section.settings.seal != blank -%}
+      <div class="ml-hero__seal">
+        {{
+          section.settings.seal
+          | image_url: width: 900
+          | image_tag:
+            widths: '240, 360, 540, 720, 900',
+            sizes: '(min-width: 990px) 420px, 160px',
+            loading: 'eager',
+            fetchpriority: 'high',
+            alt: section.settings.seal.alt
+        }}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero (accueil)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Sans photo ni vidéo, la section affiche un fond uni avec le cachet de la marque. Aucune image de remplacement." },
+    { "type": "image_picker", "id": "image", "label": "Photo (format paysage)" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Photo pour téléphone (format vertical, facultatif)" },
+    { "type": "video", "id": "video", "label": "Vidéo (facultatif, remplace la photo)", "info": "Vidéo courte, sans son, en boucle." },
+    { "type": "range", "id": "overlay", "label": "Assombrir le média", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 45 },
+    { "type": "image_picker", "id": "seal", "label": "Cachet affiché sans photo", "info": "Par exemple maison-lettrine-cachet.png." },
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Coffrets cachet de cire à initiales" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Vos faire-part scellés à la cire. <em>Réussis dès le premier cachet.</em>" },
+    { "type": "text", "id": "text", "label": "Sous-titre", "default": "Un coffret complet : votre sceau, la cire souple et la méthode pas-à-pas. Même si vous n'avez jamais fait de cachet." },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Découvrir les coffrets" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton" },
+    { "type": "text", "id": "link_label", "label": "Lien secondaire", "default": "Lire le guide" },
+    { "type": "url", "id": "link_url", "label": "Destination du lien secondaire" },
+    { "type": "range", "id": "height_mobile", "label": "Hauteur minimale sur téléphone", "min": 40, "max": 100, "step": 5, "unit": "%", "default": 70 },
+    { "type": "range", "id": "height_desktop", "label": "Hauteur minimale sur ordinateur", "min": 40, "max": 100, "step": 5, "unit": "%", "default": 75 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "Hero (accueil)" }]
+}
+{% endschema %}

@@ -1,0 +1,83 @@
+{%- comment -%}
+  Capture e-mail « Le mini-guide des 7 erreurs à éviter ».
+  Formulaire client Shopify : la cliente est inscrite avec les tags choisis
+  (par défaut : newsletter, guide-7-erreurs). L'envoi du guide se règle dans
+  Shopify Email (automatisation « client abonné » filtrée sur le tag).
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="ml-signup">
+      <div class="ml-signup__text">
+        {%- render 'ml-heading',
+          kicker: section.settings.kicker,
+          heading: section.settings.heading,
+          text: section.settings.text,
+          align: 'left'
+        -%}
+      </div>
+      {%- assign form_id = 'GuideForm-' | append: section.id -%}
+      {%- form 'customer', id: form_id, class: 'ml-signup__form' -%}
+        <input type="hidden" name="contact[tags]" value="{{ section.settings.tags | escape }}">
+        {%- if form.posted_successfully? -%}
+          <p class="ml-signup__success" role="status" tabindex="-1" autofocus>
+            {%- render 'ml-icon', icon: 'check', size: 20 -%}
+            {{ section.settings.success | escape }}
+          </p>
+        {%- else -%}
+          <div class="ml-field">
+            <label for="GuideEmail-{{ section.id }}">{{ 'ml.signup.email_label' | t }}</label>
+            <div class="ml-signup__row">
+              <input
+                id="GuideEmail-{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                value="{{ form.email }}"
+                autocomplete="email"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+                placeholder="{{ 'ml.signup.email_placeholder' | t }}"
+                {% if form.errors %}
+                  aria-invalid="true" aria-describedby="GuideError-{{ section.id }}"
+                {% endif %}
+              >
+              <button type="submit" class="button">{{ section.settings.button_label | escape }}</button>
+            </div>
+          </div>
+          {%- if form.errors -%}
+            <p id="GuideError-{{ section.id }}" class="ml-signup__error" role="alert">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </p>
+          {%- endif -%}
+          {%- if section.settings.legal != blank -%}
+            <div class="ml-signup__legal rte">{{ section.settings.legal }}</div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Capture e-mail (guide)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Offert" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Le mini-guide des 7 erreurs à éviter" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Tout ce qu'on aurait aimé savoir avant nos premiers cachets, envoyé par e-mail avant même d'acheter.</p>" },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Recevoir le guide" },
+    { "type": "text", "id": "tags", "label": "Tags ajoutés à la cliente", "default": "newsletter, guide-7-erreurs", "info": "Gardez « newsletter » pour l'inscription aux e-mails marketing." },
+    { "type": "text", "id": "success", "label": "Message de confirmation", "default": "Merci ! Le mini-guide arrive dans votre boîte e-mail." },
+    { "type": "richtext", "id": "legal", "label": "Mention sous le formulaire", "default": "<p>Un e-mail par semaine au plus. Désinscription en un clic. Voir notre <a href=\"/policies/privacy-policy\">politique de confidentialité</a>.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-5" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 72 }
+  ],
+  "presets": [{ "name": "Capture e-mail (guide)" }]
+}
+{% endschema %}

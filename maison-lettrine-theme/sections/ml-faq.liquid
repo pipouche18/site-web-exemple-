@@ -1,0 +1,117 @@
+{%- comment -%}
+  FAQ en accordéons accessibles (<details>), avec données structurées FAQPage.
+  Les blocs « Catégorie » regroupent les questions qui les suivent.
+  Option « filtres » : boutons pour n'afficher qu'une catégorie (page FAQ).
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+{%- liquid
+  assign categories = section.blocks | where: 'type', 'category'
+  assign show_filters = false
+  if section.settings.filters and categories.size > 1
+    assign show_filters = true
+  endif
+  assign current_category = ''
+-%}
+{%- if show_filters -%}
+  <script src="{{ 'ml-faq.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- render 'ml-heading',
+      kicker: section.settings.kicker,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      tag: section.settings.heading_tag
+    -%}
+    <ml-faq class="ml-faq">
+      {%- if show_filters -%}
+        <div class="ml-faq__filters" role="group" aria-label="{{ 'ml.faq.filter_label' | t }}">
+          <button type="button" class="ml-chip" data-filter="all" aria-pressed="true">{{ 'ml.faq.all' | t }}</button>
+          {%- for category in categories -%}
+            <button type="button" class="ml-chip" data-filter="{{ category.id }}" aria-pressed="false">
+              {{- category.settings.title | escape -}}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'category' -%}
+            {%- assign current_category = block.id -%}
+            <h2 class="ml-faq__category" data-category="{{ block.id }}" {{ block.shopify_attributes }}>
+              {{- block.settings.title | escape -}}
+            </h2>
+          {%- when 'question' -%}
+            <details class="ml-accordion" data-category="{{ current_category }}" {{ block.shopify_attributes }}>
+              <summary>
+                <h3 class="ml-accordion__title">{{ block.settings.question | escape }}</h3>
+                <span class="ml-accordion__sign" aria-hidden="true"></span>
+              </summary>
+              <div class="ml-accordion__content rte">{{ block.settings.answer }}</div>
+            </details>
+        {%- endcase -%}
+      {%- endfor -%}
+    </ml-faq>
+    {%- if section.settings.button_label != blank -%}
+      <p class="ml-center ml-mt">
+        <a class="ml-link" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if section.settings.structured_data -%}
+  {%- capture faq_items -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'question' and block.settings.question != blank -%}
+        ,{"@type":"Question","name":{{ block.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.answer | strip_html | strip | json }}}}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{ faq_items | strip | remove_first: ',' }}]}
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Vos questions, nos réponses" },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Niveau du titre",
+      "options": [
+        { "value": "h1", "label": "Titre principal de la page (h1)" },
+        { "value": "h2", "label": "Titre de section (h2)" }
+      ],
+      "default": "h2"
+    },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "checkbox", "id": "filters", "label": "Afficher les filtres par catégorie", "default": false },
+    { "type": "checkbox", "id": "structured_data", "label": "Données structurées FAQ (SEO)", "default": true, "info": "N'activez-les que sur une seule section FAQ par page." },
+    { "type": "text", "id": "button_label", "label": "Lien sous la FAQ" },
+    { "type": "url", "id": "button_link", "label": "Destination du lien" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 56 }
+  ],
+  "blocks": [
+    { "type": "category", "name": "Catégorie", "settings": [{ "type": "text", "id": "title", "label": "Nom de la catégorie", "default": "Débuter" }] },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Votre question ?" },
+        { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>Votre réponse.</p>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "FAQ", "blocks": [{ "type": "question" }, { "type": "question" }] }]
+}
+{% endschema %}

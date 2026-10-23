@@ -1,0 +1,125 @@
+{%- comment -%}
+  Les coffrets côte à côte : visuel, prix, contenu en liste, bouton.
+  Chaque bloc pointe vers un produit. Si le produit n'est pas encore visible
+  en boutique (brouillon), le bloc utilise son titre et son image de secours.
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- render 'ml-heading',
+      kicker: section.settings.kicker,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+    <ul class="ml-coffrets ml-coffrets--{{ section.blocks.size }}" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign p = block.settings.product
+          assign card_title = block.settings.title | default: p.title
+          assign card_image = block.settings.image | default: p.featured_image
+          assign card_url = p.url | default: block.settings.fallback_link
+          assign button_label = block.settings.button_label
+          if button_label == blank
+            assign button_label = 'ml.coffrets.choose' | t
+          endif
+          assign lines = block.settings.contents | newline_to_br | split: '<br />'
+        -%}
+        <li class="ml-coffret" {{ block.shopify_attributes }}>
+          <div class="ml-coffret__media">
+            {%- if block.settings.badge != blank -%}
+              <span class="ml-badge">{{ block.settings.badge | escape }}</span>
+            {%- endif -%}
+            {%- if card_image != blank -%}
+              {{
+                card_image
+                | image_url: width: 1200
+                | image_tag:
+                  widths: '360, 540, 720, 900, 1200',
+                  sizes: '(min-width: 990px) 560px, (min-width: 750px) 45vw, 92vw',
+                  loading: 'lazy',
+                  alt: card_image.alt | default: card_title
+              }}
+            {%- else -%}
+              <div class="ml-coffret__plain" aria-hidden="true">
+                <span class="ml-coffret__monogram">{{ block.settings.monogram | default: 'L' | escape }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="ml-coffret__body">
+            <h3 class="ml-coffret__title">
+              {%- if card_url != blank -%}
+                <a href="{{ card_url }}">{{ card_title | escape }}</a>
+              {%- else -%}
+                {{ card_title | escape }}
+              {%- endif -%}
+            </h3>
+            {%- if p != blank -%}
+              <p class="ml-coffret__price">
+                {%- if p.price_varies -%}
+                  {{ 'products.product.price.from_price_html' | t: price: p.price_min | money }}
+                {%- else -%}
+                  {{ p.price | money }}
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+            {%- if block.settings.subtitle != blank -%}
+              <p class="ml-coffret__subtitle">{{ block.settings.subtitle | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.contents != blank -%}
+              <ul class="ml-checklist" role="list">
+                {%- for line in lines -%}
+                  {%- assign clean_line = line | strip -%}
+                  {%- if clean_line != blank -%}
+                    <li>{%- render 'ml-icon', icon: 'check', size: 18 -%}<span>{{ clean_line | escape }}</span></li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+            {%- if card_url != blank -%}
+              <a class="button ml-coffret__button" href="{{ card_url }}">
+                {{- button_label | escape -}}
+                <span class="visually-hidden"> – {{ card_title | escape }}</span>
+              </a>
+            {%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Les coffrets",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Nos coffrets" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Choisissez votre coffret" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Tout est dedans. Rien à commander en plus, rien à calculer.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "coffret",
+      "name": "Coffret",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Produit" },
+        { "type": "text", "id": "badge", "label": "Badge (facultatif)", "info": "Par exemple « Spécial mariage »." },
+        { "type": "text", "id": "title", "label": "Titre affiché (facultatif)", "info": "Vide : titre du produit." },
+        { "type": "text", "id": "subtitle", "label": "Phrase courte" },
+        { "type": "textarea", "id": "contents", "label": "Contenu du coffret", "info": "Un élément par ligne." },
+        { "type": "text", "id": "button_label", "label": "Texte du bouton" },
+        { "type": "image_picker", "id": "image", "label": "Visuel (facultatif)", "info": "Vide : première photo du produit." },
+        { "type": "text", "id": "monogram", "label": "Lettre affichée sans visuel", "default": "L" },
+        { "type": "url", "id": "fallback_link", "label": "Lien si le produit n'est pas encore en ligne" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Les coffrets", "blocks": [{ "type": "coffret" }, { "type": "coffret" }] }]
+}
+{% endschema %}

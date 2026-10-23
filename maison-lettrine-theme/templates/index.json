@@ -10,50 +10,59 @@
 {
   "sections": {
     "hero": {
-      "type": "nd-hero",
+      "type": "ml-hero",
       "settings": {
-        "overlay": 40,
+        "seal": "shopify://shop_images/maison-lettrine-cachet.png",
         "kicker": "Coffrets cachet de cire à initiales",
-        "heading": "Vos faire-part scellés à la cire. Réussis dès le premier cachet.",
-        "text": "Un coffret complet : votre initiale gravée, la cire souple et la méthode pas-à-pas. Même si vous n'avez jamais fait de cachet.",
+        "heading": "Vos faire-part scellés à la cire. <em>Réussis dès le premier cachet.</em>",
+        "text": "Un coffret complet : votre sceau, la cire souple et la méthode pas-à-pas. Même si vous n'avez jamais fait de cachet.",
         "button_label": "Découvrir les coffrets",
         "button_link": "shopify://collections/coffrets-cachet-de-cire",
-        "height_mobile": 80,
-        "height_desktop": 85,
-        "color_scheme": "scheme-2"
+        "link_label": "Lire le guide",
+        "link_url": "shopify://pages/guide-cachet-de-cire",
+        "overlay": 45,
+        "height_mobile": 70,
+        "height_desktop": 75,
+        "color_scheme": "scheme-1"
       }
     },
     "reassurance": {
-      "type": "nd-reassurance",
+      "type": "ml-reassurance",
+      "settings": {
+        "heading": "Nos engagements",
+        "color_scheme": "scheme-2",
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
       "blocks": {
         "r1": {
           "type": "item",
           "settings": {
-            "icon": "chat_bubble",
+            "icon": "guide",
             "title": "Guide pas-à-pas inclus",
-            "text": "Carte + vidéo pour réussir vos premiers cachets"
+            "text": "Carte et vidéo pour réussir vos premiers cachets"
           }
         },
         "r2": {
           "type": "item",
           "settings": {
-            "icon": "truck",
-            "title": "Colis suivi",
-            "text": "Livraison en [10 à 16] jours ouvrés [à confirmer]"
+            "icon": "wax",
+            "title": "Cire souple pensée pour La Poste",
+            "text": "Elle plie au lieu de casser : bien moins de risque à l'envoi"
           }
         },
         "r3": {
           "type": "item",
           "settings": {
-            "icon": "lock",
-            "title": "Paiement sécurisé",
-            "text": "Carte bancaire, Apple Pay [à confirmer]"
+            "icon": "box",
+            "title": "Un seul colis, suivi",
+            "text": "Tout arrive ensemble, avec un numéro de suivi"
           }
         },
         "r4": {
           "type": "item",
           "settings": {
-            "icon": "return",
+            "icon": "chat",
             "title": "Une vraie personne vous répond",
             "text": "Par e-mail, sous 48 h"
           }
@@ -64,129 +73,176 @@
         "r2",
         "r3",
         "r4"
-      ],
-      "settings": {
-        "heading": "",
-        "color_scheme": "scheme-6",
-        "padding_top": 32,
-        "padding_bottom": 32
-      }
+      ]
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "coffrets": {
+      "type": "ml-coffrets",
       "settings": {
-        "title": "Choisissez votre coffret",
-        "heading_size": "h1",
-        "description": "<p>Tout est dedans. Rien à commander en plus, rien à calculer.</p>",
-        "show_description": true,
-        "description_style": "body",
-        "collection": "coffrets-cachet-de-cire",
-        "products_to_show": 3,
-        "columns_desktop": 3,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "link",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "1",
-        "padding_top": 72,
-        "padding_bottom": 56
-      }
-    },
-    "arguments": {
-      "type": "nd-features",
-      "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "title": "La cire colle au sceau",
-            "text": "<p>Le métal chauffe d'un cachet à l'autre. Le guide montre l'astuce du sceau refroidi sur un glaçon : il se décolle net.</p>"
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "title": "Cire noircie ou pleine de bulles",
-            "text": "<p>La flamme directe salit la cire. Le petit four chauffe la cuillère à distance, sans suie ni surchauffe.</p>"
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "title": "Abîmé par La Poste",
-            "text": "<p>Une cire dure casse dans les machines de tri. La cire souple plie au lieu de se fendre, et le guide donne la méthode d'envoi.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ],
-      "settings": {
-        "kicker": "Pourquoi les premiers cachets ratent",
-        "heading": "Trois erreurs, trois solutions dans le coffret",
+        "kicker": "Nos coffrets",
+        "heading": "Choisissez votre coffret",
+        "text": "<p>Tout est dedans. Rien à commander en plus, rien à calculer.</p>",
         "color_scheme": "scheme-1",
         "padding_top": 72,
         "padding_bottom": 72
-      }
-    },
-    "sizes": {
-      "type": "nd-size-helper",
+      },
       "blocks": {
-        "s1": {
-          "type": "size",
+        "initiale": {
+          "type": "coffret",
           "settings": {
-            "bed": "50 faire-part",
-            "cover": "≈ 165 perles",
-            "note": "Environ 1 boîte de cire",
-            "link": ""
+            "product": "coffret-initiale-cachet-de-cire-personnalise",
+            "title": "Coffret Initiale",
+            "subtitle": "Pour vos lettres, vos cadeaux et vos premiers cachets.",
+            "contents": "Sceau à votre initiale, tête 25 mm [matière à confirmer : laiton ou acier]\nCire souple en 10 couleurs (environ 150 perles)\nPetit four en bois et cuillère\nPapier et enveloppe en lin pour vos essais\nCarte guide avec QR code vers la vidéo\nCoffret cadeau Maison Lettrine",
+            "button_label": "Choisir mon initiale",
+            "monogram": "L",
+            "fallback_link": "shopify://collections/coffrets-cachet-de-cire"
           }
         },
-        "s2": {
-          "type": "size",
+        "mariage": {
+          "type": "coffret",
           "settings": {
-            "bed": "100 faire-part",
-            "cover": "≈ 330 perles",
-            "note": "Environ 2 boîtes de cire",
-            "link": ""
-          }
-        },
-        "s3": {
-          "type": "size",
-          "settings": {
-            "bed": "150 faire-part",
-            "cover": "≈ 500 perles",
-            "note": "Environ 3 boîtes de cire",
-            "link": ""
+            "product": "coffret-mariage-sceau-grave-a-vos-deux-initiales",
+            "badge": "Spécial mariage",
+            "title": "Coffret Mariage",
+            "subtitle": "Vos deux initiales gravées, pour tous vos faire-part.",
+            "contents": "Sceau gravé sur mesure : vos 2 initiales et une couronne\nAperçu de la gravure envoyé par e-mail avant fabrication\nCire souple dans la couleur de votre choix [quantité à confirmer]\nPetit four en bois et cuillère\nGuide « 100 faire-part sans stress »",
+            "button_label": "Personnaliser mon coffret",
+            "monogram": "L",
+            "fallback_link": "shopify://collections/coffrets-cachet-de-cire"
           }
         }
       },
       "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
+        "initiale",
+        "mariage"
+      ]
+    },
+    "problemes": {
+      "type": "ml-problemes",
       "settings": {
-        "kicker": "Calculateur",
-        "heading": "Combien de cire pour vos faire-part ?",
-        "text": "<p>Comptez environ 3 perles par cachet de 25 mm, plus 10 % pour vos essais. Une boîte contient environ 150 perles.</p>",
+        "kicker": "Pourquoi les premiers cachets ratent",
+        "heading": "Trois erreurs, trois solutions dans le coffret",
+        "color_scheme": "scheme-3",
+        "padding_top": 72,
+        "padding_bottom": 72
+      },
+      "blocks": {
+        "p1": {
+          "type": "problem",
+          "settings": {
+            "problem": "La cire colle au sceau",
+            "problem_text": "<p>Le métal chauffe d'un cachet à l'autre et la cire accroche.</p>",
+            "solution": "Un sceau refroidi",
+            "solution_text": "<p>Le guide montre l'astuce du glaçon : quelques secondes dessus, et le sceau se décolle net.</p>"
+          }
+        },
+        "p2": {
+          "type": "problem",
+          "settings": {
+            "problem": "La cire noircit",
+            "problem_text": "<p>La flamme directe dépose de la suie et fait bouillir la cire.</p>",
+            "solution": "Le petit four",
+            "solution_text": "<p>Il chauffe la cuillère à distance : une cire nette, sans suie ni bulles.</p>"
+          }
+        },
+        "p3": {
+          "type": "problem",
+          "settings": {
+            "problem": "Le cachet casse à La Poste",
+            "problem_text": "<p>Une cire dure se fend dans les machines de tri.</p>",
+            "solution": "La cire souple",
+            "solution_text": "<p>Elle plie au lieu de casser, ce qui réduit fortement le risque. Le guide donne la méthode d'envoi.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "gestes": {
+      "type": "ml-gestes",
+      "settings": {
+        "kicker": "La méthode",
+        "heading": "Un cachet en 4 gestes",
         "button_label": "Lire le guide complet",
         "button_link": "shopify://pages/guide-cachet-de-cire",
         "color_scheme": "scheme-2",
         "padding_top": 72,
         "padding_bottom": 72
+      },
+      "blocks": {
+        "g1": {
+          "type": "step",
+          "settings": {
+            "title": "Chauffer",
+            "text": "<p>3 perles dans la cuillère, posée sur le petit four. 2 à 3 minutes, jamais dans la flamme.</p>"
+          }
+        },
+        "g2": {
+          "type": "step",
+          "settings": {
+            "title": "Verser",
+            "text": "<p>En cercle, à 1 cm du papier : un disque un peu plus large que le sceau.</p>"
+          }
+        },
+        "g3": {
+          "type": "step",
+          "settings": {
+            "title": "Presser",
+            "text": "<p>Attendez 5 secondes, puis posez le sceau froid, bien droit, 10 secondes sans tourner.</p>"
+          }
+        },
+        "g4": {
+          "type": "step",
+          "settings": {
+            "title": "Soulever",
+            "text": "<p>D'un geste net et vertical. Refroidissez le sceau tous les 3 ou 4 cachets.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2",
+        "g3",
+        "g4"
+      ]
+    },
+    "calculateur": {
+      "type": "ml-calculateur",
+      "settings": {
+        "kicker": "Calculateur",
+        "heading": "Combien de cire pour vos enveloppes ?",
+        "text": "<p>Comptez 3 perles par cachet, plus 10 % pour vos essais. Une boîte contient environ 150 perles.</p>",
+        "presets": "30, 50, 80, 100, 150",
+        "beads_per_seal": 3,
+        "extra_percent": 10,
+        "beads_per_box": 150,
+        "product_small": "coffret-initiale-cachet-de-cire-personnalise",
+        "small_beads": 150,
+        "product_large": "coffret-mariage-sceau-grave-a-vos-deux-initiales",
+        "large_beads": 150,
+        "threshold": 50,
+        "refill_product": "recharge-de-cire-souple-environ-50-cachets",
+        "refill_beads": 150,
+        "note": "<p>Estimation pour des cachets de 25 mm. La quantité de cire du Coffret Mariage est [à confirmer].</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
-    "colors": {
-      "type": "nd-colors",
+    "nuancier": {
+      "type": "ml-nuancier",
+      "settings": {
+        "kicker": "Nos cires souples",
+        "heading": "Six couleurs pour vos enveloppes",
+        "text": "<p>Touchez une couleur pour la choisir sur le Coffret Mariage.</p>",
+        "product": "coffret-mariage-sceau-grave-a-vos-deux-initiales",
+        "color_scheme": "scheme-3",
+        "padding_top": 64,
+        "padding_bottom": 64
+      },
       "blocks": {
         "c1": {
           "type": "color",
@@ -244,17 +300,90 @@
         "c4",
         "c5",
         "c6"
-      ],
+      ]
+    },
+    "occasions": {
+      "type": "ml-occasions",
       "settings": {
-        "kicker": "Nos cires souples",
-        "heading": "Six couleurs pour vos enveloppes",
+        "kicker": "Pour quelles occasions ?",
+        "heading": "Une lettre scellée, c'est une lettre qu'on <em>garde</em>",
+        "color_scheme": "scheme-2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      },
+      "blocks": {
+        "o1": {
+          "type": "occasion",
+          "settings": {
+            "icon": "rings",
+            "title": "Mariage",
+            "text": "Faire-part, menus, marque-places.",
+            "link": "shopify://products/coffret-mariage-sceau-grave-a-vos-deux-initiales"
+          }
+        },
+        "o2": {
+          "type": "occasion",
+          "settings": {
+            "icon": "baby",
+            "title": "Naissance",
+            "text": "Faire-part et cartes de remerciement.",
+            "link": "shopify://products/coffret-initiale-cachet-de-cire-personnalise"
+          }
+        },
+        "o3": {
+          "type": "occasion",
+          "settings": {
+            "icon": "gift",
+            "title": "Cadeau",
+            "text": "Un coffret à offrir, à l'initiale de la personne.",
+            "link": "shopify://products/coffret-initiale-cachet-de-cire-personnalise"
+          }
+        },
+        "o4": {
+          "type": "occasion",
+          "settings": {
+            "icon": "envelope",
+            "title": "Correspondance",
+            "text": "Lettres, cartes de vœux, invitations.",
+            "link": "shopify://collections/coffrets-cachet-de-cire"
+          }
+        }
+      },
+      "block_order": [
+        "o1",
+        "o2",
+        "o3",
+        "o4"
+      ]
+    },
+    "avis": {
+      "type": "ml-avis",
+      "settings": {
+        "kicker": "Vos retours",
+        "heading": "Avis clients",
+        "empty_text": "<p>Notre boutique vient d'ouvrir : les premiers avis vérifiés apparaîtront ici, sans tri ni retouche. Vous avez reçu votre coffret ? Envoyez-nous une photo de vos cachets, cela nous aide beaucoup.</p>",
+        "button_label": "Nous écrire",
+        "button_link": "shopify://pages/contact",
         "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
+        "padding_top": 56,
+        "padding_bottom": 56
+      },
+      "blocks": {},
+      "block_order": []
     },
     "faq": {
-      "type": "nd-faq",
+      "type": "ml-faq",
+      "settings": {
+        "heading": "Vos questions, nos réponses",
+        "heading_tag": "h2",
+        "filters": false,
+        "structured_data": true,
+        "button_label": "Toutes les questions",
+        "button_link": "shopify://pages/faq",
+        "color_scheme": "scheme-3",
+        "padding_top": 64,
+        "padding_bottom": 64
+      },
       "blocks": {
         "q1": {
           "type": "question",
@@ -306,57 +435,19 @@
         "q4",
         "q5",
         "q6"
-      ],
-      "settings": {
-        "heading": "Vos questions, nos réponses",
-        "structured_data": true,
-        "color_scheme": "scheme-3",
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
+      ]
     },
-    "editorial": {
-      "type": "nd-editorial",
+    "guide_email": {
+      "type": "ml-guide-email",
       "settings": {
-        "kicker": "Notre idée de la lettre",
-        "quote": "Une lettre scellée, c'est une lettre qu'on <em>garde</em>.",
-        "signature": "Maison Lettrine",
-        "button_label": "Notre histoire",
-        "button_link": "shopify://pages/a-propos",
-        "color_scheme": "scheme-2",
-        "padding_top": 88,
-        "padding_bottom": 88
-      }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Le mini-guide des 7 erreurs à éviter",
-            "heading_size": "h1"
-          }
-        },
-        "paragraph": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Offert par e-mail, avant même d'acheter : tout ce qu'on aurait aimé savoir avant nos premiers cachets. Désinscription en un clic.</p>"
-          }
-        },
-        "email_form": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "paragraph",
-        "email_form"
-      ],
-      "settings": {
+        "kicker": "Offert",
+        "heading": "Le mini-guide des 7 erreurs à éviter",
+        "text": "<p>Tout ce qu'on aurait aimé savoir avant nos premiers cachets, envoyé par e-mail avant même d'acheter.</p>",
+        "button_label": "Recevoir le guide",
+        "tags": "newsletter, guide-7-erreurs",
+        "success": "Merci ! Le mini-guide arrive dans votre boîte e-mail.",
+        "legal": "<p>Un e-mail par semaine au plus. Désinscription en un clic. Voir notre <a href=\"/policies/privacy-policy\">politique de confidentialité</a>.</p>",
         "color_scheme": "scheme-5",
-        "full_width": true,
         "padding_top": 72,
         "padding_bottom": 72
       }
@@ -365,12 +456,14 @@
   "order": [
     "hero",
     "reassurance",
-    "featured_collection",
-    "arguments",
-    "sizes",
-    "colors",
+    "coffrets",
+    "problemes",
+    "gestes",
+    "calculateur",
+    "nuancier",
+    "occasions",
+    "avis",
     "faq",
-    "editorial",
-    "newsletter"
+    "guide_email"
   ]
 }

@@ -548,5 +548,84 @@
       "expanded": "Formulaire de destinataire de carte-cadeau agrandi",
       "collapsed": "Formulaire de destinataire de carte-cadeau réduit"
     }
+  },
+  "ml": {
+    "general": {
+      "page": "Page {{ number }}",
+      "to_confirm": "[à confirmer]"
+    },
+    "coffrets": {
+      "choose": "Choisir ce coffret"
+    },
+    "problems": {
+      "issue": "Le problème",
+      "solution": "Dans le coffret"
+    },
+    "steps": {
+      "play_video": "Lire la vidéo",
+      "step": "Étape {{ number }} :"
+    },
+    "calculator": {
+      "legend": "Combien d'enveloppes allez-vous sceller ?",
+      "custom_label": "Ou indiquez un nombre",
+      "custom_placeholder": "Ex. : 120",
+      "beads": "perles de cire",
+      "boxes": "boîte(s) d'environ 150 perles",
+      "summary": "Pour [envelopes] enveloppes : environ [beads] perles, soit [boxes] boîte(s) de cire.",
+      "advice_small": "Notre conseil : le [title], sa cire suffit.",
+      "advice_large": "Notre conseil : le [title].",
+      "advice_refills": "Ajoutez [refills] pour ne pas manquer de cire.",
+      "refill_one": "1 recharge",
+      "refill_many": "[count] recharges",
+      "see_product": "Voir le {{ title }}",
+      "refill_color": "Couleur de la recharge",
+      "add_refills": {
+        "one": "Ajouter 1 recharge au panier",
+        "other": "Ajouter {{ count }} recharges au panier"
+      }
+    },
+    "swatches": {
+      "choose": "(choisir cette couleur)"
+    },
+    "faq": {
+      "filter_label": "Filtrer les questions par thème",
+      "all": "Toutes"
+    },
+    "signup": {
+      "email_label": "Votre adresse e-mail",
+      "email_placeholder": "prenom@exemple.fr"
+    },
+    "engraving": {
+      "preview": "Aperçu",
+      "required": "(obligatoire)",
+      "missing": "Indiquez les initiales à graver pour continuer."
+    },
+    "delivery": {
+      "business_days": "jours ouvrés",
+      "days": "jours",
+      "fallback": "Livraison en {{ min }} à {{ max }} {{ unit }}",
+      "estimate_html": "Commandé aujourd'hui, reçu entre le <strong>[from]</strong> et le <strong>[to]</strong>"
+    },
+    "installments": {
+      "text": "ou {{ count }} × {{ amount }} sans frais",
+      "with": "avec {{ provider }}"
+    },
+    "addon": {
+      "add": "Ajouter"
+    },
+    "pinterest": {
+      "save": "Enregistrer",
+      "new_window": "sur Pinterest (nouvelle fenêtre)"
+    },
+    "cart": {
+      "free_shipping_remaining_html": "Plus que <strong>{{ amount }}</strong> pour la livraison offerte",
+      "free_shipping_reached": "La livraison vous est offerte",
+      "free_shipping_label": "Progression vers la livraison offerte",
+      "tracking": "Un seul colis, suivi.",
+      "withdrawal": "Le Coffret Mariage est gravé sur mesure : il est exclu du droit de rétractation (article L221-28, 3° du Code de la consommation). Vérifiez bien vos initiales, un aperçu vous sera envoyé avant fabrication."
+    },
+    "footer": {
+      "cookies": "Gérer mes cookies"
+    }
   }
 }

@@ -12,7 +12,7 @@
   "presets": {
     "Maison Lettrine": {
       "logo": "shopify://shop_images/maison-lettrine-logo.png",
-      "logo_width": 230,
+      "logo_width": 220,
       "favicon": "shopify://shop_images/maison-lettrine-cachet.png",
       "customer_account_menu": "customer-account-main-menu",
       "color_schemes": {
@@ -32,8 +32,8 @@
             "background": "#EFE3D3",
             "background_gradient": "",
             "text": "#2A211E",
-            "button": "#2A211E",
-            "button_label": "#F5ECDD",
+            "button": "#8E1F2B",
+            "button_label": "#FFFFFF",
             "secondary_button_label": "#2A211E",
             "shadow": "#2A211E"
           }
@@ -51,11 +51,11 @@
         },
         "scheme-4": {
           "settings": {
-            "background": "#E8DCCB",
+            "background": "#EFE3D3",
             "background_gradient": "",
             "text": "#2A211E",
-            "button": "#2A211E",
-            "button_label": "#F5ECDD",
+            "button": "#8E1F2B",
+            "button_label": "#FFFFFF",
             "secondary_button_label": "#2A211E",
             "shadow": "#2A211E"
           }
@@ -75,30 +75,30 @@
           "settings": {
             "background": "#2A211E",
             "background_gradient": "",
-            "text": "#F3EBDF",
+            "text": "#F5ECDD",
             "button": "#B88A3E",
             "button_label": "#2A211E",
-            "secondary_button_label": "#F3EBDF",
-            "shadow": "#F3EBDF"
+            "secondary_button_label": "#F5ECDD",
+            "shadow": "#F5ECDD"
           }
         },
         "scheme-7": {
           "settings": {
-            "background": "#4F5A42",
+            "background": "#F5ECDD",
             "background_gradient": "",
-            "text": "#F3EBDF",
-            "button": "#F3EBDF",
-            "button_label": "#2B2420",
-            "secondary_button_label": "#F3EBDF",
-            "shadow": "#F3EBDF"
+            "text": "#2A211E",
+            "button": "#2A211E",
+            "button_label": "#F5ECDD",
+            "secondary_button_label": "#8E1F2B",
+            "shadow": "#2A211E"
           }
         }
       },
-      "type_header_font": "fraunces_n4",
-      "heading_scale": 110,
-      "type_body_font": "jost_n4",
-      "body_scale": 105,
-      "page_width": 1300,
+      "type_header_font": "cormorant_n5",
+      "heading_scale": 125,
+      "type_body_font": "inter_n4",
+      "body_scale": 100,
+      "page_width": 1200,
       "spacing_sections": 0,
       "spacing_grid_horizontal": 8,
       "spacing_grid_vertical": 8,
@@ -204,11 +204,11 @@
       "predictive_search_enabled": true,
       "predictive_search_show_vendor": false,
       "predictive_search_show_price": true,
-      "currency_code_enabled": true,
+      "currency_code_enabled": false,
       "cart_type": "drawer",
       "show_vendor": false,
-      "show_cart_note": true,
-      "cart_drawer_collection": "recharges-et-accessoires",
+      "show_cart_note": false,
+      "cart_drawer_collection": "coffrets-cachet-de-cire",
       "cart_color_scheme": "scheme-1",
       "sections": {
         "main-password-header": {
@@ -224,10 +224,18 @@
           }
         }
       },
-      "size_guide_page": "",
       "delivery_min_days": 10,
       "delivery_max_days": 16,
-      "delivery_business_days": true
+      "delivery_business_days": true,
+      "cart_upsell_product": "recharge-de-cire-souple-environ-50-cachets",
+      "cart_upsell_heading": "Un peu plus de cire ?",
+      "cart_upsell_text": "Une recharge ≈ 50 cachets de plus.",
+      "free_shipping_threshold": 50,
+      "delivery_to_confirm": true,
+      "engraving_tag": "mariage",
+      "share_image": "shopify://shop_images/maison-lettrine-cachet.png",
+      "pinterest_save_button": true,
+      "show_cookie_preferences_link": true
     }
   }
 }

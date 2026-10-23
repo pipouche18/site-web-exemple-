@@ -1,0 +1,70 @@
+{%- comment -%}
+  « Pourquoi les premiers cachets ratent » : problème → solution du coffret.
+{%- endcomment -%}
+{%- render 'ml-section-padding', id: section.id, top: section.settings.padding_top, bottom: section.settings.padding_bottom -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- render 'ml-heading',
+      kicker: section.settings.kicker,
+      heading: section.settings.heading,
+      text: section.settings.text
+    -%}
+    <ol class="ml-problems" role="list">
+      {%- for block in section.blocks -%}
+        <li class="ml-problem" {{ block.shopify_attributes }}>
+          <div class="ml-problem__issue">
+            <p class="ml-problem__label">
+              {%- render 'ml-icon', icon: 'cross', size: 16 -%}
+              {{ 'ml.problems.issue' | t }}
+            </p>
+            <h3 class="ml-problem__title">{{ block.settings.problem | escape }}</h3>
+            {%- if block.settings.problem_text != blank -%}
+              <div class="ml-problem__text rte">{{ block.settings.problem_text }}</div>
+            {%- endif -%}
+          </div>
+          <div class="ml-problem__fix">
+            <p class="ml-problem__label">
+              {%- render 'ml-icon', icon: 'check', size: 16 -%}
+              {{ 'ml.problems.solution' | t }}
+            </p>
+            <p class="ml-problem__title">{{ block.settings.solution | escape }}</p>
+            {%- if block.settings.solution_text != blank -%}
+              <div class="ml-problem__text rte">{{ block.settings.solution_text }}</div>
+            {%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Problèmes → solutions",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Surtitre", "default": "Pourquoi les premiers cachets ratent" },
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Trois erreurs, trois solutions dans le coffret" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge basse", "default": 72 }
+  ],
+  "blocks": [
+    {
+      "type": "problem",
+      "name": "Problème",
+      "settings": [
+        { "type": "text", "id": "problem", "label": "Problème", "default": "La cire colle au sceau" },
+        { "type": "richtext", "id": "problem_text", "label": "Explication du problème" },
+        { "type": "text", "id": "solution", "label": "Solution", "default": "Un sceau refroidi" },
+        { "type": "richtext", "id": "solution_text", "label": "Explication de la solution" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Problèmes → solutions", "blocks": [{ "type": "problem" }, { "type": "problem" }, { "type": "problem" }] }]
+}
+{% endschema %}

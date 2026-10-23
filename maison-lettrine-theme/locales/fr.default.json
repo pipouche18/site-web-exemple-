@@ -626,6 +626,9 @@
     },
     "footer": {
       "cookies": "Gérer mes cookies"
+    },
+    "guide": {
+      "solution": "La solution"
     }
   }
 }

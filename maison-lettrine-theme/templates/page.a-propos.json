@@ -17,7 +17,7 @@
       }
     },
     "story": {
-      "type": "nd-article",
+      "type": "ml-article",
       "blocks": {
         "b1": {
           "type": "heading",
@@ -43,7 +43,7 @@
       }
     },
     "honesty": {
-      "type": "nd-article",
+      "type": "ml-article",
       "blocks": {
         "b1": {
           "type": "heading",

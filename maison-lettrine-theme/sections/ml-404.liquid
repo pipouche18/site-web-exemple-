@@ -1,0 +1,39 @@
+{%- comment -%}
+  Page introuvable (404), en français, avec liens vers les coffrets et le guide.
+{%- endcomment -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width page-width--narrow ml-404">
+    <p class="ml-404__code" aria-hidden="true">404</p>
+    <h1 class="ml-title">{{ section.settings.heading }}</h1>
+    {%- if section.settings.text != blank -%}
+      <div class="ml-head__text rte">{{ section.settings.text }}</div>
+    {%- endif -%}
+    <div class="ml-hero__actions ml-404__actions">
+      {%- if section.settings.button_label != blank -%}
+        <a class="button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+          {{- section.settings.button_label | escape -}}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
+        <a class="ml-link" href="{{ section.settings.link_url }}">{{ section.settings.link_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page introuvable",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Titre", "default": "Cette page s'est égarée" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Voir les coffrets" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton" },
+    { "type": "text", "id": "link_label", "label": "Lien secondaire", "default": "Lire le guide" },
+    { "type": "url", "id": "link_url", "label": "Destination du lien secondaire" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

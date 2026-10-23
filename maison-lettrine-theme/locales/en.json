@@ -614,6 +614,9 @@
     },
     "footer": {
       "cookies": "Manage cookies"
+    },
+    "guide": {
+      "solution": "The fix"
     }
   }
 }

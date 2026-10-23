@@ -10,8 +10,15 @@
 {
   "sections": {
     "main": {
-      "type": "main-404",
-      "settings": {}
+      "type": "ml-404",
+      "settings": {
+        "heading": "Cette page s'est égarée",
+        "text": "<p>Le lien est peut-être ancien, ou l'adresse contient une faute de frappe. Voici de quoi retrouver votre chemin.</p>",
+        "button_label": "Voir les coffrets",
+        "button_link": "shopify://collections/coffrets-cachet-de-cire",
+        "link_label": "Lire le guide",
+        "link_url": "shopify://pages/guide-cachet-de-cire"
+      }
     }
   },
   "order": [

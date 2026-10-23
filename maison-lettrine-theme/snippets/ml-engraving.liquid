@@ -10,7 +10,6 @@
     assign option_name = option.name | downcase
     if option_name contains 'couleur'
       assign color_index = forloop.index0
-      assign current_color = option.selected_value
     endif
   endfor
 -%}

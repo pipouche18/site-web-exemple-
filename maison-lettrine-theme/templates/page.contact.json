@@ -17,7 +17,7 @@
       }
     },
     "intro": {
-      "type": "nd-article",
+      "type": "ml-article",
       "blocks": {
         "b1": {
           "type": "text",

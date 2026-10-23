@@ -16,87 +16,249 @@
         "padding_bottom": 0
       }
     },
-    "steps": {
-      "type": "nd-article",
-      "blocks": {
-        "b1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Pas à pas"
-          }
-        },
-        "b2": {
-          "type": "text",
-          "settings": {
-            "text": "<ol><li><strong>Préparer.</strong> Installez-vous sur une surface plane protégée. Allumez une bougie chauffe-plat dans le petit four. Posez le sceau sur un glaçon ou au congélateur.</li><li><strong>Faire fondre.</strong> 3 perles dans la cuillère, posée sur le four, 2 à 3 minutes. Jamais dans la flamme : la cire noircit.</li><li><strong>Verser.</strong> En un seul mouvement circulaire, à 1 cm du papier, un disque un peu plus large que le sceau. Une bulle ? Percez-la avec un cure-dent.</li><li><strong>Attendre.</strong> 5 secondes : les bords perdent leur brillance, le centre reste mou.</li><li><strong>Presser.</strong> Sceau froid et essuyé, bien droit, sans forcer ni tourner. Gardez-le 10 secondes.</li><li><strong>Soulever.</strong> D'un geste net et vertical. Laissez durcir 1 minute. Refroidissez le sceau tous les 3 à 4 cachets.</li></ol>"
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2"
-      ],
+    "toc": {
+      "type": "ml-guide-toc",
       "settings": {
+        "heading": "Sommaire",
         "color_scheme": "scheme-1",
         "padding_top": 8,
-        "padding_bottom": 32
-      }
-    },
-    "errors": {
-      "type": "nd-article",
+        "padding_bottom": 24
+      },
       "blocks": {
-        "b1": {
-          "type": "heading",
+        "l1": {
+          "type": "link",
           "settings": {
-            "heading": "Les 7 erreurs qui ratent un cachet"
+            "label": "Pas à pas : 6 étapes",
+            "anchor": "pas-a-pas"
           }
         },
-        "b2": {
-          "type": "text",
+        "l2": {
+          "type": "link",
           "settings": {
-            "text": "<ul><li><strong>La cire colle au sceau</strong> : sceau trop chaud ou cire trop liquide. Refroidissez-le et attendez 5 secondes après avoir versé.</li><li><strong>La cire noircit</strong> : la flamme touche la cire. Utilisez le petit four.</li><li><strong>Des bulles</strong> : surchauffe. Retirez la cuillère dès que la cire est liquide.</li><li><strong>Empreinte floue</strong> : pas assez de cire ou sceau incliné. 3 perles minimum, pression verticale.</li><li><strong>Cachet ovale ou baveux</strong> : versement trop rapide ou trop haut. Restez à 1 cm, versez lentement en cercle.</li><li><strong>Le cachet casse en route</strong> : cire dure. Prenez une cire souple et collez le rabat.</li><li><strong>Plus de cire à mi-parcours</strong> : comptez 3 perles par cachet + 10 % d'essais.</li></ul>"
+            "label": "Les 7 erreurs qui ratent un cachet",
+            "anchor": "erreurs"
+          }
+        },
+        "l3": {
+          "type": "link",
+          "settings": {
+            "label": "Envoyer par La Poste sans casse",
+            "anchor": "la-poste"
           }
         }
       },
       "block_order": [
-        "b1",
-        "b2"
-      ],
-      "settings": {
-        "color_scheme": "scheme-2",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
+        "l1",
+        "l2",
+        "l3"
+      ]
     },
-    "post": {
-      "type": "nd-article",
-      "blocks": {
-        "b1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Envoyer par La Poste sans casse"
-          }
-        },
-        "b2": {
-          "type": "text",
-          "settings": {
-            "text": "<ol><li>Utilisez une cire souple (celle de nos coffrets).</li><li>Collez le rabat : le cachet décore, il ne ferme pas seul.</li><li>Préférez une enveloppe épaisse ou rigide.</li><li>Déposez vos enveloppes au guichet [vérifier le tarif « lettre non mécanisable »].</li><li>Envoyez-vous d'abord une enveloppe test.</li></ol>"
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2"
-      ],
+    "steps": {
+      "type": "ml-guide-part",
       "settings": {
+        "anchor": "pas-a-pas",
+        "layout": "steps",
+        "kicker": "La méthode",
+        "heading": "Pas à pas : 6 étapes",
         "color_scheme": "scheme-1",
         "padding_top": 40,
         "padding_bottom": 56
-      }
+      },
+      "blocks": {
+        "s1": {
+          "type": "item",
+          "settings": {
+            "title": "Préparer",
+            "text": "<p>Installez-vous sur une surface plane protégée. Allumez une bougie chauffe-plat dans le petit four. Posez le sceau sur un glaçon ou au congélateur.</p>"
+          }
+        },
+        "s2": {
+          "type": "item",
+          "settings": {
+            "title": "Faire fondre",
+            "text": "<p>3 perles dans la cuillère, posée sur le four, 2 à 3 minutes. Jamais dans la flamme : la cire noircit.</p>"
+          }
+        },
+        "s3": {
+          "type": "item",
+          "settings": {
+            "title": "Verser",
+            "text": "<p>En un seul mouvement circulaire, à 1 cm du papier, un disque un peu plus large que le sceau. Une bulle ? Percez-la avec un cure-dent.</p>"
+          }
+        },
+        "s4": {
+          "type": "item",
+          "settings": {
+            "title": "Attendre",
+            "text": "<p>5 secondes : les bords perdent leur brillance, le centre reste mou.</p>"
+          }
+        },
+        "s5": {
+          "type": "item",
+          "settings": {
+            "title": "Presser",
+            "text": "<p>Sceau froid et essuyé, bien droit, sans forcer ni tourner. Gardez-le 10 secondes.</p>"
+          }
+        },
+        "s6": {
+          "type": "item",
+          "settings": {
+            "title": "Soulever",
+            "text": "<p>D'un geste net et vertical. Laissez durcir 1 minute. Refroidissez le sceau tous les 3 à 4 cachets.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "errors": {
+      "type": "ml-guide-part",
+      "settings": {
+        "anchor": "erreurs",
+        "layout": "errors",
+        "kicker": "À éviter",
+        "heading": "Les 7 erreurs qui ratent un cachet",
+        "color_scheme": "scheme-2",
+        "padding_top": 56,
+        "padding_bottom": 56
+      },
+      "blocks": {
+        "e1": {
+          "type": "item",
+          "settings": {
+            "title": "La cire colle au sceau",
+            "text": "<p>Sceau trop chaud ou cire trop liquide.</p>",
+            "solution": "<p>Refroidissez le sceau et attendez 5 secondes après avoir versé.</p>"
+          }
+        },
+        "e2": {
+          "type": "item",
+          "settings": {
+            "title": "La cire noircit",
+            "text": "<p>La flamme touche la cire.</p>",
+            "solution": "<p>Utilisez le petit four : la cuillère chauffe à distance.</p>"
+          }
+        },
+        "e3": {
+          "type": "item",
+          "settings": {
+            "title": "Des bulles",
+            "text": "<p>La cire a surchauffé.</p>",
+            "solution": "<p>Retirez la cuillère dès que la cire est liquide.</p>"
+          }
+        },
+        "e4": {
+          "type": "item",
+          "settings": {
+            "title": "Empreinte floue",
+            "text": "<p>Pas assez de cire ou sceau incliné.</p>",
+            "solution": "<p>3 perles minimum, pression bien verticale.</p>"
+          }
+        },
+        "e5": {
+          "type": "item",
+          "settings": {
+            "title": "Cachet ovale ou baveux",
+            "text": "<p>Versement trop rapide ou trop haut.</p>",
+            "solution": "<p>Restez à 1 cm, versez lentement en cercle.</p>"
+          }
+        },
+        "e6": {
+          "type": "item",
+          "settings": {
+            "title": "Le cachet casse en route",
+            "text": "<p>Cire dure, qui se fend dans les machines de tri.</p>",
+            "solution": "<p>Prenez une cire souple et collez le rabat.</p>"
+          }
+        },
+        "e7": {
+          "type": "item",
+          "settings": {
+            "title": "Plus de cire à mi-parcours",
+            "text": "<p>Quantité sous-estimée.</p>",
+            "solution": "<p>Comptez 3 perles par cachet + 10 % d'essais (voir le calculateur de l'accueil).</p>"
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6",
+        "e7"
+      ]
+    },
+    "post": {
+      "type": "ml-guide-part",
+      "settings": {
+        "anchor": "la-poste",
+        "layout": "list",
+        "kicker": "Envoi postal",
+        "heading": "Envoyer par La Poste sans casse",
+        "text": "<p>La cire souple réduit fortement le risque, mais aucune méthode n'est garantie à 100 %. Ces 5 points mettent toutes les chances de votre côté.</p>",
+        "button_label": "Découvrir les coffrets",
+        "button_link": "shopify://collections/coffrets-cachet-de-cire",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 72
+      },
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "title": "Une cire souple",
+            "text": "<p>Celle de nos coffrets : elle plie au lieu de casser.</p>"
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "title": "Le rabat collé",
+            "text": "<p>Le cachet décore, il ne ferme pas seul l'enveloppe.</p>"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "title": "Une enveloppe épaisse",
+            "text": "<p>Ou rigide : le cachet est moins sollicité.</p>"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "title": "Le dépôt au guichet",
+            "text": "<p>Plutôt que dans la boîte aux lettres [vérifier le tarif « lettre non mécanisable »].</p>"
+          }
+        },
+        "p5": {
+          "type": "item",
+          "settings": {
+            "title": "Une enveloppe test",
+            "text": "<p>Envoyez-vous d'abord une enveloppe pour voir comment elle arrive.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ]
     }
   },
   "order": [
     "main",
+    "toc",
     "steps",
     "errors",
     "post"

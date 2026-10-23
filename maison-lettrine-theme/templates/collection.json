@@ -23,23 +23,73 @@
         "products_per_page": 12,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "horizontal",
-        "enable_sorting": true,
-        "columns_mobile": "2",
+        "enable_sorting": false,
+        "columns_mobile": "1",
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "reassurance": {
+      "type": "ml-reassurance",
+      "settings": {
+        "heading": "Nos engagements",
+        "color_scheme": "scheme-2",
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "r1": {
+          "type": "item",
+          "settings": {
+            "icon": "guide",
+            "title": "Guide pas-à-pas inclus",
+            "text": ""
+          }
+        },
+        "r2": {
+          "type": "item",
+          "settings": {
+            "icon": "wax",
+            "title": "Cire souple pensée pour La Poste",
+            "text": ""
+          }
+        },
+        "r3": {
+          "type": "item",
+          "settings": {
+            "icon": "box",
+            "title": "Un seul colis, suivi",
+            "text": ""
+          }
+        },
+        "r4": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Une vraie personne répond sous 48 h",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "reassurance"
   ]
 }

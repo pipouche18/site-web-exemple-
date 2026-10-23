@@ -17,7 +17,7 @@
       }
     },
     "faq": {
-      "type": "nd-faq",
+      "type": "ml-faq",
       "blocks": {
         "c1": {
           "type": "category",
@@ -117,7 +117,7 @@
           "type": "question",
           "settings": {
             "question": "Puis-je payer en plusieurs fois ?",
-            "answer": "<p>[À activer : paiement en 3 fois via Alma ou Klarna.]</p>"
+            "answer": "<p>Pas pour le moment. Si le paiement en plusieurs fois est proposé, il apparaîtra directement sur la fiche produit et au paiement.</p>"
           }
         },
         "q16": {
@@ -166,7 +166,10 @@
         "structured_data": true,
         "color_scheme": "scheme-1",
         "padding_top": 16,
-        "padding_bottom": 56
+        "padding_bottom": 56,
+        "filters": true,
+        "button_label": "Une autre question ? Écrivez-nous",
+        "button_link": "shopify://pages/contact"
       }
     }
   },

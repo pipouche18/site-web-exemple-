@@ -25,6 +25,13 @@
             {%- render 'ml-icon', icon: 'check', size: 20 -%}
             {{ section.settings.success | escape }}
           </p>
+          {%- comment -%} Le guide est aussi téléchargeable tout de suite, sans attendre l'e-mail. {%- endcomment -%}
+          {%- if section.settings.guide_url != blank -%}
+            <a class="button ml-button--light ml-signup__download" href="{{ section.settings.guide_url }}" target="_blank" rel="noopener">
+              {{- section.settings.download_label | escape -}}
+              <span class="visually-hidden"> ({{ 'ml.signup.pdf_new_window' | t }})</span>
+            </a>
+          {%- endif -%}
         {%- else -%}
           <div class="ml-field">
             <label for="GuideEmail-{{ section.id }}">{{ 'ml.signup.email_label' | t }}</label>
@@ -73,6 +80,8 @@
     { "type": "text", "id": "button_label", "label": "Bouton", "default": "Recevoir le guide" },
     { "type": "text", "id": "tags", "label": "Tags ajoutés à la cliente", "default": "newsletter, guide-7-erreurs", "info": "Gardez « newsletter » pour l'inscription aux e-mails marketing." },
     { "type": "text", "id": "success", "label": "Message de confirmation", "default": "Merci ! Le mini-guide arrive dans votre boîte e-mail." },
+    { "type": "url", "id": "guide_url", "label": "Lien du guide PDF (téléchargement après inscription)", "info": "Collez le lien du fichier (Contenu > Fichiers). Vide : pas de bouton." },
+    { "type": "text", "id": "download_label", "label": "Texte du bouton de téléchargement", "default": "Télécharger le guide (PDF)" },
     { "type": "richtext", "id": "legal", "label": "Mention sous le formulaire", "default": "<p>Un e-mail par semaine au plus. Désinscription en un clic. Voir notre <a href=\"/policies/privacy-policy\">politique de confidentialité</a>.</p>" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Couleurs", "default": "scheme-5" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Marge haute", "default": 72 },

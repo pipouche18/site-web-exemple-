@@ -602,3 +602,5 @@ html { scroll-padding-top: calc(var(--header-height, 0px) + 1.6rem); }
 .ml-password__seal img { width: 100%; height: auto; }
 .ml-password .ml-head__text { margin-bottom: 3.2rem; }
 .ml-password__form { width: 100%; text-align: left; }
+
+.ml-signup__download { margin-top: 1.6rem; }

@@ -581,7 +581,8 @@
     },
     "signup": {
       "email_label": "Your email address",
-      "email_placeholder": "name@example.com"
+      "email_placeholder": "name@example.com",
+      "pdf_new_window": "PDF, new window"
     },
     "engraving": {
       "preview": "Preview",

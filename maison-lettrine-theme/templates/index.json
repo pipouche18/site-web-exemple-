@@ -445,11 +445,13 @@
         "text": "<p>Tout ce qu'on aurait aimé savoir avant nos premiers cachets, envoyé par e-mail avant même d'acheter.</p>",
         "button_label": "Recevoir le guide",
         "tags": "newsletter, guide-7-erreurs",
-        "success": "Merci ! Le mini-guide arrive dans votre boîte e-mail.",
+        "success": "Merci ! Votre mini-guide est prêt, et une copie arrive dans votre boîte e-mail.",
         "legal": "<p>Un e-mail par semaine au plus. Désinscription en un clic. Voir notre <a href=\"/policies/privacy-policy\">politique de confidentialité</a>.</p>",
         "color_scheme": "scheme-5",
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "guide_url": "https://cdn.shopify.com/s/files/1/1024/3997/7344/files/mini-guide-7-erreurs-maison-lettrine.pdf?v=1792971737",
+        "download_label": "Télécharger le guide (PDF)"
       }
     }
   },

@@ -593,7 +593,8 @@
     },
     "signup": {
       "email_label": "Votre adresse e-mail",
-      "email_placeholder": "prenom@exemple.fr"
+      "email_placeholder": "prenom@exemple.fr",
+      "pdf_new_window": "PDF, nouvelle fenêtre"
     },
     "engraving": {
       "preview": "Aperçu",

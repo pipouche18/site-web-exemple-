@@ -102,7 +102,7 @@
           "settings": {
             "heading": "Dans votre coffret",
             "only_tag": "initiale",
-            "items": "Sceau à votre initiale, tête 25 mm [matière à confirmer : laiton ou acier]\nCire souple en 10 couleurs (environ 150 perles)\nPetit four en bois et cuillère\nPapier et enveloppe en lin pour vos essais\nCarte guide avec QR code vers la vidéo\nCoffret cadeau Maison Lettrine"
+            "items": "Sceau à votre initiale, tête en laiton 25 mm\nCire souple en 10 couleurs (environ 150 perles)\nPetit four en bois et cuillère\nPapier et enveloppe en lin pour vos essais\nCarte guide avec QR code vers la vidéo\nCoffret cadeau Maison Lettrine"
           }
         },
         "contents_mariage": {
@@ -149,7 +149,7 @@
           "settings": {
             "heading": "Dimensions",
             "icon": "ruler",
-            "content": "<p>Tête du sceau : 25 mm de diamètre. Matière : [laiton ou acier, à confirmer]. Manche en bois.</p><p>Cachet obtenu : environ 30 à 35 mm de diamètre avec 3 perles de cire.</p><p>Coffret : [dimensions à confirmer].</p>",
+            "content": "<p>Tête du sceau en laiton, manche en bois. Coffret Initiale : tête de 25 mm de diamètre. Coffret Mariage : [25 ou 30 mm, à confirmer].</p><p>Cachet obtenu : environ 30 à 35 mm de diamètre avec 3 perles de cire.</p><p>Coffret : [dimensions à confirmer].</p>",
             "page": ""
           }
         },

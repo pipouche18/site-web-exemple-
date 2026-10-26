@@ -66,7 +66,7 @@
             "property": "Initiales à graver",
             "placeholder": "C & T",
             "max_length": 9,
-            "help": "Aperçu de la gravure envoyé par e-mail avant fabrication.",
+            "help": "Aperçu de la gravure envoyé par e-mail avant fabrication. Gravure en 2 jours environ après votre accord.",
             "only_tag": "mariage"
           }
         },
@@ -110,7 +110,7 @@
           "settings": {
             "heading": "Dans votre coffret",
             "only_tag": "mariage",
-            "items": "Sceau gravé sur mesure : vos 2 initiales et une couronne\nAperçu de la gravure envoyé par e-mail avant fabrication\nCire souple dans la couleur choisie [quantité à confirmer]\nPetit four en bois et cuillère\nGuide « 100 faire-part sans stress »"
+            "items": "Sceau en laiton de 30 mm, gravé sur mesure : vos 2 initiales et une couronne\nAperçu de la gravure envoyé par e-mail avant fabrication\nCire souple dans la couleur de votre choix (environ 400 perles, de quoi sceller une centaine de faire-part)\nPetit four en bois et cuillère\nGuide « 100 faire-part sans stress »"
           }
         },
         "description": {
@@ -149,7 +149,7 @@
           "settings": {
             "heading": "Dimensions",
             "icon": "ruler",
-            "content": "<p>Tête du sceau en laiton, manche en bois. Coffret Initiale : tête de 25 mm de diamètre. Coffret Mariage : [25 ou 30 mm, à confirmer].</p><p>Cachet obtenu : environ 30 à 35 mm de diamètre avec 3 perles de cire.</p><p>Coffret : [dimensions à confirmer].</p>",
+            "content": "<p>Tête du sceau en laiton, manche en bois. Coffret Initiale : tête de 25 mm de diamètre. Coffret Mariage : tête de 30 mm, pour que les deux initiales et la couronne restent nettes.</p><p>Cachet obtenu : environ 30 à 35 mm de diamètre avec 3 perles de cire.</p><p>Coffret : [dimensions à confirmer].</p>",
             "page": ""
           }
         },

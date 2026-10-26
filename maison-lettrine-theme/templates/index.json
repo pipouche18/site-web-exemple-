@@ -105,7 +105,7 @@
             "badge": "Spécial mariage",
             "title": "Coffret Mariage",
             "subtitle": "Vos deux initiales gravées, pour tous vos faire-part.",
-            "contents": "Sceau gravé sur mesure : vos 2 initiales et une couronne\nAperçu de la gravure envoyé par e-mail avant fabrication\nCire souple dans la couleur de votre choix [quantité à confirmer]\nPetit four en bois et cuillère\nGuide « 100 faire-part sans stress »",
+            "contents": "Sceau en laiton de 30 mm, gravé sur mesure : vos 2 initiales et une couronne\nAperçu de la gravure envoyé par e-mail avant fabrication\nCire souple dans la couleur de votre choix (environ 400 perles, de quoi sceller une centaine de faire-part)\nPetit four en bois et cuillère\nGuide « 100 faire-part sans stress »",
             "button_label": "Personnaliser mon coffret",
             "monogram": "L",
             "fallback_link": "shopify://collections/coffrets-cachet-de-cire"
@@ -222,11 +222,11 @@
         "product_small": "coffret-initiale-cachet-de-cire-personnalise",
         "small_beads": 150,
         "product_large": "coffret-mariage-sceau-grave-a-vos-deux-initiales",
-        "large_beads": 150,
+        "large_beads": 400,
         "threshold": 50,
         "refill_product": "recharge-de-cire-souple-environ-50-cachets",
         "refill_beads": 150,
-        "note": "<p>Estimation pour des cachets de 25 mm. La quantité de cire du Coffret Mariage est [à confirmer].</p>",
+        "note": "<p>Estimation pour des cachets de 25 mm : comptez une perle de plus par cachet avec le sceau de 30 mm du Coffret Mariage.</p>",
         "color_scheme": "scheme-1",
         "padding_top": 72,
         "padding_bottom": 72

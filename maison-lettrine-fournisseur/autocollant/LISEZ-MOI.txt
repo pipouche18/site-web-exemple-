@@ -1,0 +1,19 @@
+Autocollant rond Maison Lettrine – fichiers d'impression
+=========================================================
+
+Format fini : rond, 40 mm de diamètre, découpe à la forme.
+Fond perdu : 2 mm autour (fichier de 44 × 44 mm).
+Marge de sécurité : tous les textes et filets sont à 3 mm minimum de la coupe.
+Traits : 0,25 mm minimum.
+Couleurs : bordeaux #9A2834 (légèrement éclairci pour compenser la lamination mate), crème #F5ECDD.
+Finition : lamination mate.
+
+Fichiers à envoyer à l'imprimeur :
+- autocollant-impression.pdf            → fichier d'impression (vectoriel, police intégrée)
+- autocollant-avec-trait-de-coupe.pdf   → le même avec la ligne de découpe en pointillés bleus (repère, ne pas imprimer)
+- versions .png (environ 1200 dpi) si l'imprimeur préfère une image
+
+Printing file for the supplier (English):
+Round sticker, 40 mm diameter, die-cut. Bleed 2 mm (file 44 × 44 mm).
+Matte lamination. Vector PDF with embedded font.
+The dashed blue circle in the "cut line" file is the die-cut line only — do not print it.

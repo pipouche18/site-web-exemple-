@@ -16,6 +16,7 @@ def b64(path):
 
 
 SEAL = 'data:image/png;base64,' + b64(HERE / 'cachet.png')
+ICON = 'data:image/png;base64,' + b64(HERE / 'icone.png')  # en petit : l'icône « L » (cachet illisible sous 96 px)
 CG = FONTS / '@fontsource/cormorant-garamond/files'
 IN = FONTS / '@fontsource/inter/files'
 FONT_CSS = ''.join(
@@ -68,7 +69,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--wax)}
 .wax .cta,.dark .cta{background:var(--cream);color:var(--ink)}
 """
 
-FOOT = f"""<div class="foot"><div class="brand"><img src="{SEAL}" alt=""><div class="wm"><small>Maison</small><b>LETTRINE</b></div></div><div class="url">maisonlettrine.com</div></div>"""
+FOOT = f"""<div class="foot"><div class="brand"><img src="{ICON}" alt=""><div class="wm"><small>Maison</small><b>LETTRINE</b></div></div><div class="url">maisonlettrine.com</div></div>"""
 
 
 def page(body, cls=''):

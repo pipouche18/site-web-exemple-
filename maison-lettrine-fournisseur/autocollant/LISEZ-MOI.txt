@@ -4,8 +4,9 @@ Autocollant rond Maison Lettrine – fichiers d'impression
 Format fini : rond, 40 mm de diamètre, découpe à la forme.
 Fond perdu : 2 mm autour (fichier de 44 × 44 mm).
 Marge de sécurité : tous les textes et filets sont à 3 mm minimum de la coupe.
-Traits : 0,25 mm minimum.
+Traits : 0,3 mm.
 Couleurs : bordeaux #9A2834 (légèrement éclairci pour compenser la lamination mate), crème #F5ECDD.
+Version 2 du cachet : filets de 0,3 mm, texte centré entre les filets, « L » italique (Cormorant Garamond).
 Finition : lamination mate.
 
 Fichiers à envoyer à l'imprimeur :

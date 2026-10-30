@@ -1,0 +1,11 @@
+Logo Maison Lettrine – version 2 (cachet)
+==========================================
+
+cachet-maison-lettrine.pdf  → cachet seul, vectoriel (40 mm, police intégrée), bordeaux #8E1F2B
+cachet-maison-lettrine.png  → cachet seul, fond transparent, environ 2400 px
+planche-logo.png            → logo complet (cachet + Maison LETTRINE + Cachets de cire), clair et foncé
+planche-pistes.png          → les trois pistes étudiées (A Écrin retenue, B Monogramme, C Médaille)
+
+Typographie : Cormorant Garamond (titres, cachet), Inter (« Cachets de cire »).
+Couleurs : bordeaux #8E1F2B · crème #F5ECDD · encre #2A211E · or #B88A3E.
+Fichiers régénérables avec maison-lettrine-pinterest/outils/sceau.py + render_sceau.js.

@@ -34,7 +34,7 @@ Le formulaire lui ajoute automatiquement les tags `newsletter` et `guide-7-erreu
 
 **Contenu, bloc par bloc dans l'éditeur Shopify Email :**
 
-**[Image]** Logo Maison Lettrine (`maison-lettrine-logo.png`), centré, environ 220 px de large.
+**[Image]** Logo Maison Lettrine (`maison-lettrine-logo-entete.png`, déjà dans Shopify > Contenu > Fichiers), centré, environ 240 px de large.
 
 **[Titre]**
 > Votre mini-guide est prêt

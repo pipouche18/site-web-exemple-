@@ -10,7 +10,7 @@ Objectif : un compte Pinterest crédible **avant** de lancer les publicités (50
 2. **Nom affiché** : `Maison Lettrine · Cachet de cire`
    Le mot-clé dans le nom aide le référencement Pinterest.
 3. **Nom d'utilisateur** : `maisonlettrine` (déjà réservé : pinterest.fr/maisonlettrine).
-4. **Photo de profil** : le cachet seul (`maison-lettrine-cachet.png`).
+4. **Photo de profil** : le cachet seul (`maison-lettrine-logo/cachet-maison-lettrine.png`, version 2).
 5. **Bio** (160 caractères max) :
    > Coffrets cachet de cire à initiales : sceau, cire souple et méthode pas-à-pas pour réussir vos faire-part dès le premier cachet. ✉️
 6. **Couverture du profil** : l'épingle `01-promesse.png`.

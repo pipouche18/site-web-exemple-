@@ -153,3 +153,20 @@ write('planche-logo__1600x900', page(logo, '1600px', '900px', CREAM).replace('</
 .w{font-family:CG;font-weight:500;font-size:84px;letter-spacing:.3em;margin-right:-.3em;line-height:1.1}
 .t{font-family:Inter;font-weight:500;font-size:17px;letter-spacing:.42em;text-transform:uppercase;margin-top:26px;opacity:.8}</style>"""))
 print('ok')
+
+# 5. Fichiers du site (piste A retenue) : logo d'en-tête, icône (favicon), image de partage
+WORD = """.lk2{display:flex;align-items:center;gap:44px;font-family:CG;color:#2A211E}
+.rule{width:2px;height:150px;background:#B88A3E}.wm{display:flex;flex-direction:column;gap:2px}
+.wm .m{font-style:italic;font-weight:500;font-size:74px;line-height:1;color:#8E1F2B}
+.wm .w{font-weight:500;font-size:96px;line-height:1.05;letter-spacing:.3em;margin-right:-.3em}
+.wm .t{font-family:Inter;font-weight:500;font-size:20px;letter-spacing:.42em;text-transform:uppercase;color:#5C514C;margin-top:14px}</style>"""
+icon = lambda px: svg(disc(initial(280), bleed=False, color=WAX_SCREEN), w=str(px), h=str(px), vb='20 20 400 400')
+seal = lambda px: svg(disc(piste_a(), bleed=False, color=WAX_SCREEN), w=str(px), h=str(px), vb='20 20 400 400')
+
+write('site-logo-entete__980x240', page(
+    f"<div class='lk2'>{icon(240)}<div class='rule'></div><div class='wm'><span class='m'>Maison</span><span class='w'>LETTRINE</span></div></div>",
+    '980px', '240px').replace('</style>', WORD))
+write('site-icone__512x512', page(icon(512), '512px', '512px'))
+write('site-partage__1200x630', page(
+    f"<div class='lk2' style='height:630px;justify-content:center;gap:64px'>{seal(400)}<div class='wm'><span class='m'>Maison</span><span class='w'>LETTRINE</span><span class='t'>Cachets de cire</span></div></div>",
+    '1200px', '630px', CREAM).replace('</style>', WORD))

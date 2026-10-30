@@ -11,9 +11,9 @@
   "current": "Maison Lettrine",
   "presets": {
     "Maison Lettrine": {
-      "logo": "shopify://shop_images/maison-lettrine-logo.png",
-      "logo_width": 220,
-      "favicon": "shopify://shop_images/maison-lettrine-cachet.png",
+      "logo": "shopify://shop_images/maison-lettrine-logo-entete.png",
+      "logo_width": 240,
+      "favicon": "shopify://shop_images/maison-lettrine-icone.png",
       "customer_account_menu": "customer-account-main-menu",
       "color_schemes": {
         "scheme-1": {
@@ -233,7 +233,7 @@
       "free_shipping_threshold": 50,
       "delivery_to_confirm": true,
       "engraving_tag": "mariage",
-      "share_image": "shopify://shop_images/maison-lettrine-cachet.png",
+      "share_image": "shopify://shop_images/maison-lettrine-partage.png",
       "pinterest_save_button": true,
       "show_cookie_preferences_link": true
     }
